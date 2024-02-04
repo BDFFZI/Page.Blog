@@ -9,7 +9,7 @@ timezone: Asia/Shanghai
 theme: fluid
 
 #文章设置
-permalink: "posts/:abbrlink/"
+permalink: "posts/:abbrlink.html"
 new_post_name: ":title.md"
 default_layout: draft
 index_generator:
