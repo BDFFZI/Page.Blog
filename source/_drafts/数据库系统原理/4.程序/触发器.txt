@@ -1,0 +1,16 @@
+创建：
+create trigger {triggerName} 
+{before|after} {insert|update|delete} 
+on {tableName}
+for each row
+{triggerBody};
+
+删除：
+drop trigger {triggerName}
+
+
+triggerBody补充：
+在insert模式中，有一个名为new的序列表，可以以此修改插入值
+在delete模式中，有一个名为old的只读虚拟表，以此可以获取删除内容
+在before update模式中有old表，在after update模式中有new表
+这些虚拟表需要用set {old|new}.{columnName} = {value}的方式修改

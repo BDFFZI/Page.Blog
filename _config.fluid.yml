@@ -1,0 +1,63 @@
+# 网站图标
+favicon: "/assets/img/avatar.jpg"
+apple_touch_icon: "/assets/img/avatar.jpg"
+
+# 导航栏
+navbar:
+  blog_title: "BDFFZI的小屋"
+
+# 主页
+index:
+  # 头图相对页面的占比
+  banner_img_height: 50
+  slogan:
+    text: "笔记 |   分享 |   杂谈"
+
+# 分类页
+category:
+  order_by: "name"
+  post_order_by: "title"
+
+# 文章页
+post:
+  # 侧边分类栏
+  category_bar:
+    # 需要显式启用
+    specific: false
+
+  # 评论
+  comments:
+    enable: true
+    type: waline
+
+waline:
+  serverURL: "waline-1-z1305505.deta.app"
+
+# 关于页
+about:
+  avatar: "/assets/img/avatar.jpg"
+  name: "BDFFZI"
+  intro: "一名野生的技术宅，想到啥就做啥，喜欢围绕计算机的一切。"
+  icons:
+    - {
+        class: "iconfont icon-github-fill",
+        link: "https://github.com/BDFFZI",
+        tip: "GitHub",
+      }
+    - {
+        class: "iconfont icon-bilibili-fill",
+        link: "https://space.bilibili.com/35949109",
+        tip: "Bilibili",
+      }
+    - { class: "iconfont icon-wechat-fill", qrcode: "/assets/img/wechat.jpg" }
+
+footer:
+  # 网页pv和uv统计
+  statistics:
+    enable: true
+
+custom_css:
+  - "/assets/css/content.css"
+  - "/assets/css/layout.css"
+
+custom_js:

@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" modified="2023-08-21T09:48:34.353Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203" etag="EGa7TlVepRityDQUt7BO" version="21.6.8" type="onedrive">
+  <diagram name="第 1 页" id="KwaqzkJ_TXs2GuIOPHOM">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="8MExFNJsJG9C3qq9PUty-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8MExFNJsJG9C3qq9PUty-4" target="8MExFNJsJG9C3qq9PUty-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8MExFNJsJG9C3qq9PUty-4" value="着色器&lt;br&gt;Shader" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8MExFNJsJG9C3qq9PUty-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8MExFNJsJG9C3qq9PUty-5" target="8MExFNJsJG9C3qq9PUty-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8MExFNJsJG9C3qq9PUty-5" value="纹理&lt;br&gt;Texture" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8MExFNJsJG9C3qq9PUty-13" value="Model文件" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="80" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="8MExFNJsJG9C3qq9PUty-1" value="物体&lt;br&gt;Object" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="8MExFNJsJG9C3qq9PUty-13">
+          <mxGeometry x="20" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8MExFNJsJG9C3qq9PUty-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="8MExFNJsJG9C3qq9PUty-13" source="8MExFNJsJG9C3qq9PUty-2" target="8MExFNJsJG9C3qq9PUty-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8MExFNJsJG9C3qq9PUty-2" value="网格&lt;br&gt;Mesh" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="8MExFNJsJG9C3qq9PUty-13">
+          <mxGeometry x="240" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8MExFNJsJG9C3qq9PUty-3" value="材质&lt;br&gt;Material" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8MExFNJsJG9C3qq9PUty-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8MExFNJsJG9C3qq9PUty-3" target="8MExFNJsJG9C3qq9PUty-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8MExFNJsJG9C3qq9PUty-14" value="Mate文件" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="240" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="8MExFNJsJG9C3qq9PUty-19" value="Tex文件" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="555" y="310" width="150" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
