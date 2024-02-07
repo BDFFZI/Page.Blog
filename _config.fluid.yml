@@ -27,17 +27,17 @@ post:
 
   # 评论
   comments:
-    enable: true
-    type: giteement
+    enable: false
+    type: waline
 
 waline:
   serverURL: "waline-1-z1305505.deta.app"
 
 giteement:
   enable: true  # 是否启用码云评论系统
-  redirect_uri: http://localhost:4000/page.blog/posts/4133014859.html   # 应用回调地址(请和配置的第三方应用保持一致)
+  redirect_uri: https://bdffzi.gitee.io/page.blog/   # 应用回调地址(请和配置的第三方应用保持一致)
   # 不能更改(网上开源项目https://github.com/Rob--W/cors-anywhere作者提供的专门用来跨域服务器的配置)
-  oauth_uri: https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token
+  oauth_uri: https://bdffzi.netlify.app/.netlify/functions/cors/https://gitee.com/oauth/token
   giteeID: bdffzi  # 你的码云账号英文名
   # 存储评论的 repo
   repo: Page.Blog
