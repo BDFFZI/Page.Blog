@@ -34,16 +34,16 @@ waline:
   serverURL: "waline-1-z1305505.deta.app"
 
 giteement:
-  enable: true  # 是否启用码云评论系统
-  redirect_uri: https://bdffzi.gitee.io/page.blog/   # 应用回调地址(请和配置的第三方应用保持一致)
+  enable: true # 是否启用码云评论系统
+  redirect_uri: https://bdffzi.gitee.io/page.blog/ # 应用回调地址(请和配置的第三方应用保持一致)
   # 不能更改(网上开源项目https://github.com/Rob--W/cors-anywhere作者提供的专门用来跨域服务器的配置)
   oauth_uri: https://bdffzi.netlify.app/.netlify/functions/cors/https://gitee.com/oauth/token
-  giteeID: bdffzi  # 你的码云账号英文名
+  giteeID: bdffzi # 你的码云账号英文名
   # 存储评论的 repo
   repo: Page.Blog
   gitment_oauth:
-    client_id: 'bc5ea6656828aafa634aa5d49fe6ef103ff63854d192b756e1b585b03c43c0e0'           #client ID
-    client_secret: '1edabcefeb4e72b04be698e8042e8095dae97a378cd2b0002d12914da85ab584'       #client secret
+    client_id: "bc5ea6656828aafa634aa5d49fe6ef103ff63854d192b756e1b585b03c43c0e0" #client ID
+    client_secret: "1edabcefeb4e72b04be698e8042e8095dae97a378cd2b0002d12914da85ab584" #client secret
 
 # 关于页
 about:
@@ -51,16 +51,8 @@ about:
   name: "BDFFZI"
   intro: "一名野生的技术宅，想到啥就做啥，喜欢围绕计算机的一切。"
   icons:
-    - {
-        class: "iconfont icon-github-fill",
-        link: "https://github.com/BDFFZI",
-        tip: "GitHub",
-      }
-    - {
-        class: "iconfont icon-bilibili-fill",
-        link: "https://space.bilibili.com/35949109",
-        tip: "Bilibili",
-      }
+    - { class: "iconfont icon-github-fill", link: "https://github.com/BDFFZI", tip: "GitHub" }
+    - { class: "iconfont icon-bilibili-fill", link: "https://space.bilibili.com/35949109", tip: "Bilibili" }
     - { class: "iconfont icon-wechat-fill", qrcode: "/assets/img/wechat.jpg" }
 
 footer:
@@ -73,3 +65,4 @@ custom_css:
   - "/assets/css/layout.css"
 
 custom_js:
+  - "/assets/js/noCache.js"

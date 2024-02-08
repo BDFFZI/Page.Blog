@@ -124,6 +124,31 @@ _为什么不做上图中最后一个日文标签的文件说明？因为那个�
 
 这部分应该不需要过多解释了，就是上文“模型文件”两节提到的那些，这些文件凑成了一个基本模型所需的所有数据，具体到 COM3D2 中还进行了一定简化，结合上文对比下图你就知道对应关系和含义了，注意文件之间存在依赖关系。
 
+```mermaid
+flowchart RL
+    object["物体</br>Object"]
+    mesh["网格</br>Mesh"]
+    material["材质</br>Material"]
+    shader["着色器</br>Shader"]
+    texture["纹理</br>Texture"]
+
+    subgraph Model文件
+      object
+      mesh
+      subgraph Mate文件
+        material
+      end
+    end
+    subgraph tex文件
+      texture
+    end
+
+    mesh-->object
+    material-->object
+    shader-->material
+    texture-->material
+```
+
 ![img](../../../assets/images/2454431-20230821175122018-774464025.jpg)
 
 _为什么着色器没有对应的文件？因为这部分文件已经由官方写好了存在游戏内了，所以我们不需要编写自己的着色器。那着色器如何使用呢？看上文的描述可知着色器是由材质引用的，所以之后我们会在材质中写明着色器信息。_
