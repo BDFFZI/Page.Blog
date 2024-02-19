@@ -7,7 +7,7 @@
 
 .markdown-body h2 {
     color: #ff6600;
-    font-size: 26px;
+    font-size: 28px;
 }
 
 .markdown-body h3,
@@ -18,7 +18,7 @@
 }
 
 .markdown-body h3 {
-    font-size: 24px;
+    font-size: 25px;
 }
 
 .markdown-body h4 {
@@ -26,11 +26,11 @@
 }
 
 .markdown-body h5 {
-    font-size: 20px;
+    font-size: 19px;
 }
 
 .markdown-body h6 {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 /* 段落 */

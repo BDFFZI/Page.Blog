@@ -1,4 +1,0 @@
-//获取所有用户
-select * from mysql.user
-
-我摆烂了

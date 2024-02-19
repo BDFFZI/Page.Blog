@@ -1,6 +1,0 @@
-begin transaction
-{body}
-[rollback]
-commit
-
-//不对呀，不管了，摆烂

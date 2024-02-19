@@ -1,6 +1,7 @@
 ---
 abbrlink: 953923210
-date: 2024-01-20 09:56
+date: "2024-01-20 09:56"
+update: "2024-2-19 16:37"
 categories:
   - 工作
   - Blender
@@ -25,7 +26,7 @@ categories:
 
 插件是将代码集成到 Blender 的一种方式，只要符合以下要求，便可被 Blender 识别为插件。
 
-- 插件是一个 Python 包，即一个带有**init**.py 的文件夹。
+- 插件是一个 Python 包，即一个带有\_\_init\_\_.py 的文件夹。
 - 该包带有 register()和 unregister()两个函数。
 
 ### 插件如何被集成？
