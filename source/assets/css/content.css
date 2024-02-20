@@ -1,83 +1,85 @@
 ﻿/* 标题 */
 
 .markdown-body h1 {
-    text-align: center;
-    font-size: 32px;
+  text-align: center;
+  font-size: 32px;
 }
 
 .markdown-body h2 {
-    color: #ff6600;
-    font-size: 28px;
+  color: #ff6600;
+  font-size: 28px;
 }
 
 .markdown-body h3,
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-    color: #40b8fa;
+  color: #40b8fa;
 }
 
 .markdown-body h3 {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 .markdown-body h4 {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 .markdown-body h5 {
-    font-size: 19px;
+  font-size: 19px;
 }
 
 .markdown-body h6 {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 /* 段落 */
 .markdown-body p {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 /* 列表 */
 .markdown-body ul,
 .markdown-body ol {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 /* 加粗（必读） */
 .markdown-body strong {
-    color: #3594f7;
-    font-weight: bold;
+  color: #3594f7;
+  font-weight: bold;
 }
 
 /* 斜体（选读，但建议）*/
 .markdown-body em {
-    color: #3594f7;
-    opacity: 0.7;
-    font-style: italic;
+  color: #3594f7;
+  opacity: 0.7;
+  font-style: italic;
 }
 
 /* 删除线（选读）*/
 .markdown-body del {
-    color: red;
-    font-style: italic;
-    opacity: 0.5;
+  color: red;
+  font-style: italic;
+  opacity: 0.5;
 }
 
 /* 列表 */
 
 .markdown-body ol ol li,
-.markdown-body ul ol li { /*二级列表前缀数字样式*/
-    list-style-type: lower-roman;
+.markdown-body ul ol li {
+  /*二级列表前缀数字样式*/
+  list-style-type: lower-roman;
 }
 
 /* 表格 */
 
 .markdown-body table:not(figure table) thead tr {
-    background-color: #f0f0f0;
-    text-align: center;
+  background-color: #f0f0f0;
+  text-align: center;
 }
 
-.markdown-body table:not(figure table) tbody tr:nth-child(2n) { /*隔行改变行的背景色*/
-    background-color: #f8f8f8;
+.markdown-body table:not(figure table) tbody tr:nth-child(2n) {
+  /*隔行改变行的背景色*/
+  background-color: #f8f8f8;
 }
