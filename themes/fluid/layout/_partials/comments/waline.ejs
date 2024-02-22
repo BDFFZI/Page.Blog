@@ -1,6 +1,7 @@
 <% if (theme.waline.serverURL) { %>
+  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
+  </br>
   <div id="waline"></div>
-  <div class= "footer-inner">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
   <script type="text/javascript">
     Fluid.utils.loadComments('#waline', function() {
       Fluid.utils.createCssLink('<%= url_join(theme.static_prefix.waline, 'waline.min.css') %>')

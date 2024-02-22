@@ -108,7 +108,7 @@ git stash pop #取出暂存的工作区修改
 
 
 git reset [--hard] <commit> #将当前分支[包含工作区]重置到某次提交的状态
-git clean -df #清除工作区中所有未被跟踪的文件
+git clean -dfx #清除工作区中所有未被跟踪的文件
 ```
 
 ### 分支处理
