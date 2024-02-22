@@ -10,7 +10,7 @@
           <%- JSON.stringify(theme.waline || {}) %>,
           {
             el: '#waline',
-            pageview: true,
+            pageview: window.origin.includes("localhost")?false:true,
             path: <%= theme.waline.path %>
           }
         )
