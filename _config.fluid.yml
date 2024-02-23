@@ -13,11 +13,6 @@ index:
   slogan:
     text: "笔记 |   分享 |   杂谈"
 
-# 分类页
-category:
-  order_by: "name"
-  post_order_by: "title"
-
 # 文章页
 post:
   # 侧边分类栏
