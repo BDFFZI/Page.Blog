@@ -6,47 +6,9 @@ categories:
   - Shader
 ---
 
-# 【Unity】Pass 语法笔记
+# 【Unity】ShaderCode 语法笔记
 
-```shaderlab
-Pass
-{
-    [Name]
-    [Tags] // 提供给Unity一些额外信息
-    [RenderSetup] // 渲染管线状态设置
-    <passcode>
-}
-...
-```
-
-## Name
-
-给 Pass 起名，以配合多种功能使用。
-
-```shaderlab
-Name "<passName>"
-```
-
-## Tags
-
-类似 SubShader 中的 Tags，但此处是一些专门作用于 Pass 的 Tags。
-
-### LightMode
-
-在自定义灯光时使用，内置管线中不同的灯光使用不同的 Pass，该标签用于表面该 Pass 对应的灯光类型。不过该做法在 SRP 有所调整，所以具体的 LightMode 值还要看对应的渲染管线。
-
-## RenderSetup
-
-```shader
-AlphaToMask {On | Off} //启用或禁用 GPU 上的 alpha-to-coverage 模式。
-```
-
-### Blend
-指明如何将片元着色器输出值与渲染目标值混合
-
-## passcode
-
-passcode 是实际的渲染代码，目前支持 3 种写法。
+ShaderCode 区域存放实际的渲染代码，目前支持 3 种写法。
 
 - 固定函数着色器（过时）
 
@@ -65,3 +27,4 @@ passcode 是实际的渲染代码，目前支持 3 种写法。
   <https://docs.unity.cn/cn/2019.4/Manual/SL-ShaderPrograms.html>
 
   接近原生的 HLSL 体验，光照等功能都需要自行实现，难度较高，但通用性最强，一般考虑利用改源码的方式实现，从而简化制作流程。
+

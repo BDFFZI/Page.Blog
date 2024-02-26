@@ -271,6 +271,8 @@ Tags
   - 所有遮罩均是指哪些位可操作，并不是直接与值并运算，所以如写入遮罩为 0，表示所有位都无法写入，而不是写入 0。
   - 部分参数支持 Back 和 Front 的后缀，从而实现对正反片元单独处理，但如果提供了无后缀版本，则后缀版本被覆盖。
 
+  测试公式：$\text{(ref \& readMask) comparisonFunction (stencilBufferValue \& readMask)}$
+
   ```shaderlab
   Stencil
   {
@@ -283,66 +285,75 @@ Tags
   }
   ```
 
-  **测试方程**
+  - **comparisonFunction**
 
-  ```text
-  (ref & readMask) comparisonFunction (stencilBufferValue & readMask)
-  ```
+    - Never：比较永远失败，即从不渲染像素。
+    - Less：参考值小于缓冲区值时通过。
+    - Equal
+    - LEqual
+    - Greater
+    - NotEqual
+    - GEqual
+    - Always：默认值，比较始终成功。
 
-  **comparisonFunction**
+  - **event**
 
-  - Never：比较永远失败，即从不渲染像素。
-  - Less：参考值小于缓冲区值时通过。
-  - Equal
-  - LEqual
-  - Greater
-  - NotEqual
-  - GEqual
-  - Always：默认值，比较始终成功。
+    可添加 Back 或 Front 后缀。
 
-  **event**
+    - Pass：当通过模板测试和深度测试时
+    - Fail：当未通过模板测试时
+    - ZFail：当通过模板测试，但未通过深度测试时
 
-  可添加 Back 或 Front 后缀。
+  - **operation**
 
-  - Pass：当通过模板测试和深度测试时
-  - Fail：当未通过模板测试时
-  - ZFail：当通过模板测试，但未通过深度测试时
-
-  **operation**
-
-  - Keep：默认值，保持模板缓冲区中的内容。
-  - Zero：将 0 写入模板缓冲区。
-  - Replace：将参考值写入模板缓冲区。
-  - Invert：将缓冲区中的值的所有位取反。
-  - IncrSat：递增缓冲区中的值，上限 255。
-  - DecrSat：递减缓冲区中的值，下限 0。
-  - IncrWrap：递增缓冲区中的值，如果当前值为 255 则变为 0。
-  - IncrWrap：递减缓冲区中的值，如果当前值为 0 则变为 255。
+    - Keep：默认值，保持模板缓冲区中的内容。
+    - Zero：将 0 写入模板缓冲区。
+    - Replace：将参考值写入模板缓冲区。
+    - Invert：将缓冲区中的值的所有位取反。
+    - IncrSat：递增缓冲区中的值，上限 255。
+    - DecrSat：递减缓冲区中的值，下限 0。
+    - IncrWrap：递增缓冲区中的值，如果当前值为 255 则变为 0。
+    - IncrWrap：递减缓冲区中的值，如果当前值为 0 则变为 255。
 
 - **ZClip**
 
   如何处理近平面和远平面的片元。
 
-  - True：默认值，超出近平面或远平面的片元直接丢弃。
-  - False：夹紧超出近平面或远平面的片元。
+  ```shaderlab
+  ZClip <state>
+  ```
+
+  - **state**
+    - True：默认值，超出近平面或远平面的片元直接丢弃。
+    - False：夹紧超出近平面或远平面的片元。
 
 - **ZTest**
 
   如何进行深度测试，片元越近深度值越小，越远深度值越大。
 
-  - Less
-  - LEqual：默认值，当前深度值小于等于缓冲区的值时渲染，当前几何体位于现有几何体的前面或等距。
-  - Equal
-  - GEqual
-  - NotEqual
-  - Always：不进行深度测试，永远绘制。
+  ```shaderlab
+  ZTest <operation>
+  ```
+
+  - **operation**
+    - Less
+    - LEqual：默认值，当前深度值小于等于缓冲区的值时渲染，当前几何体位于现有几何体的前面或等距。
+    - Equal
+    - GEqual
+    - NotEqual
+    - Always：不进行深度测试，永远绘制。
 
 - **ZWrite**
 
-  是否写入深度值
+  是否写入深度值。
 
-  - On
-  - Off
+  ```shaderlab
+  ZTest <state>
+  ```
+
+  - **state**
+    - On：默认值，写入深度值。
+    - Off
 
 ### 其他
 
@@ -354,7 +365,6 @@ Tags
 
   ```shaderlab
   AlphaToMask <state>
-  ...
   ```
 
   - **state**
@@ -376,6 +386,10 @@ Tags
 - **Cull**
 
   设置多边形的正反面剔除。
+
+  ```shaderlab
+  Cull <state>
+  ```
 
   - Back：默认值，剔除背面。
   - Front：剔除前面。
