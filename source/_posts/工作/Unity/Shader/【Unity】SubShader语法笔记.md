@@ -1,6 +1,6 @@
 ---
 abbrlink: 2092124193
-published: false
+date: "2024-2-24 13:42"
 categories:
   - 工作
   - Unity
@@ -27,12 +27,12 @@ SubShader
 ...
 ```
 
-### LOD
+## LOD
 
 LOD 用于表示子着色器在计算方面的需求大小，配合 Shader.maximumLOD 可以排除高于指定 LOD 的子着色器，从而实现根据不同硬件情况运行不同的着色器效果。
 
 ```subShader
-// LOD的基本语法
+// LOD的语法示例
 LOD <number>
 ```
 
@@ -75,66 +75,77 @@ https://docs.unity.cn/cn/2019.4/Manual/SL-ShaderReplacement.html
 
 RenderType 用于给 SubShader 分类，从而实现着色器批量替换功能，不过该功能不支持 SRP，所以已过时。
 
+#### ForceNoShadowCasting
+
+使用该标签且值为“True”，可使该 SubShader 绝不会投射阴影。对透明对象使用 Shader 替换但不希望继承阴影通道时非常有用。
+
 #### DisableBatching
 
 使用批处理渲染时，相关物体的顶点数据将全部转换到世界空间，导致依赖物体空间的 Shader 失效。
 
 如果遇到这种情况可利用 DisableBatching 禁止对该 Shader 使用批处理。
 
+支持以下值：
 
+- True：始终禁用批处理
+- False：不禁用批处理
+- LODFading：当 LOD 淡化处于激活状态时禁用批处理；主要用于树
+
+#### IgnoreProjector
+
+使用该标签且值为“True”，可使投影器功能忽略该对象，这对半透明物体很有用。
+
+#### PreviewType
+
+指定材质面板的预览效果，默认为球体，也可以改为“Plane”（显示为 2D），“Skybox”（显示为天空盒）。
+
+#### CanUseSpriteAtlas
+
+使用该标签且值为“True”，可警告用户该 Shader 依赖原始纹理坐标，所以不能打包到图集中。
+
+### 通道 Tags
+
+可以在 SubShader 中编写 Pass 中专用的 Tags，这将自动把相关 Tags 应用到所有 Pass。
 
 ### 自定义 Tags
 
 利用 Material.GetTag 可以读取 Unity 内置标签之外的标签，这对自定义渲染管线时非常有用，实际上 Unity 内置渲染管线的运作方式应该也是一样的原理。
 
-### Pass
+## CommonState
+
+CommonState 实际上是对应 Pass 中的 RenderSetup 部分，在 SubShader 中提供的 RenderSetup 将自动应用到所有 Pass 中。
+
+## Pass
 
 用于编写实际渲染用的着色器代码。
 
 - 一次 Pass 的运行代表一次渲染，可定义多个。
-- Pass 定义中允许的部分语句也可直接出现在 Subshader 中，这将同时设置所有通道的状态。
+- 如果有多个 Pass 则按编写的顺序执行。
 
-```shaderlab
-Pass
-{
-    [Name]
-    [Tags] // 提供给Unity一些额外信息
-    [RenderSetup] // 渲染管线状态设置
-    <passcode>
-}
-...
-```
+### 自定义 Pass
 
-#### passcode
+https://docs.unity.cn/cn/2019.4/Manual/SL-Pass.html
 
-passcode 是实际的渲染代码，目前支持 3 种写法。
+见 Pass 语法笔记。
 
-- 固定函数着色器（过时）
+### UsePass
 
-  <https://docs.unity.cn/cn/2019.4/Manual/ShaderTut1.html>
-
-  一个早期旧版着色器，使用内置的函数快速编写一些简单的着色器，不需要会 HLSL，但扩展能力差。
-
-- 表面着色器（过时）
-
-  <https://docs.unity.cn/cn/2019.4/Manual/SL-SurfaceShaders.html>
-
-  使用 HLSL 编写，但对光照等功能进行了封装，不需要自己实现，也因此编写比较简单同时具备一定扩展能力。但新出的 SRP 不支持该写法，看样子官方要用 Shader Graph 代替它。
-
-- 顶点和片元着色器
-
-  <https://docs.unity.cn/cn/2019.4/Manual/SL-ShaderPrograms.html>
-
-  接近原生的 HLSL 体验，光照等功能都需要自行实现，难度较高，但通用性最强，一般考虑利用改源码的方式实现，从而简化制作流程。
-
-#### UsePass
-
-借助 UsePass，也可不自行实现而可以直接使用现有的 Pass。
+借助 UsePass，可不自行实现而可以直接使用现有的 Pass。
 
 - 系统只会考虑目标第一个受支持的子着色器。
-- 需要配合 Name 命令使用。
+- 目标 Pass 需要带有 Name 命令。
 
 ```shaderlab
 UsePass "<shaderName/passName>"
-...
+```
+
+### GrabPass
+
+利用此 Pass 可将屏幕内容抓取到纹理中用于在后续通道中使用。
+
+GrabPass 只是一种特殊的 Pass，所以也可以使用 Pass 的 Name 和 Tags 命令。
+
+```shaderlab
+GrabPass { } // 直接抓取到名为_GrabTexture的纹理中，注意：这种抓取方式将为每个使用它的对象单独抓取一次。
+GrabPass { "<TextureName>" } // 抓取到指定纹理中，一帧只执行一次，后续通道共用纹理结果。
 ```

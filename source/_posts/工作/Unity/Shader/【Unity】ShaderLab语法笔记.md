@@ -31,9 +31,8 @@ Properties 用于描述需要显示在面板上的参数，并且这些参数还
 
 ```shaderlab
 Properties {
-    // 任意数量的参数声明
     [attributes] <property>
-    ...
+    ... // 可定义多个参数声明
 }
 ```
 
@@ -43,14 +42,17 @@ Properties {
 // 滑动条和数字
 <name> ("<displayname>", Range (<min>, <max>)) = <number>
 <name> ("<displayname>", Float) = <number>
-<name> ("<displayname>", Int) = <number>
+<name> ("<displayname>", Integer) = <number>
+<name> ("<displayname>", Int) = <number> //历史遗留，实际是浮点数实现。
 // 颜色和矢量
 <name> ("<displayname>", Color) = (<number>,<number>,<number>,<number>)
 <name> ("<displayname>", Vector) = (<number>,<number>,<number>,<number>)
 // 纹理
 <name> ("<displayname>", 2D) = "<defaulttexture>" {}
-<name> ("<displayname>", Cube) = "<defaulttexture>" {}
-<name> ("<displayname>", 3D) = "<defaulttexture>" {}
+<name> ("<displayname>", 2DArray) = "" {}
+<name> ("<displayname>", 3D) = "" {}
+<name> ("<displayname>", Cube) = "" {}
+<name> ("<displayname>", CubeArray) = "" {}
 ```
 
 - name - 自定义的属性名
@@ -66,13 +68,13 @@ Properties {
 
 ### 支持的 attributes
 
+- [Gamma] - 表示在 UI 中将浮点/矢量属性指定为 sRGB 值（就像颜色一样），并且可能需要根据使用的颜色空间进行转换。
+- [HDR] - 表示纹理属性需要高动态范围 (HDR) 纹理。
+- [HideInInspector] - 不在材质检视面板中显示属性值。
 - [MainTexture] - 表示一个属性 (property) 是材质的主纹理，否则默认纹理为\_MainTex，多次使用选首个。
 - [MainColor] - 表示一个属性 (property) 是材质的主色，否则默认主色为\_Color，多次使用选首个。
-- [HideInInspector] - 不在材质检视面板中显示属性值。
 - [NoScaleOffset] - 对于具有此特性的纹理属性，材质检视面板不会显示纹理平铺/偏移字段。
 - [Normal] - 表示纹理属性需要法线贴图。
-- [HDR] - 表示纹理属性需要高动态范围 (HDR) 纹理。
-- [Gamma] - 表示在 UI 中将浮点/矢量属性指定为 sRGB 值（就像颜色一样），并且可能需要根据使用的颜色空间进行转换。
 - [PerRendererData] - 表示纹理属性将以 MaterialPropertyBlock 的形式来自每渲染器数据。材质检视面板会更改这些属性的纹理字段 UI。
 
 ### 其他类型属性
