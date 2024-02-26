@@ -25,6 +25,12 @@ post:
     enable: true
     type: waline
 
+  # 数学
+  math:
+    enable: true
+    specific: false
+    engine: mathjax
+
 waline:
   serverURL: "waline-1-c7584562.deta.app"
 

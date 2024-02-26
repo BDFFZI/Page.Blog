@@ -1,6 +1,6 @@
 ---
 abbrlink: 1843614380
-date: 2024-2-18 17:04
+date: 2024-2-26 16:45
 categories:
   - 工作
   - Unity
@@ -9,110 +9,378 @@ categories:
 
 # 【Unity】ShaderLab 语法笔记
 
-在 Unity 中使用 ShaderLab 来编写着色器文件。
-
-ShaderLab 是一种声明性语言，和单纯的 HLSL、GLSL 等着色器语言不同，它的功能更宽泛，像是对整个图形接口功能的封装。
-
-它可以实现指定渲染管线状态、支持一些 Unity 独有的渲染功能、提供利用传统着色器语言实现渲染逻辑等。
-
 ```shaderlab
-// Shaderlab的基本语法结构
-Shader "<shaderName>"{
+Shader "<shaderName>"
+{
     [Properties]
-    <SubShader>
-    [Fallback]
-    [CustomEditor]
+
+    [Category] // 可以实现批量设置SubShader参数
+    {
+        SubShader
+        {
+            LOD <number> // 配合 Shader.maximumLOD 可以排除高于指定 LOD 的子着色器
+            [Tags]
+            [Commands]
+
+            Pass{
+                [Name] "<passName>" // 配合UsePass等功能使用
+                [Tags]
+                [Commands]
+                <ShaderCode>
+            }
+            ...// 一次Pass渲染一次，可填写多个，按顺序多次渲染。
+
+            [UsePass] "<shaderName/passName>" // 直接使用现成的Pass
+            [GrabPass] { {} | "textureName" } // 纹理抓取Pass，仅内置管线可用，影响性能不建议使用。
+        }
+        ...// 可填多个SubShader，但只会使用首个有效的，用于根据设备环境调整显示效果。
+    }
+
+    [Fallback] {"<shaderName>" | Off} // 所有SubShader无效时的回调。
+
+    [CustomEditor] "<className>" // 自定义面板界面
 }
 ```
 
-## Properties
+## Propertie
 
-Properties 用于描述需要显示在面板上的参数，并且这些参数还将被持久化保存。
+用于定义显示在面板的参数，同时这些参数会被序列化保存。
 
 ```shaderlab
-Properties {
-    [attributes] <property>
-    ... // 可定义多个参数声明
+Properties
+{
+    [attribute]... <name> ("<displayname>",<type>) = <defaultValue>
+    ...
+}
+
+```
+
+### 支持的 type 及其 defaultValue
+
+| type                                      | defualtValue                              |
+| ----------------------------------------- | ----------------------------------------- |
+| Integer、Int、Float、Range(\<min>,\<max>) | \<number>                                 |
+| Color、Vector                             | (\<number>,\<number>,\<number>,\<number>) |
+| 2D、2DArray、3D、Cube、CubeArray          | "\<defaulttexture>"                       |
+
+#### defaulttexture
+
+- 留空：默认为 gray
+- white：（RGBA：1,1,1,1）
+- black：（RGBA：0,0,0,0）
+- gray：（RGBA：0.5,0.5,0.5,0.5）
+- bump：（RGBA：0.5,0.5,1,0.5）
+- red：（RGBA：1,0,0,0）
+
+### 支持的 attribute
+
+- [Gamma] - 指示浮点数或矢量属性使用 sRGB 值，这意味着如果项目中的颜色空间需要，则它必须与其他 sRGB 值一起转换。
+- [HDR] - 指示纹理或颜色属性使用高动态范围 (HDR) 值。
+- [HideInInspector] - 指示检视面板中隐藏该属性值。
+- [MainTexture] - 表示该属性为材质主纹理，否则默认纹理为\_MainTex，多次使用选首个。
+- [MainColor] - 表示该属性为材质主色，否则默认主色为\_Color，多次使用选首个。
+- [NoScaleOffset] - 指示检视面板隐藏此纹理属性的平铺和偏移字段。
+- [Normal] - 指示该纹理属性需要法线贴图。
+- [PerRendererData] - 指示纹理属性将来自每渲染器数据，形式为 MaterialPropertyBlock。
+
+## Tags
+
+```shaderlab
+Tags
+{
+    "<key>" = "<value>"
+    ...
 }
 ```
 
-### 支持的 property
+### SubShader 专用
 
-```shaderlab
-// 滑动条和数字
-<name> ("<displayname>", Range (<min>, <max>)) = <number>
-<name> ("<displayname>", Float) = <number>
-<name> ("<displayname>", Integer) = <number>
-<name> ("<displayname>", Int) = <number> //历史遗留，实际是浮点数实现。
-// 颜色和矢量
-<name> ("<displayname>", Color) = (<number>,<number>,<number>,<number>)
-<name> ("<displayname>", Vector) = (<number>,<number>,<number>,<number>)
-// 纹理
-<name> ("<displayname>", 2D) = "<defaulttexture>" {}
-<name> ("<displayname>", 2DArray) = "" {}
-<name> ("<displayname>", 3D) = "" {}
-<name> ("<displayname>", Cube) = "" {}
-<name> ("<displayname>", CubeArray) = "" {}
-```
+- **RenderPipeline**
 
-- name - 自定义的属性名
-- displayname - 自定义的显示在面板上的名称
-- min、max、number - 表示任意数字
-- defaulttexture - 默认为空字符串，但对于 2D 纹理可选如下默认纹理
+  告知 Unity 该 Shader 是否支持 Unity 预定义的几个渲染管线。
 
-  - white：（RGBA：1,1,1,1）
-  - black：（RGBA：0,0,0,0）
-  - gray：（RGBA：0.5,0.5,0.5,0.5）
-  - bump：（RGBA：0.5,0.5,1,0.5）
-  - red：（RGBA：1,0,0,0）
+  - UniversalRenderPipeline：支持 URP
+  - HighDefinitionRenderPipeline：支持 HDRP
+  - 其他值或未声明：不兼容相关管线
 
-### 支持的 attributes
+- **Queue**
 
-- [Gamma] - 表示在 UI 中将浮点/矢量属性指定为 sRGB 值（就像颜色一样），并且可能需要根据使用的颜色空间进行转换。
-- [HDR] - 表示纹理属性需要高动态范围 (HDR) 纹理。
-- [HideInInspector] - 不在材质检视面板中显示属性值。
-- [MainTexture] - 表示一个属性 (property) 是材质的主纹理，否则默认纹理为\_MainTex，多次使用选首个。
-- [MainColor] - 表示一个属性 (property) 是材质的主色，否则默认主色为\_Color，多次使用选首个。
-- [NoScaleOffset] - 对于具有此特性的纹理属性，材质检视面板不会显示纹理平铺/偏移字段。
-- [Normal] - 表示纹理属性需要法线贴图。
-- [PerRendererData] - 表示纹理属性将以 MaterialPropertyBlock 的形式来自每渲染器数据。材质检视面板会更改这些属性的纹理字段 UI。
+  定义渲染顺序，数字越大越靠后，可用加减运算进一步调整。
 
-### 其他类型属性
+  - Background：1000
+  - Geometry：2000，不透明物体
+  - AlphaTest：2450
+  - Transparent：3000，透明物体
+  - Overlay：3000
 
-其他类型属性（如矩阵、数组）默认不支持序列化，所以 property 并不支持，但这不代表无法读写。其他属性也可以写在 Pass 中，但只能运行时访问且只能通过代码访问（如 Material.SetFloat），具体见 Pass 部分笔记。
+- **RenderType**
 
-## SubShader
+  https://docs.unity.cn/cn/2019.4/Manual/SL-ShaderReplacement.html
 
-https://docs.unity.cn/cn/2019.4/Manual/SL-SubShader.html
+  给 SubShader 分类，用于实现着色器替换功能，仅内置渲染管线支持。
 
-由于 SubShader 的写法过于复杂，具体参见单独的 SubShader 语法笔记。
+- **ForceNoShadowCasting**
 
-## Fallback
+  禁用 Shader 投射或接收阴影，具体不同管线效果不一样，一般用于配合着色器替换功能使用。
 
-用于指明当所有子着色器都不支持时尝试使用的备用着色器，相当于在末尾插入目标着色器的所有子着色器。
+  - True
+  - False
 
-```shaderlab
-// 回退到其他着色器
-Fallback "shaderName"
-// 不回退且不发出警告
-Fallback Off
-```
+- **DisableBatching**
 
-## CustomEditor
+  禁用动态批处理功能。因为动态批处理会将所有几何体转为世界空间，这对需要物体空间的 Shader 将产生负面影响，所以要关闭。
 
-<https://docs.unity.cn/cn/2019.4/Manual/SL-CustomShaderGUI.html>
+  - True
+  - False
+  - LODFading：当几何体使用 LODGroup 功能且 Fade Mode 不为 None 时生效。
 
-用于实现自定义的属性面板，需要编写配套的 C#类。
+- **IgnoreProjector**
 
-```shaderlab
-// 使用指定的ShaderGUI类作为GUI
-CustomEditor "className"
-```
+  使几何体不受内置渲染管线的投影器功能的影响，在其他渲染管线中该标签无效。
 
-## 其他命令
+  - True
+  - False
 
-<https://docs.unity.cn/cn/2019.4/Manual/SL-Other.html>
+- **PreviewType**
 
-### Category
+  指明材质在 Inspector 面板中的预览效果。
 
-Category 是一个可选功能，它能将 SubShader 分组，为其批量设置参数。这个功能仅影响着色器解析，效果完全等同于将参数设置粘贴到每个 SubShader 下。
+  - Sphere：默认值
+  - Plane
+  - Skybox
+
+- **CanUseSpriteAtlas**
+
+  在 SpritePacker（已弃用） 功能中，实现警告用户着色器依赖于原始纹理坐标，因此不应将其纹理打包到图集中。
+
+  - True：默认值，兼容图集
+  - Flase：不兼容图集
+
+### Pass 专用
+
+也可在 SubShader 中填写 Pass 的 Tags，这会自动应用到所有 Pass。
+
+- **LightMode**
+
+  不同的灯光渲染模式一般使用不同的 Pass，该标签用于指定对应模式，这样 Unity 就知道要调用的 Pass。具体内容要根据渲染管线填写。
+
+  [渲染管线 (URP) 中的 LightMode 通道标签](https://docs.unity.cn/Packages/com.unity.render-pipelines.universal@11.0/manual/urp-shaders/urp-shaderlab-pass-tags.html#urp-pass-tags-lightmode)
+
+### 自定义 Tags
+
+可自由填写键值对，然后用 Material.GetTag 读取。
+
+## Commands
+
+在 SubShader 中填写 Commands 会自动应用到所有 Pass。
+
+### 颜色输出相关
+
+- **Blend**
+
+  确定 GPU 如何将片元着色器的输出与渲染目标进行合并。
+
+  默认混合公式：$finalValue = sourceFactor * sourceValue + destinationFactor * destinationValue$
+
+  ```shaderlab
+  //默认值，禁用混合。
+  Blend [<renderTarget>] Off
+  // 设置当前输出值和缓冲区值的各自系数
+  Blend [<renderTarget>] <sourceFactor> <destinationFactor>
+  //将RGB与Alpha的系数分开设置
+  Blend [<renderTarget>] <sourceRGBFactor> <destinationRGBFactor>, <sourceAlphaFactor> <destinationAlphaFactor>
+  ```
+
+  - **factor**
+
+    混合系数。
+
+    - One
+    - Zero
+    - SrcColor
+    - SrcAlpha
+    - DstColor
+    - DstAlpha
+    - OneMinusSrcColor
+    - OneMinusSrcAlpha
+    - OneMinusDstColor
+    - OneMinusDstAlpha
+
+  - **renderTarget**
+
+    渲染目标索引，0-7 的整数。
+
+- **BlendOp**
+
+  https://docs.unity.cn/cn/current/Manual/SL-BlendOp.html
+
+  指定 Blend 命令使用的混合操作。使用该命令时必须同时使用 Blend 命令。并非所有设备都支持所有混合操作。
+
+  ```shaderlab
+  BlendOp <operation>
+  ```
+
+  - **operation**
+    - Add：默认值，将源和目标相加。
+    - ...
+
+- **ColorMask**
+
+  颜色通道写入遮罩，可用于禁用部分通道的写入。
+
+  ```shaderlab
+  ColorMask <channels> [<renderTarget>]
+  ```
+
+  - **channels**
+
+    可写入的通道，其中 RGBA 4 项可任意组合使用，如默认值为 RGBA。
+
+    - 0：可写入全部通道
+    - R：仅 R 通道
+    - G
+    - B
+    - A
+
+  - **renderTarget**
+
+    渲染目标索引，0-7 的整数。
+
+### 模板深度相关
+
+- **Offset**
+
+  设置深度偏移，负数将减小深度，使离摄像机更近。
+
+  偏移公式：$offset = (m * factor) + (r * units)$
+
+  - m：多边形相对摄像机 z 轴的斜率，如果正视摄像机即与近平面平行则为 0。
+  - r：其是使深度差异可分辩的最小值，这是由渲染设备定义的一个常量。
+
+  ```shaderlab
+  Offset <factor>, <units>
+  ```
+
+  - factor：-1 到 1 的小数。
+  - units：-1 到 1 的小数。
+
+- **Stencil**
+
+  如何进行模板测试，测试通过后将进入深度测试，否则丢弃片元。
+
+  - 所有遮罩均是指哪些位可操作，并不是直接与值并运算，所以如写入遮罩为 0，表示所有位都无法写入，而不是写入 0。
+  - 部分参数支持 Back 和 Front 的后缀，从而实现对正反片元单独处理，但如果提供了无后缀版本，则后缀版本被覆盖。
+
+  ```shaderlab
+  Stencil
+  {
+      [Ref <ref>] //表明引用值，0-255的整数，默认为0
+      [ReadMask <readMask>] //缓冲区读取遮罩，0-255的整数，默认为255
+      [WriteMask <writeMask>] //缓冲区写入遮罩，0-255的整数，默认为255
+      [Comp[{Back | Fornt}] <comparisonOperationFront>] // 定义如何测试
+      [<event> <operation>] // 定义测试结束后的处理事件
+      ...
+  }
+  ```
+
+  **测试方程**
+
+  ```text
+  (ref & readMask) comparisonFunction (stencilBufferValue & readMask)
+  ```
+
+  **comparisonFunction**
+
+  - Never：比较永远失败，即从不渲染像素。
+  - Less：参考值小于缓冲区值时通过。
+  - Equal
+  - LEqual
+  - Greater
+  - NotEqual
+  - GEqual
+  - Always：默认值，比较始终成功。
+
+  **event**
+
+  可添加 Back 或 Front 后缀。
+
+  - Pass：当通过模板测试和深度测试时
+  - Fail：当未通过模板测试时
+  - ZFail：当通过模板测试，但未通过深度测试时
+
+  **operation**
+
+  - Keep：默认值，保持模板缓冲区中的内容。
+  - Zero：将 0 写入模板缓冲区。
+  - Replace：将参考值写入模板缓冲区。
+  - Invert：将缓冲区中的值的所有位取反。
+  - IncrSat：递增缓冲区中的值，上限 255。
+  - DecrSat：递减缓冲区中的值，下限 0。
+  - IncrWrap：递增缓冲区中的值，如果当前值为 255 则变为 0。
+  - IncrWrap：递减缓冲区中的值，如果当前值为 0 则变为 255。
+
+- **ZClip**
+
+  如何处理近平面和远平面的片元。
+
+  - True：默认值，超出近平面或远平面的片元直接丢弃。
+  - False：夹紧超出近平面或远平面的片元。
+
+- **ZTest**
+
+  如何进行深度测试，片元越近深度值越小，越远深度值越大。
+
+  - Less
+  - LEqual：默认值，当前深度值小于等于缓冲区的值时渲染，当前几何体位于现有几何体的前面或等距。
+  - Equal
+  - GEqual
+  - NotEqual
+  - Always：不进行深度测试，永远绘制。
+
+- **ZWrite**
+
+  是否写入深度值
+
+  - On
+  - Off
+
+### 其他
+
+- **AlphaToMask**
+
+  https://docs.unity.cn/cn/current/Manual/SL-AlphaToMask.html
+
+  启用或禁用 GPU 上的 alpha-to-coverage 模式，可以减少将多样本抗锯齿 (MSAA) 与使用 Alpha 测试的着色器（如植被着色器）一起使用时出现的过度锯齿。
+
+  ```shaderlab
+  AlphaToMask <state>
+  ...
+  ```
+
+  - **state**
+    - On：启用 alpha-to-coverage 模式。
+    - Off：禁用 alpha-to-coverage 模式。
+
+- **Conservative**
+
+  是否启用保守光栅化。正常光栅化在确定像素被三角面覆盖的同时还会判断覆盖范围是否足够，保守光栅化则只要被覆盖就光栅化。
+
+  ```shaderlab
+  Conservative <state>
+  ```
+
+  - **state**
+    - True：启用保守光栅化。
+    - False：默认值，禁用保守光栅化。
+
+- **Cull**
+
+  设置多边形的正反面剔除。
+
+  - Back：默认值，剔除背面。
+  - Front：剔除前面。
+  - Off：不剔除。
+
+## ShaderCode
+
+见 ShaderCode 语法笔记。
