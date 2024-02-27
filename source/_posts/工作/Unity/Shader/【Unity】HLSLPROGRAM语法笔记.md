@@ -6,9 +6,9 @@ categories:
   - Shader
 ---
 
-# 【Unity】ShaderCode 语法笔记
+# 【Unity】HLSLPROGRAM 语法笔记
 
-ShaderCode 区域存放实际的渲染代码，目前支持 3 种写法。
+PassCode 区域存放实际的渲染代码，目前支持 3 种写法。
 
 - 固定函数着色器（过时）
 
@@ -27,4 +27,3 @@ ShaderCode 区域存放实际的渲染代码，目前支持 3 种写法。
   <https://docs.unity.cn/cn/2019.4/Manual/SL-ShaderPrograms.html>
 
   接近原生的 HLSL 体验，光照等功能都需要自行实现，难度较高，但通用性最强，一般考虑利用改源码的方式实现，从而简化制作流程。
-

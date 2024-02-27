@@ -9,6 +9,8 @@ categories:
 
 # 【Unity】ShaderLab 语法笔记
 
+https://docs.unity.cn/cn/2022.3/Manual/SL-Reference.html
+
 ```shaderlab
 Shader "<shaderName>"
 {
@@ -18,7 +20,7 @@ Shader "<shaderName>"
     {
         SubShader
         {
-            LOD <number> // 配合 Shader.maximumLOD 可以排除高于指定 LOD 的子着色器
+            [LOD]
             [Tags]
             [Commands]
 
@@ -26,11 +28,11 @@ Shader "<shaderName>"
                 [Name] "<passName>" // 配合UsePass等功能使用
                 [Tags]
                 [Commands]
-                <ShaderCode>
+                <PassCode>
             }
             ...// 一次Pass渲染一次，可填写多个，按顺序多次渲染。
 
-            [UsePass] "<shaderName/passName>" // 直接使用现成的Pass
+            [UsePass] "<shaderName/passName>" // 直接使用现成的Pass，等于将另一个Pass的代码复制进来。
             [GrabPass] { {} | "textureName" } // 纹理抓取Pass，仅内置管线可用，影响性能不建议使用。
         }
         ...// 可填多个SubShader，但只会使用首个有效的，用于根据设备环境调整显示效果。
@@ -41,6 +43,19 @@ Shader "<shaderName>"
     [CustomEditor] "<className>" // 自定义面板界面
 }
 ```
+
+## LOD
+
+指明当前 SubShader 对计算方面的需求，可配合 Shader.maximumLOD 排除高于指定 LOD 的 SubShader，从而实现根据不同硬件性能使用不同的显示效果。
+
+```shaderlab
+LOD <number>
+```
+
+### 内置 Shader 的 LOD
+
+- Unlit 系列：100
+- Standard：300
 
 ## Propertie
 
@@ -57,20 +72,34 @@ Properties
 
 ### 支持的 type 及其 defaultValue
 
-| type                                      | defualtValue                              |
-| ----------------------------------------- | ----------------------------------------- |
-| Integer、Int、Float、Range(\<min>,\<max>) | \<number>                                 |
-| Color、Vector                             | (\<number>,\<number>,\<number>,\<number>) |
-| 2D、2DArray、3D、Cube、CubeArray          | "\<defaulttexture>"                       |
+| type                 | defualtValue                              | 备注                     |
+| -------------------- | ----------------------------------------- | ------------------------ |
+| Integer              | \<number>                                 |
+| Int                  | \<number>                                 | 旧版整数，实际是浮点实现 |
+| Float                | \<number>                                 |
+| Range(\<min>,\<max>) | \<number>                                 | 显示为滑动条的浮点数     |
+| Color                | (\<number>,\<number>,\<number>,\<number>) |
+| Vector               | (\<number>,\<number>,\<number>,\<number>) |
+| 2D                   | "\<defaulttexture>"                       |
+| 2DArray              | ""                                        |
+| 3D                   | ""                                        |
+| Cube                 | ""                                        |
+| CubeArray            | ""                                        |
 
-#### defaulttexture
+- **number、min、max**
 
-- 留空：默认为 gray
-- white：（RGBA：1,1,1,1）
-- black：（RGBA：0,0,0,0）
-- gray：（RGBA：0.5,0.5,0.5,0.5）
-- bump：（RGBA：0.5,0.5,1,0.5）
-- red：（RGBA：1,0,0,0）
+  任意数值
+
+- **defaulttexture**
+
+  内置纹理
+
+  - 留空：默认为 gray
+  - white：（RGBA：1,1,1,1）
+  - black：（RGBA：0,0,0,0）
+  - gray：（RGBA：0.5,0.5,0.5,0.5）
+  - bump：（RGBA：0.5,0.5,1,0.5）
+  - red：（RGBA：1,0,0,0）
 
 ### 支持的 attribute
 
@@ -81,7 +110,22 @@ Properties
 - [MainColor] - 表示该属性为材质主色，否则默认主色为\_Color，多次使用选首个。
 - [NoScaleOffset] - 指示检视面板隐藏此纹理属性的平铺和偏移字段。
 - [Normal] - 指示该纹理属性需要法线贴图。
-- [PerRendererData] - 指示纹理属性将来自每渲染器数据，形式为 MaterialPropertyBlock。
+- [PerRendererData] - 指示纹理属性将来自每个渲染器数据，形式为 MaterialPropertyBlock。
+
+#### 自定义 attribute
+
+https://docs.unity.cn/cn/2022.3/ScriptReference/MaterialPropertyDrawer.html
+
+允许通过 MaterialPropertyDrawer 创建自定义 attribute，可实现修改属性的显示效果或其他特殊功能。
+
+内置的 MaterialPropertyDrawer 实现有以下几种：
+
+- [Toggle]：将浮点数属性显示为开关，打开时会自动启用材质中对应的着色器关键字，需配合 shader_feature 使用。默认关键字为“{propertieName}\_ON”，也可用括号参数自定义关键字。
+- [ToggleOff]：类似 Toggle 的取反版本，默认关键字为“{propertieName}\_OFF”。
+- [KeywordEnum(enum1,enum2...)]：类似 Toggle 的多选项版本，将浮点属性显示为弹出菜单，浮点的值将决定启动的关键字，关键字为“{propertieName}\_{enumName}”，最多 9 个。
+- [Enum(enum1,number1,enum2,number2...)]：将浮点属性显示为弹出菜单，按枚举值给浮点设置数值。
+- [PowerSlider(number)]：将 Range 属性的滑动条改为非线性滑动条。
+- [IntRange]：将 Range 属性的滑动条改为整数滑动条。
 
 ## Tags
 
@@ -172,7 +216,8 @@ Tags
 
 ## Commands
 
-在 SubShader 中填写 Commands 会自动应用到所有 Pass。
+- 在 SubShader 中填写 Commands 会自动应用到所有 Pass。
+- 命令的参数实际是数字，故也可用 Propertie 表示值，如 `ZTest [<propertieName>]`，从而实现程序化控制。
 
 ### 颜色输出相关
 
@@ -287,14 +332,18 @@ Tags
 
   - **comparisonFunction**
 
-    - Never：比较永远失败，即从不渲染像素。
-    - Less：参考值小于缓冲区值时通过。
-    - Equal
-    - LEqual
-    - Greater
-    - NotEqual
-    - GEqual
-    - Always：默认值，比较始终成功。
+    可用 C#中的 Rendering.CompareFunction 表示。
+
+    | 值       | 对应数值 | 描述                           |
+    | -------- | -------- | ------------------------------ |
+    | Never    | 1        | 比较永远失败，即从不渲染像素。 |
+    | Less     | 2        | 参考值小于缓冲区值时通过。     |
+    | Equal    | 3        |                                |
+    | LEqual   | 4        |                                |
+    | Greater  | 5        |                                |
+    | NotEqual | 6        |                                |
+    | GEqual   | 7        |                                |
+    | Always   | 8        | 默认值，比较始终成功。         |
 
   - **event**
 
@@ -306,14 +355,18 @@ Tags
 
   - **operation**
 
-    - Keep：默认值，保持模板缓冲区中的内容。
-    - Zero：将 0 写入模板缓冲区。
-    - Replace：将参考值写入模板缓冲区。
-    - Invert：将缓冲区中的值的所有位取反。
-    - IncrSat：递增缓冲区中的值，上限 255。
-    - DecrSat：递减缓冲区中的值，下限 0。
-    - IncrWrap：递增缓冲区中的值，如果当前值为 255 则变为 0。
-    - IncrWrap：递减缓冲区中的值，如果当前值为 0 则变为 255。
+    可用 C#中的 Rendering.Rendering.StencilOp 表示。
+
+    | 值       | 对应数值 | 描述                                          |
+    | -------- | -------- | --------------------------------------------- |
+    | Keep     | 0        | 默认值，保持模板缓冲区中的内容。              |
+    | Zero     | 1        | 将 0 写入模板缓冲区。                         |
+    | Replace  | 2        | 将参考值写入模板缓冲区。                      |
+    | Invert   | 3        | 将缓冲区中的值的所有位取反。                  |
+    | IncrSat  | 4        | 递增缓冲区中的值，上限 255。                  |
+    | DecrSat  | 5        | 递减缓冲区中的值，下限 0。                    |
+    | IncrWrap | 6        | 递增缓冲区中的值，如果当前值为 255 则变为 0。 |
+    | IncrWrap | 7        | 递减缓冲区中的值，如果当前值为 0 则变为 255。 |
 
 - **ZClip**
 
@@ -391,10 +444,11 @@ Tags
   Cull <state>
   ```
 
-  - Back：默认值，剔除背面。
-  - Front：剔除前面。
-  - Off：不剔除。
+  - **state**
+    - Back：默认值，剔除背面。
+    - Front：剔除前面。
+    - Off：不剔除。
 
-## ShaderCode
+## PassCode
 
-见 ShaderCode 语法笔记。
+见 PassCode 语法笔记。
