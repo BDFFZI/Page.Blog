@@ -44,6 +44,8 @@ Shader "<shaderName>"
 }
 ```
 
+- 如果 shaderName 以`Hidden/`为前缀则将在 Shader 菜单中隐藏。
+
 ## LOD
 
 指明当前 SubShader 对计算方面的需求，可配合 Shader.maximumLOD 排除高于指定 LOD 的 SubShader，从而实现根据不同硬件性能使用不同的显示效果。
@@ -206,7 +208,9 @@ Tags
 
 - **LightMode**
 
-  不同的灯光渲染模式一般使用不同的 Pass，该标签用于指定对应模式，这样 Unity 就知道要调用的 Pass。具体内容要根据渲染管线填写。
+  不同的渲染任务（如渲染深度图，向前或延迟渲染）一般使用不同的 Pass，所以要用该标签指定当前 Pass 对应的模式，这样 Unity 渲染时就知道此时要调用 Shader 中的哪些 Pass。
+
+  具体标签值要根据渲染管线填写。
 
   [渲染管线 (URP) 中的 LightMode 通道标签](https://docs.unity.cn/Packages/com.unity.render-pipelines.universal@11.0/manual/urp-shaders/urp-shaderlab-pass-tags.html#urp-pass-tags-lightmode)
 
@@ -281,7 +285,7 @@ Tags
 
     可写入的通道，其中 RGBA 4 项可任意组合使用，如默认值为 RGBA。
 
-    - 0：可写入全部通道
+    - 0：全通道不可写入
     - R：仅 R 通道
     - G
     - B
