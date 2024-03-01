@@ -81,13 +81,13 @@ Unity 支持两种版本的 HLSL 语法，DirectX 9 样式和 DirectX 10+ 样式
 
 - `#include "<file>"`
 
-引入其他文件（如 `.hlsl` 文件）代码。
+插入其他文件（如 `.hlsl` 文件）内容。注意其不会插入内容中的`#pragma`指令。
 
 ### include_with_pragmas
 
 - `#include_with_pragmas "<file>"`
 
-引入其他文件代码，并且包含其中的`#pragma`指令。
+插入其他文件内容，并且包含其中的`#pragma`指令。
 
 使用该指令必须确保启用了编辑器中的缓存预处理器功能（2020.2.0a13 版开始默认启用）
 
