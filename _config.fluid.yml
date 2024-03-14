@@ -38,7 +38,7 @@ waline:
 about:
   avatar: "/assets/img/avatar.jpg"
   name: "BDFFZI"
-  intro: "一名野生的技术宅，想到啥就做啥，喜欢围绕计算机的一切。"
+  intro: "一切随缘"
   icons:
     - { class: "iconfont icon-github-fill", link: "https://github.com/BDFFZI", tip: "GitHub" }
     - { class: "iconfont icon-bilibili-fill", link: "https://space.bilibili.com/35949109", tip: "Bilibili" }

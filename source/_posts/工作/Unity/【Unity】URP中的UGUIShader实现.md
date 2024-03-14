@@ -1,10 +1,9 @@
 ---
 abbrlink: 1602965714
-date: "2024-2-28 20:00"
+date: 2024-2-28 20:00
 categories:
   - 工作
   - Unity
-  - Shader
 ---
 
 # 【Unity】URP 中的 UGUIShader 实现

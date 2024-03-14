@@ -4,7 +4,7 @@ date: 2024-2-26 16:45
 categories:
   - 工作
   - Unity
-  - Shader
+  - 学习笔记
 ---
 
 # 【Unity】ShaderLab 语法笔记
@@ -40,7 +40,7 @@ Shader "<shaderName>"
 
     [Fallback] {"<shaderName>" | Off} // 所有SubShader无效时的回调。
 
-    [CustomEditor] "<className>" // 自定义面板界面
+    [CustomEditor] "<className>" // 自定义面板界面，需继承ShaderGUI的类。
 }
 ```
 
@@ -122,9 +122,9 @@ https://docs.unity.cn/cn/2022.3/ScriptReference/MaterialPropertyDrawer.html
 
 内置的 MaterialPropertyDrawer 实现有以下几种：
 
-- [Toggle]：将浮点数属性显示为开关，打开时会自动启用材质中对应的着色器关键字，需配合 shader_feature 使用。默认关键字为“{propertieName}\_ON”，也可用括号参数自定义关键字。
-- [ToggleOff]：类似 Toggle 的取反版本，默认关键字为“{propertieName}\_OFF”。
-- [KeywordEnum(enum1,enum2...)]：类似 Toggle 的多选项版本，将浮点属性显示为弹出菜单，浮点的值将决定启动的关键字，关键字为“{propertieName}\_{enumName}”，最多 9 个。
+- [Toggle]：将浮点数属性显示为开关，打开时会自动启用材质中对应的着色器关键字，需配合 shader_feature 使用。默认关键字为“{propertieName}\_ON”全大写，也可用括号参数自定义关键字。
+- [ToggleOff]：类似 Toggle 的取反版本，默认关键字为“{propertieName}\_OFF”全大写。
+- [KeywordEnum(enum1,enum2...)]：类似 Toggle 的多选项版本，将浮点属性显示为弹出菜单，浮点的值将决定启动的关键字，关键字为“{propertieName}\_{enumName}”全大写，最多 9 个。
 - [Enum(enum1,number1,enum2,number2...)]：将浮点属性显示为弹出菜单，按枚举值给浮点设置数值。
 - [PowerSlider(number)]：将 Range 属性的滑动条改为非线性滑动条。
 - [IntRange]：将 Range 属性的滑动条改为整数滑动条。
