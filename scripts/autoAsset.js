@@ -1,8 +1,6 @@
 const imageRoot = "/assets/images";
 
 module.exports = function (data) {
-  if (data.source.startsWith("_posts/") === false && data.source.startsWith("_drafts/") === false) return;
-
   data.content = data.content.replace(/\!\[(.*)\]\(<?(.*)>?\)/g, (match, imageName, imageUrl, offset, string) => {
     //未使用相对路径，直接返回
     if (imageUrl[0] !== ".") return match;

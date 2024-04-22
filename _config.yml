@@ -21,6 +21,7 @@ index_generator:
 abbrlink:
   alg: crc32
   rep: dec
+  drafts: true
 mermaid:
   enable: true
 
