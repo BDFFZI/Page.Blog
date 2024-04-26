@@ -20,11 +20,13 @@ Shader "<shaderName>"
     {
         SubShader
         {
+            [PackageRequirements]
             [LOD]
             [Tags]
             [Commands]
 
             Pass{
+                [PackageRequirements]
                 [Name] "<passName>" // 配合UsePass等功能使用
                 [Tags]
                 [Commands]
@@ -45,6 +47,12 @@ Shader "<shaderName>"
 ```
 
 - 如果 shaderName 以`Hidden/`为前缀则将在 Shader 菜单中隐藏。
+
+## PackageRequirements
+
+https://docs.unity.cn/cn/2022.3/Manual/SL-PackageRequirements.html
+
+描述该着色器依赖的 Unity 包环境，这对那些需要做多管线支持的着色器非常有用，可以避免因管线兼容性导致的编译错误。
 
 ## LOD
 
@@ -227,233 +235,234 @@ Tags
 
 ### 颜色输出相关
 
-- **Blend**
+#### Blend
 
-  确定 GPU 如何将片元着色器的输出与渲染目标进行合并。
+确定 GPU 如何将片元着色器的输出与渲染目标进行合并。
 
-  默认混合公式：$finalValue = sourceFactor * sourceValue + destinationFactor * destinationValue$
+默认混合公式：$finalValue = sourceFactor * sourceValue + destinationFactor * destinationValue$
 
-  ```shaderlab
-  //默认值，禁用混合。
-  Blend [<renderTarget>] Off
-  // 设置当前输出值和缓冲区值的各自系数
-  Blend [<renderTarget>] <sourceFactor> <destinationFactor>
-  //将RGB与Alpha的系数分开设置
-  Blend [<renderTarget>] <sourceRGBFactor> <destinationRGBFactor>, <sourceAlphaFactor> <destinationAlphaFactor>
-  ```
+```shaderlab
+//默认值，禁用混合。
+Blend [<renderTarget>] Off
+// 设置当前输出值和缓冲区值的各自系数
+Blend [<renderTarget>] <sourceFactor> <destinationFactor>
+//将RGB与Alpha的系数分开设置
+Blend [<renderTarget>] <sourceRGBFactor> <destinationRGBFactor>, <sourceAlphaFactor> <destinationAlphaFactor>
+```
 
-  - **factor**
+- **factor**（`UnityEngine.Rendering.BlendMode`）
 
-    混合系数。
+  混合系数。
 
-    - One
-    - Zero
-    - SrcColor
-    - SrcAlpha
-    - DstColor
-    - DstAlpha
-    - OneMinusSrcColor
-    - OneMinusSrcAlpha
-    - OneMinusDstColor
-    - OneMinusDstAlpha
+  - One（1）
+  - Zero（0）
+  - SrcColor（3）
+  - SrcAlpha（5）
+  - DstColor（2）
+  - DstAlpha（7）
+  - OneMinusSrcColor（6）
+  - OneMinusSrcAlpha（10）
+  - OneMinusDstColor（4）
+  - OneMinusDstAlpha（8）
 
-  - **renderTarget**
+- **renderTarget**
 
-    渲染目标索引，0-7 的整数。
+  渲染目标索引，0-7 的整数。
 
-- **BlendOp**
+#### BlendOp
 
-  https://docs.unity.cn/cn/current/Manual/SL-BlendOp.html
+https://docs.unity.cn/cn/current/Manual/SL-BlendOp.html
 
-  指定 Blend 命令使用的混合操作。使用该命令时必须同时使用 Blend 命令。并非所有设备都支持所有混合操作。
+指定 Blend 命令使用的混合操作。使用该命令时必须同时使用 Blend 命令。并非所有设备都支持所有混合操作。
 
-  ```shaderlab
-  BlendOp <operation>
-  ```
+```shaderlab
+BlendOp <operation>
+```
 
-  - **operation**
-    - Add：默认值，将源和目标相加。
-    - ...
+- **operation**（`UnityEngine.Rendering.BlendOp`）
 
-- **ColorMask**
+  - Add（0）：默认值，将源和目标相加。
+  - ...
 
-  颜色通道写入遮罩，可用于禁用部分通道的写入。
+#### ColorMask
 
-  ```shaderlab
-  ColorMask <channels> [<renderTarget>]
-  ```
+颜色通道写入遮罩，可用于禁用部分通道的写入。
 
-  - **channels**
+```shaderlab
+ColorMask <channels> [<renderTarget>]
+```
 
-    可写入的通道，其中 RGBA 4 项可任意组合使用，如默认值为 RGBA。
+- **channels**（`UnityEngine.Rendering.ColorWriteMask`）
 
-    - 0：全通道不可写入
-    - R：仅 R 通道
-    - G
-    - B
-    - A
+  可写入的通道，其中 RGBA 4 项可任意组合使用，如默认值为 RGBA。
 
-  - **renderTarget**
+  - 0（0）：全通道不可写入
+  - R（8）：仅 R 通道
+  - G（4）
+  - B（2）
+  - A（1）
 
-    渲染目标索引，0-7 的整数。
+- **renderTarget**
+
+  渲染目标索引，0-7 的整数。
 
 ### 模板深度相关
 
-- **Offset**
+#### Offset
 
-  设置深度偏移，负数将减小深度，使离摄像机更近。
+设置深度偏移，负数将减小深度，使离摄像机更近。
 
-  偏移公式：$offset = (m * factor) + (r * units)$
+偏移公式：$offset = (m * factor) + (r * units)$
 
-  - m：多边形相对摄像机 z 轴的斜率，如果正视摄像机即与近平面平行则为 0。
-  - r：其是使深度差异可分辩的最小值，这是由渲染设备定义的一个常量。
+- m：多边形相对摄像机 z 轴的斜率，如果正视摄像机即与近平面平行则为 0。
+- r：其是使深度差异可分辩的最小值，这是由渲染设备定义的一个常量。
 
-  ```shaderlab
-  Offset <factor>, <units>
-  ```
+```shaderlab
+Offset <factor>, <units>
+```
 
-  - factor：-1 到 1 的小数。
-  - units：-1 到 1 的小数。
+- factor：-1 到 1 的小数。
+- units：-1 到 1 的小数。
 
-- **Stencil**
+#### Stencil
 
-  如何进行模板测试，测试通过后将进入深度测试，否则丢弃片元。
+如何进行模板测试，测试通过后将进入深度测试，否则丢弃片元。
 
-  - 所有遮罩均是指哪些位可操作，并不是直接与值并运算，所以如写入遮罩为 0，表示所有位都无法写入，而不是写入 0。
-  - 部分参数支持 Back 和 Front 的后缀，从而实现对正反片元单独处理，但如果提供了无后缀版本，则后缀版本被覆盖。
+- 所有遮罩均是指哪些位可操作，并不是直接与值并运算，所以如写入遮罩为 0，表示所有位都无法写入，而不是写入 0。
+- 部分参数支持 Back 和 Front 的后缀，从而实现对正反片元单独处理，但如果提供了无后缀版本，则后缀版本被覆盖。
 
-  测试公式：$\text{(ref \& readMask) comparisonFunction (stencilBufferValue \& readMask)}$
+测试公式：$\text{(ref \& readMask) comparisonFunction (stencilBufferValue \& readMask)}$
 
-  ```shaderlab
-  Stencil
-  {
-      [Ref <ref>] //表明引用值，0-255的整数，默认为0
-      [ReadMask <readMask>] //缓冲区读取遮罩，0-255的整数，默认为255
-      [WriteMask <writeMask>] //缓冲区写入遮罩，0-255的整数，默认为255
-      [Comp[{Back | Fornt}] <comparisonOperationFront>] // 定义如何测试
-      [<event> <operation>] // 定义测试结束后的处理事件
-      ...
-  }
-  ```
+```shaderlab
+Stencil
+{
+    [Ref <ref>] //表明引用值，0-255的整数，默认为0
+    [ReadMask <readMask>] //缓冲区读取遮罩，0-255的整数，默认为255
+    [WriteMask <writeMask>] //缓冲区写入遮罩，0-255的整数，默认为255
+    [Comp[{Back | Fornt}] <comparisonOperationFront>] // 定义如何测试
+    [<event> <operation>] // 定义测试结束后的处理事件
+    ...
+}
+```
 
-  - **comparisonFunction**
+- **comparisonFunction**
 
-    可用 C#中的 Rendering.CompareFunction 表示。
+  可用 C#中的 Rendering.CompareFunction 表示。
 
-    | 值       | 对应数值 | 描述                           |
-    | -------- | -------- | ------------------------------ |
-    | Never    | 1        | 比较永远失败，即从不渲染像素。 |
-    | Less     | 2        | 参考值小于缓冲区值时通过。     |
-    | Equal    | 3        |                                |
-    | LEqual   | 4        |                                |
-    | Greater  | 5        |                                |
-    | NotEqual | 6        |                                |
-    | GEqual   | 7        |                                |
-    | Always   | 8        | 默认值，比较始终成功。         |
+  | 值       | 对应数值 | 描述                           |
+  | -------- | -------- | ------------------------------ |
+  | Never    | 1        | 比较永远失败，即从不渲染像素。 |
+  | Less     | 2        | 参考值小于缓冲区值时通过。     |
+  | Equal    | 3        |                                |
+  | LEqual   | 4        |                                |
+  | Greater  | 5        |                                |
+  | NotEqual | 6        |                                |
+  | GEqual   | 7        |                                |
+  | Always   | 8        | 默认值，比较始终成功。         |
 
-  - **event**
+- **event**
 
-    可添加 Back 或 Front 后缀。
+  可添加 Back 或 Front 后缀。
 
-    - Pass：当通过模板测试和深度测试时
-    - Fail：当未通过模板测试时
-    - ZFail：当通过模板测试，但未通过深度测试时
+  - Pass：当通过模板测试和深度测试时
+  - Fail：当未通过模板测试时
+  - ZFail：当通过模板测试，但未通过深度测试时
 
-  - **operation**
+- **operation**
 
-    可用 C#中的 Rendering.Rendering.StencilOp 表示。
+  可用 C#中的 Rendering.Rendering.StencilOp 表示。
 
-    | 值       | 对应数值 | 描述                                          |
-    | -------- | -------- | --------------------------------------------- |
-    | Keep     | 0        | 默认值，保持模板缓冲区中的内容。              |
-    | Zero     | 1        | 将 0 写入模板缓冲区。                         |
-    | Replace  | 2        | 将参考值写入模板缓冲区。                      |
-    | Invert   | 3        | 将缓冲区中的值的所有位取反。                  |
-    | IncrSat  | 4        | 递增缓冲区中的值，上限 255。                  |
-    | DecrSat  | 5        | 递减缓冲区中的值，下限 0。                    |
-    | IncrWrap | 6        | 递增缓冲区中的值，如果当前值为 255 则变为 0。 |
-    | IncrWrap | 7        | 递减缓冲区中的值，如果当前值为 0 则变为 255。 |
+  | 值       | 对应数值 | 描述                                          |
+  | -------- | -------- | --------------------------------------------- |
+  | Keep     | 0        | 默认值，保持模板缓冲区中的内容。              |
+  | Zero     | 1        | 将 0 写入模板缓冲区。                         |
+  | Replace  | 2        | 将参考值写入模板缓冲区。                      |
+  | Invert   | 3        | 将缓冲区中的值的所有位取反。                  |
+  | IncrSat  | 4        | 递增缓冲区中的值，上限 255。                  |
+  | DecrSat  | 5        | 递减缓冲区中的值，下限 0。                    |
+  | IncrWrap | 6        | 递增缓冲区中的值，如果当前值为 255 则变为 0。 |
+  | IncrWrap | 7        | 递减缓冲区中的值，如果当前值为 0 则变为 255。 |
 
-- **ZClip**
+#### ZClip
 
-  如何处理近平面和远平面的片元。
+如何处理近平面和远平面的片元。
 
-  ```shaderlab
-  ZClip <state>
-  ```
+```shaderlab
+ZClip <state>
+```
 
-  - **state**
-    - True：默认值，超出近平面或远平面的片元直接丢弃。
-    - False：夹紧超出近平面或远平面的片元。
+- **state**
+  - True：默认值，超出近平面或远平面的片元直接丢弃。
+  - False：夹紧超出近平面或远平面的片元。
 
-- **ZTest**
+#### ZTest
 
-  如何进行深度测试，片元越近深度值越小，越远深度值越大。
+如何进行深度测试，片元越近深度值越小，越远深度值越大。
 
-  ```shaderlab
-  ZTest <operation>
-  ```
+```shaderlab
+ZTest <operation>
+```
 
-  - **operation**
-    - Less
-    - LEqual：默认值，当前深度值小于等于缓冲区的值时渲染，当前几何体位于现有几何体的前面或等距。
-    - Equal
-    - GEqual
-    - NotEqual
-    - Always：不进行深度测试，永远绘制。
+- **operation**
+  - Less
+  - LEqual：默认值，当前深度值小于等于缓冲区的值时渲染，当前几何体位于现有几何体的前面或等距。
+  - Equal
+  - GEqual
+  - NotEqual
+  - Always：不进行深度测试，永远绘制。
 
-- **ZWrite**
+#### ZWrite
 
-  是否写入深度值。
+是否写入深度值。
 
-  ```shaderlab
-  ZTest <state>
-  ```
+```shaderlab
+ZTest <state>
+```
 
-  - **state**
-    - On：默认值，写入深度值。
-    - Off
+- **state**
+  - On：默认值，写入深度值。
+  - Off
 
 ### 其他
 
-- **AlphaToMask**
+#### AlphaToMask
 
-  https://docs.unity.cn/cn/current/Manual/SL-AlphaToMask.html
+https://docs.unity.cn/cn/current/Manual/SL-AlphaToMask.html
 
-  启用或禁用 GPU 上的 alpha-to-coverage 模式，可以减少将多样本抗锯齿 (MSAA) 与使用 Alpha 测试的着色器（如植被着色器）一起使用时出现的过度锯齿。
+启用或禁用 GPU 上的 alpha-to-coverage 模式，可以减少将多样本抗锯齿 (MSAA) 与使用 Alpha 测试的着色器（如植被着色器）一起使用时出现的过度锯齿。
 
-  ```shaderlab
-  AlphaToMask <state>
-  ```
+```shaderlab
+AlphaToMask <state>
+```
 
-  - **state**
-    - On：启用 alpha-to-coverage 模式。
-    - Off：禁用 alpha-to-coverage 模式。
+- **state**
+  - On：启用 alpha-to-coverage 模式。
+  - Off：禁用 alpha-to-coverage 模式。
 
-- **Conservative**
+#### Conservative
 
-  是否启用保守光栅化。正常光栅化在确定像素被三角面覆盖的同时还会判断覆盖范围是否足够，保守光栅化则只要被覆盖就光栅化。
+是否启用保守光栅化。正常光栅化在确定像素被三角面覆盖的同时还会判断覆盖范围是否足够，保守光栅化则只要被覆盖就光栅化。
 
-  ```shaderlab
-  Conservative <state>
-  ```
+```shaderlab
+Conservative <state>
+```
 
-  - **state**
-    - True：启用保守光栅化。
-    - False：默认值，禁用保守光栅化。
+- **state**
+  - True：启用保守光栅化。
+  - False：默认值，禁用保守光栅化。
 
-- **Cull**
+#### Cull
 
-  设置多边形的正反面剔除。
+设置多边形的正反面剔除。
 
-  ```shaderlab
-  Cull <state>
-  ```
+```shaderlab
+Cull <state>
+```
 
-  - **state**
-    - Back：默认值，剔除背面。
-    - Front：剔除前面。
-    - Off：不剔除。
+- **state**
+  - Back：默认值，剔除背面。
+  - Front：剔除前面。
+  - Off：不剔除。
 
 ## PassCode
 

@@ -1,7 +1,8 @@
 ---
+abbrlink: 2077063050
+date: "2024-4-26 11:25"
 categories:
   - Unity
-abbrlink: 2077063050
 ---
 
 # 【Unity】着色器核心概念笔记
@@ -31,6 +32,22 @@ Unity 支持三种着色器。
     - 渲染状态说明：指明执行该通道依赖的渲染状态设置。
     - 着色器程序：实际的着色器代码，每一个着色器阶段代表一个着色器程序。
       - 着色器变体：一个着色器程序可能有一个或多个变体版本。
+
+### 着色器模型
+
+因为着色器也是慢慢发展过来的，所以也有新旧版本之分，而着色器模型其实就是着色器版本的花俏说法。
+
+一些新模型支持的功能在旧模型中可能不支持，所以开发时要考虑好着色器模型的兼容性，默认情况下 Unity 使用着色器模型 2.5。
+
+https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderCompileTargets.html
+
+### 着色器平台
+
+着色器平台一般指的就是 GPU 驱动。不同操作系统平台通常采用不同的 GPU 驱动，而不同 GPU 驱动间所需的着色器字节码是不一样的，所以每个平台都要单独编译着色器。
+
+此外不同平台支持的功能、功能实现细节都可能有所区别，因此开发时必须要考虑好平台兼容性。
+
+https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderCompilationAPIs.html
 
 ## 着色器编译
 
@@ -198,7 +215,7 @@ GPU 在运行时评估条件代码。
 
 反之，如果对 GPU 性能要求非常高且考虑了使用变体的成本，那可以选择使用变体功能。
 
-## 着色器功能
+## 其他着色器功能
 
 ### 替换着色器
 
@@ -209,6 +226,25 @@ https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderReplacement.html
 
 借助这一特殊的着色器可以使 GPU 不仅用于渲染，还能将其卓越的运算性能发挥在其他地方。  
 https://docs.unity.cn/2022.3/Documentation/Manual/class-ComputeShader.html
+
+### 退守着色器
+
+Unity 的着色器采用退守机制（fallback），即确保永远都是可渲染的，而不是引起程序异常。为此内置了一些着色器用于实现该机制。
+
+#### 错误着色器
+
+当用户提供的着色器无法使用时，改为显示错误着色器。表现效果为洋红色。
+
+注意当使用`BatchRendererGroup`API 时默认不会显示错误着色器，需要调用`BatchRendererGroup.SetErrorMaterial`手动设置。
+
+#### 加载着色器
+
+若启用了异步编译，当对象需要渲染但着色器尚未编译完成时，将使用加载着色器代替渲染。表现效果为青色。
+
+#### 虚拟纹理错误材料
+
+当项目使用流式虚拟纹理（SVT），则 Unity 会使用特殊材质来指示 SVT 设置中的问题。  
+https://docs.unity.cn/2022.3/Documentation/Manual/svt-error-material.html
 
 ## 故障排除
 
@@ -238,3 +274,4 @@ https://docs.unity.cn/2022.3/Documentation/Manual/class-ComputeShader.html
 
 1. 改用物体引用的方式获取，让 Unity 能自动识别到该着色器。
 2. 将该着色器放入到“Always Included Shaders”中，显式永远打包。
+3. 将该着色器放入到 Resources 文件夹，改用 Resources.Load 加载着色器。
