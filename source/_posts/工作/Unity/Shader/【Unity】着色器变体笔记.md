@@ -1,8 +1,10 @@
 ---
 abbrlink: 3863423297
-date: "2024-4-26 11:25"
+date: 2024-4-26 11:25
 categories:
+  - 工作
   - Unity
+  - Shader
 ---
 
 # 【Unity】着色器变体笔记

@@ -1,8 +1,18 @@
+---
+abbrlink: 3262553639
+date: "2024-4-28 16:58"
+categories:
+  - 工作
+  - Unity
+  - Shader
+---
 # 【Unity】着色器平台差异
 
 https://docs.unity.cn/cn/2022.3/Manual/SL-PlatformDifferences.html
 
 部分情况下，不同的图形 API 之间的渲染行为存在差异。通常 Unity 会隐藏这些差异，但有时候仍需要手动处理。
+
+Unity 以 OpenGL 类平台约定作为标准，默认情况下会自动进行转换。
 
 ## 渲染纹理坐标
 

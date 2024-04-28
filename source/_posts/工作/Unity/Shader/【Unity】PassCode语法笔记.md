@@ -1,8 +1,10 @@
 ---
 abbrlink: 3793607597
-date: "2024-4-26 11:25"
+date: 2024-4-26 11:25
 categories:
+  - 工作
   - Unity
+  - Shader
 ---
 
 # 【Unity】PassCode 语法笔记

@@ -1,10 +1,9 @@
 ---
 abbrlink: 330516235
-date: "2024-3-14 17:09"
+date: 2024-3-14 17:09
 categories:
   - 工作
   - Unity
-  - 学习笔记
 ---
 
 # 【Unity】图形管道笔记
@@ -157,8 +156,13 @@ https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/d3d10-graphics-progra
 
 2. alpha 测试：
 
-   剔除透明度低于指定值的像素。（Direct3D 10 及以上版本不实现，但可通过`clip()`在像素着色器阶段控制）
+   剔除透明度低于指定值的像素。（Direct3D 10 及以上版本不支持，但可通过`clip()`实现等效操作）
 
 3. 模板测试
 4. 深度测试
 5. 混合
+
+## 参考资料
+
+- [图形管道](https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/overviews-direct3d-11-graphics-pipeline)
+- [深度测试/模版测试/透明度测试先后顺序是什么样的？](https://www.zhihu.com/question/384124671)
