@@ -6,7 +6,7 @@ categories:
   - Unity
   - Shader
 ---
-# 【Unity】着色器平台差异
+# 【Unity】着色器平台差异笔记
 
 https://docs.unity.cn/cn/2022.3/Manual/SL-PlatformDifferences.html
 

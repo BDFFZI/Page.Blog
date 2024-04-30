@@ -6,7 +6,8 @@ categories:
   - Unity
   - Shader
 ---
-# 【Unity】优化着色器性能
+
+# 【Unity】优化着色器性能笔记
 
 https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderPerformance.html
 
@@ -42,14 +43,14 @@ https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderPerformance.html
 
 如果所需操作可用内置函数实现，就不要自行实现，内置函数有特别的编译优化，会比自己写的好得多。
 
-## Alpha 测试
+## 选择性执行 Alpha 测试
 
 Alpha 测试或等效函数`clip()`在不同平台有不同的性能特征。
 
 - 一般情况下使用该功能移除大部分平台上的透明像素时都可获得少量性能优势。
 - 但在 ios 或某些 Android 设备的 PowerVR GPU 上，该功能是资源密集型任务，反而会对性能产生负面影响。
 
-## 颜色遮罩
+## 避免使用颜色遮罩
 
 在某些平台（主要是 iOS 和 Android 设备的移动端 GPU）上，`Color Mask`是资源密集型的操作，除非绝对需要，否则不要使用。
 
