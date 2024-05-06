@@ -1,0 +1,1010 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【COM3D2Mod 制作教程（4）】实战！制作身体部分（上）教程介绍现在正式进入实战教程环节，我会以我的实际制作过程详尽的教授每个细节，也因此受限于篇幅大小，“实战！制作身体部分”被分为了上中下三个过程。  上： 我们将首先确定我们的制作目标，并以此进行环境搭建和资源准备工作，目标是将正式制作 Mod 的前置需求全部完成。  中： 现在正式开始制作 Mod，以典型的帽子 Mod 为例，我们会一步">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【COM3D2Mod 制作教程（4）】实战！制作身体部分（上）">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/2178139815.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="【COM3D2Mod 制作教程（4）】实战！制作身体部分（上）教程介绍现在正式进入实战教程环节，我会以我的实际制作过程详尽的教授每个细节，也因此受限于篇幅大小，“实战！制作身体部分”被分为了上中下三个过程。  上： 我们将首先确定我们的制作目标，并以此进行环境搭建和资源准备工作，目标是将正式制作 Mod 的前置需求全部完成。  中： 现在正式开始制作 Mod，以典型的帽子 Mod 为例，我们会一步">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906222649162-2104290613.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906222433577-1459596474.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906223103346-514500570.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906223212283-1290250791.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906174403829-1045284516.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906233737603-2140221409.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906232009064-791421149.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230909155338505-800571183.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230907204717866-1199253546.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230907214302579-1055089432.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230909132149112-1518513392.jpg">
+<meta property="article:published_time" content="2023-09-09T05:28:00.000Z">
+<meta property="article:modified_time" content="2024-02-07T04:39:04.799Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906222649162-2104290613.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>【COM3D2Mod 制作教程（4）】实战！制作身体部分（上） - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【COM3D2Mod 制作教程（4）】实战！制作身体部分（上）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-09 13:28" pubdate>
+          2023年9月9日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="分享"
+        id="heading-c31f48f84ef207e66a03c015a7243b43" role="tab" data-toggle="collapse" href="#collapse-c31f48f84ef207e66a03c015a7243b43"
+        aria-expanded="true"
+      >
+        分享
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-c31f48f84ef207e66a03c015a7243b43"
+           role="tabpanel" aria-labelledby="heading-c31f48f84ef207e66a03c015a7243b43">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="COM3D2Mod制作教程"
+        id="heading-e2a8b6c39256f87875b00ff130188d97" role="tab" data-toggle="collapse" href="#collapse-e2a8b6c39256f87875b00ff130188d97"
+        aria-expanded="true"
+      >
+        COM3D2Mod制作教程
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-e2a8b6c39256f87875b00ff130188d97"
+           role="tabpanel" aria-labelledby="heading-e2a8b6c39256f87875b00ff130188d97">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2633666094.html" title="【COM3D2Mod 制作教程（1）】教程简介"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【COM3D2Mod 制作教程（1）】教程简介</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4079335571.html" title="【COM3D2Mod 制作教程（2）】Mod 底层原理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【COM3D2Mod 制作教程（2）】Mod 底层原理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/41755669.html" title="【COM3D2Mod 制作教程（3）】Mod 制作概要"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【COM3D2Mod 制作教程（3）】Mod 制作概要</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2178139815.html" title="【COM3D2Mod 制作教程（4）】实战！制作身体部分（上）"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">【COM3D2Mod 制作教程（4）】实战！制作身体部分（上）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4213549019.html" title="【COM3D2Mod 制作教程（5）】实战！制作身体部分（中）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【COM3D2Mod 制作教程（5）】实战！制作身体部分（中）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3074968628.html" title="【COM3D2Mod 制作教程（6）】实战！制作身体部分（下）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【COM3D2Mod 制作教程（6）】实战！制作身体部分（下）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4186352253.html" title="【COM3D2Mod 制作教程（7）】实战！制作衣服部分（上）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【COM3D2Mod 制作教程（7）】实战！制作衣服部分（上）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/440186531.html" title="【COM3D2Mod 制作教程（8）】实战！制作衣服部分（下）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【COM3D2Mod 制作教程（8）】实战！制作衣服部分（下）</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【COM3D2Mod 制作教程（4）】实战！制作身体部分（上）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="【COM3D2Mod-制作教程（4）】实战！制作身体部分（上）"><a href="#【COM3D2Mod-制作教程（4）】实战！制作身体部分（上）" class="headerlink" title="【COM3D2Mod 制作教程（4）】实战！制作身体部分（上）"></a>【COM3D2Mod 制作教程（4）】实战！制作身体部分（上）</h1><h2 id="教程介绍"><a href="#教程介绍" class="headerlink" title="教程介绍"></a>教程介绍</h2><p>现在正式进入实战教程环节，我会以我的实际制作过程详尽的教授每个细节，也因此受限于篇幅大小，“实战！制作身体部分”被分为了上中下三个过程。</p>
+<ul>
+<li><p>上：</p>
+<p>我们将首先确定我们的制作目标，并以此进行环境搭建和资源准备工作，目标是将正式制作 Mod 的前置需求全部完成。</p>
+</li>
+<li><p>中：</p>
+<p>现在正式开始制作 Mod，以典型的帽子 Mod 为例，我们会一步步将“上”中准备的资源逐渐转化为 COM3D2 中的 Mod，并在最终实际放入游戏中，完成第一个 Mod 制作。</p>
+</li>
+<li><p>下：</p>
+<p>在累计了“中”的制作经验后我们开始完成剩下的头发 Mod 部分，并简单介绍身体和脸型的制作流程，并最终将 Mod 打包发布至网络，彻底完成一套完整制作流程。</p>
+</li>
+</ul>
+<p>接下来我们正式开始教程。</p>
+<h2 id="确定目标"><a href="#确定目标" class="headerlink" title="确定目标"></a>确定目标</h2><p>我们这次只制作身体部分，身体部分是最简单最实用的部分，是人物最重要的特征点，快的话一个小时就能搞定，但足以达到让人直呼老婆的水平，毕竟衣服是可以随意换的，但身体始终不变。</p>
+<p>所谓的身体部分是实际按照游戏中右侧装备栏的身体分栏确定的，具体而言我们一般需要做以下几个部分，在这之后我们便开始根据第二章的流程概述实际做 Mod。</p>
+<h3 id="头发"><a href="#头发" class="headerlink" title="头发"></a>头发</h3><p>头发具体在游戏中有多个分类，其中必须装备的是“前发”和“后发”两种，为简化制作流程，我们也只做这两者。</p>
+<p><img src="/assets/images/2454431-20230906222649162-2104290613.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="眼睛"><a href="#眼睛" class="headerlink" title="眼睛"></a>眼睛</h3><p>眼睛并非模型而是纯贴图。我们将使用修图软件进行处理，当然作为游戏装扮的一员，它也是有一套自己的 menu 文件要填写的。</p>
+<h3 id="帽子（头饰）"><a href="#帽子（头饰）" class="headerlink" title="帽子（头饰）"></a>帽子（头饰）</h3><p>头饰按道理是服装装扮的部分，为何此处也需要制作？因为大部分游戏模型会将部分光照阴影直接绘制在贴图上，由于我们的头发是移植的，这些阴影也直接反应在了头发上，如果不带上原本的头饰遮掩，就会存在黑斑问题（如下图）。</p>
+<p><img src="/assets/images/2454431-20230906222433577-1459596474.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="脸型"><a href="#脸型" class="headerlink" title="脸型"></a>脸型</h3><p>我们将直接使用 DLC“GP-01Fb”提供的特制捏脸脸型选项制作。</p>
+<p><img src="/assets/images/2454431-20230906223103346-514500570.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="体型"><a href="#体型" class="headerlink" title="体型"></a>体型</h3><p>体型也是直接使用游戏自带的系统捏制即可。</p>
+<p><img src="/assets/images/2454431-20230906223212283-1290250791.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>这些基本是第二章已讲述的内容，你需要将其配置好，才可开始制作 Mod。</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>第二章所说的各种编辑工具，你需要将他们安装好，安装方式在第二章已有说明，此处不再重复。</p>
+<h3 id="移植模型"><a href="#移植模型" class="headerlink" title="移植模型"></a>移植模型</h3><p>这是第二章提到模之屋以及导入 pmx 文件的内容。由于是实战，所以这次我们要实际准备一个模型，因为我是原批，所以这里用原神中的角色“神里绫华”做参考。</p>
+<p><img src="/assets/images/2454431-20230906174403829-1045284516.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="参考-Mod"><a href="#参考-Mod" class="headerlink" title="参考 Mod"></a>参考 Mod</h3><p>由于脸型和体型是游戏内置功能，我们只需要考虑“头发”，“眼睛”，“帽子”的 Mod 文件制作即可。我们需要导出与之相关的官方 Mod 文件做移植参考，具体操作还要根据移植模型所拆分出的装扮类型和形状来定。</p>
+<h2 id="原模型预处理"><a href="#原模型预处理" class="headerlink" title="原模型预处理"></a>原模型预处理</h2><h3 id="装扮拆解"><a href="#装扮拆解" class="headerlink" title="装扮拆解"></a>装扮拆解</h3><p>本次我们只制作身体部分，所以移植模型的衣服部分我们可以直接排除，这样就只剩下头部，将头部模型拆解整理后，我们可以得到以下三种装扮：“前发”、“后发”、“帽子”，这和我们上述的 Mod 目标正好对应。</p>
+<p><img src="/assets/images/2454431-20230906233737603-2140221409.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>提示：导入 pmx 的那个插件支持按材质拆分模型，可以方便我们的拆解工作（见下图）</p>
+<p><img src="/assets/images/2454431-20230906232009064-791421149.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="网格优化"><a href="#网格优化" class="headerlink" title="网格优化"></a>网格优化</h3><p>为了方便后续权重绘制、顶点调整等操作我们要检查网格是否整洁规范，比如是否有断面或重叠面之类的问题，这些若不处理都会对后续操作产生不良影响。</p>
+<h4 id="合并断面"><a href="#合并断面" class="headerlink" title="合并断面"></a>合并断面</h4><p>比如我这个“神里绫华”模型就存在断面问题，解决方法很简单，利用 blender 的按距离合并顶点功能即可，使用时记得勾上锐边选项，因为断面似乎是模型有意为之，下图那些蓝色的地方就是断面处，也恰好是应该锐边的地方。</p>
+<p><img src="/assets/images/2454431-20230909155338505-800571183.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h4 id="消除重叠面"><a href="#消除重叠面" class="headerlink" title="消除重叠面"></a>消除重叠面</h4><p>我这个模型实际上也同时有着重叠面的问题，和断面问题一样也是模型有意为之，这个主要和材质有关，一个面如果有多个材质原模型就会多一层面，所以通过材质选中加删除的方式就能解决，当然因为我上一节“装扮拆解”中恰是通过材质拆解的模型，所以整理好后问题正好解决了。</p>
+<h3 id="文件命名"><a href="#文件命名" class="headerlink" title="文件命名"></a>文件命名</h3><h4 id="为什么要注意文件命名？"><a href="#为什么要注意文件命名？" class="headerlink" title="为什么要注意文件命名？"></a>为什么要注意文件命名？</h4><p>COM3D2 识别区分 Mod 的方式就是靠文件名，包括不同文件间的引用关系也是靠文件名指明的，文件名一旦设置有误就很可能导致 Mod 无法使用，有关文件名必须遵循以下几个注意点。</p>
+<ul>
+<li><p><strong>文件名无视路径。</strong></p>
+<p>如果有同名文件，但所在文件夹不同，对 COM3D2 来说依旧是同一个文件，结果就会导致覆盖或重复加载。</p>
+</li>
+<li><p><strong>文件名不能为中文。</strong></p>
+<p>因为导出插件是只考虑了英语环境做的，所以使用非英语语言，如日语，汉语等都会导致文件无法导出。</p>
+</li>
+<li><p><strong>文件名不区分大小写。</strong></p>
+<p>如果文件名除字母大小写外都相同，对 COM3D2 来说这也是同一个文件，那也会出现上述的问题。</p>
+</li>
+</ul>
+<h4 id="推荐的命名规范？"><a href="#推荐的命名规范？" class="headerlink" title="推荐的命名规范？"></a>推荐的命名规范？</h4><p>由于上述问题所以对于文件命名我们需要一定规范：</p>
+<ul>
+<li><p><strong>使用角色名做前缀。</strong></p>
+<p>因为第一点，所以我们要尽可能保证文件名不重复，所以可以选择加一些前缀，我一般会选择角色名做前缀，这够用了毕竟角色 Mod 太难找了。</p>
+</li>
+<li><p><strong>使用全小写英文，并用下划线做单词分隔符。</strong></p>
+<p>因为第二点所以我们要用英文名称，而因为第三点不区分大小写，所以我们统一全用小写，并用额外的符号分割英文单词，我一般都是用下划线“_”作为分隔符。</p>
+</li>
+<li><p><strong>使用部位名做名称主体。</strong></p>
+<p>最后为了让文件具有可读性且保证多个装扮名不重复，我们需要提供一个名称主体，我一般会使用部位名做主体，这样清晰易懂还不会重复。</p>
+</li>
+</ul>
+<h4 id="实战结果"><a href="#实战结果" class="headerlink" title="实战结果"></a>实战结果</h4><p>以此命名方式对我们的示例模型进行重命名可得如下结果，且后续的其他文件我们也将遵照上述规则。</p>
+<p><img src="/assets/images/2454431-20230907204717866-1199253546.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="导出参考-Mod"><a href="#导出参考-Mod" class="headerlink" title="导出参考 Mod"></a>导出参考 Mod</h2><p>由于制作 Mod 的源模型已经到手，根据其形状我们可以正式导出用于参考的官方 Mod 了，这是必须的一环。</p>
+<h3 id="为什么要导出官方-Mod？"><a href="#为什么要导出官方-Mod？" class="headerlink" title="为什么要导出官方 Mod？"></a>为什么要导出官方 Mod？</h3><ul>
+<li><p><strong>只有观察官方 Mod 文件构成我们才知道要准备什么。</strong></p>
+<p>不同的装扮可能有着不同的需求，有些是单纯的建模，有些是要专门的贴图，有些需要特制 menu 文件，等等，并不是所有装扮的文件需求都是一成不变的。</p>
+</li>
+<li><p><strong>只有通过官方 menu 文件我们才知道应该填写什么。</strong></p>
+<p>menu 文件相当复杂，也相当重要，没写好就会导致无法使用或事倍功半，但我们没有途径也没有精力将其完全摸透，所以只有通过观察官方 menu 文件，在其基础上修改才是上策。</p>
+</li>
+<li><p><strong>只有通过官方 model 文件我们才能进行骨架绑定。</strong></p>
+<p>人物建模最重要的就是骨架绑定，这是实现原理，也是后面最费时间的地方，只有通过官方 model 文件我们才能获得用于绑定的源骨架，以及知晓正确的权重刷取要求。</p>
+</li>
+</ul>
+<h3 id="为什么要根据源模型形状选取官方-Mod？"><a href="#为什么要根据源模型形状选取官方-Mod？" class="headerlink" title="为什么要根据源模型形状选取官方 Mod？"></a>为什么要根据源模型形状选取官方 Mod？</h3><p>因为我们需要绑定骨架，不同装扮对骨架的需求是不同的，比如：裙子就需要带裙骨的；双马尾就需要有两条骨链的。所以必须根据形状选择官方 Mod，这样得到的骨架才能匹配。</p>
+<p>比如我们源模型发型都是双耳前后有两簇头发，那我们选择的官方 Mod 也应如此，因为这几簇头发一定是需要骨骼的；而帽子我们也是尽可能选择一个形状位置最像的。</p>
+<h3 id="实战结果-1"><a href="#实战结果-1" class="headerlink" title="实战结果"></a>实战结果</h3><p>所以根据我们的示例模型特征，我选取了以下三个对应的官方装扮（此处改口叫装扮没有问题，是因为官方装扮就是官方 Mod，这是上一章描述过的）。</p>
+<p><img src="/assets/images/2454431-20230907214302579-1055089432.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>接着我们使用 SybarisArcEditor 导出这三个装扮的 Mod 文件（导出方式也已在第二章讲过）。</p>
+<p><img src="/assets/images/2454431-20230909132149112-1518513392.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本章我们获取到了用于移植的原模型，并进行了一些必要的预处理操作，接着我们借此推断并导出了用于参考的官方 Mod，所以此刻所有的前置文件都已经准备好了，接下来我们可以正式制作 Mod 了。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E4%BA%AB/" class="category-chain-item">分享</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E4%BA%AB/COM3D2Mod%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B/" class="category-chain-item">COM3D2Mod制作教程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【COM3D2Mod 制作教程（4）】实战！制作身体部分（上）</div>
+      <div>https://bdffzi-blog.pages.dev/posts/2178139815.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年9月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/4213549019.html" title="【COM3D2Mod 制作教程（5）】实战！制作身体部分（中）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【COM3D2Mod 制作教程（5）】实战！制作身体部分（中）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/41755669.html" title="【COM3D2Mod 制作教程（3）】Mod 制作概要">
+                        <span class="hidden-mobile">【COM3D2Mod 制作教程（3）】Mod 制作概要</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
+  </br>
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
+      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            pageview: window.origin.includes("localhost")?false:true,
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+<script src="/assets/js/mermaid.min.js"></script>
+<script src="/assets/js/enableMermaid.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

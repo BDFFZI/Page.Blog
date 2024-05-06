@@ -4,6 +4,7 @@ date: 2024-3-4 17:09
 categories:
   - 工作
   - Unity
+  - 渲染管线
 ---
 # 【Unity】光照解决方案笔记
 

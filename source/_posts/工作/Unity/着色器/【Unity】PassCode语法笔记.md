@@ -4,7 +4,7 @@ date: 2024-4-26 11:25
 categories:
   - 工作
   - Unity
-  - Shader
+  - 着色器
 ---
 
 # 【Unity】PassCode 语法笔记

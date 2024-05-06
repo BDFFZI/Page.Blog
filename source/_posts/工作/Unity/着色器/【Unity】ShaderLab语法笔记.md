@@ -4,7 +4,7 @@ date: 2024-2-26 16:45
 categories:
   - 工作
   - Unity
-  - Shader
+  - 着色器
 ---
 
 # 【Unity】ShaderLab 语法笔记

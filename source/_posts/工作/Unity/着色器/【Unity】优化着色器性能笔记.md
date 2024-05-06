@@ -1,10 +1,10 @@
 ---
 abbrlink: 4183025058
-date: "2024-4-28 16:58"
+date: 2024-4-28 16:58
 categories:
   - 工作
   - Unity
-  - Shader
+  - 着色器
 ---
 
 # 【Unity】优化着色器性能笔记

@@ -1,10 +1,10 @@
 ---
 abbrlink: 3262553639
-date: "2024-4-28 16:58"
+date: 2024-4-28 16:58
 categories:
   - 工作
   - Unity
-  - Shader
+  - 着色器
 ---
 # 【Unity】着色器平台差异笔记
 

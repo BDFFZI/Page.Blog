@@ -1,0 +1,1241 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【计算机】常见 CPU 指令集发展及其关系CPU 与指令集任何计算机都有一块 CPU，CPU 有其支持的指令集，根据指令集间的兼容性，一种 CPU 可能同时支持多种指令集。 指令集中记录了 CPU 的机器代码格式，由于很多编译性语言最终都是要编译成机器代码才能运行，所以编译时必须指明目标指令集，在 IDE 中也能看到对应选项。 使用不同指令集的平台间软件通常无法兼容，所以跨平台时需要重新打包程序，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【计算机】常见 CPU 指令集发展及其关系">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/1481637271.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="【计算机】常见 CPU 指令集发展及其关系CPU 与指令集任何计算机都有一块 CPU，CPU 有其支持的指令集，根据指令集间的兼容性，一种 CPU 可能同时支持多种指令集。 指令集中记录了 CPU 的机器代码格式，由于很多编译性语言最终都是要编译成机器代码才能运行，所以编译时必须指明目标指令集，在 IDE 中也能看到对应选项。 使用不同指令集的平台间软件通常无法兼容，所以跨平台时需要重新打包程序，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-02-22T13:22:00.000Z">
+<meta property="article:modified_time" content="2024-02-23T08:38:08.818Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>【计算机】常见 CPU 指令集发展及其关系 - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【计算机】常见 CPU 指令集发展及其关系"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-22 21:22" pubdate>
+          2024年2月22日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="学习"
+        id="heading-4ef520d6cd20ba4a727af08e17e4939e" role="tab" data-toggle="collapse" href="#collapse-4ef520d6cd20ba4a727af08e17e4939e"
+        aria-expanded="true"
+      >
+        学习
+        <span class="list-group-count">(23)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-4ef520d6cd20ba4a727af08e17e4939e"
+           role="tabpanel" aria-labelledby="heading-4ef520d6cd20ba4a727af08e17e4939e">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="英语"
+        id="heading-4145d4c179e1aafdb5a0295da9a82d42" role="tab" data-toggle="collapse" href="#collapse-4145d4c179e1aafdb5a0295da9a82d42"
+        aria-expanded="false"
+      >
+        英语
+        <span class="list-group-count">(12)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-4145d4c179e1aafdb5a0295da9a82d42"
+           role="tabpanel" aria-labelledby="heading-4145d4c179e1aafdb5a0295da9a82d42">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1864774520.html" title="【英语】常用代词笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】常用代词笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1922779167.html" title="【英语】常用疑问词笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】常用疑问词笔记</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="英语语法笔记"
+        id="heading-8e63d324af89768f9d2385421ae60416" role="tab" data-toggle="collapse" href="#collapse-8e63d324af89768f9d2385421ae60416"
+        aria-expanded="false"
+      >
+        英语语法笔记
+        <span class="list-group-count">(10)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-8e63d324af89768f9d2385421ae60416"
+           role="tabpanel" aria-labelledby="heading-8e63d324af89768f9d2385421ae60416">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3481354081.html" title="【英语语法笔记】介词"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语语法笔记】介词</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1170703467.html" title="【英语语法笔记】动词"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语语法笔记】动词</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4121327623.html" title="【英语语法笔记】单词"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语语法笔记】单词</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/648367824.html" title="【英语语法笔记】句子"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语语法笔记】句子</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4168832070.html" title="【英语语法笔记】名词"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语语法笔记】名词</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3611936726.html" title="【英语语法笔记】比较级与最高级"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语语法笔记】比较级与最高级</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1226664103.html" title="【英语语法笔记】表示数字"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语语法笔记】表示数字</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3075658332.html" title="【英语语法笔记】表示时态"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语语法笔记】表示时态</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2556572278.html" title="【英语语法笔记】表示时间"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语语法笔记】表示时间</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1271277138.html" title="【英语语法笔记】音标"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语语法笔记】音标</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="计算机"
+        id="heading-8a2b56e293ee788f1057ad236e06559e" role="tab" data-toggle="collapse" href="#collapse-8a2b56e293ee788f1057ad236e06559e"
+        aria-expanded="true"
+      >
+        计算机
+        <span class="list-group-count">(5)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-8a2b56e293ee788f1057ad236e06559e"
+           role="tabpanel" aria-labelledby="heading-8a2b56e293ee788f1057ad236e06559e">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1673174570.html" title="【计算机】字符编码的发展与关系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【计算机】字符编码的发展与关系</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1481637271.html" title="【计算机】常见 CPU 指令集发展及其关系"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">【计算机】常见 CPU 指令集发展及其关系</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="汇编"
+        id="heading-ef3380de76fd90069a3644053bc3379d" role="tab" data-toggle="collapse" href="#collapse-ef3380de76fd90069a3644053bc3379d"
+        aria-expanded="false"
+      >
+        汇编
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-ef3380de76fd90069a3644053bc3379d"
+           role="tabpanel" aria-labelledby="heading-ef3380de76fd90069a3644053bc3379d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3178886567.html" title="【汇编】基本概念"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【汇编】基本概念</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2731825535.html" title="【汇编】寄存器速查"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【汇编】寄存器速查</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1744230454.html" title="【汇编】操作码速查"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【汇编】操作码速查</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="软件开发"
+        id="heading-a41622d744ac9c55f5266dcc90ac7599" role="tab" data-toggle="collapse" href="#collapse-a41622d744ac9c55f5266dcc90ac7599"
+        aria-expanded="false"
+      >
+        软件开发
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a41622d744ac9c55f5266dcc90ac7599"
+           role="tabpanel" aria-labelledby="heading-a41622d744ac9c55f5266dcc90ac7599">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3993342442.html" title="【软件开发】Git概念与常用命令"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Git概念与常用命令</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2553791405.html" title="【软件开发】设计模式个人解读"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】设计模式个人解读</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数据库系统原理"
+        id="heading-b19b7bf5edb5d10c1fafb08e6837fd55" role="tab" data-toggle="collapse" href="#collapse-b19b7bf5edb5d10c1fafb08e6837fd55"
+        aria-expanded="false"
+      >
+        数据库系统原理
+        <span class="list-group-count">(4)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-b19b7bf5edb5d10c1fafb08e6837fd55"
+           role="tabpanel" aria-labelledby="heading-b19b7bf5edb5d10c1fafb08e6837fd55">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/4219286117.html" title="【数据库系统原理（1）】库处理语句"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数据库系统原理（1）】库处理语句</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4147230756.html" title="【数据库系统原理（2）】表处理语句"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数据库系统原理（2）】表处理语句</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/372718776.html" title="【数据库系统原理（3）】数据处理语句"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数据库系统原理（3）】数据处理语句</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3037167271.html" title="【数据库系统原理（4）】视图处理语句"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数据库系统原理（4）】视图处理语句</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【计算机】常见 CPU 指令集发展及其关系</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="【计算机】常见-CPU-指令集发展及其关系"><a href="#【计算机】常见-CPU-指令集发展及其关系" class="headerlink" title="【计算机】常见 CPU 指令集发展及其关系"></a>【计算机】常见 CPU 指令集发展及其关系</h1><h2 id="CPU-与指令集"><a href="#CPU-与指令集" class="headerlink" title="CPU 与指令集"></a>CPU 与指令集</h2><p>任何计算机都有一块 CPU，CPU 有其支持的指令集，根据指令集间的兼容性，一种 CPU 可能同时支持多种指令集。</p>
+<p>指令集中记录了 CPU 的机器代码格式，由于很多编译性语言最终都是要编译成机器代码才能运行，所以编译时必须指明目标指令集，在 IDE 中也能看到对应选项。</p>
+<p>使用不同指令集的平台间软件通常无法兼容，所以跨平台时需要重新打包程序，或者也有同时打包多份不同指令集的程序塞在一个软件中的方法，以便平台按需选取。</p>
+<p>这也是为什么 Github 中很多支持跨平台的软件，其发布时都会提供好多种不同指令集后缀的版本，或者不写清指令集但体积巨大的版本。</p>
+<h2 id="x86-系列"><a href="#x86-系列" class="headerlink" title="x86 系列"></a>x86 系列</h2><h3 id="x86"><a href="#x86" class="headerlink" title="x86"></a>x86</h3><p>x86 架构由 Intel 公司发明，首次使用在其 1978 年推出的 Intel 8086 处理器中，且后来逐渐成为了个人电脑的标准架构。</p>
+<p>最早使用该架构的系列处理器（如 Intel 8086、80186、80286 等）都是以数字表示，且都采用了 86 作为后缀，所以该架构也就称为 x86 架构，其中 x 是为了表示同系列有多款 CPU 使用该架构。</p>
+<h3 id="x86、i386、IA-32"><a href="#x86、i386、IA-32" class="headerlink" title="x86、i386、IA-32"></a>x86、i386、IA-32</h3><p>最早的 x86 是 16 位的，但从 80386 开始被经改进成为了 32 位架构。</p>
+<p>对于这升级后的一新架构，Intel 将其称为 IA-32（Intel Architecture 32bit）；而在 Linux 平台则习惯将其称为 i386，因为这是从第三代 86 系列处理器（80386）开始的。</p>
+<p>如今 16 位的 x86 已经淘汰，所以通常我们也会直接称呼 x86 来泛指其 32 位版本。</p>
+<h3 id="IA-64"><a href="#IA-64" class="headerlink" title="IA-64"></a>IA-64</h3><p>在 1989 年，惠普认为现有的 RISC 架构存在性能瓶颈，于是在 1994 年与 Intel 开始合作设计一款全新的架构 IA-64。Intel 很看好这一新架构，投入了大量开发资源，并在 2001 年推出第一代基于 IA-64 的安腾处理器。</p>
+<p>但该架构有一个致命缺陷，那就是和之前大火的 x86 架构不能兼容，且旧架构通过增强超标量的方法足以赶上 IA-64 的优势，所以该架构很快就退出市场了，2017 年之后 Intel 再也没发布过基于 IA-64 的新处理器。</p>
+<h3 id="x86-64、x64、AMD64、Intel-64"><a href="#x86-64、x64、AMD64、Intel-64" class="headerlink" title="x86_64、x64、AMD64、Intel 64"></a>x86_64、x64、AMD64、Intel 64</h3><p>在 1976 年时，Intel 公司将 8080 架构（x86 的前身）的微指令授权给了 AMD 公司，导致 AMD 公司拥有在 x86 基础上继续开发的权力。</p>
+<p>之后除开 Intel，AMD 公司也在进行 64 位架构的开发。其吸取了 IA-64 的失败，选择在 x86 的基础上继续开发，并于 1999 设计出了新的 AMD64 架构。</p>
+<p>AMD64 架构可以说就是 x86 架构的 64 位版本，所以与之兼容，也为了给 Intel 留点面子，所以该架构又叫 x86_64 架构，简称 x64。</p>
+<p>后来 Intel 公司也开始采用该架构，并将其直接将称为 Intel 64。</p>
+<h2 id="ARM-系列"><a href="#ARM-系列" class="headerlink" title="ARM 系列"></a>ARM 系列</h2><p>ARM 架构是 ARM 公司推出的指令集，过去也被称为进阶精简指令集机器（Advanced RISC Machine），其设计简单且功耗低，所以广泛使用在嵌入式和移动通讯领域。</p>
+<p>ARM 架构随着时代发展发布了多个版本，最早于 1985 年开发出了第一代 ARM 架构（ARMv1），次年又开发了第二代 ARM 架构（ARMv2） 并开始量产。</p>
+<p>在早期 ARM 的指令集架构一直以“ARMv{版本号}”的形式命名。但为了顺应市场发展，从 ARMv6 开始，又会以“ARMv{版本号}-{型号}”的命名方式推出多个分支指令集架构，以应对不同的使用环境。而从 ARMv7 开始则完全采用后一种命名方式，所以说此时实际已不存在名为 ARMv7 的某一特定架构，ARMv7 是对第七代 ARM 架构的统称。</p>
+<p>相应的，之后的处理器也改为了“Cortex-{型号}{版本号}”的命名方式，比如曾经手机主流的 Cortex-A7 处理器就是基于 ARMv7-A 指令集架构制作的。</p>
+<p>虽然 ARM 架构的版本众多，但 ARM 架构具有版本兼容性，采用旧版本指令集构建的软件在搭载新版本指令集的处理器中依然可用，从而保障了它的发展生命力。</p>
+<p>今天最多听到 ARM 架构的地方都是在 Android 开发上，Android 开发中通常用 ABI 来描述程序集所用框架，虽然 ABI 并不是专指指令集架构但也有包含的关系，所以考虑常用性这里就借用 ABI 介绍指令集好了。</p>
+<h3 id="armeabi、ARMv5、ARMv6"><a href="#armeabi、ARMv5、ARMv6" class="headerlink" title="armeabi、ARMv5、ARMv6"></a>armeabi、ARMv5、ARMv6</h3><p>armeabi 是最早手机所用的 ABI，其对应 ARMv5 架构 ，因为兼容性的原因后续的 ARMv6 等架构处理器也可使用，不过现今该架构已被 Android NDK 弃用。</p>
+<h3 id="armeabi-v7a、ARMv7、ARMv7-A"><a href="#armeabi-v7a、ARMv7、ARMv7-A" class="headerlink" title="armeabi-v7a、ARMv7、ARMv7-A"></a>armeabi-v7a、ARMv7、ARMv7-A</h3><p>armeabi-v7a 是 armeabi 架构的升级版，其中 v7a 就是指其对应架构为 ARMv7-A 。其一个显著的特点是增加了硬件浮点运算的功能，所以大幅提高了性能，是过去非常主流的手机架构。</p>
+<p>不过 ARMv7-A 是 32 位指令集，在如今的 64 位时代已然过时，目前市面上只有少部分手机还在使用。</p>
+<h3 id="arm64-v8a、ARM64、ARMv8-A"><a href="#arm64-v8a、ARM64、ARMv8-A" class="headerlink" title="arm64-v8a、ARM64、ARMv8-A"></a>arm64-v8a、ARM64、ARMv8-A</h3><p>arm64-v8a 对应 ARMv8-A 架构，其名称中的 64 宣布了又一个里程碑式的进步，从此刻开始 ARM 架构也步入了 64 位时代，并且从 2019 年 8 月 1 日起 Google Play 就开始强制要求所以软件都必须支持 64 位设备，即支持 arm64-v8a。</p>
+<p>所以该架构是目前手机最主流的架构。</p>
+<h2 id="mips-系列"><a href="#mips-系列" class="headerlink" title="mips 系列"></a>mips 系列</h2><p>在查资料时发现的另一种指令集系列，很多跨平台软件的发布类型中除开 x86 和 ARM 就剩它了，但生活中并没见过，而且其和 armeabi 一样被 Android NDK 弃用了，显然应该是某种过时的处理器架构，所以此处不进行讨论。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/63040129">计算机中 x32、x64、x86 是什么意思？</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/438625652">为什么 64 位是 x64 而 32 位是 x86？</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19573226">i386 和 x86-64 有什么区别？</a></li>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AE%89%E8%85%BE%E5%A4%84%E7%90%86%E5%99%A8">百科-安腾处理器</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/397027038">Intel 为什么不取消 AMD 的 X86 架构授权？</a></li>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/X86-64/1352293">百科-X86-64</a></li>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/ARM%E6%9E%B6%E6%9E%84">百科-ARM 架构</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/362648496">armv7-A 系列 0 - ARM 处理器架构发展史</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_ARM_processors">List of ARM processors</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.android.google.cn/ndk/guides/abis?hl=zh-cn">Android ABI</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.android.com/google/play/requirements/64-bit">支持 64 位架构</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/AndroidArchitecture.html">UnityAPI AndroidArchitecture</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="category-chain-item">计算机</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【计算机】常见 CPU 指令集发展及其关系</div>
+      <div>https://bdffzi-blog.pages.dev/posts/1481637271.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/1843614380.html" title="【Unity】ShaderLab 语法笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【Unity】ShaderLab 语法笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/4133014859.html" title="【Unity】热更新原理与 Xlua 配置">
+                        <span class="hidden-mobile">【Unity】热更新原理与 Xlua 配置</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
+  </br>
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
+      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            pageview: window.origin.includes("localhost")?false:true,
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+<script src="/assets/js/mermaid.min.js"></script>
+<script src="/assets/js/enableMermaid.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
