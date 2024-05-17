@@ -6,6 +6,7 @@ categories:
   - Unity
   - 着色器
 ---
+
 # 【Unity】着色器平台差异笔记
 
 https://docs.unity.cn/cn/2022.3/Manual/SL-PlatformDifferences.html
@@ -18,6 +19,8 @@ Unity 以 OpenGL 类平台约定作为标准，默认情况下会自动进行转
 
 - Direct3D 类：顶部坐标为 0 并向下增加。适用于 Direct3D、Metal 和游戏主机。
 - OpenGL 类：底部坐标为 0 并向上增加。适用于 OpenGL 和 OpenGL ES。
+
+受此影响采样的贴图可能上下翻转，并且创建的切线空间的也可能手系错误。
 
 ## 裁剪空间坐标
 
