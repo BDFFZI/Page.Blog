@@ -18,15 +18,15 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【Unity】优化着色器性能笔记https:&#x2F;&#x2F;docs.unity.cn&#x2F;2022.3&#x2F;Documentation&#x2F;Manual&#x2F;SL-ShaderPerformance.html 仅执行所需的运算 去除无效计算： 例如为材质增加了基础色功能，但所有材质都只用默认的白色，那这种功能就是无效功能，可去除或借助变体功能拆分成多个着色器。  减少计算频率： 尽可能将计算放在低频率的过程中，例如将像素着">
+    <meta name="description" content="一个个人博客，用于分享自己的经验杂谈等。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Unity】优化着色器性能笔记">
-<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/4183025058.html">
+<meta property="og:title" content="BDFFZI的小屋">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/4.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【Unity】优化着色器性能笔记https:&#x2F;&#x2F;docs.unity.cn&#x2F;2022.3&#x2F;Documentation&#x2F;Manual&#x2F;SL-ShaderPerformance.html 仅执行所需的运算 去除无效计算： 例如为材质增加了基础色功能，但所有材质都只用默认的白色，那这种功能就是无效功能，可去除或借助变体功能拆分成多个着色器。  减少计算频率： 尽可能将计算放在低频率的过程中，例如将像素着">
+<meta property="og:description" content="一个个人博客，用于分享自己的经验杂谈等。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-28T08:58:00.000Z">
-<meta property="article:modified_time" content="2024-05-06T08:58:31.711Z">
+<meta property="article:published_time" content="2024-02-29T08:35:21.039Z">
+<meta property="article:modified_time" content="2024-05-21T08:49:10.831Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -34,7 +34,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>【Unity】优化着色器性能笔记 - BDFFZI的小屋</title>
+  <title>BDFFZI的小屋</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -206,7 +206,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【Unity】优化着色器性能笔记"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -217,8 +217,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-28 16:58" pubdate>
-          2024年4月28日 下午
+        <time datetime="2024-02-29 16:35" pubdate>
+          2024年2月29日 下午
         </time>
       </span>
     
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          744 字
+          0 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          7 分钟
+          1 分钟
         
       </span>
     
@@ -290,7 +290,7 @@
         aria-expanded="true"
       >
         工作
-        <span class="list-group-count">(18)</span>
+        <span class="list-group-count">(20)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -391,7 +391,7 @@
         aria-expanded="true"
       >
         Unity
-        <span class="list-group-count">(15)</span>
+        <span class="list-group-count">(17)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -466,54 +466,62 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染管线"
-        id="heading-a0975e312ca4746045ba2e028a24b7ab" role="tab" data-toggle="collapse" href="#collapse-a0975e312ca4746045ba2e028a24b7ab"
-        aria-expanded="false"
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="图形"
+        id="heading-9be72ba165a45aaed9f950ec718475be" role="tab" data-toggle="collapse" href="#collapse-9be72ba165a45aaed9f950ec718475be"
+        aria-expanded="true"
       >
-        渲染管线
-        <span class="list-group-count">(1)</span>
+        图形
+        <span class="list-group-count">(10)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-a0975e312ca4746045ba2e028a24b7ab"
-           role="tabpanel" aria-labelledby="heading-a0975e312ca4746045ba2e028a24b7ab">
+      <div class="category-collapse collapse show" id="collapse-9be72ba165a45aaed9f950ec718475be"
+           role="tabpanel" aria-labelledby="heading-9be72ba165a45aaed9f950ec718475be">
         
         
+          
           
   <div class="category-post-list">
     
     
       
       
-        <a href="/posts/150670921.html" title="【Unity】光照解决方案笔记"
+        <a href="/posts/4.html" title=""
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post"></span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/289693924.html" title="【Unity】材质"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">【Unity】光照解决方案笔记</span>
+          <span class="category-post">【Unity】材质</span>
         </a>
       
     
   </div>
 
-        
-      </div>
-    </div>
+          
   
     
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="着色器"
         id="heading-e0817a039882aebbaa735b4880479e60" role="tab" data-toggle="collapse" href="#collapse-e0817a039882aebbaa735b4880479e60"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         着色器
         <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-e0817a039882aebbaa735b4880479e60"
+      <div class="category-collapse collapse " id="collapse-e0817a039882aebbaa735b4880479e60"
            role="tabpanel" aria-labelledby="heading-e0817a039882aebbaa735b4880479e60">
         
         
@@ -523,28 +531,28 @@
     
       
       
-        <a href="/posts/3793607597.html" title="【Unity】PassCode 语法笔记"
+        <a href="/posts/6.html" title=""
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">【Unity】PassCode 语法笔记</span>
+          <span class="category-post"></span>
         </a>
       
     
       
       
-        <a href="/posts/1843614380.html" title="【Unity】ShaderLab 语法笔记"
+        <a href="/posts/7.html" title=""
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">【Unity】ShaderLab 语法笔记</span>
+          <span class="category-post"></span>
         </a>
       
     
       
       
-        <a href="/posts/4183025058.html" title="【Unity】优化着色器性能笔记"
+        <a href="/posts/5.html" title=""
            class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">【Unity】优化着色器性能笔记</span>
+           ">
+          <span class="category-post"></span>
         </a>
       
     
@@ -636,6 +644,47 @@
     
     <div class="category-sub row nomargin-x">
       <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="脚本"
+        id="heading-ba311d8a6a1386ac811b1caa28ef029d" role="tab" data-toggle="collapse" href="#collapse-ba311d8a6a1386ac811b1caa28ef029d"
+        aria-expanded="false"
+      >
+        脚本
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-ba311d8a6a1386ac811b1caa28ef029d"
+           role="tabpanel" aria-labelledby="heading-ba311d8a6a1386ac811b1caa28ef029d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/305640944.html" title="【Unity】作业系统"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】作业系统</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
         id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
         aria-expanded="false"
@@ -684,48 +733,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【Unity】优化着色器性能笔记</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="【Unity】优化着色器性能笔记"><a href="#【Unity】优化着色器性能笔记" class="headerlink" title="【Unity】优化着色器性能笔记"></a>【Unity】优化着色器性能笔记</h1><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderPerformance.html">https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderPerformance.html</a></p>
-<h2 id="仅执行所需的运算"><a href="#仅执行所需的运算" class="headerlink" title="仅执行所需的运算"></a>仅执行所需的运算</h2><ul>
-<li><p>去除无效计算：</p>
-<p>例如为材质增加了基础色功能，但所有材质都只用默认的白色，那这种功能就是无效功能，可去除或借助变体功能拆分成多个着色器。</p>
-</li>
-<li><p>减少计算频率：</p>
-<p>尽可能将计算放在低频率的过程中，例如将像素着色器中的计算移到顶点着色器，甚至完全移出着色器在外部计算再设置回着色器。</p>
-</li>
-</ul>
-<h2 id="降低计算精度"><a href="#降低计算精度" class="headerlink" title="降低计算精度"></a>降低计算精度</h2><p>由于改进的 GPU 寄存器分配或针对低精度数学的“快速路径”执行单元，较低的数字精度通常有更好的运算性能。哪怕没有原始性能优势，低精度运算通常也能起到降低功耗延长电池续航的效果。</p>
-<p>因此只要精度够用，应尽可能降低数字精度。</p>
-<ul>
-<li><code>float</code>：世界位置、纹理坐标</li>
-<li><code>half</code>：矢量、HDR 颜色</li>
-<li><code>fixed</code>：普通纹理颜色（这只对非常老的设备有效，目前更推荐 half）</li>
-</ul>
-<p>对于精度的测试必须要在目标设备上进行，因为高端 GPU 通常会将默认精度以下的精度做和默认精度一样的处理（如统一看作<code>float</code>），所以只有在低端设备上才能感受到精度降低带来的优化或显示异常。</p>
-<h2 id="减少复杂运算"><a href="#减少复杂运算" class="headerlink" title="减少复杂运算"></a>减少复杂运算</h2><ul>
-<li>减少超越函数</li>
-</ul>
-<p>超越函数（如<code>pow</code>,<code>exp</code>,<code>log</code>,<code>cos</code>,<code>sin</code>,<code>tan</code>等），会占用大量的 GPU 资源，避免使用。如果可以建议改为在外部预计算然后通过缓冲区或纹理传入。</p>
-<ul>
-<li>减少自建函数</li>
-</ul>
-<p>如果所需操作可用内置函数实现，就不要自行实现，内置函数有特别的编译优化，会比自己写的好得多。</p>
-<h2 id="选择性执行-Alpha-测试"><a href="#选择性执行-Alpha-测试" class="headerlink" title="选择性执行 Alpha 测试"></a>选择性执行 Alpha 测试</h2><p>Alpha 测试或等效函数<code>clip()</code>在不同平台有不同的性能特征。</p>
-<ul>
-<li>一般情况下使用该功能移除大部分平台上的透明像素时都可获得少量性能优势。</li>
-<li>但在 ios 或某些 Android 设备的 PowerVR GPU 上，该功能是资源密集型任务，反而会对性能产生负面影响。</li>
-</ul>
-<h2 id="避免使用颜色遮罩"><a href="#避免使用颜色遮罩" class="headerlink" title="避免使用颜色遮罩"></a>避免使用颜色遮罩</h2><p>在某些平台（主要是 iOS 和 Android 设备的移动端 GPU）上，<code>Color Mask</code>是资源密集型的操作，除非绝对需要，否则不要使用。</p>
-<h2 id="优化表面着色器"><a href="#优化表面着色器" class="headerlink" title="优化表面着色器"></a>优化表面着色器</h2><p>针对表面着色器也支持一些特定的功能优化，详细见官方文档。</p>
-<h2 id="调试着色器"><a href="#调试着色器" class="headerlink" title="调试着色器"></a>调试着色器</h2><p>在使用 DirectX 11 或 12 的 Windows 平台上，可以使用 Visual Studio 调试 Unity 应用程序中的着色器，以便分析着色器问题或性能优化点。</p>
-<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/current/Manual/SL-DebuggingD3D11ShadersWithVS.html">https://docs.unity.cn/cn/current/Manual/SL-DebuggingD3D11ShadersWithVS.html</a></p>
-<p>如果使用的是 DirectX 12，Microsoft 建议使用 PIX 而不是 Visual Studio 来调试着色器。</p>
-<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/current/Manual/DebuggingShadersWithPIX.html">https://docs.unity.cn/cn/current/Manual/DebuggingShadersWithPIX.html</a></p>
-
+                
                 
               </div>
             
@@ -753,7 +766,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/%E7%9D%80%E8%89%B2%E5%99%A8/" class="category-chain-item">着色器</a>
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
   
   
 
@@ -777,8 +790,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【Unity】优化着色器性能笔记</div>
-      <div>https://bdffzi-blog.pages.dev/posts/4183025058.html</div>
+      <div></div>
+      <div>https://bdffzi-blog.pages.dev/posts/4.html</div>
     </div>
     <div class="license-meta">
       
@@ -790,7 +803,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年4月28日</div>
+          <div>2024年2月29日</div>
         </div>
       
       
@@ -822,9 +835,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/2373330896.html" title="【软件开发】正则表达式">
+                      <a href="/posts/330516235.html" title="【Unity】图形管道笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【软件开发】正则表达式</span>
+                        <span class="hidden-mobile">【Unity】图形管道笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -832,8 +845,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/3262553639.html" title="【Unity】着色器平台差异笔记">
-                        <span class="hidden-mobile">【Unity】着色器平台差异笔记</span>
+                      <a href="/posts/1602965714.html" title="【Unity】URP 中的 UGUIShader 实现">
+                        <span class="hidden-mobile">【Unity】URP 中的 UGUIShader 实现</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
