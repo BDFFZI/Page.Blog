@@ -1,0 +1,1435 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【Unity】纹理https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;Textures.html 纹理的作用 用于表示 3D 模型表面。 用于表示 2D 图形。 用于 GUI。 用于粒子系统。 用于地形高度贴图。  导入纹理纹理是一种位图图像，通常通过其他外部软件制作后导入 Unity 中。 纹理有两种主要导入模式：  纹理：3D 项目的默认格式，常做贴图使用。 精灵：2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Unity】纹理">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/1386286002.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="【Unity】纹理https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;Textures.html 纹理的作用 用于表示 3D 模型表面。 用于表示 2D 图形。 用于 GUI。 用于粒子系统。 用于地形高度贴图。  导入纹理纹理是一种位图图像，通常通过其他外部软件制作后导入 Unity 中。 纹理有两种主要导入模式：  纹理：3D 项目的默认格式，常做贴图使用。 精灵：2">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-31T09:31:00.000Z">
+<meta property="article:modified_time" content="2024-05-31T09:31:33.525Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>【Unity】纹理 - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【Unity】纹理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-31 17:31" pubdate>
+          2024年5月31日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="工作"
+        id="heading-9a018b21ab114a51dd7b5979198a941b" role="tab" data-toggle="collapse" href="#collapse-9a018b21ab114a51dd7b5979198a941b"
+        aria-expanded="true"
+      >
+        工作
+        <span class="list-group-count">(24)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-9a018b21ab114a51dd7b5979198a941b"
+           role="tabpanel" aria-labelledby="heading-9a018b21ab114a51dd7b5979198a941b">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Blender"
+        id="heading-482982e64aebd743da9392fbc4b1f5d8" role="tab" data-toggle="collapse" href="#collapse-482982e64aebd743da9392fbc4b1f5d8"
+        aria-expanded="false"
+      >
+        Blender
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-482982e64aebd743da9392fbc4b1f5d8"
+           role="tabpanel" aria-labelledby="heading-482982e64aebd743da9392fbc4b1f5d8">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/953923210.html" title="【Blender】插件开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Manim"
+        id="heading-cbcd3fecff4c0ef0c063f8c41726d34a" role="tab" data-toggle="collapse" href="#collapse-cbcd3fecff4c0ef0c063f8c41726d34a"
+        aria-expanded="false"
+      >
+        Manim
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-cbcd3fecff4c0ef0c063f8c41726d34a"
+           role="tabpanel" aria-labelledby="heading-cbcd3fecff4c0ef0c063f8c41726d34a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3454987331.html" title="【Manim】空间与变换笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Manim】空间与变换笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity"
+        id="heading-82dd98f1d663acc318e6a8ec4ab69b7a" role="tab" data-toggle="collapse" href="#collapse-82dd98f1d663acc318e6a8ec4ab69b7a"
+        aria-expanded="true"
+      >
+        Unity
+        <span class="list-group-count">(21)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-82dd98f1d663acc318e6a8ec4ab69b7a"
+           role="tabpanel" aria-labelledby="heading-82dd98f1d663acc318e6a8ec4ab69b7a">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1602965714.html" title="【Unity】URP 中的 UGUIShader 实现"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】URP 中的 UGUIShader 实现</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3651714765.html" title="【Unity】个人编码规范"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】个人编码规范</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2970632423.html" title="【Unity】各种操作触发 GC 情况"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】各种操作触发 GC 情况</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4239874620.html" title="【Unity】图形渲染瓶颈与批处理优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】图形渲染瓶颈与批处理优化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/330516235.html" title="【Unity】图形管道笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】图形管道笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4133014859.html" title="【Unity】热更新原理与 Xlua 配置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】热更新原理与 Xlua 配置</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity文档笔记"
+        id="heading-680a95aa049e61aff0e7c7ac93d60748" role="tab" data-toggle="collapse" href="#collapse-680a95aa049e61aff0e7c7ac93d60748"
+        aria-expanded="true"
+      >
+        Unity文档笔记
+        <span class="list-group-count">(15)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-680a95aa049e61aff0e7c7ac93d60748"
+           role="tabpanel" aria-labelledby="heading-680a95aa049e61aff0e7c7ac93d60748">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="图形"
+        id="heading-9be72ba165a45aaed9f950ec718475be" role="tab" data-toggle="collapse" href="#collapse-9be72ba165a45aaed9f950ec718475be"
+        aria-expanded="true"
+      >
+        图形
+        <span class="list-group-count">(14)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-9be72ba165a45aaed9f950ec718475be"
+           role="tabpanel" aria-labelledby="heading-9be72ba165a45aaed9f950ec718475be">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/289693924.html" title="【Unity】材质"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】材质</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/36610906.html" title="加载纹理和网格数据"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">加载纹理和网格数据</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染管线"
+        id="heading-a0975e312ca4746045ba2e028a24b7ab" role="tab" data-toggle="collapse" href="#collapse-a0975e312ca4746045ba2e028a24b7ab"
+        aria-expanded="false"
+      >
+        渲染管线
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a0975e312ca4746045ba2e028a24b7ab"
+           role="tabpanel" aria-labelledby="heading-a0975e312ca4746045ba2e028a24b7ab">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/150670921.html" title="【Unity】光照解决方案笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】光照解决方案笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2520479343.html" title="【Unity】可编程渲染管线"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】可编程渲染管线</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="着色器"
+        id="heading-e0817a039882aebbaa735b4880479e60" role="tab" data-toggle="collapse" href="#collapse-e0817a039882aebbaa735b4880479e60"
+        aria-expanded="false"
+      >
+        着色器
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-e0817a039882aebbaa735b4880479e60"
+           role="tabpanel" aria-labelledby="heading-e0817a039882aebbaa735b4880479e60">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3793607597.html" title="【Unity】PassCode 语法笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】PassCode 语法笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1843614380.html" title="【Unity】ShaderLab 语法笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】ShaderLab 语法笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4183025058.html" title="【Unity】优化着色器性能笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】优化着色器性能笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3863423297.html" title="【Unity】着色器变体笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器变体笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3262553639.html" title="【Unity】着色器平台差异笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器平台差异笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2077063050.html" title="【Unity】着色器核心概念笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器核心概念笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="纹理"
+        id="heading-2763023e85350f867a89d225f598b467" role="tab" data-toggle="collapse" href="#collapse-2763023e85350f867a89d225f598b467"
+        aria-expanded="true"
+      >
+        纹理
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-2763023e85350f867a89d225f598b467"
+           role="tabpanel" aria-labelledby="heading-2763023e85350f867a89d225f598b467">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/865694442.html" title="Mipmaps（多级渐进纹理）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Mipmaps（多级渐进纹理）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1386286002.html" title="【Unity】纹理"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">【Unity】纹理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="网格"
+        id="heading-16bf955c22835b6acbc202bd2738b50c" role="tab" data-toggle="collapse" href="#collapse-16bf955c22835b6acbc202bd2738b50c"
+        aria-expanded="false"
+      >
+        网格
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-16bf955c22835b6acbc202bd2738b50c"
+           role="tabpanel" aria-labelledby="heading-16bf955c22835b6acbc202bd2738b50c">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3454640855.html" title="【Unity】网格数据结构"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】网格数据结构</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/810271066.html" title="【Unity】网格笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】网格笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="脚本"
+        id="heading-ba311d8a6a1386ac811b1caa28ef029d" role="tab" data-toggle="collapse" href="#collapse-ba311d8a6a1386ac811b1caa28ef029d"
+        aria-expanded="false"
+      >
+        脚本
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-ba311d8a6a1386ac811b1caa28ef029d"
+           role="tabpanel" aria-labelledby="heading-ba311d8a6a1386ac811b1caa28ef029d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/305640944.html" title="【Unity】作业系统"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】作业系统</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
+        id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
+        aria-expanded="false"
+      >
+        Web
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-c6e190b284633c48e39e55049da3cce8"
+           role="tabpanel" aria-labelledby="heading-c6e190b284633c48e39e55049da3cce8">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3410375722.html" title="【Web】Hexo 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Web】Hexo 使用笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【Unity】纹理</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="【Unity】纹理"><a href="#【Unity】纹理" class="headerlink" title="【Unity】纹理"></a>【Unity】纹理</h1><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/Textures.html">https://docs.unity.cn/cn/2022.3/Manual/Textures.html</a></p>
+<h2 id="纹理的作用"><a href="#纹理的作用" class="headerlink" title="纹理的作用"></a>纹理的作用</h2><ul>
+<li>用于表示 3D 模型表面。</li>
+<li>用于表示 2D 图形。</li>
+<li>用于 GUI。</li>
+<li>用于粒子系统。</li>
+<li>用于地形高度贴图。</li>
+</ul>
+<h2 id="导入纹理"><a href="#导入纹理" class="headerlink" title="导入纹理"></a>导入纹理</h2><p>纹理是一种位图图像，通常通过其他外部软件制作后导入 Unity 中。</p>
+<p>纹理有两种主要导入模式：</p>
+<ul>
+<li>纹理：3D 项目的默认格式，常做贴图使用。</li>
+<li>精灵：2D 项目的默认格式，常做精灵、UI 使用。</li>
+</ul>
+<h3 id="纹理尺寸限制"><a href="#纹理尺寸限制" class="headerlink" title="纹理尺寸限制"></a>纹理尺寸限制</h3><h4 id="建议尺寸"><a href="#建议尺寸" class="headerlink" title="建议尺寸"></a>建议尺寸</h4><p>为了最佳性能，应保证纹理尺寸长宽都是 2 的幂，允许非正方形。</p>
+<p>非 NPOT（非 2 的幂）大小的纹理，通常会占用更多的内存且 GPU 采样速度更慢且无法被压缩。甚至有些平台都不支持 NPOT 纹理大小，此时 Unity 将对纹理进行缩放填充，以牺牲更多的内存和加载速度，使其达到下个最近的 2 的幂大小。</p>
+<p>对于非 NPOT 的图像，Unity 会在检视面板的图像大小旁标注。为了使图像满足 POT 要求，在 Unity 内可尝试以下方法：</p>
+<ul>
+<li>对于纹理模式图像：可利用图像检视面板的“Non-Power of 2”功能强制缩放。</li>
+<li>对于精灵模式图像：可利用图集功能将多个 NPOT 合成一个大的 POT 图像。</li>
+</ul>
+<h4 id="最大尺寸"><a href="#最大尺寸" class="headerlink" title="最大尺寸"></a>最大尺寸</h4><p>不同的平台对最大纹理大小也有限制，目前最大为 16384，最小如 OpenGL ES 2.0 平台，仅支持 2048。</p>
+<h3 id="特殊纹理导入"><a href="#特殊纹理导入" class="headerlink" title="特殊纹理导入"></a>特殊纹理导入</h3><ul>
+<li>导入 HRP 纹理：Unity 支持包含 HDR 信息的 EXR 或 HDR 文件，导入时会自动根据目标平台选择正确的格式。</li>
+<li>导入法线贴图：将纹理类型设为 Normal map 即可。Unity 使用基于 RGB 格式的法线贴图，或者也可以选择从灰度高度贴图生成。</li>
+<li>导入 Alpha 贴图：确保图片中包含了 Alpha 通道信息，或者选择从灰度纹理生成 Alpha 信息。</li>
+<li>导入细节贴图：当模型很大时受分辨率影响，主纹理无法清晰表示细节内容，此时可使用细节贴图，通常设为灰色为不可见，白色会使主纹理变量，黑色则使主纹理完全变黑。</li>
+<li>导入反射（立方体贴图）：将纹理形状设置为 Cube 即可。</li>
+<li>各向异性过滤：各向异性过滤使从斜掠角观察模型时依然清晰，这是一种资源密集型操作。可在质量设置面板为所有图片强制设置（若图片自己有设置，则将覆盖）。</li>
+</ul>
+<h2 id="纹理格式"><a href="#纹理格式" class="headerlink" title="纹理格式"></a>纹理格式</h2><p>Unity 支持导入一些常见图片格式，例如 jpg、png 等，但实际上 GPU 并不支持这些，而是使用一些对内存、采样等更加优化的硬件编码格式。</p>
+<p>所以 Unity 导入图片后实际会转换成 GPU 支持的格式来进行存储使用，不同平台间支持的格式也有所不同。</p>
+<p>通常 Unity 会自动选择最适合当前平台的纹理格式，但对于一些特殊纹理，例如仅使用一个通道做遮罩用，此时可以手动选择更适合的格式，例如 BC4 格式，从而在减少文件大小的同时仍能保证质量。</p>
+<h3 id="纹理压缩"><a href="#纹理压缩" class="headerlink" title="纹理压缩"></a>纹理压缩</h3><p>每像素位数 (bpp) 表示单个纹理像素所需的存储量。bpp 越低磁盘内存占用越小，GPU 的内存传输带宽也会降低，所以<strong>减少纹理大小是一种可对空间时间都进行优化的手段</strong>，而纹理压缩就是一种减少 bpp 的方法。</p>
+<p><strong>所有纹理压缩都是有损的</strong>，但为了性能考虑应保证 bpp 始终在满足视觉要求的最小值上。</p>
+<p><strong>确保选择的目标设备支持的压缩格式</strong>，因为当目标设备不支持当前的压缩格式时，Unity 会将其解压成支持的默认未压缩格式，并将压缩与非压缩版本都存储在内存中，从而造成纹理加载变慢且占用额外的内存。</p>
+<h3 id="Crunch-压缩"><a href="#Crunch-压缩" class="headerlink" title="Crunch 压缩"></a>Crunch 压缩</h3><p>Crunch 压缩是一种较特别的压缩格式，其能在 DXT 或 ETC 压缩的基础上，<strong>提供额外的可变比特率压缩</strong>，可以更精细的控制文件大小和质量平衡。</p>
+<p>Crunch 压缩不是 GPU 的原生压缩格式，所以使用时会由 Unity 解压成 DXT 或 ETC 格式，然后再上传到 GPU。虽然 Crunch 压缩在压缩时比较慢，但解压速度是非常快的，所以不用太担心影响加载时间。</p>
+<p>Crunch 压缩有助于进一步减少纹理的磁盘空间，但对运行时内存没有影响。</p>
+<h3 id="各平台推荐、默认、支持的纹理格式"><a href="#各平台推荐、默认、支持的纹理格式" class="headerlink" title="各平台推荐、默认、支持的纹理格式"></a>各平台推荐、默认、支持的纹理格式</h3><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/class-TextureImporterOverride.html">https://docs.unity.cn/cn/2022.3/Manual/class-TextureImporterOverride.html</a></p>
+<h2 id="特殊纹理"><a href="#特殊纹理" class="headerlink" title="特殊纹理"></a>特殊纹理</h2><p>这些纹理都基于 GPU 支持的功能特性。</p>
+<h3 id="渲染纹理"><a href="#渲染纹理" class="headerlink" title="渲染纹理"></a>渲染纹理</h3><p>渲染纹理是一种 Unity 在运行时创建和更新的纹理，可交予摄像机或自行渲染其画面，然后像正常纹理一样使用。</p>
+<h3 id="自定义渲染纹理"><a href="#自定义渲染纹理" class="headerlink" title="自定义渲染纹理"></a>自定义渲染纹理</h3><p>自定义渲染纹理是渲染纹理的扩展实现，额外提供了非常多的高级功能，常用于实现焦散、雨水效果、波纹模拟等效果。</p>
+<ul>
+<li>支持使用着色器更新内容，并提供了相应框架。</li>
+<li>可自定义更新区域、更新所用着色器通道。</li>
+<li>可自定义更新频率包括用脚本精细控制。</li>
+<li>支持使用双缓冲区更新，在更新时自动交换纹理，解决自读写问题。</li>
+<li>可链接自定义纹理，将多个自定义纹理串起来，Unity 会自动按需更新。</li>
+<li>可以通过 Export 菜单将自定义渲染纹理导出成图片文件。</li>
+</ul>
+<p>注意双缓冲更新目前有性能问题，因为每次交换都会复制纹理，对性能影响较大。</p>
+<h3 id="3D-纹理"><a href="#3D-纹理" class="headerlink" title="3D 纹理"></a>3D 纹理</h3><p>3D 纹理是位图图形，其中包含三维信息，而不是标准的二维信息。</p>
+<p>通常用于仿真诸如雾或烟的体积效果，模拟体积 3D 网格，或存储动画纹理并在这些动画纹理之间平滑混合。</p>
+<h3 id="纹理数组"><a href="#纹理数组" class="headerlink" title="纹理数组"></a>纹理数组</h3><p>纹理数组是具有相同大小&#x2F;格式&#x2F;标记的 2D 纹理的集合，这些纹理对于 GPU 而言像是单个对象，并可在着色器中使用纹理元素索引进行采样。</p>
+<p>它们可以用于实现自定义地形渲染系统或其他特殊效果，让您高效访问大量相同大小和格式的纹理。2D 纹理数组的元素也称为切片或图层。</p>
+<h3 id="立方体贴图"><a href="#立方体贴图" class="headerlink" title="立方体贴图"></a>立方体贴图</h3><p>立方体贴图是六个正方形纹理的集合，这些纹理代表环境中的反射。六个正方形组成一个包围着对象的虚构立方体的各面；每个面代表沿世界轴方向（向上、向下、向左、向右、 向前和向后）的视图。</p>
+<p>立方体贴图常用于捕获对象的反射或“周围环境”；例如 天空盒和环境反射通常使用立方体贴图。</p>
+<h3 id="立方体贴图数组"><a href="#立方体贴图数组" class="headerlink" title="立方体贴图数组"></a>立方体贴图数组</h3><p>立方体贴图数组是一个包含有大小和格式均相同的立方体贴图的数组，GPU 可以将其作为单个纹理资源进行访问。</p>
+<p>立方体贴图数组通常用于实现高效的反射探针、光照和阴影系统。</p>
+<h3 id="稀疏纹理"><a href="#稀疏纹理" class="headerlink" title="稀疏纹理"></a>稀疏纹理</h3><p>稀疏纹理是太大而无法完全存入显存的纹理。为了处理它们，Unity 将主纹理分解为更小的矩形部分，称为“区块”(tile)。然后，可根据需要加载各个区块。</p>
+<p>该功能目前仅在一些相当新的 GPU 上受到支持，如 DirectX 11.2 (Windows 8.1) 系统，或者使用支持 ARB_sparse_texture 的 OpenGL。</p>
+<h2 id="流式虚拟纹理"><a href="#流式虚拟纹理" class="headerlink" title="流式虚拟纹理"></a>流式虚拟纹理</h2><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/svt-streaming-virtual-texturing.html">https://docs.unity.cn/cn/2022.3/Manual/svt-streaming-virtual-texturing.html</a></p>
+<p>流式虚拟纹理是一项实验性功能，目前仅 HDRP 支持。它将纹理拆分为瓦片，然后在需要时将这些瓦片逐步上传到 GPU 内存中。</p>
+<p>这是 mipmap 流系统的另一种替代品，另一种优化手段。当场景中具有很多高分辨率纹理时可大幅减少 GPU 内存使用量和纹理加载时间。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="category-chain-item">工作</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/" class="category-chain-item">Unity</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E7%BA%B9%E7%90%86/" class="category-chain-item">纹理</a>
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【Unity】纹理</div>
+      <div>https://bdffzi-blog.pages.dev/posts/1386286002.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月31日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/865694442.html" title="Mipmaps（多级渐进纹理）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Mipmaps（多级渐进纹理）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/2845903494.html" title="【Linux】Linux 使用笔记">
+                        <span class="hidden-mobile">【Linux】Linux 使用笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
+  </br>
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
+      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            pageview: window.origin.includes("localhost")?false:true,
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+<script src="/assets/js/mermaid.min.js"></script>
+<script src="/assets/js/enableMermaid.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

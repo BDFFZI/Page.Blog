@@ -1,0 +1,1678 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【Unity】PassCode 语法笔记https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;SL-ShaderPrograms.html PassCode 区域存放实际的渲染代码，目前支持 3 种写法。  固定函数着色器（过时） https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2019.4&#x2F;Manual&#x2F;ShaderTut1.html 一个早期旧版着色器，使用内置的函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Unity】PassCode 语法笔记">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/3793607597.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="【Unity】PassCode 语法笔记https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;SL-ShaderPrograms.html PassCode 区域存放实际的渲染代码，目前支持 3 种写法。  固定函数着色器（过时） https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2019.4&#x2F;Manual&#x2F;ShaderTut1.html 一个早期旧版着色器，使用内置的函数">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-26T03:25:00.000Z">
+<meta property="article:modified_time" content="2024-05-31T09:32:47.846Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>【Unity】PassCode 语法笔记 - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【Unity】PassCode 语法笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-26 11:25" pubdate>
+          2024年4月26日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          33 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="工作"
+        id="heading-9a018b21ab114a51dd7b5979198a941b" role="tab" data-toggle="collapse" href="#collapse-9a018b21ab114a51dd7b5979198a941b"
+        aria-expanded="true"
+      >
+        工作
+        <span class="list-group-count">(24)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-9a018b21ab114a51dd7b5979198a941b"
+           role="tabpanel" aria-labelledby="heading-9a018b21ab114a51dd7b5979198a941b">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Blender"
+        id="heading-482982e64aebd743da9392fbc4b1f5d8" role="tab" data-toggle="collapse" href="#collapse-482982e64aebd743da9392fbc4b1f5d8"
+        aria-expanded="false"
+      >
+        Blender
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-482982e64aebd743da9392fbc4b1f5d8"
+           role="tabpanel" aria-labelledby="heading-482982e64aebd743da9392fbc4b1f5d8">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/953923210.html" title="【Blender】插件开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Manim"
+        id="heading-cbcd3fecff4c0ef0c063f8c41726d34a" role="tab" data-toggle="collapse" href="#collapse-cbcd3fecff4c0ef0c063f8c41726d34a"
+        aria-expanded="false"
+      >
+        Manim
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-cbcd3fecff4c0ef0c063f8c41726d34a"
+           role="tabpanel" aria-labelledby="heading-cbcd3fecff4c0ef0c063f8c41726d34a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3454987331.html" title="【Manim】空间与变换笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Manim】空间与变换笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity"
+        id="heading-82dd98f1d663acc318e6a8ec4ab69b7a" role="tab" data-toggle="collapse" href="#collapse-82dd98f1d663acc318e6a8ec4ab69b7a"
+        aria-expanded="true"
+      >
+        Unity
+        <span class="list-group-count">(21)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-82dd98f1d663acc318e6a8ec4ab69b7a"
+           role="tabpanel" aria-labelledby="heading-82dd98f1d663acc318e6a8ec4ab69b7a">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1602965714.html" title="【Unity】URP 中的 UGUIShader 实现"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】URP 中的 UGUIShader 实现</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3651714765.html" title="【Unity】个人编码规范"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】个人编码规范</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2970632423.html" title="【Unity】各种操作触发 GC 情况"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】各种操作触发 GC 情况</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4239874620.html" title="【Unity】图形渲染瓶颈与批处理优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】图形渲染瓶颈与批处理优化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/330516235.html" title="【Unity】图形管道笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】图形管道笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4133014859.html" title="【Unity】热更新原理与 Xlua 配置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】热更新原理与 Xlua 配置</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity文档笔记"
+        id="heading-680a95aa049e61aff0e7c7ac93d60748" role="tab" data-toggle="collapse" href="#collapse-680a95aa049e61aff0e7c7ac93d60748"
+        aria-expanded="true"
+      >
+        Unity文档笔记
+        <span class="list-group-count">(15)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-680a95aa049e61aff0e7c7ac93d60748"
+           role="tabpanel" aria-labelledby="heading-680a95aa049e61aff0e7c7ac93d60748">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="图形"
+        id="heading-9be72ba165a45aaed9f950ec718475be" role="tab" data-toggle="collapse" href="#collapse-9be72ba165a45aaed9f950ec718475be"
+        aria-expanded="true"
+      >
+        图形
+        <span class="list-group-count">(14)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-9be72ba165a45aaed9f950ec718475be"
+           role="tabpanel" aria-labelledby="heading-9be72ba165a45aaed9f950ec718475be">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/289693924.html" title="【Unity】材质"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】材质</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/36610906.html" title="加载纹理和网格数据"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">加载纹理和网格数据</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染管线"
+        id="heading-a0975e312ca4746045ba2e028a24b7ab" role="tab" data-toggle="collapse" href="#collapse-a0975e312ca4746045ba2e028a24b7ab"
+        aria-expanded="false"
+      >
+        渲染管线
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a0975e312ca4746045ba2e028a24b7ab"
+           role="tabpanel" aria-labelledby="heading-a0975e312ca4746045ba2e028a24b7ab">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/150670921.html" title="【Unity】光照解决方案笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】光照解决方案笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2520479343.html" title="【Unity】可编程渲染管线"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】可编程渲染管线</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="着色器"
+        id="heading-e0817a039882aebbaa735b4880479e60" role="tab" data-toggle="collapse" href="#collapse-e0817a039882aebbaa735b4880479e60"
+        aria-expanded="true"
+      >
+        着色器
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-e0817a039882aebbaa735b4880479e60"
+           role="tabpanel" aria-labelledby="heading-e0817a039882aebbaa735b4880479e60">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3793607597.html" title="【Unity】PassCode 语法笔记"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">【Unity】PassCode 语法笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1843614380.html" title="【Unity】ShaderLab 语法笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】ShaderLab 语法笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4183025058.html" title="【Unity】优化着色器性能笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】优化着色器性能笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3863423297.html" title="【Unity】着色器变体笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器变体笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3262553639.html" title="【Unity】着色器平台差异笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器平台差异笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2077063050.html" title="【Unity】着色器核心概念笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器核心概念笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="纹理"
+        id="heading-2763023e85350f867a89d225f598b467" role="tab" data-toggle="collapse" href="#collapse-2763023e85350f867a89d225f598b467"
+        aria-expanded="false"
+      >
+        纹理
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-2763023e85350f867a89d225f598b467"
+           role="tabpanel" aria-labelledby="heading-2763023e85350f867a89d225f598b467">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/865694442.html" title="Mipmaps（多级渐进纹理）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Mipmaps（多级渐进纹理）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1386286002.html" title="【Unity】纹理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】纹理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="网格"
+        id="heading-16bf955c22835b6acbc202bd2738b50c" role="tab" data-toggle="collapse" href="#collapse-16bf955c22835b6acbc202bd2738b50c"
+        aria-expanded="false"
+      >
+        网格
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-16bf955c22835b6acbc202bd2738b50c"
+           role="tabpanel" aria-labelledby="heading-16bf955c22835b6acbc202bd2738b50c">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3454640855.html" title="【Unity】网格数据结构"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】网格数据结构</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/810271066.html" title="【Unity】网格笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】网格笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="脚本"
+        id="heading-ba311d8a6a1386ac811b1caa28ef029d" role="tab" data-toggle="collapse" href="#collapse-ba311d8a6a1386ac811b1caa28ef029d"
+        aria-expanded="false"
+      >
+        脚本
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-ba311d8a6a1386ac811b1caa28ef029d"
+           role="tabpanel" aria-labelledby="heading-ba311d8a6a1386ac811b1caa28ef029d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/305640944.html" title="【Unity】作业系统"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】作业系统</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
+        id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
+        aria-expanded="false"
+      >
+        Web
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-c6e190b284633c48e39e55049da3cce8"
+           role="tabpanel" aria-labelledby="heading-c6e190b284633c48e39e55049da3cce8">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3410375722.html" title="【Web】Hexo 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Web】Hexo 使用笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【Unity】PassCode 语法笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="【Unity】PassCode-语法笔记"><a href="#【Unity】PassCode-语法笔记" class="headerlink" title="【Unity】PassCode 语法笔记"></a>【Unity】PassCode 语法笔记</h1><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/SL-ShaderPrograms.html">https://docs.unity.cn/cn/2022.3/Manual/SL-ShaderPrograms.html</a></p>
+<p>PassCode 区域存放实际的渲染代码，目前支持 3 种写法。</p>
+<ul>
+<li><p>固定函数着色器（过时）</p>
+<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2019.4/Manual/ShaderTut1.html">https://docs.unity.cn/cn/2019.4/Manual/ShaderTut1.html</a></p>
+<p>一个早期旧版着色器，使用内置的函数快速编写一些简单的着色器，不需要会 HLSL，但扩展能力差。</p>
+</li>
+<li><p>表面着色器（过时）</p>
+<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2019.4/Manual/SL-SurfaceShaders.html">https://docs.unity.cn/cn/2019.4/Manual/SL-SurfaceShaders.html</a></p>
+<p>使用 HLSL 编写，但对光照等功能进行了封装，不需要自己实现，也因此编写比较简单同时具备一定扩展能力。但新出的 SRP 不支持该写法，看样子官方要用 Shader Graph 代替它。</p>
+</li>
+<li><p>顶点和片元着色器</p>
+<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2019.4/Manual/SL-ShaderPrograms.html">https://docs.unity.cn/cn/2019.4/Manual/SL-ShaderPrograms.html</a></p>
+<p>接近原生的 HLSL 体验，光照等功能都需要自行实现，难度较高，但通用性最强，一般考虑利用改源码的方式实现，从而简化制作流程。</p>
+</li>
+</ul>
+<p>根据兼容性下面只记录“顶点和片元着色器”写法。</p>
+<h2 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h2><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>所有的 PassCode 代码必须要写在代码块中，代码块里存放着 Shader 程序实际运行用的 HLSL 源代码。</p>
+<p>共支持四种代码块形式：</p>
+<ul>
+<li>HLSLINCLUDE：可写在任意区域，区域下的所有 Pass 将自动包含块中的代码。</li>
+<li>HLSLPROGRAM：写在 Pass 区域中，是当前 Pass 使用的 Shader 代码。</li>
+<li>CGINCLUDE（仅内置管线）</li>
+<li>CGPROGRAM（仅内置管线）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shaderlab">// 语法示例<br>Shader &quot;Examples/ExampleShader&quot;<br>&#123;<br>  SubShader&#123;<br><br>    HLSLINCLUDE<br>      // 当前区域内所有Pass的共享 HLSL 代码<br>    ENDHLSL<br><br>    Pass&#123;<br><br>      HLSLPROGRAM<br>        // 当前Pass的 HLSL 代码<br>      ENDHLSL<br><br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="HLSL-语法"><a href="#HLSL-语法" class="headerlink" title="HLSL 语法"></a>HLSL 语法</h3><p>代码块中使用正常的 HLSL 编写着色器代码，对于常规的 HLSL 语法可见微软的 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl">HLSL 文档</a></p>
+<p>Unity 支持两种版本的 HLSL 语法，DirectX 9 样式和 DirectX 10+ 样式，两者主要在纹理采样有所区别，同时平台兼容性也不一样。</p>
+<ul>
+<li>DX 9：使用 <code>sampler2D</code>、<code>tex2D()</code> 采样纹理。全平台兼容。</li>
+<li>DX 10+：使用 <code>Texture2D</code>、<code>SamplerState</code>、<code>.Sample()</code> 采样纹理。部分语法在 OpenGL 平台无效。</li>
+</ul>
+<p>部分操作也可选择使用 Unity 提供宏函数编写，从而解决兼容性差异。</p>
+<h3 id="GLSL-语法"><a href="#GLSL-语法" class="headerlink" title="GLSL 语法"></a>GLSL 语法</h3><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/SL-GLSLShaderPrograms.html">https://docs.unity.cn/cn/2022.3/Manual/SL-GLSLShaderPrograms.html</a></p>
+<p>除了 HLSL，Unity 还支持使用 GLSL 编写着色器，相应的 GLSL 代码必须使用相应的<code>GLSLPROGRAM</code>代码块，但这种方式并不提倡。</p>
+<h2 id="预处理指令"><a href="#预处理指令" class="headerlink" title="预处理指令"></a>预处理指令</h2><h3 id="include"><a href="#include" class="headerlink" title="include"></a>include</h3><ul>
+<li><code>#include &quot;&lt;file&gt;&quot;</code></li>
+</ul>
+<p>插入其他文件（如 <code>.hlsl</code> 文件）内容。注意其不会插入内容中的<code>#pragma</code>指令。</p>
+<h3 id="include-with-pragmas"><a href="#include-with-pragmas" class="headerlink" title="include_with_pragmas"></a>include_with_pragmas</h3><ul>
+<li><code>#include_with_pragmas &quot;&lt;file&gt;&quot;</code></li>
+</ul>
+<p>插入其他文件内容，并且包含其中的<code>#pragma</code>指令。</p>
+<p>使用该指令必须确保启用了编辑器中的缓存预处理器功能（2020.2.0a13 版开始默认启用）</p>
+<h3 id="define"><a href="#define" class="headerlink" title="define"></a>define</h3><ul>
+<li><code>#define &lt;key&gt; &lt;value&gt;</code></li>
+<li><code>#undef &lt;key&gt;</code></li>
+</ul>
+<p>定义或取消定义关键字，用于实现宏函数或编译时常量。</p>
+<h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><p>配合关键字定义实现编译时分支功能。注意其无法控制内容中的<code>#pragma</code>指令。</p>
+<ul>
+<li><p>根据关键字是否被定义来分支。</p>
+<ul>
+<li><code>#ifdef &lt;key&gt;</code></li>
+<li><code>#ifndef &lt;key&gt;</code></li>
+</ul>
+</li>
+<li><p>根据关键字的值来分支</p>
+<ul>
+<li><code>#if &lt;key&gt;</code></li>
+<li><code>#elif &lt;key&gt;</code></li>
+</ul>
+</li>
+<li><p><code>#else</code></p>
+</li>
+<li><p><code>#endif</code></p>
+</li>
+</ul>
+<h3 id="pragma"><a href="#pragma" class="headerlink" title="pragma"></a>pragma</h3><p>为着色器编译器提供其他类型的预处理器指令未涵盖的其他信息。</p>
+<p>部分参数可多填，用空格分割。</p>
+<h4 id="常用编码指令"><a href="#常用编码指令" class="headerlink" title="常用编码指令"></a>常用编码指令</h4><ul>
+<li><p>声明表面着色器选项。</p>
+<ul>
+<li><code>#pragma surface &lt;surface function&gt; &lt;lighting model&gt; &lt;optional parameters&gt;</code></li>
+</ul>
+</li>
+<li><p>声明着色器阶段函数。</p>
+<ul>
+<li><code>#pragma vertex &lt;name&gt;</code></li>
+<li><code>#pragma fragment &lt;name&gt;</code></li>
+<li><code>#pragma geometry &lt;name&gt;</code></li>
+<li><code>#pragma hull &lt;name&gt;</code></li>
+<li><code>#pragma domain &lt;name&gt;</code></li>
+</ul>
+</li>
+<li><p>声明着色器变体和关键字。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/2022.3/Documentation/Manual/SL-MultipleProgramVariants.html">https://docs.unity.cn/2022.3/Documentation/Manual/SL-MultipleProgramVariants.html</a></p>
+<ul>
+<li><code>#pragma multi_compile &lt;keywords&gt;</code>：声明着色器变体。相关变体将全部编译。</li>
+<li><code>#pragma multi_compile_local &lt;keywords&gt;</code>：同上但改为使用本地关键字控制。</li>
+<li><code>#pragma shader_feature &lt;keywords&gt;</code>：声明着色器变体。仅使用变体将编译。</li>
+<li><code>#pragma shader_feature_local &lt;keywords&gt;</code>：同上但改为使用本地关键字控制。</li>
+<li><code>#pragma hardware_tier_variants &lt;values&gt;</code>：在编译给定图形 API 时为图形层（内置管线功能）添加关键字。</li>
+<li><code>#pragma skip_variants &lt;keywords&gt;</code>：删除指定的关键字。</li>
+</ul>
+</li>
+<li><p>限定当前文件仅包含一次。</p>
+<ul>
+<li><code>#pragma once</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="特殊功能开关"><a href="#特殊功能开关" class="headerlink" title="特殊功能开关"></a>特殊功能开关</h4><ul>
+<li><p>声明着色器模型和所需 GPU 功能。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderCompileTargets.html">https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderCompileTargets.html</a></p>
+<p>部分功能不能满足跨平台的需求所以默认被隐藏，如有需要必须用下列指令显式声明。</p>
+<ul>
+<li><code>#pragma target &lt;model&gt;</code>：声明最小着色器模型。</li>
+<li><code>#pragma require &lt;feature&gt;</code>：声明兼容的最低 GPU 功能。</li>
+</ul>
+</li>
+<li><p>启用并设置 GPU 实例化功能。</p>
+<ul>
+<li><code>#pragma instancing_options &lt;options&gt;</code></li>
+</ul>
+</li>
+<li><p>启用涉及 NaN 处理的精确 IEEE 754 规则。 当前这仅影响 Metal 平台。</p>
+<ul>
+<li><code>#pragma disable_fastmath</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="编译阶段控制"><a href="#编译阶段控制" class="headerlink" title="编译阶段控制"></a>编译阶段控制</h4><ul>
+<li><p>包含或排除给定图形 API 的代码。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderCompilationAPIs.html">https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderCompilationAPIs.html</a></p>
+<p>Unity 默认会为当前构建目标列表中所有的平台编译着色器，但实际有些平台可能不支持或不需要某些着色器程序，可借此排除。</p>
+<ul>
+<li><code>#pragma only_renderers &lt;api&gt;</code>：仅针对给定图形 API 编译程序。</li>
+<li><code>#pragma exclude_renderers &lt;api&gt;</code>：不要为给定图形 API 编译程序。</li>
+</ul>
+</li>
+<li><p>为目标 API 生成调试符号并禁用所有 API 优化。</p>
+<ul>
+<li><code>#pragma enable_&lt;api&gt;_debug_symbols</code></li>
+</ul>
+</li>
+<li><p>关闭目标图形 API 的优化。</p>
+<ul>
+<li><code>#pragma skip_optimizations &lt;api&gt;</code>：可多写，用空格分割。</li>
+</ul>
+</li>
+<li><p>将反汇编的 HLSLcc 字节码嵌入到转换的着色器中。</p>
+<ul>
+<li><code>#pragma hlslcc_bytecode_disassembly</code></li>
+</ul>
+</li>
+<li><p>强制进行同步着色器编译。</p>
+<ul>
+<li><code>#pragma editor_sync_compilation</code></li>
+</ul>
+</li>
+<li><p>使用 CBUFFER 宏时，即使目标平台不支持，也要写入相关代码。</p>
+<ul>
+<li><code>#pragma enable_cbuffer</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="着色器语义"><a href="#着色器语义" class="headerlink" title="着色器语义"></a>着色器语义</h2><p>编写 HLSL 着色器程序时，输入和输出变量必须要通过语义来表明其“意图”，从而正确接收或传递渲染管线中的数据。</p>
+<p>以下介绍一些 Unity 支持的常用语义，其他更特殊的语义需自行查看 HLSL 文档并检查是否可用。</p>
+<h3 id="顶点着色器输入阶段"><a href="#顶点着色器输入阶段" class="headerlink" title="顶点着色器输入阶段"></a>顶点着色器输入阶段</h3><p>顶点阶段中的大多语义与用户定义的网格数据布局有关，此处以 Unity 默认的布局结构为准。</p>
+<ul>
+<li><code>POSITION</code>：顶点位置，通常为<code>float3</code>。</li>
+<li><code>NORMAL</code>：顶点法线，通常为<code>float3</code>。</li>
+<li><code>TEXCOORD0</code>、<code>TEXCOORD1</code>、<code>TEXCOORD2</code>、<code>TEXCOORD3</code>：顶点 uv，通常为<code>float2</code>。</li>
+<li><code>TANGENT</code>：顶点切线，通常为<code>float4</code>。</li>
+<li><code>COLOR</code>：顶点颜色，通常为<code>float4</code>。</li>
+</ul>
+<p>当声明的变量的分量多余实际的输入变量时，多余部分按默认值填充，默认值为<code>(0,0,0,1)</code>。</p>
+<h3 id="顶点着色器输出及片元着色器输入阶段"><a href="#顶点着色器输出及片元着色器输入阶段" class="headerlink" title="顶点着色器输出及片元着色器输入阶段"></a>顶点着色器输出及片元着色器输入阶段</h3><ul>
+<li><code>SV_POSITION</code>：顶点的裁剪空间位置，必须为<code>float4</code>。</li>
+<li><code>其他非特殊语义</code>：用于标识从顶点传递到片元的自定义数据。</li>
+</ul>
+<h4 id="语义限制"><a href="#语义限制" class="headerlink" title="语义限制"></a>语义限制</h4><p>在渲染管线中传递的数据必须用语义标记，但大多数现代 GPU 其实并不关心语义是什么，所以当要传递自定义数据时随意搭配一些不冲突的语义即可。</p>
+<p>但在一些老旧的系统在，比如着色器模型 2，会有一些特殊语义规则：</p>
+<ul>
+<li><code>TEXCOORD0</code>、<code>TEXCOORD1</code>：代表任意高精度数据，如纹理坐标、位置。</li>
+<li><code>COLOR0</code>、<code>COLOR1</code>：任意 0-1 的低精度数据，如简单的颜色。</li>
+</ul>
+<p>因此为了最佳的跨平台支持，应尽可能使用类似<code>TEXCOORD&lt;num&gt;</code>这样的语义传递自定义数据。</p>
+<h4 id="插值器限制"><a href="#插值器限制" class="headerlink" title="插值器限制"></a>插值器限制</h4><p>顶点着色器输出同时也可以作为片元着色器的输入，因为光栅化会自动将顶点数据通过插值器插值成像素数据。</p>
+<p>但插值器也存在一些数量限制：</p>
+<ul>
+<li>最多 8 个：OpenGL ES 2.0(Android)、Direct3D 11 9.x level(Windows Phone)。</li>
+<li>最多 10 个：着色器模型 3.0。</li>
+<li>最多 16 个：OpenGL ES 3.0(Android)、Metal(iOS)。</li>
+<li>最多 32 个：着色器模型 4.0。</li>
+</ul>
+<p>如果插值器数量不够用，可以考虑共用插值器，比如因为插值器是支持 4 位浮点数的，所以可以将两个 2 位浮点数放在一起传递。</p>
+<p>此外从性能的角度考虑，通常也都应该尽可能减少插值器的使用数量。</p>
+<h3 id="片元着色器输出阶段"><a href="#片元着色器输出阶段" class="headerlink" title="片元着色器输出阶段"></a>片元着色器输出阶段</h3><ul>
+<li><code>SV_Target</code>：片元着色器输出的颜色，必须为任意精度的 4 分量浮点向量。</li>
+<li><code>SV_Target&lt;number&gt;</code>：当使用“多渲染目标”渲染技术时的输出颜色，如 SV_TARGET4。</li>
+<li><code>SV_Depth</code>：自定义深度输出，必须为 float 类型。非必要不要使用，这会产生和 alpha 测试（使用<code>clip()</code>）类似的性能成本。</li>
+</ul>
+<h3 id="其他特殊语义"><a href="#其他特殊语义" class="headerlink" title="其他特殊语义"></a>其他特殊语义</h3><p>这类语义可以提供一些额外的特殊信息，一般用来实现一些特殊效果。</p>
+<h4 id="顶点着色器输入"><a href="#顶点着色器输入" class="headerlink" title="顶点着色器输入"></a>顶点着色器输入</h4><ul>
+<li><code>SV_VertexID</code>：顶点在网格中的编号，为无符号整数。需要着色器模型 3.5 支持。</li>
+</ul>
+<h4 id="片元着色器输入"><a href="#片元着色器输入" class="headerlink" title="片元着色器输入"></a>片元着色器输入</h4><ul>
+<li><code>VPOS</code>：屏幕空间像素位置，通常为<code>float4</code>但考虑兼容性应使用<code>UNITY_VPOS_TYPE</code>作为变量类型。需要着色器模型 3.0 支持。</li>
+<li><code>VFACE</code>：表面是否正向摄像机，返回 0 或 1 的值。需要着色器模型 3.0 支持。</li>
+</ul>
+<h2 id="着色器属性"><a href="#着色器属性" class="headerlink" title="着色器属性"></a>着色器属性</h2><p>可以直接在代码块中定义变量，接着只需提供这些变量的名称和类型信息，就可以通过多种外部途径读写这些值，从而使着色器程序参数化。</p>
+<h3 id="提供着色器属性值"><a href="#提供着色器属性值" class="headerlink" title="提供着色器属性值"></a>提供着色器属性值</h3><p>有以下方式可以向着色器程序提供着色器属性值，使用时需确保与代码块中的变量名一致且类型匹配。</p>
+<ol>
+<li>MaterialPropertyBlock 中设置的每渲染器值。</li>
+<li>渲染对象所用材质球上的值，包括直接用代码传入的运行时值或<code>Properties</code>块中定义的序列化值。</li>
+<li>全局着色器属性值。</li>
+<li>该变量类型的默认值。</li>
+</ol>
+<p>当同时使用多种途径提供属性值时，将按上述顺序作为优先级进行调用。</p>
+<h3 id="特殊的着色器属性值"><a href="#特殊的着色器属性值" class="headerlink" title="特殊的着色器属性值"></a>特殊的着色器属性值</h3><p>一些着色器属性在传入时还会附带一些额外数据，可通过定义符合这些额外属性命名和类型规范的变量来接收。</p>
+<ul>
+<li><code>float4 &lt;textureVarName&gt;_ST</code>：纹理属性额外的平铺和偏移信息。内容如下<code>(x平铺值,y平铺值,x偏移值,y偏移值)</code>。</li>
+<li><code>float4 &lt;textureVarName&gt;_TexelSize</code>：纹理属性额外的大小信息，内容如下<code>(1.0/宽度,1.0/高度,宽度,高度)</code>。</li>
+<li><code>float4 &lt;textureVarName&gt;_HDR</code>：纹理属性额外的 HDR 参数信息，指明如何在当前颜色空间下解码可能的 HDR 纹理，详见 UnityCG.cginc 中 DecodeHDR 函数。</li>
+</ul>
+<h3 id="颜色空间下的数据转换"><a href="#颜色空间下的数据转换" class="headerlink" title="颜色空间下的数据转换"></a>颜色空间下的数据转换</h3><p>通常情况下纹理颜色等信息都是基于 sRGB 空间存储的，其会更多的存储暗色部分的颜色，这也更符合人眼的认知特征。但现实的物理计算都是基于线性空间的，因此为了更真实的渲染效果，通常都需要进行转换。</p>
+<p>幸运的是，当 Unity 的渲染设置为线性空间时，Unity 会自动将 sRGB 空间的输入转换为线性空间，确保在着色器程序中直接拿到手的就是线性值。这主要是针对以下类型起作用：</p>
+<ul>
+<li>纹理属性</li>
+<li>颜色属性</li>
+</ul>
+<p>其他属性如浮点数、向量则不会转换，除非是显式的在属性块中添加了<code>[Gamma]</code>特性标签。</p>
+<h2 id="内置着色器成员"><a href="#内置着色器成员" class="headerlink" title="内置着色器成员"></a>内置着色器成员</h2><p>Unity 提供一些必要和常用的内置成员以便获取着色器环境、渲染数据等。</p>
+<p>但要注意的是，不同渲染管线中提供的内置成员并不完全兼容，实际使用时还要具体看文档。</p>
+<h3 id="内置头文件"><a href="#内置头文件" class="headerlink" title="内置头文件"></a>内置头文件</h3><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/SL-BuiltinIncludes.html">https://docs.unity.cn/cn/2022.3/Manual/SL-BuiltinIncludes.html</a></p>
+<p>所有内置成员都是通过头文件引入的，不同的功能会用到不同的头文件，如果是使用<code>GCPROGRAM</code>代码块，Unity 还会自动引入一些常用头文件。</p>
+<p>不过可惜这仅是内置渲染管线所用的头文件，如果是其他 SRP，则需要选择引入不同的头文件。</p>
+<h3 id="内置宏"><a href="#内置宏" class="headerlink" title="内置宏"></a>内置宏</h3><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/SL-BuiltinMacros.html">https://docs.unity.cn/cn/2022.3/Manual/SL-BuiltinMacros.html</a></p>
+<p>Unity 内置了一些平台宏或宏函数，以在编译阶段帮助处理平台差异。</p>
+<ul>
+<li>当前编译的平台</li>
+<li>当前编译的着色器模型</li>
+<li>当前编译的 Unity 版本</li>
+<li>当前编译的着色器阶段</li>
+<li>当前平台的支持功能</li>
+<li>当前平台的阴影贴图处理</li>
+<li>当前平台的常量缓冲区处理</li>
+<li>当前平台的纹理采样器处理</li>
+<li>当前平台的深度纹理处理</li>
+<li>禁用自动升级着色器代码</li>
+<li>当前编译的表面着色器的通道</li>
+</ul>
+<h3 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h3><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/SL-BuiltinMacros.html">https://docs.unity.cn/cn/2022.3/Manual/SL-BuiltinMacros.html</a></p>
+<p>一些常用的函数，实现空间变换、光照阴影等功能，可惜内置渲染管线和 SRP 中所用的函数并不相通。</p>
+<h3 id="内置变量"><a href="#内置变量" class="headerlink" title="内置变量"></a>内置变量</h3><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/SL-UnityShaderVariables.html">https://docs.unity.cn/cn/2022.3/Manual/SL-UnityShaderVariables.html</a></p>
+<p>内置变量是外部传入的渲染计算所需的参数，通常应通过内置函数访问而不是直接使用。</p>
+<ul>
+<li>空间变换矩阵</li>
+<li>相机与屏幕信息</li>
+<li>时间</li>
+<li>光照（光源信息、光照贴图、雾效和环境光）</li>
+<li>其他（LODGroup 等级、UI 纹理格式）</li>
+</ul>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><ul>
+<li><code>float</code>：32 位高精度浮点数。</li>
+<li><code>half</code>：16 位半精度浮点数。</li>
+<li><code>fixed</code>：11 位低精度浮点数。过时类型，仅 OpenGL ES 2.0 支持。</li>
+</ul>
+<p>在高端平台（如 PC）的 GPU 中始终使用高精度，仅当面向移动 GPU 时精度选择才会起效。</p>
+<p>更低精度的浮点数通常性能更高，虽然随着硬件发展，性能优势可能逐步减弱，但依然会更加节省功耗。所以只要精度够用应优先使用低精度，然后按需提高。</p>
+<h4 id="浮点数后缀"><a href="#浮点数后缀" class="headerlink" title="浮点数后缀"></a>浮点数后缀</h4><p>HLSL 原生语法中支持浮点数后缀，但<strong>Unity 不支持</strong>，所有带后缀的浮点数都将被识别为 float 类型，这可能导致计算精度提高而<strong>造成负面的性能影响</strong>。</p>
+<h4 id="特殊浮点数"><a href="#特殊浮点数" class="headerlink" title="特殊浮点数"></a>特殊浮点数</h4><p>对于如无穷大、非数值等特殊浮点数，不同 GPU 间处理方式可能不同。</p>
+<p>所有支持 Direct3D10 的电脑 GPU 都支持 IEEE754 浮点标准，所以处理浮点数的行为和常规 CPU 编程语言一致。</p>
+<p>移动 GPU 的支持级别则可能不同，所以<strong>必须确保在目标设备上测试着色器以检查支持情况</strong>。</p>
+<h3 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h3><ul>
+<li><code>int</code></li>
+</ul>
+<p>在一些老式平台上（如 OpenGL ES 2.0）不支持，甚至需要用复杂的浮点运算去模拟一些位、逻辑运算。</p>
+<h3 id="矢量"><a href="#矢量" class="headerlink" title="矢量"></a>矢量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">&lt;type&gt;&lt;number&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>type：任意整数或浮点数类型。</li>
+<li>number：任意整数。</li>
+</ul>
+<p>如 <code>float2</code>、<code>int3</code>。</p>
+<h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">&lt;type&gt;&lt;number&gt;x&lt;number&gt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>type：任意整数或浮点数类型。</li>
+<li>number：任意整数。</li>
+</ul>
+<p>如 <code>int2x3</code>、<code>float4x4</code>。</p>
+<p>在一些老式平台（如 OpenGL ES 2.0）仅支持方形矩阵。</p>
+<h3 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">sampler&lt;type&gt;[_&lt;precision&gt;]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>type：任意纹理类型</p>
+<ul>
+<li>2D：常用的平面纹理。</li>
+<li>3D</li>
+<li>CUBE</li>
+</ul>
+</li>
+<li><p>precision：任意精度类型</p>
+<ul>
+<li>half</li>
+<li>float</li>
+</ul>
+</li>
+</ul>
+<p>如 <code>sampler2D</code>、<code>samplerCUBE_float</code>。</p>
+<h4 id="精度后缀"><a href="#精度后缀" class="headerlink" title="精度后缀"></a>精度后缀</h4><p>纹理支持可选的后缀来描述精度，但实际上如果不写明后缀，最终也会由 Unity 根据“着色器精度”设置自动添加后缀。</p>
+<p>在移动平台，纹理精度后缀默认为 <code>half</code>。</p>
+<h4 id="采样器状态"><a href="#采样器状态" class="headerlink" title="采样器状态"></a>采样器状态</h4><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/SL-SamplerStates.html">https://docs.unity.cn/cn/2022.3/Manual/SL-SamplerStates.html</a></p>
+<p>在许多较新的 API 中，采样器和纹理可以分开定义，并支持在着色器中直接声明采样模式。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="category-chain-item">工作</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/" class="category-chain-item">Unity</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E7%9D%80%E8%89%B2%E5%99%A8/" class="category-chain-item">着色器</a>
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【Unity】PassCode 语法笔记</div>
+      <div>https://bdffzi-blog.pages.dev/posts/3793607597.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月26日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/3262553639.html" title="【Unity】着色器平台差异笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【Unity】着色器平台差异笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/3863423297.html" title="【Unity】着色器变体笔记">
+                        <span class="hidden-mobile">【Unity】着色器变体笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
+  </br>
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
+      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            pageview: window.origin.includes("localhost")?false:true,
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+<script src="/assets/js/mermaid.min.js"></script>
+<script src="/assets/js/enableMermaid.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,17 +1,18 @@
 ---
 abbrlink: 3993342442
-date: '2024-01-14 11:43'
+date: "2024-01-14 11:43"
 categories:
   - 学习
   - 软件开发
 ---
-# 【软件开发】Git概念与常用命令
 
-## Git概念
+# 【软件开发】Git 概念与常用命令
+
+## Git 概念
 
 ### 存储方式
 
-Git是分布式存储，每一个clone下来的仓库都可以看成独立的个体，只是Git有提供同步功能，因此Git支持离线使用，因为本质上本地和云端是两个仓库。
+Git 是分布式存储，每一个 clone 下来的仓库都可以看成独立的个体，只是 Git 有提供同步功能，因此 Git 支持离线使用，因为本质上本地和云端是两个仓库。
 
 ### 仓库构成
 
@@ -27,7 +28,7 @@ Git是分布式存储，每一个clone下来的仓库都可以看成独立的个
 
 子模块是对其他仓库中的引用，具体而言是引用了分支-提交，对本仓库而言它也是一种受版本控制的文件，文件中存放着引用信息，所以和正常文件一样，修改时要添加到暂存区，删除时也要从仓库区中移除。
 
-子模块所引用的分支版本信息可以从.git/index文件中找到。
+子模块所引用的分支版本信息可以从.git/index 文件中找到。
 
 #### 标签（tag）
 
@@ -58,13 +59,13 @@ Git是分布式存储，每一个clone下来的仓库都可以看成独立的个
 
 #### 规则
 
-- commit、tag、branch互换：
+- commit、tag、branch 互换：
 
-  tag是commit的别名，两者等价。使用branch则会使用其HEAD。
+  tag 是 commit 的别名，两者等价。使用 branch 则会使用其 HEAD。
 
-- file通配：
+- file 通配：
 
-  file支持glob通配符，也可用“.”表示全部可处理文件。
+  file 支持 glob 通配符，也可用“.”表示全部可处理文件。
 
 ### 仓库初始化和配置
 
@@ -96,19 +97,15 @@ git reflog #查看当前仓库操作记录（可用于还原reset）
 ```bash
 git ls-files [--cached] #查看工作区[暂存区]文件
 
-
 git add <file> #提交工作区文件到暂存区
 git rm [--cached] <file>... #删除工作区[暂存区]文件
 git restore [--staged] <file> #复原工作区[暂存区]文件
 git commit -m '<message>' #提交暂存区文件到仓库区
 
-
 git stash #暂存工作区修改，使工作区看起来干净了，从而安全执行切换分支等命令
 git stash pop #取出暂存的工作区修改
 
-
 git reset [--hard] <commit> #将当前分支[包含工作区]重置到某次提交的状态
-git clean -dfx #清除工作区中所有未被跟踪的文件
 ```
 
 ### 分支处理
@@ -119,12 +116,10 @@ git branch <new-branch> <commit> #创建一个基于目标提交的新分支
 git branch -m <new-name> #重命名当前分支
 git branch -d <branch> #删除目标分支
 
-
 git checkout --orphan temp #保持工作区不变，创建并切换到一个空分支，
 git switch -c <new-branch> <commit> #创建并切换到基于某次提交的新分支
 git switch <branch> #切换到目标分支
 git switch --detach <commit> #创建并切换到以某次提交为头的临时匿名分支
-
 
 git rebase -i <commit> #进入提交融并功能，可融并指定提交之后的所有提交（使用空融并配置可以退出该功能）
 git rebase <branch> #将目标分支覆盖到当前分支
@@ -203,7 +198,46 @@ git commit -m '-' #提交暂存区文件作为初始提交
 git push --force #强制覆盖到远程仓库，分支记录将重新开始
 ```
 
+### 清除工作区中所有未被跟踪的文件
+
+无法撤销，用前一定要备份！
+
+```bash
+git clean -dfx #清除工作区中所有未被跟踪的文件
+```
+
+## gitignore 文件
+
+### 书写格式
+
+- 每行一个忽略项。
+
+- 支持`*`作为通配符。
+
+- 限定忽略项类型：
+
+  - 文件或目录：只填完全名称，如`test`、`text.txt`。
+  - 仅目录：添加`/`后缀，如`test/`。
+
+- 限定忽略项位置：
+
+  - 从当前目录匹配：带`/`前缀，如`/test`。
+  - 从任意目录匹配：不带任何前缀，如`test`。
+
+- 添加`!`前缀取消忽略，如`!test.txt`。
+
+  注意如果整个目录都被忽略了，那没法生效。
+
+### 取消跟踪
+
+gitignore 只能忽略未跟踪文件，如果文件已被跟踪需先从仓库中删去。
+
+```bash
+git rm --cached <file> # 删除暂存区中的某文件
+```
+
 ## 参考资料
 
 - [Git Submodule 命令与理解](https://zhuanlan.zhihu.com/p/156615362)
 - [Git 合并多个提交的正确方式](https://zhuanlan.zhihu.com/p/139321091)
+- [如何在 Git 中忽略文件和文件夹](https://www.freecodecamp.org/chinese/news/gitignore-file-how-to-ignore-files-and-folders-in-git/)
