@@ -9,7 +9,7 @@ categories:
   - 纹理
 ---
 
-# Mipmaps（多级渐进纹理）
+# 【Unity】Mipmaps（多级渐进纹理）
 
 https://docs.unity.cn/cn/2022.3/Manual/texture-mipmaps.html
 
