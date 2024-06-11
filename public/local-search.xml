@@ -4,6 +4,48 @@
   
   
   <entry>
+    <title>【引擎开发】纹理相关属性说明</title>
+    <link href="/posts/3631212322.html"/>
+    <url>/posts/3631212322.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="【引擎开发】纹理相关属性说明"><a href="#【引擎开发】纹理相关属性说明" class="headerlink" title="【引擎开发】纹理相关属性说明"></a>【引擎开发】纹理相关属性说明</h1><h2 id="伽马与线性空间"><a href="#伽马与线性空间" class="headerlink" title="伽马与线性空间"></a>伽马与线性空间</h2><p>伽马与线性空间都是一种颜色空间，也即颜色存储时的分布方式，伽马空间相比线性空间会更多的存储图片的暗色部分。</p><p>伽马空间现在是图片存储的标准格式。选择伽马空间的原因有两点：</p><ol><li>早期阴极射线管（CRT）显示器的输出会比输入颜色看上去偏暗，所以需要抬高输入值。</li><li>人的眼睛对暗色比亮色更加敏感，所以更多的保存暗色，图片视觉效果也越保真。</li><li>如今的显示器虽然可以实现线性输入输出，但也继承了 CRT 显示器的非线性特性。</li></ol><p>线性空间更符合现实光线的物理特性，所以着色器计算需要线性空间颜色。</p><h3 id="sRGB"><a href="#sRGB" class="headerlink" title="sRGB"></a>sRGB</h3><p>sRGB 是公认的标准伽马空间，所以 sRGB 也是图片的默认保存方式。</p><p>sRGB 的具体保存方式就是对原本的线性颜色值进行调色（$y&#x3D;x^{\frac{1}{2.2}}$），从而牺牲亮色空间以存储更多暗色。</p><p>光照计算时需要线性颜色，因此使用 sRGB 纹理需先将颜色逆推转回线性空间（$y&#x3D;x^{2.2}$），不然纹理就会看上去比原本亮的多。</p><h2 id="mipmaps"><a href="#mipmaps" class="headerlink" title="mipmaps"></a>mipmaps</h2><p>mipmaps 是一种 GPU 采样策略。其先基于原纹理生成多张分辨率逐渐降低的小纹理，然后根据实际渲染时纹理在屏幕上的大小占比，选择其中最合适的纹理进行采样。</p><ol><li>分辨率降低以 2 的倍数进行，mipmap 等级越高分辨率越小。</li><li>判断纹理占比大小的方式是通过<code>DDX</code>和<code>DDY</code>函数来对比当前像素与旁边像素的 uv 变化率来确定的，屏幕占比越小，变化率越大，采样所用的 mipmap 等级越大。</li></ol><p>mipmaps 可以解决纹理分辨率和实际显示分辨率不同导致的过采样问题，具体而言有以下两点：</p><ol><li>减少过采样导致的性能浪费，因为分辨率越低的纹理采样性能越高。</li><li>解决过采样导致的显示异常（摩尔纹）。</li></ol><p>为了存储额外的低分辨率纹理，mipmaps 会占用一定额外空间，如果纹理的使用常见不存在上述问题（如 UI），则不应该使用 mipmap 功能。</p><h3 id="各向异性"><a href="#各向异性" class="headerlink" title="各向异性"></a>各向异性</h3><p>各项异性指物体从不同角度来看其性质会有所不同，放在纹理中是指 uv 两个轴的变化率不同：</p><ul><li>如果正着看纹理，uv 双轴的变化率是差不多的，此时为各向同性。</li><li>如果倾斜看纹理，uv 双轴变化率可能相差非常大，此时为各项异性。</li></ul><p>默认情况下 mipmaps 只考虑正视情况，生成的 mipmap 会均匀的混合周围所有的点，但倾斜时相比正视所能看到的点数量和位置是不同的。继续用这样的 mipmap 采样就会错误采到本该消失的点，导致出现晕影，看起来就像远处被模糊了一样。</p><p>所以启用 mipmaps 后应默认启用各项异性功能。这样 mipmaps 会额外存储一些不同宽高缩放比的 mipmap 以应对倾斜采样的情况。各向异性等级越高，这种 mipmap 就越多，应对能力也就越强。</p><h2 id="过滤模式"><a href="#过滤模式" class="headerlink" title="过滤模式"></a>过滤模式</h2><p>指示 GPU 如何采用纹理。</p><ul><li>点（无过滤）：只取 uv 最近像素的颜色信息。</li><li>双线性：取 uv 最近四个像素的颜色信息并混合。</li><li>三线性：对最近两张 mipmap 进行双线性采样，然后再混合。</li></ul><h2 id="包裹模式"><a href="#包裹模式" class="headerlink" title="包裹模式"></a>包裹模式</h2><p>指示 GPU 当采样时的 uv 输入值超出 $[0,1]$ 范围时如何处理。</p><ul><li>重复：对输入值取模以纠正回范围内。</li><li>夹紧：将输入值限制在最大范围内。</li><li>镜像：类似乒乓的方式将输入值纠正回范围。</li><li>镜像一次：只在 $[-1,0]$ 范围内镜像一次，其他范围使用夹紧。</li></ul><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://docs.unity.cn/cn/2022.3/Manual/LinearLighting.html">Unity 文档-颜色空间</a></li><li><a href="https://en.wikipedia.org/wiki/SRGB">Wikipedia-sRGB</a></li><li><a href="https://www.zhihu.com/question/411035839/answer/1986329452">游戏画面设置中的“各向异性过滤”是做什么的？</a></li><li><a href="https://docs.unity3d.com/2020.3/Documentation/Manual/class-TextureImporter.html">Unity 文档-纹理导入设置</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+      <category>引擎开发</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【软件开发】Doxygen 使用笔记</title>
+    <link href="/posts/1794241118.html"/>
+    <url>/posts/1794241118.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="【软件开发】Doxygen-使用笔记"><a href="#【软件开发】Doxygen-使用笔记" class="headerlink" title="【软件开发】Doxygen 使用笔记"></a>【软件开发】Doxygen 使用笔记</h1><p>Doxygen 是通过代码注释生成文档的事实标准，借用该工具可以将文档内容与代码写在一起方便维护。</p><p><a href="https://github.com/doxygen/doxygen">https://github.com/doxygen/doxygen</a></p><h2 id="注释语法"><a href="#注释语法" class="headerlink" title="注释语法"></a>注释语法</h2><p>采用特殊的注释形式，以便 Doxygen 识别为文档内容。</p><p>文档内容支持使用一些基本 Markdown 语法编写。</p><ul><li><p>多行注释</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/*!</span><br><span class="hljs-comment">注释内容</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure></li><li><p>单行注释</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//!&lt; 注释内容</span><br></code></pre></td></tr></table></figure></li><li><p>文件注释</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/*! @file</span><br><span class="hljs-comment">注释内容</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure></li></ul><h2 id="生成方式"><a href="#生成方式" class="headerlink" title="生成方式"></a>生成方式</h2><p>Doxygen 必须通过读取配置文件来运行构建程序。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">doxygen -g <span class="hljs-comment"># 创建默认配置文件（Doxyfile）</span><br>doxygen [&lt;file&gt;] <span class="hljs-comment"># 以默认[指定]配置文件运行构建</span><br></code></pre></td></tr></table></figure><h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>一些常用的配置文件参数，构建前一般需要调整：</p><ul><li>OUTPUT_LANGUAGE：输出语言。</li><li>INPUT：需要构建的源文件目录。</li><li>RECURSIVE：是否递归源文件目录。</li><li>FILE_PATTERNS：需要构建的源文件类型。</li><li>EXTENSION_MAPPING：扩展名映射。</li></ul><h2 id="其他提示"><a href="#其他提示" class="headerlink" title="其他提示"></a>其他提示</h2><ul><li>关于文件路径参数的填写，若要使用本地路径，必须添加<code>./</code>前缀。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+      <category>软件开发</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【Unity】可编程渲染管线</title>
     <link href="/posts/2520479343.html"/>
     <url>/posts/2520479343.html</url>
@@ -552,30 +594,7 @@
     <link href="/posts/648367824.html"/>
     <url>/posts/648367824.html</url>
     
-    <content type="html"><![CDATA[<h1 id="【英语语法笔记】句子"><a href="#【英语语法笔记】句子" class="headerlink" title="【英语语法笔记】句子"></a>【英语语法笔记】句子</h1><p>英语是一种语言，语言都是为了描述事物而存在，无论是汉语还是编程甚至数学都可以理解为一种语言，因此之间都存在共性。</p><p>学习英语语法的目的是为了能将英语单词（也可能是短语甚至句子）拼凑成一个完整的句子，所以要从句子的角度出发去，只要理解了句子的组成原理就等于掌握的语法。</p><p>句子由两部分构成。</p><ul><li>成分：每个单词在句子中担任的角色。</li><li>句型：决定了成分组合后的最终含义。</li></ul><h2 id="句子成分"><a href="#句子成分" class="headerlink" title="句子成分"></a>句子成分</h2><p>根据单词在句子中的角色，可以分为以下几种成分。</p><ul><li>谓语：主语的动作或状态。</li><li>主语：句子的描述对象。</li><li>宾语：谓语的承担者。</li><li>定语：修饰名词、代词。</li><li>状语：修饰动词、形容词。</li><li>补语：补足不完全的信息。</li></ul><h3 id="谓语"><a href="#谓语" class="headerlink" title="谓语"></a>谓语</h3><p>谓语代表一种动作，运动、定义、感受都是一种动作，这就类似于数学中的函数。</p><p>一个句子最重要也是必不可少的是谓语，因为生命在于运动，时间因动而能被观测，所以任何事情的描述都一定需要谓语存在。</p><h3 id="主语、宾语"><a href="#主语、宾语" class="headerlink" title="主语、宾语"></a>主语、宾语</h3><p>任何动作都不可能凭空发生，所以谓语一定有其发起人和接收人，这就对应了出了主语与宾语。</p><p>根据谓语的不同，对主语和宾语的需求也不一样，这就好像不同数学函数对参数需求也不一样，谓语同样如此。任何事物都可能成为主语或宾语，个人或物、动作或概念……这都有可能。</p><h3 id="定语、状语"><a href="#定语、状语" class="headerlink" title="定语、状语"></a>定语、状语</h3><p>主语、宾语的信息可以进一步完善，比如描述所属人，描述状态外观等，这些就需要用到定语。</p><p>谓语也是一样，可以描述动作的频率程度等，甚至进一步描述定语状语本身，这些就需要用到状语。</p><h3 id="补语"><a href="#补语" class="headerlink" title="补语"></a>补语</h3><p>有时光靠已有句子成分表示的内容并不不完整，为了额外补充一些信息可以借助补语实现。</p><h2 id="句子形态"><a href="#句子形态" class="headerlink" title="句子形态"></a>句子形态</h2><p>句子形态决定了句子成分组合后的最终含义，具体而言可以分以下几种。</p><h3 id="决定语态"><a href="#决定语态" class="headerlink" title="决定语态"></a>决定语态</h3><p>不同的语态决定了谓语与主语宾语的关系。</p><ul><li>主动语态</li><li>被动语态</li></ul><h4 id="主动语态"><a href="#主动语态" class="headerlink" title="主动语态"></a>主动语态</h4><p>主语做动作发起者，谓语做动作，宾语做承担者，表示..把..怎么了。</p><ul><li><p><code>主语 + 谓语 + 宾语</code></p><p>最基本的主动语态，如：“He + enjoys + reading”。</p></li><li><p><code>主语 + 谓语 + 间接宾语 + 直接宾语</code></p><p>部分谓语需要两个宾语，如：“You + give + me + a book”。</p></li><li><p><code>主语 + 谓语 + 宾语 + 宾语补语</code></p><p>仅靠宾语无法表达完整内容，如：“You + make + me + happy”。</p></li></ul><h4 id="被动语态"><a href="#被动语态" class="headerlink" title="被动语态"></a>被动语态</h4><p>主语做动作承担者，定语（此处一般叫表语）表明承担的动作，表示..被怎么了。</p><ul><li><p><code>主语 + 谓语</code></p><p>配合不及物动词实现宾语的省略，如：“The sun + rises”。</p></li><li><p><code>主语 + 谓语（系动词） + 定语</code></p><p>最基本的被动语态，如：“He + was + heard”（他被听到了）。注意当此处用动词做定语时要变成过去式。</p></li></ul><p>此外可利用句尾加 <code>by + ...</code> 来额外描述动作或状态的发起者。</p><h3 id="决定语气"><a href="#决定语气" class="headerlink" title="决定语气"></a>决定语气</h3><p>不同的语气决定了同一件事但不同的视角。</p><ul><li>陈述句</li><li>否定句</li><li>祈使句</li><li>感叹句</li><li>疑问句</li></ul><h4 id="陈述句"><a href="#陈述句" class="headerlink" title="陈述句"></a>陈述句</h4><p>默认的句子类型。</p><ol><li>参考基本语态句型实现即可。</li></ol><h4 id="否定句"><a href="#否定句" class="headerlink" title="否定句"></a>否定句</h4><p>一种表示否定的陈述句。</p><ol><li>先写出陈述句。</li><li>然后在助动词后加 not。（如果没有助动词则按目标类型添加相应的助动词）</li></ol><h4 id="祈使句"><a href="#祈使句" class="headerlink" title="祈使句"></a>祈使句</h4><p>表达命令、劝告等，语气强烈的句子。</p><ol><li>省略主语，使谓语做句首。</li><li>可在开头或结尾加上 please，使语气客气。</li></ol><h4 id="感叹句"><a href="#感叹句" class="headerlink" title="感叹句"></a>感叹句</h4><p>一种感情更强烈的陈述句。</p><ol><li>将疑问词做代词放在句首。</li><li>然后在后面用从句解释它。</li></ol><h4 id="疑问句"><a href="#疑问句" class="headerlink" title="疑问句"></a>疑问句</h4><h5 id="一般疑问句"><a href="#一般疑问句" class="headerlink" title="一般疑问句"></a>一般疑问句</h5><p>用于询问一些简单的，针对已知事实的问题，回答一般是“是、否”之类。</p><ol><li>先写出陈述句。</li><li>然后添加或移动助动词到句首。</li></ol><h5 id="特殊疑问句"><a href="#特殊疑问句" class="headerlink" title="特殊疑问句"></a>特殊疑问句</h5><p>配合疑问词，询问一些更复杂的，针对未知事实的问题。</p><ol><li>先构成类似一般疑问句的句型。</li><li>在句首添加疑问词指明询问内容。</li></ol><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/111590211">英语中的五大基本句型</a></li><li><a href="https://www.zhihu.com/tardis/zm/art/336913504">英语语法：十大词类、八种句子成分、五种基本句型</a></li><li><a href="https://zhuanlan.zhihu.com/p/643919605">英语句子分类 1：按句子的功能分类：陈述句、祈使句、一般&#x2F;特殊疑问句、感叹句</a></li><li><a href="https://www.cpsenglish.com/article/341">英语基础语法快速入门——被动语态</a></li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习</category>
-      
-      <category>英语</category>
-      
-      <category>英语语法笔记</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【英语语法笔记】比较级与最高级</title>
-    <link href="/posts/3611936726.html"/>
-    <url>/posts/3611936726.html</url>
-    
-    <content type="html"><![CDATA[<h1 id="【英语语法笔记】比较级与最高级"><a href="#【英语语法笔记】比较级与最高级" class="headerlink" title="【英语语法笔记】比较级与最高级"></a>【英语语法笔记】比较级与最高级</h1><p>在英语中表示“更怎么”、“最怎么”是通过对形容词变形实现的。</p><h2 id="比较级"><a href="#比较级" class="headerlink" title="比较级"></a>比较级</h2><h3 id="变形方式"><a href="#变形方式" class="headerlink" title="变形方式"></a>变形方式</h3><ol><li>一般情况，直接加 er。</li><li>以不发音的 e 结尾，去 e 加 er。</li><li>以辅音字母+y 结尾，变 y 为 i 再加 er。</li><li>以重读闭音节结尾，双写最后一个字母再加 er。</li><li>多音节和部分双音节，单词前加 more（肯定）&#x2F; less（否定）。</li><li>少部分有特殊形式。</li></ol><h3 id="使用例子"><a href="#使用例子" class="headerlink" title="使用例子"></a>使用例子</h3><ul><li>利用连词 than（比）连接前后比较对象。</li><li>比较 + and + 比较：表示事物越来越怎么。</li></ul><h2 id="最高级"><a href="#最高级" class="headerlink" title="最高级"></a>最高级</h2><h3 id="变形方式-1"><a href="#变形方式-1" class="headerlink" title="变形方式"></a>变形方式</h3><ol><li>一般情况，直接加 est。</li><li>以不发音的 e 结尾，去 e 加 est。</li><li>以辅音字母+y 结尾，变 y 为 i 再加 est。</li><li>以重读闭音节结尾，双写最后一个字母再加 est。</li><li>多音节和部分双音节，单词前加 most（肯定）&#x2F; least（否定）。</li><li>少部分有特殊形式。</li></ol><h3 id="使用例子-1"><a href="#使用例子-1" class="headerlink" title="使用例子"></a>使用例子</h3><ul><li>利用前面加 the 表示那个最怎么的事物。</li></ul><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/364060441">形容词的比较级和最高级</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="【英语语法笔记】句子"><a href="#【英语语法笔记】句子" class="headerlink" title="【英语语法笔记】句子"></a>【英语语法笔记】句子</h1><p>英语是一种语言，语言都是为了描述事物而存在，无论是汉语还是编程甚至数学都可以理解为一种语言，因此之间都存在共性。</p><p>学习英语语法的目的是为了能将英语单词（也可能是短语甚至句子）拼凑成一个完整的句子，所以要从句子的角度出发去，只要理解了句子的组成原理就等于掌握的语法。</p><p>句子由两部分构成。</p><ul><li>成分：每个单词在句子中担任的角色。</li><li>句型：决定了成分组合后的最终含义。</li></ul><h2 id="句子成分"><a href="#句子成分" class="headerlink" title="句子成分"></a>句子成分</h2><p>根据单词在句子中的角色，可以分为以下几种成分。</p><ul><li>谓语：主语的动作或状态。</li><li>主语：句子的描述对象。</li><li>宾语：谓语的承担者。</li><li>定语：修饰名词、代词。</li><li>状语：修饰动词、形容词。</li><li>补语：补足不完全的信息。</li></ul><h3 id="谓语"><a href="#谓语" class="headerlink" title="谓语"></a>谓语</h3><p>谓语代表一种动作，运动、定义、感受都是一种动作，这就类似于数学中的函数。</p><p>一个句子最重要也是必不可少的是谓语，因为生命在于运动，时间因动而能被观测，所以任何事情的描述都一定需要谓语存在。</p><h3 id="主语、宾语"><a href="#主语、宾语" class="headerlink" title="主语、宾语"></a>主语、宾语</h3><p>任何动作都不可能凭空发生，所以谓语一定有其发起人和接收人，这就对应了出了主语与宾语。</p><p>根据谓语的不同，对主语和宾语的需求也不一样，这就好像不同数学函数对参数需求也不一样，谓语同样如此。任何事物都可能成为主语或宾语，个人或物、动作或概念……这都有可能。</p><h3 id="定语、状语"><a href="#定语、状语" class="headerlink" title="定语、状语"></a>定语、状语</h3><p>主语、宾语的信息可以进一步完善，比如描述所属人，描述状态外观等，这些就需要用到定语。</p><p>谓语也是一样，可以描述动作的频率程度等，甚至进一步描述定语状语本身，这些就需要用到状语。</p><h3 id="补语"><a href="#补语" class="headerlink" title="补语"></a>补语</h3><p>有时光靠已有句子成分表示的内容并不不完整，为了额外补充一些信息可以借助补语实现。</p><h2 id="句子形态"><a href="#句子形态" class="headerlink" title="句子形态"></a>句子形态</h2><p>句子形态决定了句子成分组合后的最终含义，具体而言可以分以下几种。</p><h3 id="决定语态"><a href="#决定语态" class="headerlink" title="决定语态"></a>决定语态</h3><p>不同的语态决定了谓语与主语宾语的关系。</p><ul><li>主动语态</li><li>被动语态</li></ul><h4 id="主动语态"><a href="#主动语态" class="headerlink" title="主动语态"></a>主动语态</h4><p>主语做动作发起者，谓语做动作，宾语做承担者，表示..把..怎么了。</p><ul><li><p><code>主语 + 谓语 + 宾语</code></p><p>最基本的主动语态，如：“He + enjoys + reading”。</p></li><li><p><code>主语 + 谓语 + 间接宾语 + 直接宾语</code></p><p>部分谓语需要两个宾语，如：“You + give + me + a book”。</p></li><li><p><code>主语 + 谓语 + 宾语 + 宾语补语</code></p><p>仅靠宾语无法表达完整内容，如：“You + make + me + happy”。</p></li></ul><h4 id="被动语态"><a href="#被动语态" class="headerlink" title="被动语态"></a>被动语态</h4><p>主语做动作承担者，定语（此处一般叫表语）表明承担的动作，表示自身“被怎么了”或“怎么了”。</p><ul><li><p><code>主语 + 谓语</code></p><p>配合不及物动词实现宾语的省略，如：“The sun + rises”。</p></li><li><p><code>主语 + 谓语（系动词） + 定语</code></p><p>最基本的被动语态，如：“He + was + heard”（他被听到了）。注意当此处用动词做定语时要变成过去式。</p></li></ul><p>此外可利用句尾加 <code>by + ...</code> 来额外描述动作或状态的发起者。</p><h3 id="决定语气"><a href="#决定语气" class="headerlink" title="决定语气"></a>决定语气</h3><p>不同的语气决定了同一件事但不同的视角。</p><ul><li>陈述句</li><li>否定句</li><li>祈使句</li><li>感叹句</li><li>疑问句</li></ul><h4 id="陈述句"><a href="#陈述句" class="headerlink" title="陈述句"></a>陈述句</h4><p>默认的句子类型。</p><ol><li>参考基本语态句型实现即可。</li></ol><h4 id="否定句"><a href="#否定句" class="headerlink" title="否定句"></a>否定句</h4><p>一种表示否定的陈述句。</p><ol><li>先写出陈述句。</li><li>然后在助动词后加 not。（如果没有助动词则按目标类型添加相应的助动词）</li></ol><h4 id="祈使句"><a href="#祈使句" class="headerlink" title="祈使句"></a>祈使句</h4><p>表达命令、劝告等，语气强烈的句子。</p><ol><li>省略主语，使谓语做句首。</li><li>可在开头或结尾加上 please，使语气客气。</li></ol><h4 id="感叹句"><a href="#感叹句" class="headerlink" title="感叹句"></a>感叹句</h4><p>一种感情更强烈的陈述句。</p><ol><li>将疑问词做代词放在句首。</li><li>然后在后面用从句解释它。</li></ol><h4 id="疑问句"><a href="#疑问句" class="headerlink" title="疑问句"></a>疑问句</h4><h5 id="一般疑问句"><a href="#一般疑问句" class="headerlink" title="一般疑问句"></a>一般疑问句</h5><p>用于询问一些简单的，针对已知事实的问题，回答一般是“是、否”之类。</p><ol><li>先写出陈述句。</li><li>然后添加或移动助动词到句首。</li></ol><h5 id="特殊疑问句"><a href="#特殊疑问句" class="headerlink" title="特殊疑问句"></a>特殊疑问句</h5><p>配合疑问词，询问一些更复杂的，针对未知事实的问题。</p><ol><li>先构成类似一般疑问句的句型。</li><li>在句首添加疑问词指明询问内容。</li></ol><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/111590211">英语中的五大基本句型</a></li><li><a href="https://www.zhihu.com/tardis/zm/art/336913504">英语语法：十大词类、八种句子成分、五种基本句型</a></li><li><a href="https://zhuanlan.zhihu.com/p/643919605">英语句子分类 1：按句子的功能分类：陈述句、祈使句、一般&#x2F;特殊疑问句、感叹句</a></li><li><a href="https://www.cpsenglish.com/article/341">英语基础语法快速入门——被动语态</a></li></ul>]]></content>
     
     
     <categories>
@@ -622,6 +641,29 @@
     <url>/posts/3075658332.html</url>
     
     <content type="html"><![CDATA[<h1 id="【英语语法笔记】表示时态"><a href="#【英语语法笔记】表示时态" class="headerlink" title="【英语语法笔记】表示时态"></a>【英语语法笔记】表示时态</h1><p>当动词做谓语时必须要负责描述句子中的时态、人称、人数等（统一简称时态）。</p><p>时态的表示是通过对动词变形或添加助动词来实现的。</p><h2 id="表示内容"><a href="#表示内容" class="headerlink" title="表示内容"></a>表示内容</h2><ul><li>表明事件发生的时间<ul><li>现在：现在发生。</li><li>过去：过去发生。</li><li>将来：将来发生。</li><li>过去将来：在过去表明将来发生。</li></ul></li><li>表明当时执行的状况<ul><li>一般：不说明执行状况。</li><li>进行：正在进行。</li><li>完成：已经完成。</li><li>完成进行：一直或反复发生且不中断。</li></ul></li><li>表明主语的人称数量<ul><li>第一人称。</li><li>第二人称或第三人称复数。</li><li>第三人称单数。</li></ul></li></ul><h2 id="动词变形"><a href="#动词变形" class="headerlink" title="动词变形"></a>动词变形</h2><h3 id="原型（do）"><a href="#原型（do）" class="headerlink" title="原型（do）"></a>原型（do）</h3><p>动词的最原始状态。</p><h3 id="第三人称单数（does）"><a href="#第三人称单数（does）" class="headerlink" title="第三人称单数（does）"></a>第三人称单数（does）</h3><p>用于体现主语的人称人数。</p><ol><li>一般情况，直接加 s。</li><li>以 s,x,ch,sh,o 结尾，直接加 es。</li><li>以辅音字母+y 结尾，变 y 为 i 再加 es。</li><li>少部分有特殊形式。</li></ol><h3 id="现在分词（doing）"><a href="#现在分词（doing）" class="headerlink" title="现在分词（doing）"></a>现在分词（doing）</h3><p>用于表示动作正在进行。</p><ol><li>一般情况，直接加 ing。</li><li>以不发音的 e 结尾，去 e 加 ing。</li><li>以重读闭音节结尾，双写最后一个字母再加 ing。</li><li>少部分有特殊形式。</li></ol><h3 id="过去分词（done）"><a href="#过去分词（done）" class="headerlink" title="过去分词（done）"></a>过去分词（done）</h3><p>配合 have 表示动作已完成。</p><ol><li>一般情况，直接加 ed。</li><li>以不发音的 e 结尾，去 e 加 ed。</li><li>以辅音字母+y 结尾，变 y 为 i 再加 ed。</li><li>以重读闭音节结尾，双写最后一个字母再加 ed。</li><li>少部分有特殊形式。</li></ol><h3 id="过去式（did）"><a href="#过去式（did）" class="headerlink" title="过去式（did）"></a>过去式（did）</h3><p>表示动作发生在过去。</p><ol><li>一般情况，和过去分词变化一致。</li><li>少部分有特殊形式。</li></ol><h2 id="助动词变形"><a href="#助动词变形" class="headerlink" title="助动词变形"></a>助动词变形</h2><p>时态之类的信息允许叠加，因此表示时态用的助动词也会有要变形的时候。</p><ul><li><p>be（进行时助动词）：</p><ul><li>过去分词：been</li><li>过去式：was（第一人称&#x2F;三单），were（复数）</li><li>一般式：am（第一人称），is（三单），are（复数）</li></ul></li><li><p>have（完成时助动词）：</p><ul><li>过去式&#x2F;过去分词：had</li><li>一般式：has</li></ul></li><li><p>will（将来时助动词）：</p><ul><li>过去式&#x2F;过去分词：would</li></ul></li><li><p>do：</p><ul><li>过去分词：done</li><li>过去式：did</li></ul></li></ul><h2 id="表示时态"><a href="#表示时态" class="headerlink" title="表示时态"></a>表示时态</h2><p>表示时态需要通过以下语法规则实现。</p><ol><li><p>表明状态</p><ol><li>表明进行时：be + doing</li><li>表明完成时：have + done</li><li>表明一般时：do</li></ol></li><li><p>表明时间</p><ol><li>表明将来：will + do</li><li>表明过去：did</li><li>表明现在：do</li></ol></li><li><p>表明人称</p><p>当动词在当前时态形变的基础上还可以进行人称变化时需要进行人称变化。</p><p>受助动词影响，基本上只有以下时态需要考虑三单变化。</p><ul><li>现在时</li><li>过去进行时</li></ul></li></ol><p>时态之类的信息允许叠加，叠加时要遵循以下规则：</p><ul><li>按时态名称倒序累加时态形变，最后判断人称形变，也即上述的排列顺序。</li><li>对于由多个助动词和主动词组成的动词序列，只需变形首动词即可。</li></ul><h2 id="最终总览"><a href="#最终总览" class="headerlink" title="最终总览"></a>最终总览</h2><p>组合后的变形效果如下：</p><table><thead><tr><th>时态</th><th>一般时（do）</th><th>进行时（be + doing）</th><th>完成时（have + done）</th><th>完成进行时</th></tr></thead><tbody><tr><td>现在（do&#x2F;does）</td><td>一般现在时</br> do&#x2F;does</td><td>现在进行时</br> am&#x2F;is&#x2F;are doing</td><td>现在完成时</br> have&#x2F;has done</td><td>现在完成进行时</br> have&#x2F;has been doing</td></tr><tr><td>过去 (did)</td><td>一般过去时</br> did</td><td>过去进行时</br> was&#x2F;were doing</td><td>过去完成时</br> had done</td><td>过去完成进行时</br> had been doing</td></tr><tr><td>将来 (will do)</td><td>一般将来时</br> will do</td><td>将来进行时</br> will be doing</td><td>将来完成时</br> will have done</td><td>将来完成进行时</br> will have been doing</td></tr><tr><td>过去将来</td><td>过去将来时</br> would do</td><td>过去将来进行时</br> would be doing</td><td>过去将来完成时</br> would have done</td><td>过去将来完成进行时</br> would have been doing</td></tr></tbody></table><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://baike.baidu.com/item/%E5%AE%8C%E6%88%90%E8%BF%9B%E8%A1%8C%E6%97%B6/2853937">百科-完成进行时</a></li><li><a href="https://baike.baidu.com/item/%E7%AC%AC%E4%B8%89%E4%BA%BA%E7%A7%B0%E5%8D%95%E6%95%B0/1586952">百科-第三人称单数</a></li><li><a href="https://baike.baidu.com/item/%E7%8E%B0%E5%9C%A8%E5%88%86%E8%AF%8D/4217655">百科-现在分词</a></li><li><a href="https://baike.baidu.com/item/%E8%BF%87%E5%8E%BB%E5%88%86%E8%AF%8D?fromModule=lemma_search-box">百科-过去分词</a></li><li><a href="https://zhuanlan.zhihu.com/p/137296107">过去将来时：英语里最分裂的时态就它 | 虫虫讲英语</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习</category>
+      
+      <category>英语</category>
+      
+      <category>英语语法笔记</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【英语语法笔记】形容词</title>
+    <link href="/posts/3611936726.html"/>
+    <url>/posts/3611936726.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="【英语语法笔记】形容词"><a href="#【英语语法笔记】形容词" class="headerlink" title="【英语语法笔记】形容词"></a>【英语语法笔记】形容词</h1><h2 id="比较级与最高级"><a href="#比较级与最高级" class="headerlink" title="比较级与最高级"></a>比较级与最高级</h2><p>在英语中表示“更怎么”、“最怎么”是通过对形容词变形实现的。</p><h3 id="比较级"><a href="#比较级" class="headerlink" title="比较级"></a>比较级</h3><h4 id="变形方式"><a href="#变形方式" class="headerlink" title="变形方式"></a>变形方式</h4><ol><li>一般情况，直接加 er。</li><li>以不发音的 e 结尾，去 e 加 er。</li><li>以辅音字母+y 结尾，变 y 为 i 再加 er。</li><li>以重读闭音节结尾，双写最后一个字母再加 er。</li><li>多音节和部分双音节，单词前加 more（肯定）&#x2F; less（否定）。</li><li>少部分有特殊形式。</li></ol><h4 id="使用例子"><a href="#使用例子" class="headerlink" title="使用例子"></a>使用例子</h4><ul><li>利用连词 than（比）连接前后比较对象。</li><li>比较 + and + 比较：表示事物越来越怎么。</li></ul><h3 id="最高级"><a href="#最高级" class="headerlink" title="最高级"></a>最高级</h3><h4 id="变形方式-1"><a href="#变形方式-1" class="headerlink" title="变形方式"></a>变形方式</h4><ol><li>一般情况，直接加 est。</li><li>以不发音的 e 结尾，去 e 加 est。</li><li>以辅音字母+y 结尾，变 y 为 i 再加 est。</li><li>以重读闭音节结尾，双写最后一个字母再加 est。</li><li>多音节和部分双音节，单词前加 most（肯定）&#x2F; least（否定）。</li><li>少部分有特殊形式。</li></ol><h4 id="使用例子-1"><a href="#使用例子-1" class="headerlink" title="使用例子"></a>使用例子</h4><ul><li>利用前面加 the 表示那个最怎么的事物。</li></ul><h2 id="形容词后置"><a href="#形容词后置" class="headerlink" title="形容词后置"></a>形容词后置</h2><p>一般情况下形容词放在被修饰名词的前面，但有时也会放在后面。</p><ul><li>形容词修饰不定代词时。</li><li>形容词修饰表示度量的名词。</li><li>以字母 a- 开头的表语形容词。</li><li>else 修饰疑问代词时，须后置。</li><li>当形容词前有 so, more, most 等词修饰时，常后置。</li><li>形容词短语通常后置，其功能相当于一个定语从句。</li><li>两个或两个以上的形容词用 and 或 or 连接作定语，表示强调意义时要后置。</li><li>形容词比较结构须后置定语。</li><li>有些形容词作前置定语时和后置定语时所表达的意义不同。</li></ul><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/364060441">形容词的比较级和最高级</a></li><li><a href="https://zhidao.baidu.com/question/109840484/answer/351021608.html">英语形容词修饰名词什么时候放在名词前，什么时候放在名词后？</a></li></ul>]]></content>
     
     
     <categories>
