@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          644 字
+          774 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          6 分钟
+          7 分钟
         
       </span>
     
@@ -890,38 +890,71 @@
 <li>代码间的关系应该层级分明，形成树形结构，不要出现越级操作。</li>
 <li>出现复制粘贴的编码方式时，应考虑封装相关代码避免复制粘贴。</li>
 </ul>
-<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><h3 id="通用规则"><a href="#通用规则" class="headerlink" title="通用规则"></a>通用规则</h3><ul>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>需要限定命名的原因</p>
+<ul>
+<li>统一风格，美观。</li>
+<li>便于区分类型和作用。</li>
+<li>避免重名。</li>
+</ul>
+<p>若没有上述十足的理由，不应强制实施命名规范，否则会增加工作负担。</p>
+<h3 id="风格限制"><a href="#风格限制" class="headerlink" title="风格限制"></a>风格限制</h3><ul>
 <li>使用驼峰命名法</li>
 <li>名字要容易理解</li>
 <li>倒序域名化命名</li>
 </ul>
 <p>名称怕短不怕长，可以结合上下文简化名称，但一定要能让别人理解意思。比如对于采用驼峰命名法的名称在其含有的单词间加入空格，放入翻译软件应能正确获取到对应中文名。</p>
 <p>名称结构要层次化，并按从大到小的顺序，便于分类和查找。如 DbTableServer,Db 说明是数据库相关功能，Table 表明是针对数据库中的表功能，Server 表示是一个实例类。</p>
-<h3 id="局部规则"><a href="#局部规则" class="headerlink" title="局部规则"></a>局部规则</h3><ul>
+<h3 id="类型限制"><a href="#类型限制" class="headerlink" title="类型限制"></a>类型限制</h3><ul>
 <li>私有成员首字母小写，其他成员首字母大写。</li>
-<li>若未指明，则不要私自添加前后缀。</li>
-<li>部分类型要添加特殊的前后缀。</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>前缀</th>
+<th>类型</th>
 <th>描述</th>
+<th>示例</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>I</td>
-<td>接口，IInterface</td>
+<td>接口</td>
+<td>对应类名添加<code>I</code>前缀</td>
+<td><code>IInterface</code></td>
 </tr>
 <tr>
-<td>T</td>
-<td>泛型，TGeneric</td>
+<td>泛型</td>
+<td>对应类型添加<code>T</code>前缀</td>
+<td><code>TGeneric</code></td>
 </tr>
 <tr>
-<td>Is,Can,Has</td>
-<td>布尔值，IsRunning</td>
+<td>函数</td>
+<td>动作，主动语态。</td>
+<td><code>OpenDoor</code></td>
+</tr>
+<tr>
+<td>事件</td>
+<td>动作，被动语态，触发在对应函数开头或期间添加<code>ing</code>后缀，触发在函数结束添加<code>ed</code>后缀。</td>
+<td><code>DoorOpening</code>、<code>DoorOpened</code></td>
+</tr>
+<tr>
+<td>事件函数</td>
+<td>动作，被动语态，添加<code>on</code>前缀。</td>
+<td><code>OnDoorOpen</code></td>
+</tr>
+<tr>
+<td>字段</td>
+<td>名词，被动语态。</td>
+<td><code>isDoorOpening</code></td>
+</tr>
+<tr>
+<td>属性</td>
+<td>与对应字段同名，大写开头。</td>
+<td><code>IsDoorOpening</code></td>
 </tr>
 </tbody></table>
+<h3 id="前后缀限制"><a href="#前后缀限制" class="headerlink" title="前后缀限制"></a>前后缀限制</h3><ul>
+<li>若未指明，则不要私自添加前后缀。</li>
+<li>部分类型要添加特殊的前后缀。</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -934,36 +967,12 @@
 <td>容器</td>
 </tr>
 <tr>
-<td>Event</td>
-<td>事件类型的委托</td>
-</tr>
-<tr>
 <td>UI</td>
 <td>用户界面相关</td>
 </tr>
 <tr>
 <td>Prefab</td>
 <td>用于实例化的预制体</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>动词后缀</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>无后缀（动词原型）</td>
-<td>开始前</td>
-</tr>
-<tr>
-<td>ing</td>
-<td>进行中</td>
-</tr>
-<tr>
-<td>ed</td>
-<td>完成后</td>
 </tr>
 </tbody></table>
 

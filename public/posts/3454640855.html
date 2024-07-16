@@ -26,7 +26,7 @@
 <meta property="og:description" content="【Unity】网格数据结构https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;AnatomyofaMesh.html 基本构成网格由以下几部分数据组成：  顶点：3D 空间中的位置集合以及可选的附加数据。 拓扑：网格每个面的结构类型，默认情况下都是三角型。 索引：描述如何将顶点组合成拓扑表面。  对于可变性网格，还包含些额外数据：  混合形状：混合形状数据。 绑定姿势：蒙">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-10T08:35:00.000Z">
-<meta property="article:modified_time" content="2024-05-31T09:30:05.126Z">
+<meta property="article:modified_time" content="2024-07-11T08:14:52.310Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          947 字
+          933 字
         
       </span>
     
@@ -904,7 +904,7 @@
 <h2 id="混合形状"><a href="#混合形状" class="headerlink" title="混合形状"></a>混合形状</h2><p>混合形状存储了网格的不同形状的版本，Unity 通过对这些形状进行插值以实现变形效果，常用于实现人物表情动画。</p>
 <p>混合形状的数据是“稀疏的”，只会存储受影响的顶点数据。数据包括位置、法线、切线的增量，以及用于表示对应顶点的索引值。索引值的具体映射与向 Unity 请求数据的方式有关。</p>
 <h2 id="绑定姿势（Matrix4x4-）"><a href="#绑定姿势（Matrix4x4-）" class="headerlink" title="绑定姿势（Matrix4x4[]）"></a>绑定姿势（Matrix4x4[]）</h2><p>绑定姿势用于描述骨架处于初始状态时的变换信息，从而使顶点在后续可以按初始状态时与骨骼的相对位置进行运动。</p>
-<p>这是一个与骨骼数量一致的矩阵数组，每个矩阵都是对应骨骼在骨架初始状态下的变换矩阵的逆矩阵（物体空间到骨骼空间变换矩阵）。</p>
+<p>这是一个与骨骼数量一致的矩阵数组，每个矩阵都是从网格的物体空间到对应骨骼空间的变换矩阵。</p>
 
                 
               </div>
