@@ -5,6 +5,7 @@ categories:
   - 学习
   - 软件开发
 ---
+
 # 【软件开发】vcpkg 学习笔记
 
 "vcpkg"是一个免费开源的 C++包管理器，可以以此很方便的处理第三方库的接入，且可嵌入进 CMake 中。
@@ -58,18 +59,26 @@ https://learn.microsoft.com/zh-cn/vcpkg/reference/vcpkg-json
 
 ### 引用包
 
-关于每个包在 CMakeLists 中的使用方式，有两种方式判断：
+关于每个包在 CMakeLists 中的使用，基本由以下两个命令构成：
 
-- 包中可能带有`usage`文件，里面有使用方法。
-- 自行分析包中的`vcpkg.json`文件并编写方法。
+```cmake
+find_package(<pkgCMakeName> CONFIG REQUIRED)
+target_link_libraries(<projectName> PRIVATE <pkgCMakeProjectName>)
+```
+
+其中 `projectName` 是你自己需要用到该包的项目，而 `pkgCMakeName` 和 `pkgCMakeProjectName` 的内容则需要进行推断，具体有两种方法：
+
+1. 通过官方的`usage`文件得出，这是官方编写的默认引入方法。
+2. 通过查看包安装目录的一个文件得出：  
+   例如要引入 gtest，通过查看 vcpkg_installed\x64-windows\share\GTestTargets.cmake 文件，其中文件名前缀`GTest`即`pkgCMakeName`，文件内的 add_library(GTest::gtest) 则表明`GTest::gtest`是`pkgCMakeProjectName`。
 
 示例引用方式如下：
 
 ```cmake
-# 改编自gtest的usage文件
+# 改编自 gtest 的 usage 文件
 find_package(GTest CONFIG REQUIRED)
 target_link_libraries(Executable PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
-# 通过vcpkg.json分析得出
+# 通过分析 imguiTargets.cmake 得出
 find_package(imgui CONFIG REQUIRED)
 target_link_libraries(Executable PRIVATE imgui::imgui)
 ```
