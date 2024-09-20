@@ -36,23 +36,6 @@ add_subdirectory(<source_dir>)
 find_package(<packageName> CONFIG REQUIRED)
 ```
 
-### 工具指令
-
-一些功能性的实用指令。
-
-```cmake
-# 设置开发中的环境变量
-set(<variableName> <variableValue>)
-
-# 获取一组文件并将其路径打包在一个环境变量中，支持glob语法
-file({GLOB | GLOB_RECURSE} <outputVarName> <inputFile>...)
-# 在vs中将指定文件分类到与文件系统一致的筛选器结构，而不是默认筛选器。
-source_group(TREE <fileRootDir> FILES <inputFile>...)
-
-# 复制并修改文件到指定位置。自动替换文件中的环境变量值（@<var>@）并自动移入当前CMakeLists的构建目录。
-configure_file(<inputFile> <outputFile>)
-```
-
 ### 环境指令
 
 用于描述开发环境
@@ -65,36 +48,102 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 include_directories(<headerDir>...)
 # 添加全局附加库
 link_libraries({<projectName>|<libFile>...})
+# 添加全局编译选项
+add_compile_options(<option>...)
 ```
 
 ### 项目指令
 
 针对单个项目的信息描述指令。
 
-```cmake
-# 描述项目输出（必须要设置）
+#### 描述项目输出（必须要设置）
 
+```cmake
 # 输出为可执行文件
 add_executable(<projectName> <sourceFile>...)
 # 输出为静态/动态库文件
 add_library(<projectName> [STATIC|SHARED] <sourceFile>...)
 # 特殊的没有输出的项目
 add_custom_target(<projectName> SOURCES <sourceFile>...)
+```
 
-# 描述项目环境（指定完项目输出后才可用）
+#### 描述项目环境（指定完项目输出后才可用）
 
+```cmake
 # 添加附加包含目录
 target_include_directories(<projectName> {PUBLIC|PRIVATE} <headerDir>...)
 # 添加附加库
 target_link_libraries(<projectName> {PUBLIC|PRIVATE} {<projectName>|<libFile>...})
+# 添加编译选项
+target_compile_options(<option>...)
 # 分类到vs中的解决方案文件夹（3.26之前需先打开 USE_FOLDERS 功能）
 set_target_properties(<projectName> PROPERTIES FOLDER <folderName>)
 ```
 
-#### 选项说明
+- 依赖项传递
 
-- `PUBLIC`：使用该选项添加引用，引用将传染给使用该项目的其他项目。
-- `PRIVATE`：引用不具备传染性，其他使用该项目的项目可能要再次添加引用。
+  - `PUBLIC`：使用该选项添加引用，引用将传染给使用该项目的其他项目（不使用也行？）。
+  - `PRIVATE`：引用不具备传染性，其他使用该项目的项目可能要再次添加引用。
+
+- 全局项目设置
+
+  部分指令如果去除`target_`前缀和部分参数，可转为对所有项目的设置的指令。
+
+### 逻辑指令
+
+通过逻辑运算控制代码执行。
+
+```cmake
+# 定义一个宏函数
+macro(<macroName>) \ endmacro()
+# 确认文件是否存在
+if(EXISTS <inputPath>) \ endif()
+# 遍历变量列表
+foreach(<outVar> <inputVarList>) \ endforeach()
+```
+
+### 其他指令
+
+#### 工具指令
+
+一些功能性的实用指令。
+
+```cmake
+# 设置开发中的环境变量
+set(<variableName> <variableValue>)
+
+# 从环境变量列表中去除指定项
+list(REMOVE_ITEM <inputVars> <value> [<value> ...])
+
+# 在vs中将指定文件分类到与文件系统一致的筛选器结构，而不是默认筛选器。
+source_group(TREE <fileRootDir> FILES <inputFile>...)
+
+# 复制并修改文件到指定位置。自动替换文件中的环境变量值（@<var>@）并自动移入当前CMakeLists的构建目录。
+configure_file(<inputFile> <outputFile>)
+```
+
+#### cmake_path
+
+计算路径相关信息
+
+```cmake
+# 获取父目录地址
+cmake_path(GET <path-var> PARENT_PATH <out-var>)
+# 获取文件名
+cmake_path(GET <path-var> FILENAME <out-var>)
+```
+
+#### file
+
+文件相关处理，如统计复制等。
+
+```cmake
+# 获取{当前目录|包括子目录}的满足glob通配符的文件并将其路径打包在一个环境变量中
+file({GLOB | GLOB_RECURSE} <outputVarName> <inputFile>...)
+
+# 复制文件夹到指定位置
+file(COPY <sourceDir> DESTINATION <destinationDir>)
+```
 
 ## 环境变量
 

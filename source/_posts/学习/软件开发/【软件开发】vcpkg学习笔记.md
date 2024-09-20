@@ -57,6 +57,25 @@ https://learn.microsoft.com/zh-cn/vcpkg/reference/vcpkg-json
 }
 ```
 
+#### 锁定版本
+
+要想锁定包版本必须先提供基线参数，基线参数是vcpkg仓库一次提交的SHA（必须是本地vcpkg仓库中存在的版本），这样所有包版本将都被限制于必须大于等于该基线时的版本。
+
+当提供基线后才可以使用`overrides`参数进行版本覆盖，以强制使用特定版本，示例如下：
+
+```json
+{
+  "builtin-baseline": "333ba63a16024f05f9172fe403f9eced000389e5",
+  "overrides": [
+    {
+      "name": "imgui",
+      "version": "1.91.0"
+    }
+  ]
+}
+```
+
+
 ### 引用包
 
 关于每个包在 CMakeLists 中的使用，基本由以下两个命令构成：
