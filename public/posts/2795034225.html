@@ -26,7 +26,7 @@
 <meta property="og:description" content="【软件开发】CMake 学习笔记CMake 指令https:&#x2F;&#x2F;cmake.org&#x2F;cmake&#x2F;help&#x2F;latest&#x2F;manual&#x2F;cmake.1.html 1234# 将目标位置的CMakeLists生成为原生构建系统的项目cmake &lt;path&gt;# 编译已生成的原生构建系统的项目cmake --build &lt;path&gt;  CMakeLists 指令核心指令通常必不可少">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-16T01:07:00.000Z">
-<meta property="article:modified_time" content="2024-07-16T04:48:24.755Z">
+<meta property="article:modified_time" content="2024-09-19T01:27:06.280Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.3k 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          10 分钟
+          12 分钟
         
       </span>
     
@@ -800,19 +800,37 @@
 <h2 id="CMakeLists-指令"><a href="#CMakeLists-指令" class="headerlink" title="CMakeLists 指令"></a>CMakeLists 指令</h2><h3 id="核心指令"><a href="#核心指令" class="headerlink" title="核心指令"></a>核心指令</h3><p>通常必不可少的指令。</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 描述CMake的最低支持版本（顶层CMake文件必带）</span><br><span class="hljs-keyword">cmake_minimum_required</span>(VERSION &lt;version&gt;)<br><span class="hljs-comment"># 创建一个项目</span><br><span class="hljs-keyword">project</span>(&lt;projectName&gt;)<br><span class="hljs-comment"># 添加一个子目录（子目录需要带有CMakeLists）</span><br><span class="hljs-keyword">add_subdirectory</span>(&lt;source_dir&gt;)<br><span class="hljs-comment"># 寻找一个模块（带有特定配置文件的目录将会被识别为模块，可当成项目使用）</span><br><span class="hljs-keyword">find_package</span>(&lt;packageName&gt; CONFIG REQUIRED)<br></code></pre></td></tr></table></figure>
 
-<h3 id="工具指令"><a href="#工具指令" class="headerlink" title="工具指令"></a>工具指令</h3><p>一些功能性的实用指令。</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 设置开发中的环境变量</span><br><span class="hljs-keyword">set</span>(&lt;variableName&gt; &lt;variableValue&gt;)<br><br><span class="hljs-comment"># 获取一组文件并将其路径打包在一个环境变量中，支持glob语法</span><br><span class="hljs-keyword">file</span>(&#123;GLOB | GLOB_RECURSE&#125; &lt;outputVarName&gt; &lt;inputFile&gt;...)<br><span class="hljs-comment"># 在vs中将指定文件分类到与文件系统一致的筛选器结构，而不是默认筛选器。</span><br><span class="hljs-keyword">source_group</span>(TREE &lt;fileRootDir&gt; FILES &lt;inputFile&gt;...)<br><br><span class="hljs-comment"># 复制并修改文件到指定位置。自动替换文件中的环境变量值（@&lt;var&gt;@）并自动移入当前CMakeLists的构建目录。</span><br><span class="hljs-keyword">configure_file</span>(&lt;inputFile&gt; &lt;outputFile&gt;)<br></code></pre></td></tr></table></figure>
-
 <h3 id="环境指令"><a href="#环境指令" class="headerlink" title="环境指令"></a>环境指令</h3><p>用于描述开发环境</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 设置所需的C++标准库版本（需在指定项目输出前使用）</span><br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD &lt;version&gt;)<br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD_REQUIRED <span class="hljs-keyword">True</span>)<br><span class="hljs-comment"># 添加全局附加包含目录</span><br><span class="hljs-keyword">include_directories</span>(&lt;headerDir&gt;...)<br><span class="hljs-comment"># 添加全局附加库</span><br><span class="hljs-keyword">link_libraries</span>(&#123;&lt;projectName&gt;|&lt;libFile&gt;...&#125;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 设置所需的C++标准库版本（需在指定项目输出前使用）</span><br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD &lt;version&gt;)<br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD_REQUIRED <span class="hljs-keyword">True</span>)<br><span class="hljs-comment"># 添加全局附加包含目录</span><br><span class="hljs-keyword">include_directories</span>(&lt;headerDir&gt;...)<br><span class="hljs-comment"># 添加全局附加库</span><br><span class="hljs-keyword">link_libraries</span>(&#123;&lt;projectName&gt;|&lt;libFile&gt;...&#125;)<br><span class="hljs-comment"># 添加全局编译选项</span><br><span class="hljs-keyword">add_compile_options</span>(&lt;<span class="hljs-keyword">option</span>&gt;...)<br></code></pre></td></tr></table></figure>
 
 <h3 id="项目指令"><a href="#项目指令" class="headerlink" title="项目指令"></a>项目指令</h3><p>针对单个项目的信息描述指令。</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 描述项目输出（必须要设置）</span><br><br><span class="hljs-comment"># 输出为可执行文件</span><br><span class="hljs-keyword">add_executable</span>(&lt;projectName&gt; &lt;sourceFile&gt;...)<br><span class="hljs-comment"># 输出为静态/动态库文件</span><br><span class="hljs-keyword">add_library</span>(&lt;projectName&gt; [STATIC|SHARED] &lt;sourceFile&gt;...)<br><span class="hljs-comment"># 特殊的没有输出的项目</span><br><span class="hljs-keyword">add_custom_target</span>(&lt;projectName&gt; SOURCES &lt;sourceFile&gt;...)<br><br><span class="hljs-comment"># 描述项目环境（指定完项目输出后才可用）</span><br><br><span class="hljs-comment"># 添加附加包含目录</span><br><span class="hljs-keyword">target_include_directories</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &lt;headerDir&gt;...)<br><span class="hljs-comment"># 添加附加库</span><br><span class="hljs-keyword">target_link_libraries</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &#123;&lt;projectName&gt;|&lt;libFile&gt;...&#125;)<br><span class="hljs-comment"># 分类到vs中的解决方案文件夹（3.26之前需先打开 USE_FOLDERS 功能）</span><br><span class="hljs-keyword">set_target_properties</span>(&lt;projectName&gt; PROPERTIES FOLDER &lt;folderName&gt;)<br></code></pre></td></tr></table></figure>
+<h4 id="描述项目输出（必须要设置）"><a href="#描述项目输出（必须要设置）" class="headerlink" title="描述项目输出（必须要设置）"></a>描述项目输出（必须要设置）</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 输出为可执行文件</span><br><span class="hljs-keyword">add_executable</span>(&lt;projectName&gt; &lt;sourceFile&gt;...)<br><span class="hljs-comment"># 输出为静态/动态库文件</span><br><span class="hljs-keyword">add_library</span>(&lt;projectName&gt; [STATIC|SHARED] &lt;sourceFile&gt;...)<br><span class="hljs-comment"># 特殊的没有输出的项目</span><br><span class="hljs-keyword">add_custom_target</span>(&lt;projectName&gt; SOURCES &lt;sourceFile&gt;...)<br></code></pre></td></tr></table></figure>
 
-<h4 id="选项说明"><a href="#选项说明" class="headerlink" title="选项说明"></a>选项说明</h4><ul>
-<li><code>PUBLIC</code>：使用该选项添加引用，引用将传染给使用该项目的其他项目。</li>
+<h4 id="描述项目环境（指定完项目输出后才可用）"><a href="#描述项目环境（指定完项目输出后才可用）" class="headerlink" title="描述项目环境（指定完项目输出后才可用）"></a>描述项目环境（指定完项目输出后才可用）</h4><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 添加附加包含目录</span><br><span class="hljs-keyword">target_include_directories</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &lt;headerDir&gt;...)<br><span class="hljs-comment"># 添加附加库</span><br><span class="hljs-keyword">target_link_libraries</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &#123;&lt;projectName&gt;|&lt;libFile&gt;...&#125;)<br><span class="hljs-comment"># 添加编译选项</span><br><span class="hljs-keyword">target_compile_options</span>(&lt;<span class="hljs-keyword">option</span>&gt;...)<br><span class="hljs-comment"># 分类到vs中的解决方案文件夹（3.26之前需先打开 USE_FOLDERS 功能）</span><br><span class="hljs-keyword">set_target_properties</span>(&lt;projectName&gt; PROPERTIES FOLDER &lt;folderName&gt;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>依赖项传递</p>
+<ul>
+<li><code>PUBLIC</code>：使用该选项添加引用，引用将传染给使用该项目的其他项目（不使用也行？）。</li>
 <li><code>PRIVATE</code>：引用不具备传染性，其他使用该项目的项目可能要再次添加引用。</li>
 </ul>
+</li>
+<li><p>全局项目设置</p>
+<p>部分指令如果去除<code>target_</code>前缀和部分参数，可转为对所有项目的设置的指令。</p>
+</li>
+</ul>
+<h3 id="逻辑指令"><a href="#逻辑指令" class="headerlink" title="逻辑指令"></a>逻辑指令</h3><p>通过逻辑运算控制代码执行。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 定义一个宏函数</span><br><span class="hljs-keyword">macro</span>(&lt;macroName&gt;) \ <span class="hljs-keyword">endmacro</span>()<br><span class="hljs-comment"># 确认文件是否存在</span><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">EXISTS</span> &lt;inputPath&gt;) \ <span class="hljs-keyword">endif</span>()<br><span class="hljs-comment"># 遍历变量列表</span><br><span class="hljs-keyword">foreach</span>(&lt;outVar&gt; &lt;inputVarList&gt;) \ <span class="hljs-keyword">endforeach</span>()<br></code></pre></td></tr></table></figure>
+
+<h3 id="其他指令"><a href="#其他指令" class="headerlink" title="其他指令"></a>其他指令</h3><h4 id="工具指令"><a href="#工具指令" class="headerlink" title="工具指令"></a>工具指令</h4><p>一些功能性的实用指令。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 设置开发中的环境变量</span><br><span class="hljs-keyword">set</span>(&lt;variableName&gt; &lt;variableValue&gt;)<br><br><span class="hljs-comment"># 从环境变量列表中去除指定项</span><br><span class="hljs-keyword">list</span>(REMOVE_ITEM &lt;inputVars&gt; &lt;value&gt; [&lt;value&gt; ...])<br><br><span class="hljs-comment"># 在vs中将指定文件分类到与文件系统一致的筛选器结构，而不是默认筛选器。</span><br><span class="hljs-keyword">source_group</span>(TREE &lt;fileRootDir&gt; FILES &lt;inputFile&gt;...)<br><br><span class="hljs-comment"># 复制并修改文件到指定位置。自动替换文件中的环境变量值（@&lt;var&gt;@）并自动移入当前CMakeLists的构建目录。</span><br><span class="hljs-keyword">configure_file</span>(&lt;inputFile&gt; &lt;outputFile&gt;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="cmake-path"><a href="#cmake-path" class="headerlink" title="cmake_path"></a>cmake_path</h4><p>计算路径相关信息</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 获取父目录地址</span><br>cmake_path(GET &lt;path-var&gt; PARENT_PATH &lt;out-var&gt;)<br><span class="hljs-comment"># 获取文件名</span><br>cmake_path(GET &lt;path-var&gt; FILENAME &lt;out-var&gt;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="file"><a href="#file" class="headerlink" title="file"></a>file</h4><p>文件相关处理，如统计复制等。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 获取&#123;当前目录|包括子目录&#125;的满足glob通配符的文件并将其路径打包在一个环境变量中</span><br><span class="hljs-keyword">file</span>(&#123;GLOB | GLOB_RECURSE&#125; &lt;outputVarName&gt; &lt;inputFile&gt;...)<br><br><span class="hljs-comment"># 复制文件夹到指定位置</span><br><span class="hljs-keyword">file</span>(COPY &lt;sourceDir&gt; DESTINATION &lt;destinationDir&gt;)<br></code></pre></td></tr></table></figure>
+
 <h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>仅写出部分通常只读的变量，需用户配置的变量见“环境指令”章节。</p>
 <h3 id="项目相关"><a href="#项目相关" class="headerlink" title="项目相关"></a>项目相关</h3><ul>
 <li><code>&lt;projectName&gt;_VERSION_MAJOR</code>：声明项目时额外提供的主版本号。</li>
