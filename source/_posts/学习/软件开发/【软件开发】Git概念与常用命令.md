@@ -111,11 +111,13 @@ git reset [--hard] <commit> #将当前分支[包含工作区]重置到某次提�
 ### 分支处理
 
 ```bash
+git branch -a #查看所有分支（包括远端）
 git branch <new-branch> #创建一个基于当前分支最新提交的新分支
 git branch <new-branch> <commit> #创建一个基于目标提交的新分支
 git branch -m <new-name> #重命名当前分支
 git branch -d <branch> #删除目标分支
 
+git checkout -b <new-branch> <branch> #创建并切换到一个基于目标分支创建的新分支
 git checkout --orphan temp #保持工作区不变，创建并切换到一个空分支，
 git switch -c <new-branch> <commit> #创建并切换到基于某次提交的新分支
 git switch <branch> #切换到目标分支
