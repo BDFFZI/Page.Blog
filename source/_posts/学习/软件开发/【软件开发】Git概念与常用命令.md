@@ -116,6 +116,7 @@ git branch <new-branch> #创建一个基于当前分支最新提交的新分支
 git branch <new-branch> <commit> #创建一个基于目标提交的新分支
 git branch -m <new-name> #重命名当前分支
 git branch -d <branch> #删除目标分支
+git branch -u <up-branch> <branch> #设置上流分支
 
 git checkout -b <new-branch> <branch> #创建并切换到一个基于目标分支创建的新分支
 git checkout --orphan temp #保持工作区不变，创建并切换到一个空分支，
@@ -154,6 +155,8 @@ git remote rename <name> <new-name> #重命名远端仓库
 git remote remove <name> <new-name> #删除远端仓库
 git remote set-url <name> <url> #修改远端仓库地址
 git remote set-url {--add|--delete} <name> <newurl> #为远端仓库额外添加或删除地址，借此实现多端提交。
+git remote set-head <name> {-a|<branch>} #修改远程默认分支为{自动识别|指定}的分支
+git remote prune <name> #删除远端仓库已不存在但本地残留的分支
 
 git fetch #获取所有远端分支
 git pull #获取并合并远端分支到当前状态，等同于 fetch + merge
@@ -223,7 +226,7 @@ git clean -dfx #清除工作区中所有未被跟踪的文件
 
 - 限定忽略项位置：
 
-  - 从当前目录匹配：带`/`前缀，如`/test`。
+  - 从当前目录匹配：带`./`前缀，如`./test`。
   - 从任意目录匹配：不带任何前缀，如`test`。
 
 - 添加`!`前缀取消忽略，如`!test.txt`。
