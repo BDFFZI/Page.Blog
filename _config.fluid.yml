@@ -23,7 +23,7 @@ post:
   # 评论
   comments:
     enable: true
-    type: waline
+    type: giscus
 
   # 数学
   math:
@@ -45,9 +45,11 @@ footer:
   statistics:
     enable: true
 
-# 文章pv和uv统计
-waline:
-  serverURL: "waline-1-c7584562.deta.app"
+giscus:
+  repo: "BDFFZI/Page.Blog"
+  repo-id: "R_kgDOLNpbRw"
+  category: "Announcements"
+  category-id: "DIC_kwDOLNpbR84CjAdm"
 
 custom_css:
   - "/assets/css/content.css"
