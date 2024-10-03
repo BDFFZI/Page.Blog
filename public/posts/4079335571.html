@@ -9,8 +9,11 @@
 <link rel="stylesheet" href="/css/bilicard.css">
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
   <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -25,13 +28,13 @@
 <meta property="og:site_name" content="BDFFZI的小屋">
 <meta property="og:description" content="【COM3D2Mod 制作教程（2）】Mod 底层原理Mod 是什么？Mod 一词想必你已经听过很多次了，因为很多游戏都可以装 Mod，而 Mod 可以为游戏增添一些额外的乐趣。但在 COM3D2 这款游戏中，Mod 和常规的意思并不一样，常规的 Mod 在这里叫做插件，两者不能混为一谈。 Mod 是一种官方功能 一种用于增加额外的人物卡及其装扮的方法。  在 COM3D2 中 Mod 是一项官方">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230821172531502-932973070.jpg">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230821175923970-4172886.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230821172531502-932973070.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230821175923970-4172886.jpg">
 <meta property="article:published_time" content="2023-08-24T10:06:00.000Z">
-<meta property="article:modified_time" content="2024-02-18T01:45:23.833Z">
+<meta property="article:modified_time" content="2024-02-08T13:19:46.272Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230821172531502-932973070.jpg">
+<meta name="twitter:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230821172531502-932973070.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -54,11 +57,11 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -81,7 +84,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -475,7 +478,7 @@
 <li>材质的面板上可以设置各种参数，包括被称作<strong>纹理</strong>的图片。</li>
 </ol>
 <p><em>我为什么用这些名称称呼他们？通过大纲视图的 Blender 文件模式，你可以看到在 Blender 中就是这样称呼的（见下图标记处）。</em></p>
-<p><img src="/assets/images/2454431-20230821172531502-932973070.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/page.blog/assets/images/2454431-20230821172531502-932973070.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3 id="模型文件拆分"><a href="#模型文件拆分" class="headerlink" title="模型文件拆分"></a>模型文件拆分</h3><p>传统的单文件模式（FBX 这类格式），会把上述所有资源都打包在一起，但这不利于资源文件的复用和定制，所以最终到游戏引擎中会将各个资源分开储存，也即我们上述提到的那五种基本资源，简单描述一些他们各自的功能。</p>
 <ul>
 <li><p><strong>物体</strong></p>
@@ -499,7 +502,7 @@
 </li>
 </ul>
 <h2 id="Mod-的组成原理"><a href="#Mod-的组成原理" class="headerlink" title="Mod 的组成原理"></a>Mod 的组成原理</h2><p>你总算可以知道 Mod 里的文件都是干啥的了，所以现在请直接掏出一款现有的 Mod 做参照，因为下文所讲述的内容将会和 Mod 文件一一对应。</p>
-<p><img src="/assets/images/2454431-20230821175923970-4172886.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/page.blog/assets/images/2454431-20230821175923970-4172886.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>先让我们查看 Mod 制作 Wiki 的左侧的文件类别（上图），可以确定 Mod 的基本文件共有 5 种（最后一个不是文件类型），具体按功能可以分为以下三类（你不需要在意具体分类，对学习 Mod 制作来说这是无所谓的）。</p>
 <p><em>为什么不做上图中最后一个日文标签的文件说明？因为那个不是文件类型，而是 menu 文件中一个属性，用于指明装扮类别（如指明装扮是头发，上衣，裤子等）。后续编写 menu 文件时，我们通常是直接对官方 menu 文件进行修改而不是从头创建，所以不需要去特别记忆。</em></p>
 <h3 id="模型文件"><a href="#模型文件" class="headerlink" title="模型文件"></a>模型文件</h3><ul>
@@ -629,7 +632,7 @@ flowchart RL
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -674,31 +677,40 @@ flowchart RL
   
     <article id="comments" lazyload>
       
-  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
-  </br>
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
-      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
-          {
-            el: '#waline',
-            pageview: window.origin.includes("localhost")?false:true,
-            path: window.location.pathname
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
           }
-        )
-        Waline.init(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          var imgSelector = '#waline .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
       });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
 
 
     </article>
@@ -827,10 +839,11 @@ flowchart RL
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -929,7 +942,7 @@ flowchart RL
 
   
 <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
       visible  : CONFIG.anchorjs.visible
