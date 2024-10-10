@@ -23,7 +23,7 @@ post:
   # 评论
   comments:
     enable: true
-    type: waline
+    type: giscus
 
 # 关于页
 about:
@@ -38,6 +38,12 @@ about:
 footer:
   statistics:
     enable: true
+
+giscus:
+  repo: "BDFFZI/Page.Blog"
+  repo-id: "R_kgDOLNpbRw"
+  category: "Announcements"
+  category-id: "DIC_kwDOLNpbR84CjAdm"
 
 custom_css:
   - "/assets/css/content.css"
