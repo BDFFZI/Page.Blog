@@ -29,7 +29,7 @@
 <meta property="og:description" content="【Linux】Linux 使用笔记 权限属性 权限属性共 10 位，如 drwxrwxrwx。 文件类型 第一位表示文件类型：  d：目录。 l：目录映射。 -：文件。  权限控制 其他位分别是面向不同用户的读写权限：  区间一：文件所属者。 区间二：与所属者同组的用户。 区间三：其他用户。  读写权限分三种类型，对目录和文件作用各不同：  对于文件：  r：可读。 w：可写。 x：可执行（对二进">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-31T09:30:00.000Z">
-<meta property="article:modified_time" content="2024-09-18T12:19:21.691Z">
+<meta property="article:modified_time" content="2024-05-31T09:30:27.478Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -1012,9 +1012,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/1386286002.html" title="【Unity】纹理">
+                      <a href="/posts/2520479343.html" title="【Unity】可编程渲染管线">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【Unity】纹理</span>
+                        <span class="hidden-mobile">【Unity】可编程渲染管线</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1038,6 +1038,41 @@
   
     <article id="comments" lazyload>
       
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
 
     </article>
   

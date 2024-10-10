@@ -28,13 +28,13 @@
 <meta property="og:site_name" content="BDFFZI的小屋">
 <meta property="og:description" content="【COM3D2Mod 制作教程（2）】Mod 底层原理 Mod 是什么？ Mod 一词想必你已经听过很多次了，因为很多游戏都可以装 Mod，而 Mod 可以为游戏增添一些额外的乐趣。但在 COM3D2 这款游戏中，Mod 和常规的意思并不一样，常规的 Mod 在这里叫做插件，两者不能混为一谈。 Mod 是一种官方功能  一种用于增加额外的人物卡及其装扮的方法。  在 COM3D2 中 Mod 是一">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230821172531502-932973070.jpg">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230821175923970-4172886.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230821172531502-932973070.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230821175923970-4172886.jpg">
 <meta property="article:published_time" content="2023-08-24T10:06:00.000Z">
-<meta property="article:modified_time" content="2024-02-08T13:19:46.272Z">
+<meta property="article:modified_time" content="2024-02-18T01:45:23.833Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230821172531502-932973070.jpg">
+<meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230821172531502-932973070.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -700,6 +700,41 @@ flowchart RL
   
     <article id="comments" lazyload>
       
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
 
     </article>
   

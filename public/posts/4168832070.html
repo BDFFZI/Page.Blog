@@ -1074,9 +1074,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/4121327623.html" title="【英语语法笔记】单词">
+                      <a href="/posts/648367824.html" title="【英语语法笔记】句子">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【英语语法笔记】单词</span>
+                        <span class="hidden-mobile">【英语语法笔记】句子</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1084,8 +1084,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/648367824.html" title="【英语语法笔记】句子">
-                        <span class="hidden-mobile">【英语语法笔记】句子</span>
+                      <a href="/posts/3075658332.html" title="【英语语法笔记】表示时态">
+                        <span class="hidden-mobile">【英语语法笔记】表示时态</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -1100,6 +1100,41 @@
   
     <article id="comments" lazyload>
       
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
 
     </article>
   

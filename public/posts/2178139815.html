@@ -28,22 +28,22 @@
 <meta property="og:site_name" content="BDFFZI的小屋">
 <meta property="og:description" content="【COM3D2Mod 制作教程（4）】实战！制作身体部分（上） 教程介绍 现在正式进入实战教程环节，我会以我的实际制作过程详尽的教授每个细节，也因此受限于篇幅大小，“实战！制作身体部分”被分为了上中下三个过程。   上： 我们将首先确定我们的制作目标，并以此进行环境搭建和资源准备工作，目标是将正式制作 Mod 的前置需求全部完成。   中： 现在正式开始制作 Mod，以典型的帽子 Mod 为例，我">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230906222649162-2104290613.jpg">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230906222433577-1459596474.jpg">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230906223103346-514500570.jpg">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230906223212283-1290250791.jpg">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230906174403829-1045284516.jpg">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230906233737603-2140221409.jpg">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230906232009064-791421149.jpg">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230909155338505-800571183.jpg">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230907204717866-1199253546.jpg">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230907214302579-1055089432.jpg">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230909132149112-1518513392.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906222649162-2104290613.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906222433577-1459596474.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906223103346-514500570.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906223212283-1290250791.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906174403829-1045284516.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906233737603-2140221409.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906232009064-791421149.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230909155338505-800571183.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230907204717866-1199253546.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230907214302579-1055089432.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230909132149112-1518513392.jpg">
 <meta property="article:published_time" content="2023-09-09T05:28:00.000Z">
-<meta property="article:modified_time" content="2024-02-04T12:38:47.287Z">
+<meta property="article:modified_time" content="2024-02-07T04:39:04.799Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230906222649162-2104290613.jpg">
+<meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230906222649162-2104290613.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -679,6 +679,41 @@
   
     <article id="comments" lazyload>
       
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
 
     </article>
   

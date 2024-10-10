@@ -29,7 +29,7 @@
 <meta property="og:description" content="【Blender】插件开发笔记 开发环境配置  打开设置“界面-开发选项”： 这样可以通过对功能按钮的右键菜单直接复制或查看其源码，以及快速跳转到 API 手册。 打开设置“界面-Python 工具提示”： 这样可以通过界面的悬停菜单直接查看该条目在代码中的表示方式。 安装 python 环境，下载 fake-bpy-module 包： 这样可以在外部编辑器编写代码，并且有代码代码提示。 下载 V">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-20T01:56:00.000Z">
-<meta property="article:modified_time" content="2024-02-19T10:29:38.607Z">
+<meta property="article:modified_time" content="2024-02-19T08:38:46.286Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -1054,6 +1054,41 @@
   
     <article id="comments" lazyload>
       
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
 
     </article>
   
