@@ -29,7 +29,7 @@
 <meta property="og:description" content="【Unity】着色器平台差异笔记 https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;SL-PlatformDifferences.html 部分情况下，不同的图形 API 之间的渲染行为存在差异。通常 Unity 会隐藏这些差异，但有时候仍需要手动处理。 Unity 以 OpenGL 类平台约定作为标准，默认情况下会自动进行转换。 渲染纹理坐标  Direct3D 类：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-28T08:58:00.000Z">
-<meta property="article:modified_time" content="2024-05-31T09:30:05.126Z">
+<meta property="article:modified_time" content="2024-10-10T12:30:10.568Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -48,6 +48,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -232,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          858 字
+          870 字
         
       </span>
     
@@ -288,17 +290,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="工作"
-        id="heading-9a018b21ab114a51dd7b5979198a941b" role="tab" data-toggle="collapse" href="#collapse-9a018b21ab114a51dd7b5979198a941b"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="工具使用"
+        id="heading-f9513da884f0c50f60fcee13e0e8a92e" role="tab" data-toggle="collapse" href="#collapse-f9513da884f0c50f60fcee13e0e8a92e"
         aria-expanded="true"
       >
-        工作
+        工具使用
         <span class="list-group-count">(24)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-9a018b21ab114a51dd7b5979198a941b"
-           role="tabpanel" aria-labelledby="heading-9a018b21ab114a51dd7b5979198a941b">
+      <div class="category-collapse collapse show" id="collapse-f9513da884f0c50f60fcee13e0e8a92e"
+           role="tabpanel" aria-labelledby="heading-f9513da884f0c50f60fcee13e0e8a92e">
         
         
           
@@ -361,6 +363,43 @@
     
     <div class="category-sub row nomargin-x">
       <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Linux"
+        id="heading-edc9f0a5a5d57797bf68e37364743831" role="tab" data-toggle="collapse" href="#collapse-edc9f0a5a5d57797bf68e37364743831"
+        aria-expanded="false"
+      >
+        Linux
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-edc9f0a5a5d57797bf68e37364743831"
+           role="tabpanel" aria-labelledby="heading-edc9f0a5a5d57797bf68e37364743831">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2845903494.html" title="【Linux】Linux 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Linux】Linux 使用笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Manim"
         id="heading-cbcd3fecff4c0ef0c063f8c41726d34a" role="tab" data-toggle="collapse" href="#collapse-cbcd3fecff4c0ef0c063f8c41726d34a"
         aria-expanded="false"
@@ -403,7 +442,7 @@
         aria-expanded="true"
       >
         Unity
-        <span class="list-group-count">(21)</span>
+        <span class="list-group-count">(20)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -449,15 +488,6 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【Unity】图形渲染瓶颈与批处理优化</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/330516235.html" title="【Unity】图形管道笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【Unity】图形管道笔记</span>
         </a>
       
     
@@ -893,15 +923,15 @@
 <p>DirectX 11, DirectX 12, Metal: Reversed direction</p>
 <ul>
 <li>深度缓冲区值：在近平面为 1，在远平面为 0。</li>
-<li>裁剪空间范围：$[near,0]$</li>
+<li>裁剪空间范围：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>n</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[near,0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mclose">]</span></span></span></span></li>
 </ul>
 <p>其他平台：传统方向</p>
 <ul>
 <li>深度缓冲区值：在近平面为 0，在远平面为 1。</li>
 <li>裁剪空间范围：
 <ul>
-<li>在 Direct3D 类平台：$[0,far]$</li>
-<li>在 OpenGL 类平台：$[-near,far]$</li>
+<li>在 Direct3D 类平台：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mi>f</mi><mi>a</mi><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,far]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span></li>
+<li>在 OpenGL 类平台：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mo>−</mo><mi>n</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo separator="true">,</mo><mi>f</mi><mi>a</mi><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[-near,far]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span></li>
 </ul>
 </li>
 </ul>
@@ -924,27 +954,27 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="category-chain-item">工作</a>
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/" class="category-chain-item">Unity</a>
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E4%BD%9C/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E7%9D%80%E8%89%B2%E5%99%A8/" class="category-chain-item">着色器</a>
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E7%9D%80%E8%89%B2%E5%99%A8/" class="category-chain-item">着色器</a>
   
   
 
@@ -1130,6 +1160,26 @@
 
   
 
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
 
 
 
@@ -1357,8 +1407,6 @@
 
   
 <script src="/assets/js/noCache.js"></script>
-<script src="/assets/js/mermaid.min.js"></script>
-<script src="/assets/js/enableMermaid.js"></script>
 
 
 

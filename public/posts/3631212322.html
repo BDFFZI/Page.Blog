@@ -21,15 +21,15 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【引擎开发】纹理相关属性说明 伽马与线性空间 伽马与线性空间都是一种颜色空间，也即颜色存储时的分布方式，伽马空间相比线性空间会更多的存储图片的暗色部分。 伽马空间现在是图片存储的标准格式。选择伽马空间的原因有两点：  早期阴极射线管（CRT）显示器的输出会比输入颜色看上去偏暗，所以需要抬高输入值。 人的眼睛对暗色比亮色更加敏感，所以更多的保存暗色，图片视觉效果也越保真。 如今的显示器虽然可以实现线">
+    <meta name="description" content="【引擎研究】纹理相关属性说明 伽马与线性空间 伽马与线性空间都是一种颜色空间，也即颜色存储时的分布方式，伽马空间相比线性空间会更多的存储图片的暗色部分。 伽马空间现在是图片存储的标准格式。选择伽马空间的原因有两点：  早期阴极射线管（CRT）显示器的输出会比输入颜色看上去偏暗，所以需要抬高输入值。 人的眼睛对暗色比亮色更加敏感，所以更多的保存暗色，图片视觉效果也越保真。 如今的显示器虽然可以实现线">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【引擎开发】纹理相关属性说明">
+<meta property="og:title" content="【引擎研究】纹理相关属性说明">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/3631212322.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【引擎开发】纹理相关属性说明 伽马与线性空间 伽马与线性空间都是一种颜色空间，也即颜色存储时的分布方式，伽马空间相比线性空间会更多的存储图片的暗色部分。 伽马空间现在是图片存储的标准格式。选择伽马空间的原因有两点：  早期阴极射线管（CRT）显示器的输出会比输入颜色看上去偏暗，所以需要抬高输入值。 人的眼睛对暗色比亮色更加敏感，所以更多的保存暗色，图片视觉效果也越保真。 如今的显示器虽然可以实现线">
+<meta property="og:description" content="【引擎研究】纹理相关属性说明 伽马与线性空间 伽马与线性空间都是一种颜色空间，也即颜色存储时的分布方式，伽马空间相比线性空间会更多的存储图片的暗色部分。 伽马空间现在是图片存储的标准格式。选择伽马空间的原因有两点：  早期阴极射线管（CRT）显示器的输出会比输入颜色看上去偏暗，所以需要抬高输入值。 人的眼睛对暗色比亮色更加敏感，所以更多的保存暗色，图片视觉效果也越保真。 如今的显示器虽然可以实现线">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-11T08:38:00.000Z">
-<meta property="article:modified_time" content="2024-06-11T08:40:14.375Z">
+<meta property="article:modified_time" content="2024-10-10T12:30:10.552Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -37,7 +37,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>【引擎开发】纹理相关属性说明 - BDFFZI的小屋</title>
+  <title>【引擎研究】纹理相关属性说明 - BDFFZI的小屋</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -48,6 +48,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -209,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【引擎开发】纹理相关属性说明"></span>
+            <span id="subtitle" data-typed-text="【引擎研究】纹理相关属性说明"></span>
           
         </div>
 
@@ -288,17 +290,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="学习"
-        id="heading-4ef520d6cd20ba4a727af08e17e4939e" role="tab" data-toggle="collapse" href="#collapse-4ef520d6cd20ba4a727af08e17e4939e"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="个人研究"
+        id="heading-4879b307f0d04954985d8d0f3d54b8fa" role="tab" data-toggle="collapse" href="#collapse-4879b307f0d04954985d8d0f3d54b8fa"
         aria-expanded="true"
       >
-        学习
-        <span class="list-group-count">(36)</span>
+        个人研究
+        <span class="list-group-count">(11)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-4ef520d6cd20ba4a727af08e17e4939e"
-           role="tabpanel" aria-labelledby="heading-4ef520d6cd20ba4a727af08e17e4939e">
+      <div class="category-collapse collapse show" id="collapse-4879b307f0d04954985d8d0f3d54b8fa"
+           role="tabpanel" aria-labelledby="heading-4879b307f0d04954985d8d0f3d54b8fa">
         
         
           
@@ -309,23 +311,69 @@
   </div>
 
           
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="博客搭建"
+        id="heading-5015cfdc68085d8b3157455484121939" role="tab" data-toggle="collapse" href="#collapse-5015cfdc68085d8b3157455484121939"
+        aria-expanded="false"
+      >
+        博客搭建
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-5015cfdc68085d8b3157455484121939"
+           role="tabpanel" aria-labelledby="heading-5015cfdc68085d8b3157455484121939">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3410375722.html" title="【博客搭建】Hexo 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【博客搭建】Hexo 使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1708025467.html" title="【博客搭建】Latex 数学书写笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【博客搭建】Latex 数学书写笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
   
     
     
     
     <div class="category-sub row nomargin-x">
       <a class="category-subitem 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="引擎开发"
-        id="heading-5fb44f244e83f8590e9006f4e077a625" role="tab" data-toggle="collapse" href="#collapse-5fb44f244e83f8590e9006f4e077a625"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="引擎研究"
+        id="heading-c4c8e03727fb481ff5cd961ded3872aa" role="tab" data-toggle="collapse" href="#collapse-c4c8e03727fb481ff5cd961ded3872aa"
         aria-expanded="true"
       >
-        引擎开发
-        <span class="list-group-count">(1)</span>
+        引擎研究
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-5fb44f244e83f8590e9006f4e077a625"
-           role="tabpanel" aria-labelledby="heading-5fb44f244e83f8590e9006f4e077a625">
+      <div class="category-collapse collapse show" id="collapse-c4c8e03727fb481ff5cd961ded3872aa"
+           role="tabpanel" aria-labelledby="heading-c4c8e03727fb481ff5cd961ded3872aa">
         
         
           
@@ -334,377 +382,24 @@
     
       
       
-        <a href="/posts/3631212322.html" title="【引擎开发】纹理相关属性说明"
+        <a href="/posts/330516235.html" title="【引擎研究】图形管道笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【引擎研究】图形管道笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3631212322.html" title="【引擎研究】纹理相关属性说明"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">【引擎开发】纹理相关属性说明</span>
+          <span class="category-post">【引擎研究】纹理相关属性说明</span>
         </a>
       
     
   </div>
 
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数学"
-        id="heading-6e65831863dbf272b7a65cd8df1a440d" role="tab" data-toggle="collapse" href="#collapse-6e65831863dbf272b7a65cd8df1a440d"
-        aria-expanded="false"
-      >
-        数学
-        <span class="list-group-count">(6)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-6e65831863dbf272b7a65cd8df1a440d"
-           role="tabpanel" aria-labelledby="heading-6e65831863dbf272b7a65cd8df1a440d">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3146816869.html" title="【数学】函数"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【数学】函数</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/1182456995.html" title="【数学】向量"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【数学】向量</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/1813400594.html" title="【数学】四元数"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【数学】四元数</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/3073109274.html" title="【数学】矩阵"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【数学】矩阵</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/1885603555.html" title="【数学】解析几何"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【数学】解析几何</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/425437888.html" title="【数学】集合"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【数学】集合</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="英语"
-        id="heading-4145d4c179e1aafdb5a0295da9a82d42" role="tab" data-toggle="collapse" href="#collapse-4145d4c179e1aafdb5a0295da9a82d42"
-        aria-expanded="false"
-      >
-        英语
-        <span class="list-group-count">(12)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-4145d4c179e1aafdb5a0295da9a82d42"
-           role="tabpanel" aria-labelledby="heading-4145d4c179e1aafdb5a0295da9a82d42">
-        
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/1864774520.html" title="【英语】常用代词笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【英语】常用代词笔记</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/1922779167.html" title="【英语】常用疑问词笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【英语】常用疑问词笔记</span>
-        </a>
-      
-    
-  </div>
-
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="英语语法笔记"
-        id="heading-8e63d324af89768f9d2385421ae60416" role="tab" data-toggle="collapse" href="#collapse-8e63d324af89768f9d2385421ae60416"
-        aria-expanded="false"
-      >
-        英语语法笔记
-        <span class="list-group-count">(10)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-8e63d324af89768f9d2385421ae60416"
-           role="tabpanel" aria-labelledby="heading-8e63d324af89768f9d2385421ae60416">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3481354081.html" title="【英语语法笔记】介词"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【英语语法笔记】介词</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/1170703467.html" title="【英语语法笔记】动词"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【英语语法笔记】动词</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/4121327623.html" title="【英语语法笔记】单词"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【英语语法笔记】单词</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/648367824.html" title="【英语语法笔记】句子"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【英语语法笔记】句子</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/4168832070.html" title="【英语语法笔记】名词"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【英语语法笔记】名词</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/3611936726.html" title="【英语语法笔记】形容词"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【英语语法笔记】形容词</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/1226664103.html" title="【英语语法笔记】表示数字"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【英语语法笔记】表示数字</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/3075658332.html" title="【英语语法笔记】表示时态"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【英语语法笔记】表示时态</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/2556572278.html" title="【英语语法笔记】表示时间"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【英语语法笔记】表示时间</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/1271277138.html" title="【英语语法笔记】音标"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【英语语法笔记】音标</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="计算机"
-        id="heading-8a2b56e293ee788f1057ad236e06559e" role="tab" data-toggle="collapse" href="#collapse-8a2b56e293ee788f1057ad236e06559e"
-        aria-expanded="false"
-      >
-        计算机
-        <span class="list-group-count">(6)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-8a2b56e293ee788f1057ad236e06559e"
-           role="tabpanel" aria-labelledby="heading-8a2b56e293ee788f1057ad236e06559e">
-        
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/2845903494.html" title="【Linux】Linux 使用笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【Linux】Linux 使用笔记</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/1673174570.html" title="【计算机】字符编码的发展与关系"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【计算机】字符编码的发展与关系</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/1481637271.html" title="【计算机】常见 CPU 指令集发展及其关系"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【计算机】常见 CPU 指令集发展及其关系</span>
-        </a>
-      
-    
-  </div>
-
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="汇编"
-        id="heading-ef3380de76fd90069a3644053bc3379d" role="tab" data-toggle="collapse" href="#collapse-ef3380de76fd90069a3644053bc3379d"
-        aria-expanded="false"
-      >
-        汇编
-        <span class="list-group-count">(3)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-ef3380de76fd90069a3644053bc3379d"
-           role="tabpanel" aria-labelledby="heading-ef3380de76fd90069a3644053bc3379d">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3178886567.html" title="【汇编】基本概念"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【汇编】基本概念</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/2731825535.html" title="【汇编】寄存器速查"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【汇编】寄存器速查</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/1744230454.html" title="【汇编】操作码速查"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【汇编】操作码速查</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
         
       </div>
     </div>
@@ -719,7 +414,7 @@
         aria-expanded="false"
       >
         软件开发
-        <span class="list-group-count">(11)</span>
+        <span class="list-group-count">(7)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -727,7 +422,6 @@
            role="tabpanel" aria-labelledby="heading-a41622d744ac9c55f5266dcc90ac7599">
         
         
-          
           
   <div class="category-post-list">
     
@@ -797,72 +491,6 @@
     
   </div>
 
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数据库系统原理"
-        id="heading-b19b7bf5edb5d10c1fafb08e6837fd55" role="tab" data-toggle="collapse" href="#collapse-b19b7bf5edb5d10c1fafb08e6837fd55"
-        aria-expanded="false"
-      >
-        数据库系统原理
-        <span class="list-group-count">(4)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-b19b7bf5edb5d10c1fafb08e6837fd55"
-           role="tabpanel" aria-labelledby="heading-b19b7bf5edb5d10c1fafb08e6837fd55">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/4219286117.html" title="【数据库系统原理（1）】库处理语句"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【数据库系统原理（1）】库处理语句</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/4147230756.html" title="【数据库系统原理（2）】表处理语句"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【数据库系统原理（2）】表处理语句</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/372718776.html" title="【数据库系统原理（3）】数据处理语句"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【数据库系统原理（3）】数据处理语句</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/3037167271.html" title="【数据库系统原理（4）】视图处理语句"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【数据库系统原理（4）】视图处理语句</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
         
       </div>
     </div>
@@ -883,12 +511,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【引擎开发】纹理相关属性说明</h1>
+            <h1 id="seo-header">【引擎研究】纹理相关属性说明</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>【引擎开发】纹理相关属性说明</h1>
+                <h1>【引擎研究】纹理相关属性说明</h1>
 <h2 id="伽马与线性空间">伽马与线性空间</h2>
 <p>伽马与线性空间都是一种颜色空间，也即颜色存储时的分布方式，伽马空间相比线性空间会更多的存储图片的暗色部分。</p>
 <p>伽马空间现在是图片存储的标准格式。选择伽马空间的原因有两点：</p>
@@ -900,8 +528,8 @@
 <p>线性空间更符合现实光线的物理特性，所以着色器计算需要线性空间颜色。</p>
 <h3 id="sRGB">sRGB</h3>
 <p>sRGB 是公认的标准伽马空间，所以 sRGB 也是图片的默认保存方式。</p>
-<p>sRGB 的具体保存方式就是对原本的线性颜色值进行调色（$y=x^{\frac{1}{2.2}}$），从而牺牲亮色空间以存储更多暗色。</p>
-<p>光照计算时需要线性颜色，因此使用 sRGB 纹理需先将颜色逆推转回线性空间（$y=x^{2.2}$），不然纹理就会看上去比原本亮的多。</p>
+<p>sRGB 的具体保存方式就是对原本的线性颜色值进行调色（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mfrac><mn>1</mn><mn>2.2</mn></mfrac></msup></mrow><annotation encoding="application/x-tex">y=x^{\frac{1}{2.2}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.954em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.954em;"><span style="top:-3.363em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">2.2</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span></span></span></span></span></span></span></span>），从而牺牲亮色空间以存储更多暗色。</p>
+<p>光照计算时需要线性颜色，因此使用 sRGB 纹理需先将颜色逆推转回线性空间（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2.2</mn></msup></mrow><annotation encoding="application/x-tex">y=x^{2.2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2.2</span></span></span></span></span></span></span></span></span></span></span></span>），不然纹理就会看上去比原本亮的多。</p>
 <h2 id="mipmaps">mipmaps</h2>
 <p>mipmaps 是一种 GPU 采样策略。其先基于原纹理生成多张分辨率逐渐降低的小纹理，然后根据实际渲染时纹理在屏幕上的大小占比，选择其中最合适的纹理进行采样。</p>
 <ol>
@@ -930,12 +558,12 @@
 <li>三线性：对最近两张 mipmap 进行双线性采样，然后再混合。</li>
 </ul>
 <h2 id="包裹模式">包裹模式</h2>
-<p>指示 GPU 当采样时的 uv 输入值超出 $[0,1]$ 范围时如何处理。</p>
+<p>指示 GPU 当采样时的 uv 输入值超出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> 范围时如何处理。</p>
 <ul>
 <li>重复：对输入值取模以纠正回范围内。</li>
 <li>夹紧：将输入值限制在最大范围内。</li>
 <li>镜像：类似乒乓的方式将输入值纠正回范围。</li>
-<li>镜像一次：只在 $[-1,0]$ 范围内镜像一次，其他范围使用夹紧。</li>
+<li>镜像一次：只在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[-1,0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mclose">]</span></span></span></span> 范围内镜像一次，其他范围使用夹紧。</li>
 </ul>
 <h2 id="参考资料">参考资料</h2>
 <ul>
@@ -962,12 +590,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/" class="category-chain-item">个人研究</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E5%BC%95%E6%93%8E%E5%BC%80%E5%8F%91/" class="category-chain-item">引擎开发</a>
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E5%BC%95%E6%93%8E%E7%A0%94%E7%A9%B6/" class="category-chain-item">引擎研究</a>
   
   
 
@@ -989,7 +617,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【引擎开发】纹理相关属性说明</div>
+      <div>【引擎研究】纹理相关属性说明</div>
       <div>https://bdffzi-blog.pages.dev/posts/3631212322.html</div>
     </div>
     <div class="license-meta">
@@ -1034,9 +662,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/3495031609.html" title="【Blender】杂项笔记">
+                      <a href="/posts/2795034225.html" title="【软件开发】CMake 学习笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【Blender】杂项笔记</span>
+                        <span class="hidden-mobile">【软件开发】CMake 学习笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1147,6 +775,26 @@
 
   
 
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
 
 
 
@@ -1374,8 +1022,6 @@
 
   
 <script src="/assets/js/noCache.js"></script>
-<script src="/assets/js/mermaid.min.js"></script>
-<script src="/assets/js/enableMermaid.js"></script>
 
 
 

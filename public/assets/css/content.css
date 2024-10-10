@@ -74,12 +74,12 @@
 
 /* 表格 */
 
-.markdown-body table:not(figure table) thead tr {
+html[data-user-color-scheme="light"] .markdown-body table:not(figure table) thead tr {
   background-color: #f0f0f0;
   text-align: center;
 }
 
-.markdown-body table:not(figure table) tbody tr:nth-child(2n) {
+html[data-user-color-scheme="light"] .markdown-body table:not(figure table) tbody tr:nth-child(2n) {
   /*隔行改变行的背景色*/
   background-color: #f8f8f8;
 }

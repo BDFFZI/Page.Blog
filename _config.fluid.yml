@@ -5,11 +5,19 @@ apple_touch_icon: "/assets/img/avatar.jpg"
 # 导航栏
 navbar:
   blog_title: "BDFFZI的小屋"
+  ground_glass:
+    enable: true
+
+# 页脚
+footer:
+  # 网站pv与uv统计
+  statistics:
+    enable: true
 
 # 主页
 index:
   # 头图相对页面的占比
-  banner_img_height: 50
+  banner_img_height: 40
   slogan:
     text: "笔记 |   分享 |   杂谈"
 
@@ -25,6 +33,15 @@ post:
     enable: true
     type: giscus
 
+  # 数学
+  math:
+    enable: true
+    engine: katex
+
+  # 图表
+  mermaid:
+    enable: true
+
 # 关于页
 about:
   avatar: "/assets/img/avatar.jpg"
@@ -35,22 +52,17 @@ about:
     - { class: "iconfont icon-bilibili-fill", link: "https://space.bilibili.com/35949109", tip: "Bilibili" }
     - { class: "iconfont icon-wechat-fill", qrcode: "/assets/img/wechat.jpg" }
 
-footer:
-  statistics:
-    enable: true
-
+# 评论插件
 giscus:
   repo: "BDFFZI/Page.Blog"
   repo-id: "R_kgDOLNpbRw"
   category: "Announcements"
   category-id: "DIC_kwDOLNpbR84CjAdm"
 
+# 自定义内容
 custom_css:
   - "/assets/css/content.css"
   - "/assets/css/layout.css"
   - "/assets/css/bilicard.css"
-
 custom_js:
   - "/assets/js/noCache.js"
-  - "/assets/js/mermaid.min.js"
-  - "/assets/js/enableMermaid.js"
