@@ -21,15 +21,15 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【Unity】光照解决方案笔记https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;BestPracticeLightingPipelines.html 确定对象显示效果的三阶段 剔除 列出了需要渲染的对象，确保这些对象摄像机可见（视锥体剔除）且不被遮挡（遮挡剔除）。  渲染 将这些对象绘制到基于像素的缓冲区中（通过正确的光照以及它们的一些属性）。  后期处理 在这些缓冲区">
+    <meta name="description" content="【Unity】光照解决方案笔记 https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;BestPracticeLightingPipelines.html 确定对象显示效果的三阶段   剔除 列出了需要渲染的对象，确保这些对象摄像机可见（视锥体剔除）且不被遮挡（遮挡剔除）。   渲染 将这些对象绘制到基于像素的缓冲区中（通过正确的光照以及它们的一些属性）。   后期处理 在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Unity】光照解决方案笔记">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/150670921.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【Unity】光照解决方案笔记https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;BestPracticeLightingPipelines.html 确定对象显示效果的三阶段 剔除 列出了需要渲染的对象，确保这些对象摄像机可见（视锥体剔除）且不被遮挡（遮挡剔除）。  渲染 将这些对象绘制到基于像素的缓冲区中（通过正确的光照以及它们的一些属性）。  后期处理 在这些缓冲区">
+<meta property="og:description" content="【Unity】光照解决方案笔记 https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;BestPracticeLightingPipelines.html 确定对象显示效果的三阶段   剔除 列出了需要渲染的对象，确保这些对象摄像机可见（视锥体剔除）且不被遮挡（遮挡剔除）。   渲染 将这些对象绘制到基于像素的缓冲区中（通过正确的光照以及它们的一些属性）。   后期处理 在">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-04T09:09:00.000Z">
-<meta property="article:modified_time" content="2024-09-18T12:19:21.697Z">
+<meta property="article:modified_time" content="2024-05-31T09:30:05.126Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -320,7 +320,7 @@
         aria-expanded="false"
       >
         Blender
-        <span class="list-group-count">(1)</span>
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -338,6 +338,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495031609.html" title="【Blender】杂项笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】杂项笔记</span>
         </a>
       
     
@@ -806,43 +815,6 @@
       </div>
     </div>
   
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
-        id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
-        aria-expanded="false"
-      >
-        Web
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-c6e190b284633c48e39e55049da3cce8"
-           role="tabpanel" aria-labelledby="heading-c6e190b284633c48e39e55049da3cce8">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3410375722.html" title="【Web】Hexo 使用笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【Web】Hexo 使用笔记</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
         
       </div>
     </div>
@@ -864,19 +836,25 @@
             
               <div class="markdown-body">
                 
-                <h1 id="【Unity】光照解决方案笔记"><a href="#【Unity】光照解决方案笔记" class="headerlink" title="【Unity】光照解决方案笔记"></a>【Unity】光照解决方案笔记</h1><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/BestPracticeLightingPipelines.html">https://docs.unity.cn/cn/2022.3/Manual/BestPracticeLightingPipelines.html</a></p>
-<h2 id="确定对象显示效果的三阶段"><a href="#确定对象显示效果的三阶段" class="headerlink" title="确定对象显示效果的三阶段"></a>确定对象显示效果的三阶段</h2><ol>
-<li><p>剔除</p>
+                <h1>【Unity】光照解决方案笔记</h1>
+<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/BestPracticeLightingPipelines.html">https://docs.unity.cn/cn/2022.3/Manual/BestPracticeLightingPipelines.html</a></p>
+<h2 id="确定对象显示效果的三阶段">确定对象显示效果的三阶段</h2>
+<ol>
+<li>
+<p>剔除</p>
 <p>列出了需要渲染的对象，确保这些对象摄像机可见（视锥体剔除）且不被遮挡（遮挡剔除）。</p>
 </li>
-<li><p>渲染</p>
+<li>
+<p>渲染</p>
 <p>将这些对象绘制到基于像素的缓冲区中（通过正确的光照以及它们的一些属性）。</p>
 </li>
-<li><p>后期处理</p>
+<li>
+<p>后期处理</p>
 <p>在这些缓冲区上执行后期处理操作，生成发送到显示设备的最终输出帧。</p>
 </li>
 </ol>
-<h2 id="光照类型"><a href="#光照类型" class="headerlink" title="光照类型"></a>光照类型</h2><ul>
+<h2 id="光照类型">光照类型</h2>
+<ul>
 <li>直接光照</li>
 </ul>
 <p>从自发光光源（如灯泡）发出的光照，而不是光从表面反射的结果。</p>
@@ -884,20 +862,24 @@
 <li>间接光照</li>
 </ul>
 <p>由于光从表面反射并通过介质（如大气或半透明物质）传播和散射而形成的结果。</p>
-<h2 id="全局光照（GI）"><a href="#全局光照（GI）" class="headerlink" title="全局光照（GI）"></a>全局光照（GI）</h2><p>全局光照 (Global Illumination) 是一组特殊照明技术的总称，它<strong>考虑了综合且复杂的现实光照模型</strong>（如光的反射、折射等），并以此<strong>对直接和间接光照</strong>进行建模，从而为游戏<strong>提供逼真的光照效果</strong>。</p>
+<h2 id="全局光照（GI）">全局光照（GI）</h2>
+<p>全局光照 (Global Illumination) 是一组特殊照明技术的总称，它<strong>考虑了综合且复杂的现实光照模型</strong>（如光的反射、折射等），并以此<strong>对直接和间接光照</strong>进行建模，从而为游戏<strong>提供逼真的光照效果</strong>。</p>
 <p>从使用角度来看可以将 GI 简单理解为<strong>产生间接光的手段</strong>。单纯的兰伯特光照之类的经验光照模型技术并不是 GI。</p>
 <p>GI 提供几种方法，如：</p>
 <ul>
-<li>烘焙&#x2F;动态光照贴图（Unity 支持）</li>
-<li>烘焙&#x2F;动态光照探针（Unity 支持）</li>
+<li>烘焙/动态光照贴图（Unity 支持）</li>
+<li>烘焙/动态光照探针（Unity 支持）</li>
 <li>辐照度体积</li>
 <li>光传播体积</li>
 <li>基于体素的 GI 和基于距离场的 GI</li>
 </ul>
-<h2 id="光照贴图程序（Lightmapper）"><a href="#光照贴图程序（Lightmapper）" class="headerlink" title="光照贴图程序（Lightmapper）"></a>光照贴图程序（Lightmapper）</h2><p>这是一个基础系统，它通过发射光线、计算光线反弹并将产生的光线应用到纹理来生成光照贴图和光照探针的数据。</p>
-<h2 id="如何点亮你的项目？"><a href="#如何点亮你的项目？" class="headerlink" title="如何点亮你的项目？"></a>如何点亮你的项目？</h2><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/uploads/Main/BestPracticeLightingPipeline15.svg">https://docs.unity.cn/cn/2022.3/uploads/Main/BestPracticeLightingPipeline15.svg</a></p>
+<h2 id="光照贴图程序（Lightmapper）">光照贴图程序（Lightmapper）</h2>
+<p>这是一个基础系统，它通过发射光线、计算光线反弹并将产生的光线应用到纹理来生成光照贴图和光照探针的数据。</p>
+<h2 id="如何点亮你的项目？">如何点亮你的项目？</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/uploads/Main/BestPracticeLightingPipeline15.svg">https://docs.unity.cn/cn/2022.3/uploads/Main/BestPracticeLightingPipeline15.svg</a></p>
 <ol>
-<li><p>选择渲染管线</p>
+<li>
+<p>选择渲染管线</p>
 <ul>
 <li>Built-in RP</li>
 <li>URP</li>
@@ -905,14 +887,16 @@
 <li>自定义 SRP</li>
 </ul>
 </li>
-<li><p>决定 GI 模式（产生间接光的 GI 系统）</p>
+<li>
+<p>决定 GI 模式（产生间接光的 GI 系统）</p>
 <ul>
 <li>烘焙 GI</li>
 <li>实时 GI</li>
 <li>烘焙 &amp; 实时 GI</li>
 </ul>
 </li>
-<li><p>选择光照模式（GI 光与实时光的混合方式）</p>
+<li>
+<p>选择光照模式（GI 光与实时光的混合方式）</p>
 <ul>
 <li>Baked Indirect</li>
 <li>Subtractive</li>
@@ -920,7 +904,8 @@
 <li>Distance Shadowmask</li>
 </ul>
 </li>
-<li><p>添加场景光照</p>
+<li>
+<p>添加场景光照</p>
 <ul>
 <li>添加灯光</li>
 <li>添加发光表面</li>
@@ -930,36 +915,46 @@
 </ul>
 </li>
 </ol>
-<h2 id="渲染管线"><a href="#渲染管线" class="headerlink" title="渲染管线"></a>渲染管线</h2><h3 id="内置渲染管线（Built-in-RP）"><a href="#内置渲染管线（Built-in-RP）" class="headerlink" title="内置渲染管线（Built-in RP）"></a>内置渲染管线（Built-in RP）</h3><p>2018 年之前，Unity 只有一个内置渲染管线（Built-in RP），其提供两种渲染路径。</p>
+<h2 id="渲染管线">渲染管线</h2>
+<h3 id="内置渲染管线（Built-in-RP）">内置渲染管线（Built-in RP）</h3>
+<p>2018 年之前，Unity 只有一个内置渲染管线（Built-in RP），其提供两种渲染路径。</p>
 <ul>
 <li>向前渲染（多通道：每一盏灯光占用一个 Pass）</li>
 <li>延迟渲染</li>
 </ul>
-<h3 id="高清渲染管线-HDRP"><a href="#高清渲染管线-HDRP" class="headerlink" title="高清渲染管线 (HDRP)"></a>高清渲染管线 (HDRP)</h3><p>提供了先进的渲染和着色功能，为高端游戏平台设计。</p>
+<h3 id="高清渲染管线-HDRP">高清渲染管线 (HDRP)</h3>
+<p>提供了先进的渲染和着色功能，为高端游戏平台设计。</p>
 <ul>
-<li>混合延迟&#x2F;前向瓦片&#x2F;聚类渲染器</li>
+<li>混合延迟/前向瓦片/聚类渲染器</li>
 </ul>
-<h3 id="通用渲染管线（URP）"><a href="#通用渲染管线（URP）" class="headerlink" title="通用渲染管线（URP）"></a>通用渲染管线（URP）</h3><p>内置管线替代品，保持全平台通用且性能提升。</p>
+<h3 id="通用渲染管线（URP）">通用渲染管线（URP）</h3>
+<p>内置管线替代品，保持全平台通用且性能提升。</p>
 <ul>
 <li>向前渲染（单通道：一个 Pass 中渲染所有灯光）</li>
 <li>向前渲染+：Unity 2022.2 新增</li>
 <li>延迟渲染：Unity 2021.2 新增</li>
 </ul>
-<h2 id="渲染路径"><a href="#渲染路径" class="headerlink" title="渲染路径"></a>渲染路径</h2><h3 id="向前渲染路径"><a href="#向前渲染路径" class="headerlink" title="向前渲染路径"></a>向前渲染路径</h3><p>按顺序渲染场景中的所有对象和灯光。</p>
+<h2 id="渲染路径">渲染路径</h2>
+<h3 id="向前渲染路径">向前渲染路径</h3>
+<p>按顺序渲染场景中的所有对象和灯光。</p>
 <p>当对象被多个光源照亮时，渲染成本会急剧增加。</p>
 <p>这种类型的渲染器通常提供各种各样的着色器，并且可以很轻松地处理透明度。</p>
-<h3 id="延迟渲染路径"><a href="#延迟渲染路径" class="headerlink" title="延迟渲染路径"></a>延迟渲染路径</h3><p>先将所有不透明几何体渲染到缓冲区中，其中存储着有关材质的信息（颜色，镜面反射，光滑度等）。然后在后一个 Pass（也就是名字中的“延迟”）渲染所有像素的灯光信息。</p>
+<h3 id="延迟渲染路径">延迟渲染路径</h3>
+<p>先将所有不透明几何体渲染到缓冲区中，其中存储着有关材质的信息（颜色，镜面反射，光滑度等）。然后在后一个 Pass（也就是名字中的“延迟”）渲染所有像素的灯光信息。</p>
 <p>渲染时间将主要取决于影响每个像素的光源数量。但对于透明对象或更复杂的着色器对象，依然需要回退到向前渲染路径中渲染。</p>
 <p>当处理包含许多动态光源的场景时（例如具有人工光照的内部空间，或室外与室内光照相结合的项目），通常建议使用延迟渲染。</p>
-<h2 id="Unity-中的-GI-系统"><a href="#Unity-中的-GI-系统" class="headerlink" title="Unity 中的 GI 系统"></a>Unity 中的 GI 系统</h2><p>在 Unity 的 5.6 之前，Unity 主要使用 Geomerics 公司的 Enlighten 来提供实时 GI 以及烘焙 GI，但在 5.6 之后 Unity 引入了新的 Progressive Lightmapper，如今 Enlighten 将陆续弃用。</p>
+<h2 id="Unity-中的-GI-系统">Unity 中的 GI 系统</h2>
+<p>在 Unity 的 5.6 之前，Unity 主要使用 Geomerics 公司的 Enlighten 来提供实时 GI 以及烘焙 GI，但在 5.6 之后 Unity 引入了新的 Progressive Lightmapper，如今 Enlighten 将陆续弃用。</p>
 <p><a target="_blank" rel="noopener" href="https://forum.unity.com/threads/update-on-global-illumination-2021.1067015/">Unity GI 发展计划</a></p>
 <ul>
-<li><p>实时 GI</p>
+<li>
+<p>实时 GI</p>
 <ul>
 <li>Enlighten 实时 GI（已弃用，仅支持到 Unity 2024）</li>
 </ul>
 </li>
-<li><p>烘焙 GI</p>
+<li>
+<p>烘焙 GI</p>
 <p>利用光照贴图程序将光照数据烘焙到光照探针、反射探针、称为光照贴图的纹理中</p>
 <ul>
 <li>Enlighten 烘焙 GI（已弃用，仅支持到 Unity 2021）</li>
@@ -968,35 +963,49 @@
 </li>
 </ul>
 <p>不要同时使用 Enlighten 实时 GI 和烘焙 GI，这将对性能产生影响，且两者获取到的间接光也存在视觉差异。</p>
-<h2 id="如何让物体获取间接光"><a href="#如何让物体获取间接光" class="headerlink" title="如何让物体获取间接光"></a>如何让物体获取间接光</h2><ul>
-<li><p>静态物体</p>
-<p>标记为“Contribute GI”的物体将被识别为静态物体，只有静态物体可以接受烘焙&#x2F;预计算的 GI 光照。</p>
+<h2 id="如何让物体获取间接光">如何让物体获取间接光</h2>
+<ul>
+<li>
+<p>静态物体</p>
+<p>标记为“Contribute GI”的物体将被识别为静态物体，只有静态物体可以接受烘焙/预计算的 GI 光照。</p>
 </li>
-<li><p>动态物体</p>
+<li>
+<p>动态物体</p>
 <p>动态物体只能通过光照探针获得间接光的支持。</p>
 </li>
 </ul>
 <p>由于光照的烘焙是一个相当缓慢的过程，所以只推荐自身具有不同光照变化（如存在凹洞或接受自身阴影）的大型复杂物体才推荐标记“Contribute GI”；对于自身受光均匀的小型凸面网格应该作为动态物体从光照探针中获取间接光。</p>
 <ul>
-<li><p>大型不可烘焙物体（如大型粒子系统或蒙皮网格）</p>
+<li>
+<p>大型不可烘焙物体（如大型粒子系统或蒙皮网格）</p>
 <p>可以使用 LPPV（Light Probe Proxy Volume）来获取更好的本地化间接光照。</p>
 </li>
 </ul>
 <p>要最大程度减少烘焙时间并同时保持足够的光照质量，最重要的就是限制场景中标记为“Contribute GI”的对象数量。</p>
-<p>照明优化教程：<br><a target="_blank" rel="noopener" href="https://learn.unity.com/project/lighting-optimization-with-precomputed-realtime-gi">https://learn.unity.com/project/lighting-optimization-with-precomputed-realtime-gi</a></p>
-<h2 id="光照模式"><a href="#光照模式" class="headerlink" title="光照模式"></a>光照模式</h2><p>Light 组件和 Lighting Settings Asset 中都有一个光照模式的设置，但两者是不同的概念。</p>
-<h3 id="灯光光照模式"><a href="#灯光光照模式" class="headerlink" title="灯光光照模式"></a>灯光光照模式</h3><ul>
-<li>烘焙<br>为 GI 提供光照信息，从这些光源产生的直接和间接光照将被光照贴图程序处理。</li>
-<li>实时<br>实时计算的光照效果，受性能影响无法产生间接光，且光照没有 GI 的效果真实。</li>
-<li>混合<br>提供实时光照的同时也为烘焙光照（GI）提供烘焙信息，并能将两种光照进行混合，混合方式取决于场景光照模式。</li>
+<p>照明优化教程：<br>
+<a target="_blank" rel="noopener" href="https://learn.unity.com/project/lighting-optimization-with-precomputed-realtime-gi">https://learn.unity.com/project/lighting-optimization-with-precomputed-realtime-gi</a></p>
+<h2 id="光照模式">光照模式</h2>
+<p>Light 组件和 Lighting Settings Asset 中都有一个光照模式的设置，但两者是不同的概念。</p>
+<h3 id="灯光光照模式">灯光光照模式</h3>
+<ul>
+<li>烘焙<br>
+为 GI 提供光照信息，从这些光源产生的直接和间接光照将被光照贴图程序处理。</li>
+<li>实时<br>
+实时计算的光照效果，受性能影响无法产生间接光，且光照没有 GI 的效果真实。</li>
+<li>混合<br>
+提供实时光照的同时也为烘焙光照（GI）提供烘焙信息，并能将两种光照进行混合，混合方式取决于场景光照模式。</li>
 </ul>
-<h3 id="场景光照模式"><a href="#场景光照模式" class="headerlink" title="场景光照模式"></a>场景光照模式</h3><p>指定场景中实时光照和烘焙光照（GI）的混合方式，配合灯光的混合模式使用。</p>
-<h4 id="前置说明"><a href="#前置说明" class="headerlink" title="前置说明"></a>前置说明</h4><ul>
+<h3 id="场景光照模式">场景光照模式</h3>
+<p>指定场景中实时光照和烘焙光照（GI）的混合方式，配合灯光的混合模式使用。</p>
+<h4 id="前置说明">前置说明</h4>
+<ul>
 <li>阴影贴图：实时阴影实现方案</li>
 <li>阴影距离：显示阴影的最大范围。<strong>若非注明，则所有阴影都受此影响</strong>。</li>
 </ul>
-<h4 id="具体方案"><a href="#具体方案" class="headerlink" title="具体方案"></a>具体方案</h4><ul>
-<li><p>Subtractive</p>
+<h4 id="具体方案">具体方案</h4>
+<ul>
+<li>
+<p>Subtractive</p>
 <p>最早的混合光照模式。将大部分光照和阴影都采取烘焙实现，仅提供主方向光的实时灯光。</p>
 <p>光照效果比较简陋，但在低端硬件上非常有用。</p>
 <table>
@@ -1007,7 +1016,8 @@
 <th>动态物体</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>直接光照</td>
 <td>光照贴图</td>
 <td>实时</td>
@@ -1027,12 +1037,14 @@
 <td>阴影贴图（仅主方向光）</td>
 <td>阴影贴图（仅主方向光）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <ul>
 <li>主方向光：强度最高的方向光</li>
 </ul>
 </li>
-<li><p>BakedIndirect</p>
+<li>
+<p>BakedIndirect</p>
 <p>仅烘焙间接光，直接光和阴影都采用实时计算。</p>
 <p>光照效果逼真，但有一定的性能问题。</p>
 <table>
@@ -1043,7 +1055,8 @@
 <th>动态物体</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>直接光照</td>
 <td>实时</td>
 <td>实时</td>
@@ -1063,9 +1076,11 @@
 <td>阴影贴图</td>
 <td>阴影贴图</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 </li>
-<li><p>Shadowmask</p>
+<li>
+<p>Shadowmask</p>
 <p>升级版 BakedIndirect，针对静态物体阴影进行了优化，可同时采取烘焙和实时两种方案，且可以超出阴影距离限制。</p>
 <p>光照效果更逼真，且在性能上有一定优化。</p>
 <table>
@@ -1076,7 +1091,8 @@
 <th>动态物体</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>直接光照</td>
 <td>实时</td>
 <td>实时</td>
@@ -1096,7 +1112,8 @@
 <td>阴影贴图</td>
 <td>阴影贴图</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <ul>
 <li>阴影遮罩：一种额外的光照贴图，用于确定目标像素是否在阴影中。</li>
 </ul>
@@ -1107,7 +1124,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="后处理间接光"><a href="#后处理间接光" class="headerlink" title="后处理间接光"></a>后处理间接光</h2><p>GI 烘焙间接光的时间很长不利于快速原型开发，此时可以利用“屏幕空间环境光遮蔽”功能来模拟间接光效果。</p>
+<h2 id="后处理间接光">后处理间接光</h2>
+<p>GI 烘焙间接光的时间很长不利于快速原型开发，此时可以利用“屏幕空间环境光遮蔽”功能来模拟间接光效果。</p>
 
                 
               </div>
@@ -1333,12 +1351,6 @@
   
 
 
-  
-  
-
-
-
-
 
 
 
@@ -1555,49 +1567,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

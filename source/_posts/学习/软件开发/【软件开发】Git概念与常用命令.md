@@ -135,6 +135,8 @@ git merge <branch> #将目标分支合并到当前分支
 git submodule add <url> <path> #添加一个子模块到目标路径
 git submodule init #初始化子模块，将子模块信息填入config中
 git submodule update #检出父项目期望版本的子模块内容，使用前需确保子模块已初始化
+git submodule status #查看子模块的状态，例如是否有修改后未提交的内容
+git submodule set-url <path> <url> #重新设置子模块的源仓库地址
 git submodule deinit <path> #移除子模块，恢复到未初始化的状态（不是删除仓库对子模块的引用）
 ```
 

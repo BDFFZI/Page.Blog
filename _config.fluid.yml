@@ -25,12 +25,6 @@ post:
     enable: true
     type: giscus
 
-  # 数学
-  math:
-    enable: true
-    specific: false
-    engine: mathjax
-
 # 关于页
 about:
   avatar: "/assets/img/avatar.jpg"

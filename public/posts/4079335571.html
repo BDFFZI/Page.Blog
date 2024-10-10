@@ -21,20 +21,20 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【COM3D2Mod 制作教程（2）】Mod 底层原理Mod 是什么？Mod 一词想必你已经听过很多次了，因为很多游戏都可以装 Mod，而 Mod 可以为游戏增添一些额外的乐趣。但在 COM3D2 这款游戏中，Mod 和常规的意思并不一样，常规的 Mod 在这里叫做插件，两者不能混为一谈。 Mod 是一种官方功能 一种用于增加额外的人物卡及其装扮的方法。  在 COM3D2 中 Mod 是一项官方">
+    <meta name="description" content="【COM3D2Mod 制作教程（2）】Mod 底层原理 Mod 是什么？ Mod 一词想必你已经听过很多次了，因为很多游戏都可以装 Mod，而 Mod 可以为游戏增添一些额外的乐趣。但在 COM3D2 这款游戏中，Mod 和常规的意思并不一样，常规的 Mod 在这里叫做插件，两者不能混为一谈。 Mod 是一种官方功能  一种用于增加额外的人物卡及其装扮的方法。  在 COM3D2 中 Mod 是一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【COM3D2Mod 制作教程（2）】Mod 底层原理">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/4079335571.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【COM3D2Mod 制作教程（2）】Mod 底层原理Mod 是什么？Mod 一词想必你已经听过很多次了，因为很多游戏都可以装 Mod，而 Mod 可以为游戏增添一些额外的乐趣。但在 COM3D2 这款游戏中，Mod 和常规的意思并不一样，常规的 Mod 在这里叫做插件，两者不能混为一谈。 Mod 是一种官方功能 一种用于增加额外的人物卡及其装扮的方法。  在 COM3D2 中 Mod 是一项官方">
+<meta property="og:description" content="【COM3D2Mod 制作教程（2）】Mod 底层原理 Mod 是什么？ Mod 一词想必你已经听过很多次了，因为很多游戏都可以装 Mod，而 Mod 可以为游戏增添一些额外的乐趣。但在 COM3D2 这款游戏中，Mod 和常规的意思并不一样，常规的 Mod 在这里叫做插件，两者不能混为一谈。 Mod 是一种官方功能  一种用于增加额外的人物卡及其装扮的方法。  在 COM3D2 中 Mod 是一">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230821172531502-932973070.jpg">
-<meta property="og:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230821175923970-4172886.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230821172531502-932973070.jpg">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230821175923970-4172886.jpg">
 <meta property="article:published_time" content="2023-08-24T10:06:00.000Z">
-<meta property="article:modified_time" content="2024-02-08T13:19:46.272Z">
+<meta property="article:modified_time" content="2024-02-18T01:45:23.833Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bdffzi-blog.pages.dev/page.blog/assets/images/2454431-20230821172531502-932973070.jpg">
+<meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/2454431-20230821172531502-932973070.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -434,78 +434,99 @@
             
               <div class="markdown-body">
                 
-                <h1 id="【COM3D2Mod-制作教程（2）】Mod-底层原理"><a href="#【COM3D2Mod-制作教程（2）】Mod-底层原理" class="headerlink" title="【COM3D2Mod 制作教程（2）】Mod 底层原理"></a>【COM3D2Mod 制作教程（2）】Mod 底层原理</h1><h2 id="Mod-是什么？"><a href="#Mod-是什么？" class="headerlink" title="Mod 是什么？"></a>Mod 是什么？</h2><p>Mod 一词想必你已经听过很多次了，因为很多游戏都可以装 Mod，而 Mod 可以为游戏增添一些额外的乐趣。但在 COM3D2 这款游戏中，Mod 和常规的意思并不一样，常规的 Mod 在这里叫做插件，两者不能混为一谈。</p>
-<h3 id="Mod-是一种官方功能"><a href="#Mod-是一种官方功能" class="headerlink" title="Mod 是一种官方功能"></a>Mod 是一种官方功能</h3><blockquote>
+                <h1>【COM3D2Mod 制作教程（2）】Mod 底层原理</h1>
+<h2 id="Mod-是什么？">Mod 是什么？</h2>
+<p>Mod 一词想必你已经听过很多次了，因为很多游戏都可以装 Mod，而 Mod 可以为游戏增添一些额外的乐趣。但在 COM3D2 这款游戏中，Mod 和常规的意思并不一样，常规的 Mod 在这里叫做插件，两者不能混为一谈。</p>
+<h3 id="Mod-是一种官方功能">Mod 是一种官方功能</h3>
+<blockquote>
 <p>一种用于增加额外的人物卡及其装扮的方法。</p>
 </blockquote>
 <p>在 COM3D2 中 Mod 是一项官方功能，这是很特殊的一点，实际上官方所有的角色装扮和我们自己所做 Mod 本质是一样的，所以它的作用也有了明确表示：一种用于增加额外的女仆及其装扮的方法。</p>
 <p>我们外部之所以也能做 Mod，是因为围绕着下方两个文件夹展开了，官方会自动加载这两个文件夹下的文件，这两个文件夹也分别代表着两种功能方向。</p>
 <ul>
-<li><p>Mod 文件夹：</p>
+<li>
+<p>Mod 文件夹：</p>
 <p>用于增加女仆装扮选项，但相关文件在游戏中仅有加载功能，所以无法直接制作，制作时需要额外借助第三方工具。</p>
 </li>
-<li><p>Preset 文件夹：</p>
+<li>
+<p>Preset 文件夹：</p>
 <p>用于储存女仆身体信息，包括体型面部的参数，是游戏内置的捏人系统，虽然用 Mod 文件夹也可实现类似的功能，但难度过大一般不考虑。</p>
 </li>
 </ul>
 <p><em>可见 Mod 由 Mod 和 Preset 两种文件组成，但因为 Preset 的内容在课程中的占比非常小，所以后续的 Mod 都默认指 Mod 文件夹的这部分。</em></p>
-<h3 id="Mod-可能被插件扩展"><a href="#Mod-可能被插件扩展" class="headerlink" title="Mod 可能被插件扩展"></a>Mod 可能被插件扩展</h3><blockquote>
+<h3 id="Mod-可能被插件扩展">Mod 可能被插件扩展</h3>
+<blockquote>
 <p>可以提供更多额外功能，但存在兼容性问题。</p>
 </blockquote>
 <p>原版的 Mod 功能是比较弱的，所以一些技术玩家为此专门开发了一些插件，这些插件使得 Mod 可以额外加载一些文件，比如声音，剧本等（COM3D2.MaidLoader），更炫酷的材质效果（COM3D2.NPRShader.Plugin），额外的体型参数（CM3D2.AddModsSlider.Plugin）等等。</p>
 <p>其中一些插件非常重要，以至于没有他们部分装扮将无法制作，再加上玩家一般都会通过 CMI 或类似的插件整合包安装插件，所以你基本可以默认玩家的游戏环境是带有这些插件的，但要注意这终究是第三方提供的功能，不一定百分百兼容，再考虑受众范围的问题，所以部分插件还是建议保守使用。</p>
-<h2 id="Mod-的运行原理"><a href="#Mod-的运行原理" class="headerlink" title="Mod 的运行原理"></a>Mod 的运行原理</h2><p>我们知道 Mod 就是实现装扮功能，所以让我们先不考虑 Mod，考虑如何自己实现人物装扮的效果。</p>
-<h3 id="人体模型实现"><a href="#人体模型实现" class="headerlink" title="人体模型实现"></a>人体模型实现</h3><blockquote>
+<h2 id="Mod-的运行原理">Mod 的运行原理</h2>
+<p>我们知道 Mod 就是实现装扮功能，所以让我们先不考虑 Mod，考虑如何自己实现人物装扮的效果。</p>
+<h3 id="人体模型实现">人体模型实现</h3>
+<blockquote>
 <p>人形模型绑定上人形骨架即可。</p>
 </blockquote>
 <p>首先装扮是穿在角色身体上的，所以必须先考虑这些这些身体是如何做的，如果你有完成前置要求的任务，那这个问题应该相当简单，就是捏个人型模型在绑上一套人形骨架就行。另外为了实现动画的复用，一般多个角色的骨架都会使用同一套，即便略有区别那也是能向下兼容的那种。</p>
-<h3 id="装扮模型实现"><a href="#装扮模型实现" class="headerlink" title="装扮模型实现"></a>装扮模型实现</h3><blockquote>
+<h3 id="装扮模型实现">装扮模型实现</h3>
+<blockquote>
 <p>单独的装扮模型但绑上和人体模型相同的骨架即可。</p>
 </blockquote>
 <p>人体模型有了，现在我们要给他做一个能够替换和拆卸的衣服，很显然这样的衣服和人体一定不能是同一个模型，可我们需要让衣服和人体一起运动。我们知道模型是受骨架控制而运动的，而且不同模型依旧可以绑上相同的骨架，所以只要骨架一样就能同时控制装扮和身体，于是就有了种穿上衣服的感觉。也因此对装扮便只有了骨架的要求，模型得以随意替换。</p>
-<h3 id="体型变化实现"><a href="#体型变化实现" class="headerlink" title="体型变化实现"></a>体型变化实现</h3><blockquote>
+<h3 id="体型变化实现">体型变化实现</h3>
+<blockquote>
 <p>把人体模型和装扮的胖瘦都捏一份，通过形态键计算过渡。</p>
 </blockquote>
 <p>体型的变化是显然通过网格变化体现的，但游戏不是建模软件也不可能现场改模型，所以必须有成熟便利的功能自动修改网格形状。骨骼就是一种，但这种实时计算的方式不可控，而要严格保证网格变化前后是符合要求的方法就是形态键，但形态键的缺点是必须提前确定变化前后的形状，所以要做两遍，人体模型和装扮模型都要。</p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><blockquote>
+<h3 id="结论">结论</h3>
+<blockquote>
 <p>Mod 的本质其实就是特制的 3D 模型而已。</p>
 </blockquote>
 <p>我们知道 Mod 是和装扮有关，所以第一点和我们没关系，我们只要用官方的人体模型就行，但这也指明了我们制作装扮时所要绑定的骨架。而第三点太麻烦了，所以我们可以不考虑体型变化。那有关的只有第二点，而这一点说明了装扮实现的原理，也即 Mod 的原理。</p>
-<h2 id="模型的组成原理"><a href="#模型的组成原理" class="headerlink" title="模型的组成原理"></a>模型的组成原理</h2><p>上述我们谈到 Mod 就是 3D 模型，那如何把这个 3D 模型放到游戏内？使用 FBX 这些格式肯定不可能的了，COM3D2 是 Unity 开发的，Unity 内部有着自己的格式，但你也别怕，因为模型的本质在哪都是一样的，我们可以先看看在 Blender 中模型是如何构成的。</p>
-<h3 id="模型文件构成"><a href="#模型文件构成" class="headerlink" title="模型文件构成"></a>模型文件构成</h3><ol>
+<h2 id="模型的组成原理">模型的组成原理</h2>
+<p>上述我们谈到 Mod 就是 3D 模型，那如何把这个 3D 模型放到游戏内？使用 FBX 这些格式肯定不可能的了，COM3D2 是 Unity 开发的，Unity 内部有着自己的格式，但你也别怕，因为模型的本质在哪都是一样的，我们可以先看看在 Blender 中模型是如何构成的。</p>
+<h3 id="模型文件构成">模型文件构成</h3>
+<ol>
 <li>随意创建一个正方体，通过右上角的大纲视图可以看到它由<strong>物体</strong>和<strong>网格</strong>组成。</li>
 <li>接着我们可以为物体添加<strong>材质</strong>，材质中有一个节点功能，它的专属编辑面板在 Blender 中叫 Shading，换成名词就是<strong>着色器</strong>（Shader）.</li>
 <li>材质的面板上可以设置各种参数，包括被称作<strong>纹理</strong>的图片。</li>
 </ol>
 <p><em>我为什么用这些名称称呼他们？通过大纲视图的 Blender 文件模式，你可以看到在 Blender 中就是这样称呼的（见下图标记处）。</em></p>
-<p><img src="/page.blog/assets/images/2454431-20230821172531502-932973070.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h3 id="模型文件拆分"><a href="#模型文件拆分" class="headerlink" title="模型文件拆分"></a>模型文件拆分</h3><p>传统的单文件模式（FBX 这类格式），会把上述所有资源都打包在一起，但这不利于资源文件的复用和定制，所以最终到游戏引擎中会将各个资源分开储存，也即我们上述提到的那五种基本资源，简单描述一些他们各自的功能。</p>
+<p><img src="/assets/images/2454431-20230821172531502-932973070.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="模型文件拆分">模型文件拆分</h3>
+<p>传统的单文件模式（FBX 这类格式），会把上述所有资源都打包在一起，但这不利于资源文件的复用和定制，所以最终到游戏引擎中会将各个资源分开储存，也即我们上述提到的那五种基本资源，简单描述一些他们各自的功能。</p>
 <ul>
-<li><p><strong>物体</strong></p>
+<li>
+<p><strong>物体</strong></p>
 <p>保存着父子关系，变换信息（位移旋转等），以及对网格和材质的引用信息。</p>
 <ul>
-<li><p><strong>网格</strong></p>
+<li>
+<p><strong>网格</strong></p>
 <p>点线面信息，包括 uv，权重，顶点色等。</p>
 </li>
 </ul>
 </li>
-<li><p><strong>材质</strong></p>
+<li>
+<p><strong>材质</strong></p>
 <p>表明所用的着色器，以及使用着色器时使用的资源（纹理）和参数。</p>
 <ul>
-<li><p><strong>着色器</strong></p>
+<li>
+<p><strong>着色器</strong></p>
 <p>一段代码，用于指导电脑如何去绘制我们的屏幕画面。</p>
 </li>
-<li><p><strong>纹理</strong></p>
+<li>
+<p><strong>纹理</strong></p>
 <p>图片文件</p>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="Mod-的组成原理"><a href="#Mod-的组成原理" class="headerlink" title="Mod 的组成原理"></a>Mod 的组成原理</h2><p>你总算可以知道 Mod 里的文件都是干啥的了，所以现在请直接掏出一款现有的 Mod 做参照，因为下文所讲述的内容将会和 Mod 文件一一对应。</p>
-<p><img src="/page.blog/assets/images/2454431-20230821175923970-4172886.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="Mod-的组成原理">Mod 的组成原理</h2>
+<p>你总算可以知道 Mod 里的文件都是干啥的了，所以现在请直接掏出一款现有的 Mod 做参照，因为下文所讲述的内容将会和 Mod 文件一一对应。</p>
+<p><img src="/assets/images/2454431-20230821175923970-4172886.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>先让我们查看 Mod 制作 Wiki 的左侧的文件类别（上图），可以确定 Mod 的基本文件共有 5 种（最后一个不是文件类型），具体按功能可以分为以下三类（你不需要在意具体分类，对学习 Mod 制作来说这是无所谓的）。</p>
 <p><em>为什么不做上图中最后一个日文标签的文件说明？因为那个不是文件类型，而是 menu 文件中一个属性，用于指明装扮类别（如指明装扮是头发，上衣，裤子等）。后续编写 menu 文件时，我们通常是直接对官方 menu 文件进行修改而不是从头创建，所以不需要去特别记忆。</em></p>
-<h3 id="模型文件"><a href="#模型文件" class="headerlink" title="模型文件"></a>模型文件</h3><ul>
+<h3 id="模型文件">模型文件</h3>
+<ul>
 <li>model 文件（模型点线面信息）</li>
 <li>mate 文件（如何绘制点线面）</li>
 <li>tex 文件（绘制时用到的贴图）</li>
@@ -536,19 +557,19 @@ flowchart RL
     shader-->material
     texture-->material
 </p>
-
 <!-- ![img](/assets/images/2454431-20230821175122018-774464025.jpg) -->
-
 <p>可以看到 model 文件中包含 mate 文件，所以 model 中用到的 mate 是不需要单独导出文件的，只要一个 model 文件即可。</p>
 <p>着色器是内置在游戏中的，所以没有单独导出的文件，但着色器是由材质引用的，所以之后我们需要在材质中写明着色器信息。</p>
-<h3 id="COM3D2-文件"><a href="#COM3D2-文件" class="headerlink" title="COM3D2 文件"></a>COM3D2 文件</h3><ul>
+<h3 id="COM3D2-文件">COM3D2 文件</h3>
+<ul>
 <li>menu 文件</li>
 </ul>
 <blockquote>
 <p>对应游戏内装扮菜单，告诉游戏如何使用模型文件。</p>
 </blockquote>
 <p>现在我们有模型了，但如何告知 COM3D2 去使用它呢？这就需要 menu 文件。menu 是一个由多个键值对组成的文件，他直接对应着女仆编辑菜单中的菜单项，所以理所当然的它必须要知道一些基本的菜单信息，比如装扮名，装扮描述，装扮类别图标等。他的功能相当强大，以至于指定“点击该菜单项为女仆穿上特定模型文件”这一功能只是他的可选项之一，其他还能做到比如，调整颜色，隐藏部位，特定时刻更换材质球模型（常见如插入时内裤改为半脱状态）等操作。</p>
-<h3 id="Unity-文件"><a href="#Unity-文件" class="headerlink" title="Unity 文件"></a>Unity 文件</h3><ul>
+<h3 id="Unity-文件">Unity 文件</h3>
+<ul>
 <li>pmat 文件</li>
 </ul>
 <blockquote>
@@ -556,11 +577,13 @@ flowchart RL
 </blockquote>
 <p>这个文件只包含了一个整数值和一个材质球名称，他决定了使用该材质球的模型绘制顺序，具体顺序为其整数值的正序排列。为什么需要控制绘制顺序？因为计算机绘制画面是按材质球为单位一层一层覆盖上去的，所以材质球绘制的先后顺序可能会对画面产生影响。在不透明物体中，这点不重要，因为有一个叫深度值的东西会帮我们避免错误覆盖，但在透明物体中就存在问题了，因为透明的性质导致绘制时必须要先知道前一个颜色才行，所以先后顺序必须确定。比如我们通常都是先看到裙子再看到内裤，所以如果裙子是半透明的，那必须要让计算机先画上内裤，然后再画上裙子才行。</p>
 <p><em>为什么我按如上方式进行文件分类？这是站在 Unity 的角度来分类的。模型文件都是由外部工具制作再导入 Unity 的，是构成完整模型的必要资源；COM3D2 文件则是 COM3D2 独有，是游戏开发者自定的文件；而 pmat 则确实是 Unity 自身的资源，是在 Unity 中进行编辑的。</em></p>
-<h3 id="其他文件"><a href="#其他文件" class="headerlink" title="其他文件"></a>其他文件</h3><blockquote>
+<h3 id="其他文件">其他文件</h3>
+<blockquote>
 <p><em>不在教程范围内</em></p>
 </blockquote>
 <p><em>实际上除了上述几种文件之外，游戏或插件还额外提供了一些文件类型，但考虑难易度和兼容性，教程中不会使用也不会教授，如有需求可自行去了解。</em></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这章主要讲述了 COM3D2 的 Mod 运行原理及其文件构成，偏理论课程，所以看起来会比较枯燥困难，但实际制作中会更轻松的一些，比如上述的很多文件，到时我们是不需要从头创建的，即使是建模环节也是通过移植第三方模型来解决。下一章我们将正式开始搭建制作环境，并了解 Mod 文件是如何制作出来的。</p>
+<h2 id="总结">总结</h2>
+<p>这章主要讲述了 COM3D2 的 Mod 运行原理及其文件构成，偏理论课程，所以看起来会比较枯燥困难，但实际制作中会更轻松的一些，比如上述的很多文件，到时我们是不需要从头创建的，即使是建模环节也是通过移植第三方模型来解决。下一章我们将正式开始搭建制作环境，并了解 Mod 文件是如何制作出来的。</p>
 
                 
               </div>
@@ -763,12 +786,6 @@ flowchart RL
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -987,49 +1004,6 @@ flowchart RL
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
