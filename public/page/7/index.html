@@ -7,8 +7,11 @@
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
   <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -41,11 +44,11 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -68,7 +71,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -230,6 +233,562 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/posts/4219286117.html" target="_self">
+          【数据库系统原理（1）】库处理语句
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/4219286117.html" target="_self">
+        <div>
+          【数据库系统原理（1）】库处理语句 连接数据库 12mysql -u &lt;user&gt; -p&lt;password&gt; 查看 1SHOW DATABASES; 创建 12CREATEDATABASE [IF NOT EXISTS] &lt;name&gt;; 删除 12DROPDATABASE &lt;name&gt;; 选择 1USE &lt;name&gt;;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-14 13:37" pubdate>
+              2024-01-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" class="category-chain-item">软件开发</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/" class="category-chain-item">数据库系统原理</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/3454987331.html" target="_self">
+          【Manim】空间与变换笔记
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3454987331.html" target="_self">
+        <div>
+          【Manim】空间与变换笔记 所有常量都可以在constants.py中找到 屏幕空间 屏幕中心为原点(0,0,0)，遵循右手坐标系，向右为x轴正方向，向上为y轴正方向，向前为z轴负方向，旋转时正方向为顺时针方向。 相关常量    名称 描述     FRAME_HEIGHT 屏幕高度，默认为8   FRAME_WIDTH 屏幕宽度，默认为ASPECT_RATIO * FRAME_HEIGHT
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-14 13:29" pubdate>
+              2024-01-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="category-chain-item">工作</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/Manim/" class="category-chain-item">Manim</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/3993342442.html" target="_self">
+          【软件开发】Git 概念与常用命令
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3993342442.html" target="_self">
+        <div>
+          【软件开发】Git 概念与常用命令 Git 概念 存储方式 Git 是分布式存储，每一个 clone 下来的仓库都可以看成独立的个体，只是 Git 有提供同步功能，因此 Git 支持离线使用，因为本质上本地和云端是两个仓库。 仓库构成 提交（commit） 提交是存储文件的最基本元素，记录了每次对文件的修改信息，同时也是仓库文件状态判断的基点。多个提交对文件的修改可能是顺序进行也可能是同步进行，同
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-14 11:43" pubdate>
+              2024-01-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" class="category-chain-item">软件开发</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/2553791405.html" target="_self">
+          【软件开发】设计模式个人解读
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2553791405.html" target="_self">
+        <div>
+          【软件开发】设计模式个人解读 设计模式 设计模式是一种针对面向对象语言的软件设计方法，是对类设计的约束和指导。 设计模式由“原则”和“方法”两部分组成，一个设计良好的项目结构应能完美符合“原则”中的要求，而为了实现完美往往需要按照“方法”的指导去设计。  原则： 这是必须要记住的内容，但要注意的是原则是一种思想，仅靠死记硬背一点用都没有，必须要真正理解后才能使用。 方法： 方法在各个不同的开发环境
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-14 11:43" pubdate>
+              2024-01-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" class="category-chain-item">软件开发</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/3074968628.html" target="_self">
+          【COM3D2Mod 制作教程（6）】实战！制作身体部分（下）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3074968628.html" target="_self">
+        <div>
+          【COM3D2Mod 制作教程（6）】实战！制作身体部分（下） 有了上一章制作帽子的经验，此时做头发很多就不必再重复赘述了，但如果用完全一样的流程和方法，把头发做好后直接装扮就会导致游戏报错，这就是我之前说的，不同装扮的制作需求并不是一成不变的，所以本章就也就此开始。 一. 制作头发 Mod 头发装扮的大部分制作流程和帽子的流程都是一样的，比如也要绑骨骼，写 menu，设置 mate、tex 这些
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-09 22:56" pubdate>
+              2023-09-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E4%BA%AB/" class="category-chain-item">分享</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E4%BA%AB/COM3D2Mod%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B/" class="category-chain-item">COM3D2Mod制作教程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/4213549019.html" target="_self">
+          【COM3D2Mod 制作教程（5）】实战！制作身体部分（中）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/4213549019.html" target="_self">
+        <div>
+          【COM3D2Mod 制作教程（5）】实战！制作身体部分（中） 帽子是很典型的装扮类型，较为简单适合入门，所以我们先制作帽子 Mod，流程基本和第二章中的概述相符。因为导入插件及其功能位置也都已在第二章说明，所以这些相关内容我不会再重复。 这里选择帽子而非头饰也是有意为之，头饰的情况更复杂，其使用一套独立的骨架，所以移植时需要在 menu 中设定额外的位置参数，这太复杂了。而帽子和头发等头部部位有
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-09 14:07" pubdate>
+              2023-09-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E4%BA%AB/" class="category-chain-item">分享</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E4%BA%AB/COM3D2Mod%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B/" class="category-chain-item">COM3D2Mod制作教程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/2178139815.html" target="_self">
+          【COM3D2Mod 制作教程（4）】实战！制作身体部分（上）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2178139815.html" target="_self">
+        <div>
+          【COM3D2Mod 制作教程（4）】实战！制作身体部分（上） 教程介绍 现在正式进入实战教程环节，我会以我的实际制作过程详尽的教授每个细节，也因此受限于篇幅大小，“实战！制作身体部分”被分为了上中下三个过程。   上： 我们将首先确定我们的制作目标，并以此进行环境搭建和资源准备工作，目标是将正式制作 Mod 的前置需求全部完成。   中： 现在正式开始制作 Mod，以典型的帽子 Mod 为例，我
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-09 13:28" pubdate>
+              2023-09-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E4%BA%AB/" class="category-chain-item">分享</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E4%BA%AB/COM3D2Mod%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B/" class="category-chain-item">COM3D2Mod制作教程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/41755669.html" target="_self">
+          【COM3D2Mod 制作教程（3）】Mod 制作概要
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/41755669.html" target="_self">
+        <div>
+          【COM3D2Mod 制作教程（3）】Mod 制作概要 制作工具整合包：https://mod.3dmgame.com/mod/205516 该工具包简单整合了些本章需要的小型工具、插件、以及其他一些后续教程必要的资源，所以你必须下载它。但如 GIMP、Blender、CMI，这些则需要你自行下载。 Mod 制作工具 书接上文，我们知道了 Mod 由五种文件构成，而特制的文件自然要用特制的工具制作
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-27 16:42" pubdate>
+              2023-08-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E4%BA%AB/" class="category-chain-item">分享</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E4%BA%AB/COM3D2Mod%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B/" class="category-chain-item">COM3D2Mod制作教程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/4079335571.html" target="_self">
+          【COM3D2Mod 制作教程（2）】Mod 底层原理
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/4079335571.html" target="_self">
+        <div>
+          【COM3D2Mod 制作教程（2）】Mod 底层原理 Mod 是什么？ Mod 一词想必你已经听过很多次了，因为很多游戏都可以装 Mod，而 Mod 可以为游戏增添一些额外的乐趣。但在 COM3D2 这款游戏中，Mod 和常规的意思并不一样，常规的 Mod 在这里叫做插件，两者不能混为一谈。 Mod 是一种官方功能  一种用于增加额外的人物卡及其装扮的方法。  在 COM3D2 中 Mod 是一
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-24 18:06" pubdate>
+              2023-08-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E4%BA%AB/" class="category-chain-item">分享</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E4%BA%AB/COM3D2Mod%E5%88%B6%E4%BD%9C%E6%95%99%E7%A8%8B/" class="category-chain-item">COM3D2Mod制作教程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/posts/2633666094.html" target="_self">
           【COM3D2Mod 制作教程（1）】教程简介
         </a>
@@ -238,7 +797,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/2633666094.html" target="_self">
         <div>
-          【COM3D2Mod 制作教程（1）】教程简介教程来自：https://bdffzi.github.io/opencom3d2/ 前言没有Mod 制作 WIKI就没有这篇 Mod 制作教程，所有信息都是先从 Wiki 上取得再发展出来的。WIKI 上也有简易的教程，虽然有些过时了（WIKI 上面用到的很多第三方工具都已经失去支持了，不过也都有后继者在传承，所以 Mod 制作至今依旧可行），但其他信
+          【COM3D2Mod 制作教程（1）】教程简介 教程来自：https://bdffzi.github.io/opencom3d2/ 前言 没有Mod 制作 WIKI就没有这篇 Mod 制作教程，所有信息都是先从 Wiki 上取得再发展出来的。WIKI 上也有简易的教程，虽然有些过时了（WIKI 上面用到的很多第三方工具都已经失去支持了，不过也都有后继者在传承，所以 Mod 制作至今依旧可行），但其
         </div>
       </a>
 
@@ -285,173 +844,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/3769596179.html" target="_self">
-          【杂谈】我该怎么做才能让自己进大厂
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3769596179.html" target="_self">
-        <div>
-          【杂谈】我该怎么做才能让自己进大厂想进大厂做 Unity 游戏开发，可完全不知道自己应该准备啥。比起面试我甚至感觉 HR 那关更难通过，如何让自己拿到面试的机会？ 应该做个游戏 Demo 吗？但游戏开发都烂大街了，各种现成的插件教程网上都有，很轻松的就可以做出一款看起来很成熟的游戏来。要想来点考验技术的，那就造轮子，可别人公司都有成熟的技术，你造的别人也看不上，而且不到面试的时候也用不上这个。 不
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-02-11 16:44" pubdate>
-              2023-02-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%9D%82%E8%B0%88/" class="category-chain-item">杂谈</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/2800689653.html" target="_self">
-          【杂谈】突破自己可解锁人生隐藏内容
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/2800689653.html" target="_self">
-        <div>
-          【杂谈】突破自己可解锁人生隐藏内容概述太离谱了，以前我好几次感到并明确说过这么一句话：  这个世界好像有一种规律。当你费劲心思完成某件事，这个世界就会像试图打击你一样，忽然让你发现一堆优秀解决方案，就像是为了提醒你自己是多么愚蠢一样。  今天我不出所料的再次遇到了这个现象，我现在已经逐渐相信了这个事实。所以今天我要重新概括这个现象：  当你在某件事上得到突破时，世界就会为你解锁更多内容。无关你的突
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-21 23:33" pubdate>
-              2022-08-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%9D%82%E8%B0%88/" class="category-chain-item">杂谈</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/254603757.html" target="_self">
-          【杂谈】关于我对数学和世界的感悟
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/254603757.html" target="_self">
-        <div>
-          【杂谈】关于我对数学和世界的感悟前段时间中二病犯了，突发奇想了些个人感悟，这波总算趁着过年时间把病发完了。 别看标题有数学，放心，全文不用计算任何公式，很多前置知识还配有科普小视频，阅读起来毫无难度，除了写的乱七八糟外。 （高端的我也写不出来啊_(:з)∠)_）。  引入“你听说过牛顿分形吗？” “哎，没有吗？” “那，不妨我们先来玩一个游戏吧。” 我这有三只不同颜色的笔，请用它们帮我在张空白的纸
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-02-03 21:03" pubdate>
-              2022-02-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%9D%82%E8%B0%88/" class="category-chain-item">杂谈</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/6/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="page-number current">7</span>
+      <a class="extend prev" rel="prev" href="/page/6/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/8/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
@@ -525,10 +922,11 @@
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>

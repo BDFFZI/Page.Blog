@@ -9,8 +9,11 @@
 <link rel="stylesheet" href="/css/bilicard.css">
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
   <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -18,12 +21,12 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【Unity】各种操作触发 GC 情况在 Update 中持续执行下列操作，统计每帧触发 GC 的情况，仅首帧触发 GC 的情况不计入。 使用 Linq 处理数据基本上使用就会分配内存，所以不要用。 利用 Foreach 遍历容器不会分配内存，可以用，但根据不同的迭代器实现，速度可能不如 For 循环。 将值类型装箱会触发内存分配，不要使用。 使用 enum 做键的字典使用 enum 作为键实测并">
+    <meta name="description" content="【Unity】各种操作触发 GC 情况 在 Update 中持续执行下列操作，统计每帧触发 GC 的情况，仅首帧触发 GC 的情况不计入。 使用 Linq 处理数据 基本上使用就会分配内存，所以不要用。 利用 Foreach 遍历容器 不会分配内存，可以用，但根据不同的迭代器实现，速度可能不如 For 循环。 将值类型装箱 会触发内存分配，不要使用。 使用 enum 做键的字典 使用 enum 作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Unity】各种操作触发 GC 情况">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/2970632423.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【Unity】各种操作触发 GC 情况在 Update 中持续执行下列操作，统计每帧触发 GC 的情况，仅首帧触发 GC 的情况不计入。 使用 Linq 处理数据基本上使用就会分配内存，所以不要用。 利用 Foreach 遍历容器不会分配内存，可以用，但根据不同的迭代器实现，速度可能不如 For 循环。 将值类型装箱会触发内存分配，不要使用。 使用 enum 做键的字典使用 enum 作为键实测并">
+<meta property="og:description" content="【Unity】各种操作触发 GC 情况 在 Update 中持续执行下列操作，统计每帧触发 GC 的情况，仅首帧触发 GC 的情况不计入。 使用 Linq 处理数据 基本上使用就会分配内存，所以不要用。 利用 Foreach 遍历容器 不会分配内存，可以用，但根据不同的迭代器实现，速度可能不如 For 循环。 将值类型装箱 会触发内存分配，不要使用。 使用 enum 做键的字典 使用 enum 作">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-02-04T08:42:00.000Z">
 <meta property="article:modified_time" content="2024-02-07T04:39:04.809Z">
@@ -51,11 +54,11 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -78,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -317,7 +320,7 @@
         aria-expanded="false"
       >
         Blender
-        <span class="list-group-count">(1)</span>
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -335,6 +338,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495031609.html" title="【Blender】杂项笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】杂项笔记</span>
         </a>
       
     
@@ -803,43 +815,6 @@
       </div>
     </div>
   
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
-        id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
-        aria-expanded="false"
-      >
-        Web
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-c6e190b284633c48e39e55049da3cce8"
-           role="tabpanel" aria-labelledby="heading-c6e190b284633c48e39e55049da3cce8">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3410375722.html" title="【Web】Hexo 使用笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【Web】Hexo 使用笔记</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
         
       </div>
     </div>
@@ -861,13 +836,20 @@
             
               <div class="markdown-body">
                 
-                <h1 id="【Unity】各种操作触发-GC-情况"><a href="#【Unity】各种操作触发-GC-情况" class="headerlink" title="【Unity】各种操作触发 GC 情况"></a>【Unity】各种操作触发 GC 情况</h1><p>在 Update 中持续执行下列操作，统计每帧触发 GC 的情况，仅首帧触发 GC 的情况不计入。</p>
-<h2 id="使用-Linq-处理数据"><a href="#使用-Linq-处理数据" class="headerlink" title="使用 Linq 处理数据"></a>使用 Linq 处理数据</h2><p>基本上使用就会分配内存，所以不要用。</p>
-<h2 id="利用-Foreach-遍历容器"><a href="#利用-Foreach-遍历容器" class="headerlink" title="利用 Foreach 遍历容器"></a>利用 Foreach 遍历容器</h2><p>不会分配内存，可以用，但根据不同的迭代器实现，速度可能不如 For 循环。</p>
-<h2 id="将值类型装箱"><a href="#将值类型装箱" class="headerlink" title="将值类型装箱"></a>将值类型装箱</h2><p>会触发内存分配，不要使用。</p>
-<h2 id="使用-enum-做键的字典"><a href="#使用-enum-做键的字典" class="headerlink" title="使用 enum 做键的字典"></a>使用 enum 做键的字典</h2><p>使用 enum 作为键实测并不会触发装箱，查看源代码就会发现，内部已经改为用泛型处理，所以没有内存分配。</p>
-<h2 id="修改字符串"><a href="#修改字符串" class="headerlink" title="修改字符串"></a>修改字符串</h2><p>字符串是引用类型，修改字符串实质是创建了一个新字符串，接着旧字符串将被回收，所以会触发 GC，常见如修改 UI 文字时出现。</p>
-<h2 id="创建委托"><a href="#创建委托" class="headerlink" title="创建委托"></a>创建委托</h2><p>只有使用匿名函数的方式创建时不会分配内存。</p>
+                <h1>【Unity】各种操作触发 GC 情况</h1>
+<p>在 Update 中持续执行下列操作，统计每帧触发 GC 的情况，仅首帧触发 GC 的情况不计入。</p>
+<h2 id="使用-Linq-处理数据">使用 Linq 处理数据</h2>
+<p>基本上使用就会分配内存，所以不要用。</p>
+<h2 id="利用-Foreach-遍历容器">利用 Foreach 遍历容器</h2>
+<p>不会分配内存，可以用，但根据不同的迭代器实现，速度可能不如 For 循环。</p>
+<h2 id="将值类型装箱">将值类型装箱</h2>
+<p>会触发内存分配，不要使用。</p>
+<h2 id="使用-enum-做键的字典">使用 enum 做键的字典</h2>
+<p>使用 enum 作为键实测并不会触发装箱，查看源代码就会发现，内部已经改为用泛型处理，所以没有内存分配。</p>
+<h2 id="修改字符串">修改字符串</h2>
+<p>字符串是引用类型，修改字符串实质是创建了一个新字符串，接着旧字符串将被回收，所以会触发 GC，常见如修改 UI 文字时出现。</p>
+<h2 id="创建委托">创建委托</h2>
+<p>只有使用匿名函数的方式创建时不会分配内存。</p>
 <table>
 <thead>
 <tr>
@@ -876,7 +858,8 @@
 <th>分配量级</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>静态函数</td>
 <td>是</td>
 <td>1</td>
@@ -896,9 +879,12 @@
 <td>否</td>
 <td>0</td>
 </tr>
-</tbody></table>
-<h2 id="调用匿名函数"><a href="#调用匿名函数" class="headerlink" title="调用匿名函数"></a>调用匿名函数</h2><p>默认情况没有内存分配，但用到对象成员则分配内存加一，触发闭包再加一，避免这些情况。</p>
-<h3 id="在匿名函数内调用其他函数的情况"><a href="#在匿名函数内调用其他函数的情况" class="headerlink" title="在匿名函数内调用其他函数的情况"></a>在匿名函数内调用其他函数的情况</h3><table>
+</tbody>
+</table>
+<h2 id="调用匿名函数">调用匿名函数</h2>
+<p>默认情况没有内存分配，但用到对象成员则分配内存加一，触发闭包再加一，避免这些情况。</p>
+<h3 id="在匿名函数内调用其他函数的情况">在匿名函数内调用其他函数的情况</h3>
+<table>
 <thead>
 <tr>
 <th>函数类型</th>
@@ -906,7 +892,8 @@
 <th>分配量级</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>静态函数</td>
 <td>否</td>
 <td>0</td>
@@ -926,8 +913,10 @@
 <td>否</td>
 <td>0</td>
 </tr>
-</tbody></table>
-<h3 id="在匿名函数内使用其他变量的情况"><a href="#在匿名函数内使用其他变量的情况" class="headerlink" title="在匿名函数内使用其他变量的情况"></a>在匿名函数内使用其他变量的情况</h3><table>
+</tbody>
+</table>
+<h3 id="在匿名函数内使用其他变量的情况">在匿名函数内使用其他变量的情况</h3>
+<table>
 <thead>
 <tr>
 <th>变量类型</th>
@@ -935,7 +924,8 @@
 <th>分配量级</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>对象成员变量</td>
 <td>是</td>
 <td>1</td>
@@ -945,7 +935,8 @@
 <td>是</td>
 <td>2</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 
                 
               </div>
@@ -1017,7 +1008,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -1062,32 +1053,6 @@
   
     <article id="comments" lazyload>
       
-  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
-  </br>
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
-      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
-          {
-            el: '#waline',
-            pageview: window.origin.includes("localhost")?false:true,
-            path: window.location.pathname
-          }
-        )
-        Waline.init(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          var imgSelector = '#waline .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
 
     </article>
   
@@ -1139,12 +1104,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -1215,10 +1174,11 @@
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -1317,7 +1277,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
       visible  : CONFIG.anchorjs.visible
@@ -1362,49 +1322,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

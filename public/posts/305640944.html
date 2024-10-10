@@ -9,8 +9,11 @@
 <link rel="stylesheet" href="/css/bilicard.css">
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
   <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -18,12 +21,12 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【Unity】作业系统https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;JobSystem.html 技术概述作业系统是多线程技术的封装，使用户可以充分发挥 CPU 多核优势，大幅提高计算性能。 具体而言 Unity 封装了以下内容：  多线程：Unity 将根据 CPU 内核数量智能创建和分配线程，而无需用户管理。 偷窃工作：Unity 将会自动平衡各个工作线程之间的">
+    <meta name="description" content="【Unity】作业系统 https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;JobSystem.html 技术概述 作业系统是多线程技术的封装，使用户可以充分发挥 CPU 多核优势，大幅提高计算性能。 具体而言 Unity 封装了以下内容：  多线程：Unity 将根据 CPU 内核数量智能创建和分配线程，而无需用户管理。 偷窃工作：Unity 将会自动平衡各个工作线程之">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Unity】作业系统">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/305640944.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【Unity】作业系统https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;JobSystem.html 技术概述作业系统是多线程技术的封装，使用户可以充分发挥 CPU 多核优势，大幅提高计算性能。 具体而言 Unity 封装了以下内容：  多线程：Unity 将根据 CPU 内核数量智能创建和分配线程，而无需用户管理。 偷窃工作：Unity 将会自动平衡各个工作线程之间的">
+<meta property="og:description" content="【Unity】作业系统 https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;JobSystem.html 技术概述 作业系统是多线程技术的封装，使用户可以充分发挥 CPU 多核优势，大幅提高计算性能。 具体而言 Unity 封装了以下内容：  多线程：Unity 将根据 CPU 内核数量智能创建和分配线程，而无需用户管理。 偷窃工作：Unity 将会自动平衡各个工作线程之">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-21T08:48:00.000Z">
 <meta property="article:modified_time" content="2024-05-31T09:30:05.126Z">
@@ -51,11 +54,11 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -78,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -317,7 +320,7 @@
         aria-expanded="false"
       >
         Blender
-        <span class="list-group-count">(1)</span>
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -335,6 +338,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495031609.html" title="【Blender】杂项笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】杂项笔记</span>
         </a>
       
     
@@ -803,43 +815,6 @@
       </div>
     </div>
   
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
-        id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
-        aria-expanded="false"
-      >
-        Web
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-c6e190b284633c48e39e55049da3cce8"
-           role="tabpanel" aria-labelledby="heading-c6e190b284633c48e39e55049da3cce8">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3410375722.html" title="【Web】Hexo 使用笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【Web】Hexo 使用笔记</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
         
       </div>
     </div>
@@ -861,21 +836,25 @@
             
               <div class="markdown-body">
                 
-                <h1 id="【Unity】作业系统"><a href="#【Unity】作业系统" class="headerlink" title="【Unity】作业系统"></a>【Unity】作业系统</h1><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/JobSystem.html">https://docs.unity.cn/cn/2022.3/Manual/JobSystem.html</a></p>
-<h2 id="技术概述"><a href="#技术概述" class="headerlink" title="技术概述"></a>技术概述</h2><p>作业系统是多线程技术的封装，使用户可以充分发挥 CPU 多核优势，大幅提高计算性能。</p>
+                <h1>【Unity】作业系统</h1>
+<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/JobSystem.html">https://docs.unity.cn/cn/2022.3/Manual/JobSystem.html</a></p>
+<h2 id="技术概述">技术概述</h2>
+<p>作业系统是多线程技术的封装，使用户可以充分发挥 CPU 多核优势，大幅提高计算性能。</p>
 <p>具体而言 Unity 封装了以下内容：</p>
 <ul>
 <li>多线程：Unity 将根据 CPU 内核数量智能创建和分配线程，而无需用户管理。</li>
 <li>偷窃工作：Unity 将会自动平衡各个工作线程之间的任务量，充分利用每个线程。</li>
 <li>安全系统：Unity 提供各种功能保证多线程中数据读写安全，从而解决多线程竞争问题。</li>
-<li>其他可选功能包：<ul>
+<li>其他可选功能包：
+<ul>
 <li>Burst：高性能代码编译器，能大幅提高代码执行速度，即使不使用多线程技术。</li>
 <li>Collections：针对作业系统使用场景，封装的一些支持更复杂操作的集合。</li>
 <li>Entities：一种全新的 ESC 游戏框架。</li>
 </ul>
 </li>
 </ul>
-<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><p>作业是一个继承<code>IJob</code>等同类接口的结构体，用于描述一段需要利用作业系统完成的工作，内容包括自定义的工作参数和执行代码。</p>
+<h2 id="作业">作业</h2>
+<p>作业是一个继承<code>IJob</code>等同类接口的结构体，用于描述一段需要利用作业系统完成的工作，内容包括自定义的工作参数和执行代码。</p>
 <p>作业需要在主线程中创建调度，通常一个完整功能可能由多个作业构成，因此 Unity 允许作业间互相依赖。</p>
 <p>根据不同的使用场景，Unity 提供了以下作业类型：</p>
 <ul>
@@ -885,65 +864,87 @@
 <li><code>IJobFor</code>：类似<code>IJobParallelFor</code>，但允许以非并行的方式调度任务。</li>
 </ul>
 <p>所有接口都需要实现<code>Execute</code>方法，这是每个作业将会执行的代码。而自定义作业参数则需要自行使用安全类型进行声明。</p>
-<h2 id="安全类型"><a href="#安全类型" class="headerlink" title="安全类型"></a>安全类型</h2><h3 id="Blittable-类型"><a href="#Blittable-类型" class="headerlink" title="Blittable 类型"></a>Blittable 类型</h3><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/framework/interop/blittable-and-non-blittable-types">https://learn.microsoft.com/zh-cn/dotnet/framework/interop/blittable-and-non-blittable-types</a></p>
+<h2 id="安全类型">安全类型</h2>
+<h3 id="Blittable-类型">Blittable 类型</h3>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/framework/interop/blittable-and-non-blittable-types">https://learn.microsoft.com/zh-cn/dotnet/framework/interop/blittable-and-non-blittable-types</a></p>
 <p>考虑 Burst 编译器的使用，Unity 的作业系统只能使用原生数据类型进行计算，因此 C# 中的很多托管类型无法使用。所以在作业系统中只能使用非托管类型数据，或者更准确的说叫 Blittable 类型。</p>
-<h3 id="原生容器"><a href="#原生容器" class="headerlink" title="原生容器"></a>原生容器</h3><p>由于托管容器无法在作业系统中使用，为此需要改用 Unity 特制容器类型，其是 C# 层对原生内存的包装器。</p>
+<h3 id="原生容器">原生容器</h3>
+<p>由于托管容器无法在作业系统中使用，为此需要改用 Unity 特制容器类型，其是 C# 层对原生内存的包装器。</p>
 <p>内置的原生容器有如下几个：</p>
 <ul>
 <li>NativeArray：一个非托管类型数组。</li>
 <li>NativeSlice：可借此从<code>NativeArray</code>中获取切片。</li>
 </ul>
-<p>如果需要一些更复杂的原生容器，可参考容器包：<br><a target="_blank" rel="noopener" href="https://docs.unity.cn/Packages/com.unity.collections@latest/">https://docs.unity.cn/Packages/com.unity.collections@latest/</a></p>
-<h4 id="读写权限"><a href="#读写权限" class="headerlink" title="读写权限"></a>读写权限</h4><p>因为多线程的存在，原生容器的读写权限被严格控制。</p>
+<p>如果需要一些更复杂的原生容器，可参考容器包：<br>
+<a target="_blank" rel="noopener" href="https://docs.unity.cn/Packages/com.unity.collections@latest/">https://docs.unity.cn/Packages/com.unity.collections@latest/</a></p>
+<h4 id="读写权限">读写权限</h4>
+<p>因为多线程的存在，原生容器的读写权限被严格控制。</p>
 <p>默认情况下数据是同时可读写的，但这会导致 Unity 需要额外的处理来检查并行写入的问题。若显式声明只读，则可优化这部分功能。</p>
 <p>所以<strong>正确设置数据的读写权限可以减少一定的性能损耗，并解锁一些读写功能</strong>，这主要由用户使用一些特性标签来进行控制。</p>
 <ul>
 <li><code>[ReadOnly]</code>：表明数据只读。</li>
 </ul>
-<h4 id="内存分配器"><a href="#内存分配器" class="headerlink" title="内存分配器"></a>内存分配器</h4><p>原生内存需要自己管理，所以创建原生容器时必须声明分配器类型，以告诉 Unity 需要使用多长时间。分配器类型将影响 Unity 创建和回收内存的方式，<strong>确保正确的类型声明将获得最佳性能</strong>。</p>
+<h4 id="内存分配器">内存分配器</h4>
+<p>原生内存需要自己管理，所以创建原生容器时必须声明分配器类型，以告诉 Unity 需要使用多长时间。分配器类型将影响 Unity 创建和回收内存的方式，<strong>确保正确的类型声明将获得最佳性能</strong>。</p>
 <ul>
 <li>Allocator.Temp：最快的分配，从栈中申请的内存，生命周期为一帧或更短。不能传递给作业，但可以在作业代码中做局部变量使用。</li>
 <li>Allocator.TempJob：中等的分配，声明周期为四帧。常用于给作业传递数据，需要手动及时回收。</li>
 <li>Allocator.Persistent：最慢的分配，可一直存在直到被手动回收。这是直接通过调用<a target="_blank" rel="noopener" href="https://cplusplus.com/reference/cstdlib/malloc/"><code>malloc</code></a>声明的堆内存。</li>
 </ul>
-<h4 id="高级主题"><a href="#高级主题" class="headerlink" title="高级主题"></a>高级主题</h4><ul>
-<li><p>自定义原生容器：</p>
-<p>可创建自己的原生容器类型，具体参考文档：<br><a target="_blank" rel="noopener" href="https://docs.unity.cn/2022.3/Documentation/Manual/job-system-custom-nativecontainer.html">https://docs.unity.cn/2022.3/Documentation/Manual/job-system-custom-nativecontainer.html</a></p>
+<h4 id="高级主题">高级主题</h4>
+<ul>
+<li>
+<p>自定义原生容器：</p>
+<p>可创建自己的原生容器类型，具体参考文档：<br>
+<a target="_blank" rel="noopener" href="https://docs.unity.cn/2022.3/Documentation/Manual/job-system-custom-nativecontainer.html">https://docs.unity.cn/2022.3/Documentation/Manual/job-system-custom-nativecontainer.html</a></p>
 </li>
-<li><p>复制原生容器：</p>
-<p>深入了解原生容器的复制相关事宜，具体参考文档：<br> <a target="_blank" rel="noopener" href="https://docs.unity.cn/2022.3/Documentation/Manual/job-system-copy-nativecontainer.html">https://docs.unity.cn/2022.3/Documentation/Manual/job-system-copy-nativecontainer.html</a></p>
+<li>
+<p>复制原生容器：</p>
+<p>深入了解原生容器的复制相关事宜，具体参考文档：<br>
+<a target="_blank" rel="noopener" href="https://docs.unity.cn/2022.3/Documentation/Manual/job-system-copy-nativecontainer.html">https://docs.unity.cn/2022.3/Documentation/Manual/job-system-copy-nativecontainer.html</a></p>
 </li>
 </ul>
-<h3 id="特别提示"><a href="#特别提示" class="headerlink" title="特别提示"></a>特别提示</h3><ul>
+<h3 id="特别提示">特别提示</h3>
+<ul>
 <li>原生容器不实现<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/statements/declarations#reference-variables"><code>return ref</code></a>，所以<code>nativeArray[0]++</code>不会修改数组内容。</li>
 <li>静态变量将绕过所有安全系统，并可能导致软件崩溃。</li>
 <li>仅可用原生容器获取返回值，其他变量<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/65260387/why-is-nativearray-needed-to-obtain-return-values-from-unitys-job-system">只会被封送到原生内存而不会送回</a>。</li>
 </ul>
-<h2 id="创建并运行作业"><a href="#创建并运行作业" class="headerlink" title="创建并运行作业"></a>创建并运行作业</h2><p>创建并运行作业需要以下几步：</p>
+<h2 id="创建并运行作业">创建并运行作业</h2>
+<p>创建并运行作业需要以下几步：</p>
 <ol>
-<li><p>创建作业：</p>
+<li>
+<p>创建作业：</p>
 <p>实现<code>IJob</code>接口，并创建作业实例，传入自定义的作业数据。</p>
 </li>
-<li><p>安排作业：</p>
+<li>
+<p>安排作业：</p>
 <p>调用<code>Schedule</code>方法，Unity 将复制作业数据（避免和其他作业同时读写），并开始在工作线程执行作业。返回的<code>JobHandle</code>可用于建立依赖项。</p>
 </li>
-<li><p>完成作业：</p>
+<li>
+<p>完成作业：</p>
 <p>调用<code>Complete</code>方法，如果作业已完成将立即返回，否则阻塞等待。此时安全系统状态将清理，作业中的数据可再次访问。</p>
 </li>
 </ol>
-<h3 id="作业依赖"><a href="#作业依赖" class="headerlink" title="作业依赖"></a>作业依赖</h3><p>调用<code>Schedule</code>方法将返回一个<code>JobHandle</code>对象，可将该<code>JobHandle</code>作为其他作业的依赖项，表示其他作业需要该作业的完成结果。</p>
+<h3 id="作业依赖">作业依赖</h3>
+<p>调用<code>Schedule</code>方法将返回一个<code>JobHandle</code>对象，可将该<code>JobHandle</code>作为其他作业的依赖项，表示其他作业需要该作业的完成结果。</p>
 <p>此外可以使用<code>JobHandle.CombineDependencies</code>合并依赖项，以实现同时对多个作业结果的依赖。</p>
-<h3 id="并行作业"><a href="#并行作业" class="headerlink" title="并行作业"></a>并行作业</h3><p>Unity 将所有<code>Execute</code>执行任务划分为多个批次，然后以批次为单位分配给工作线程处理，通常每个内核都会分配一个工作线程。</p>
+<h3 id="并行作业">并行作业</h3>
+<p>Unity 将所有<code>Execute</code>执行任务划分为多个批次，然后以批次为单位分配给工作线程处理，通常每个内核都会分配一个工作线程。</p>
 <p>当一个工作线程完成所有分配给它的批次时，它还会尝试窃取其他工作线程中尚未完成的批次继续处理，每次最多窃取一半。</p>
 <p><strong>要优化流程，需要指定批次计数</strong>。批次计数是指每个批次的包含的<code>Execute</code>执行数量，如果值为 1 可以确保批次分配均匀，但过多的批次分配会带来一定开销，为此应逐步增加批次，直至性能提升忽略不计。</p>
-<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><ul>
-<li><p>尽可能延后<code>Complete</code>的调用时机：</p>
+<h3 id="最佳实践">最佳实践</h3>
+<ul>
+<li>
+<p>尽可能延后<code>Complete</code>的调用时机：</p>
 <p>调用<code>Complete</code>将阻塞主线程等待作业完成，否则作业可在后台异步执行。因此非必要情况应尽可能让作业多在后台执行，例如若能接收一帧延迟，可将作业放在每帧的结束开始之间运行。</p>
 </li>
-<li><p>避免运行长任务，应将其拆分成互相依赖的小任务：</p>
+<li>
+<p>避免运行长任务，应将其拆分成互相依赖的小任务：</p>
 <p>增加任务数有助于提高并行性，使多个作业链同时进行。否则可能耗光工作线程，导致其他独立作业无法执行，从而引起等待完成时发生的卡顿。</p>
 </li>
-<li><p>任务过长且无法拆分时应考虑增加批次计数：</p>
+<li>
+<p>任务过长且无法拆分时应考虑增加批次计数：</p>
 <p>作业系统有意尝试在尽可能多的线程上运行作业批次，增加批次计数可增加单个工作线程的压力，从而减少对其他工作线程的占用。</p>
 </li>
 </ul>
@@ -1032,7 +1033,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -1077,32 +1078,6 @@
   
     <article id="comments" lazyload>
       
-  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
-  </br>
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
-      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
-          {
-            el: '#waline',
-            pageview: window.origin.includes("localhost")?false:true,
-            path: window.location.pathname
-          }
-        )
-        Waline.init(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          var imgSelector = '#waline .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
 
     </article>
   
@@ -1154,12 +1129,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -1230,10 +1199,11 @@
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -1332,7 +1302,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
       visible  : CONFIG.anchorjs.visible
@@ -1377,49 +1347,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

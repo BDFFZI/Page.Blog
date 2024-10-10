@@ -9,8 +9,11 @@
 <link rel="stylesheet" href="/css/bilicard.css">
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
   <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -18,15 +21,15 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【软件开发】Git 概念与常用命令Git 概念存储方式Git 是分布式存储，每一个 clone 下来的仓库都可以看成独立的个体，只是 Git 有提供同步功能，因此 Git 支持离线使用，因为本质上本地和云端是两个仓库。 仓库构成提交（commit）提交是存储文件的最基本元素，记录了每次对文件的修改信息，同时也是仓库文件状态判断的基点。多个提交对文件的修改可能是顺序进行也可能是同步进行，同步的结果往">
+    <meta name="description" content="【软件开发】Git 概念与常用命令 Git 概念 存储方式 Git 是分布式存储，每一个 clone 下来的仓库都可以看成独立的个体，只是 Git 有提供同步功能，因此 Git 支持离线使用，因为本质上本地和云端是两个仓库。 仓库构成 提交（commit） 提交是存储文件的最基本元素，记录了每次对文件的修改信息，同时也是仓库文件状态判断的基点。多个提交对文件的修改可能是顺序进行也可能是同步进行，同">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【软件开发】Git 概念与常用命令">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/3993342442.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【软件开发】Git 概念与常用命令Git 概念存储方式Git 是分布式存储，每一个 clone 下来的仓库都可以看成独立的个体，只是 Git 有提供同步功能，因此 Git 支持离线使用，因为本质上本地和云端是两个仓库。 仓库构成提交（commit）提交是存储文件的最基本元素，记录了每次对文件的修改信息，同时也是仓库文件状态判断的基点。多个提交对文件的修改可能是顺序进行也可能是同步进行，同步的结果往">
+<meta property="og:description" content="【软件开发】Git 概念与常用命令 Git 概念 存储方式 Git 是分布式存储，每一个 clone 下来的仓库都可以看成独立的个体，只是 Git 有提供同步功能，因此 Git 支持离线使用，因为本质上本地和云端是两个仓库。 仓库构成 提交（commit） 提交是存储文件的最基本元素，记录了每次对文件的修改信息，同时也是仓库文件状态判断的基点。多个提交对文件的修改可能是顺序进行也可能是同步进行，同">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-14T03:43:00.000Z">
-<meta property="article:modified_time" content="2024-09-18T03:38:35.942Z">
+<meta property="article:modified_time" content="2024-10-10T09:12:32.443Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -51,11 +54,11 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -78,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -229,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          2.3k 字
         
       </span>
     
@@ -240,7 +243,7 @@
         
         
         
-          19 分钟
+          20 分钟
         
       </span>
     
@@ -290,7 +293,7 @@
         aria-expanded="true"
       >
         学习
-        <span class="list-group-count">(29)</span>
+        <span class="list-group-count">(36)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -335,6 +338,88 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【引擎开发】纹理相关属性说明</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数学"
+        id="heading-6e65831863dbf272b7a65cd8df1a440d" role="tab" data-toggle="collapse" href="#collapse-6e65831863dbf272b7a65cd8df1a440d"
+        aria-expanded="false"
+      >
+        数学
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-6e65831863dbf272b7a65cd8df1a440d"
+           role="tabpanel" aria-labelledby="heading-6e65831863dbf272b7a65cd8df1a440d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3146816869.html" title="【数学】函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1182456995.html" title="【数学】向量"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】向量</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1813400594.html" title="【数学】四元数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】四元数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3073109274.html" title="【数学】矩阵"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】矩阵</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1885603555.html" title="【数学】解析几何"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】解析几何</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/425437888.html" title="【数学】集合"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】集合</span>
         </a>
       
     
@@ -634,7 +719,7 @@
         aria-expanded="true"
       >
         软件开发
-        <span class="list-group-count">(10)</span>
+        <span class="list-group-count">(11)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -671,6 +756,15 @@
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">【软件开发】Git 概念与常用命令</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/987487183.html" title="【软件开发】Windows 开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Windows 开发笔记</span>
         </a>
       
     
@@ -794,83 +888,108 @@
             
               <div class="markdown-body">
                 
-                <h1 id="【软件开发】Git-概念与常用命令"><a href="#【软件开发】Git-概念与常用命令" class="headerlink" title="【软件开发】Git 概念与常用命令"></a>【软件开发】Git 概念与常用命令</h1><h2 id="Git-概念"><a href="#Git-概念" class="headerlink" title="Git 概念"></a>Git 概念</h2><h3 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h3><p>Git 是分布式存储，每一个 clone 下来的仓库都可以看成独立的个体，只是 Git 有提供同步功能，因此 Git 支持离线使用，因为本质上本地和云端是两个仓库。</p>
-<h3 id="仓库构成"><a href="#仓库构成" class="headerlink" title="仓库构成"></a>仓库构成</h3><h4 id="提交（commit）"><a href="#提交（commit）" class="headerlink" title="提交（commit）"></a>提交（commit）</h4><p>提交是存储文件的最基本元素，记录了每次对文件的修改信息，同时也是仓库文件状态判断的基点。多个提交对文件的修改可能是顺序进行也可能是同步进行，同步的结果往往会导致冲突。</p>
-<h4 id="分支（branch）"><a href="#分支（branch）" class="headerlink" title="分支（branch）"></a>分支（branch）</h4><p>分支引用了提交并将其串成一条时间线，外界也由此得以查看提交。不同分支引用的时间线可能重叠也可能分离，形成一个树状结构，但最终分支都是要合并的，这也意味着所有提交最终都会形成一条唯一的时间线。</p>
-<h4 id="子模块（submodule）"><a href="#子模块（submodule）" class="headerlink" title="子模块（submodule）"></a>子模块（submodule）</h4><p>子模块是对其他仓库中的引用，具体而言是引用了分支-提交，对本仓库而言它也是一种受版本控制的文件，文件中存放着引用信息，所以和正常文件一样，修改时要添加到暂存区，删除时也要从仓库区中移除。</p>
-<p>子模块所引用的分支版本信息可以从.git&#x2F;index 文件中找到。</p>
-<h4 id="标签（tag）"><a href="#标签（tag）" class="headerlink" title="标签（tag）"></a>标签（tag）</h4><p>标签实质是给提交起一个别名从而方便识别，这是一个可选功能，通常人们会借此把一些关键的提交打上标签，如记录版本号和发布信息。</p>
-<h4 id="远端（remote）"><a href="#远端（remote）" class="headerlink" title="远端（remote）"></a>远端（remote）</h4><p>远端是用于同步的其他仓库，以便备份或多人协助，因为是分布式存储，每个仓库都是独立的个体，所以不提供远端也是可以的。</p>
-<h3 id="工作区与暂存区"><a href="#工作区与暂存区" class="headerlink" title="工作区与暂存区"></a>工作区与暂存区</h3><p>这两个区域是本地工作用仓库独有的内容，在云端的裸仓库中没有这两者的存在。这主要是为了安全和便于工作使用的临时区域，每一次的文件修改都要按顺序提交到每个区域，当仓库指向的提交变更时它们便会被重置。</p>
+                <h1>【软件开发】Git 概念与常用命令</h1>
+<h2 id="Git-概念">Git 概念</h2>
+<h3 id="存储方式">存储方式</h3>
+<p>Git 是分布式存储，每一个 clone 下来的仓库都可以看成独立的个体，只是 Git 有提供同步功能，因此 Git 支持离线使用，因为本质上本地和云端是两个仓库。</p>
+<h3 id="仓库构成">仓库构成</h3>
+<h4 id="提交（commit）">提交（commit）</h4>
+<p>提交是存储文件的最基本元素，记录了每次对文件的修改信息，同时也是仓库文件状态判断的基点。多个提交对文件的修改可能是顺序进行也可能是同步进行，同步的结果往往会导致冲突。</p>
+<h4 id="分支（branch）">分支（branch）</h4>
+<p>分支引用了提交并将其串成一条时间线，外界也由此得以查看提交。不同分支引用的时间线可能重叠也可能分离，形成一个树状结构，但最终分支都是要合并的，这也意味着所有提交最终都会形成一条唯一的时间线。</p>
+<h4 id="子模块（submodule）">子模块（submodule）</h4>
+<p>子模块是对其他仓库中的引用，具体而言是引用了分支-提交，对本仓库而言它也是一种受版本控制的文件，文件中存放着引用信息，所以和正常文件一样，修改时要添加到暂存区，删除时也要从仓库区中移除。</p>
+<p>子模块所引用的分支版本信息可以从.git/index 文件中找到。</p>
+<h4 id="标签（tag）">标签（tag）</h4>
+<p>标签实质是给提交起一个别名从而方便识别，这是一个可选功能，通常人们会借此把一些关键的提交打上标签，如记录版本号和发布信息。</p>
+<h4 id="远端（remote）">远端（remote）</h4>
+<p>远端是用于同步的其他仓库，以便备份或多人协助，因为是分布式存储，每个仓库都是独立的个体，所以不提供远端也是可以的。</p>
+<h3 id="工作区与暂存区">工作区与暂存区</h3>
+<p>这两个区域是本地工作用仓库独有的内容，在云端的裸仓库中没有这两者的存在。这主要是为了安全和便于工作使用的临时区域，每一次的文件修改都要按顺序提交到每个区域，当仓库指向的提交变更时它们便会被重置。</p>
 <ul>
 <li>工作区：用户编写代码的地方，文件资源管理器能直接看到的部分。</li>
 <li>暂存区：提交代码前必须先将工作区的所有的文件添加到暂存区。</li>
 <li>仓库区：将暂存区的代码修改变成提交，真正的存储到仓库中。</li>
 </ul>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="通用项"><a href="#通用项" class="headerlink" title="通用项"></a>通用项</h3><h4 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h4><ul>
+<h2 id="常用命令">常用命令</h2>
+<h3 id="通用项">通用项</h3>
+<h4 id="选项">选项</h4>
+<ul>
 <li>HEAD：表示最新的一次提交。</li>
 <li>HEAD~1：表示最新提交的前一次提交。</li>
 <li>-h：任何命令加该选项，可以快速查看使用方式。</li>
 <li>–help：任何命令加该选项，可以查看命令的详细手册。</li>
 </ul>
-<h4 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h4><ul>
-<li><p>commit、tag、branch 互换：</p>
+<h4 id="规则">规则</h4>
+<ul>
+<li>
+<p>commit、tag、branch 互换：</p>
 <p>tag 是 commit 的别名，两者等价。使用 branch 则会使用其 HEAD。</p>
 </li>
-<li><p>file 通配：</p>
+<li>
+<p>file 通配：</p>
 <p>file 支持 glob 通配符，也可用“.”表示全部可处理文件。</p>
 </li>
 </ul>
-<h3 id="仓库初始化和配置"><a href="#仓库初始化和配置" class="headerlink" title="仓库初始化和配置"></a>仓库初始化和配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init [--bare] <span class="hljs-comment">#在当前文件夹创建一个空仓库</span><br>git <span class="hljs-built_in">clone</span> --recursive &lt;url&gt; <span class="hljs-comment">#从远端克隆一个仓库到当前目录</span><br><br><br>git config &lt;name&gt; <span class="hljs-comment">#查看仓库的指定项配置</span><br>git config [--global] &lt;name&gt; &lt;value&gt; <span class="hljs-comment">#添加或修改[全局]仓库配置</span><br>git config [--global] --<span class="hljs-built_in">unset</span> &lt;name&gt; <span class="hljs-comment">#删除[全局]仓库配置</span><br>git config [--<span class="hljs-built_in">local</span>] --list <span class="hljs-comment">#查看[本地]仓库所有配置</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="仓库信息查看"><a href="#仓库信息查看" class="headerlink" title="仓库信息查看"></a>仓库信息查看</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch -a <span class="hljs-comment">#查看仓库中的所有分支</span><br>git submodule <span class="hljs-comment">#查看当前分支的子模块</span><br>git <span class="hljs-built_in">log</span> <span class="hljs-comment">#查看当前分支的所有提交记录</span><br>git tag <span class="hljs-comment">#查看当前仓库所有标签</span><br>git status <span class="hljs-comment">#查看存储区状态</span><br>git diff <span class="hljs-comment">#查看文件差异</span><br>git reflog <span class="hljs-comment">#查看当前仓库操作记录（可用于还原reset）</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="存储区处理"><a href="#存储区处理" class="headerlink" title="存储区处理"></a>存储区处理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">git ls-files [--cached] <span class="hljs-comment">#查看工作区[暂存区]文件</span><br><br>git add &lt;file&gt; <span class="hljs-comment">#提交工作区文件到暂存区</span><br>git <span class="hljs-built_in">rm</span> [--cached] &lt;file&gt;... <span class="hljs-comment">#删除工作区[暂存区]文件</span><br>git restore [--staged] &lt;file&gt; <span class="hljs-comment">#复原工作区[暂存区]文件</span><br>git commit -m <span class="hljs-string">&#x27;&lt;message&gt;&#x27;</span> <span class="hljs-comment">#提交暂存区文件到仓库区</span><br><br>git stash <span class="hljs-comment">#暂存工作区修改，使工作区看起来干净了，从而安全执行切换分支等命令</span><br>git stash pop <span class="hljs-comment">#取出暂存的工作区修改</span><br><br>git reset [--hard] &lt;commit&gt; <span class="hljs-comment">#将当前分支[包含工作区]重置到某次提交的状态</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="分支处理"><a href="#分支处理" class="headerlink" title="分支处理"></a>分支处理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch &lt;new-branch&gt; <span class="hljs-comment">#创建一个基于当前分支最新提交的新分支</span><br>git branch &lt;new-branch&gt; &lt;commit&gt; <span class="hljs-comment">#创建一个基于目标提交的新分支</span><br>git branch -m &lt;new-name&gt; <span class="hljs-comment">#重命名当前分支</span><br>git branch -d &lt;branch&gt; <span class="hljs-comment">#删除目标分支</span><br><br>git checkout --orphan temp <span class="hljs-comment">#保持工作区不变，创建并切换到一个空分支，</span><br>git switch -c &lt;new-branch&gt; &lt;commit&gt; <span class="hljs-comment">#创建并切换到基于某次提交的新分支</span><br>git switch &lt;branch&gt; <span class="hljs-comment">#切换到目标分支</span><br>git switch --detach &lt;commit&gt; <span class="hljs-comment">#创建并切换到以某次提交为头的临时匿名分支</span><br><br>git rebase -i &lt;commit&gt; <span class="hljs-comment">#进入提交融并功能，可融并指定提交之后的所有提交（使用空融并配置可以退出该功能）</span><br>git rebase &lt;branch&gt; <span class="hljs-comment">#将目标分支覆盖到当前分支</span><br>git merge &lt;branch&gt; <span class="hljs-comment">#将目标分支合并到当前分支</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="子模块处理"><a href="#子模块处理" class="headerlink" title="子模块处理"></a>子模块处理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">git submodule add &lt;url&gt; &lt;path&gt; <span class="hljs-comment">#添加一个子模块到目标路径</span><br>git submodule init <span class="hljs-comment">#初始化子模块，将子模块信息填入config中</span><br>git submodule update <span class="hljs-comment">#检出父项目期望版本的子模块内容，使用前需确保子模块已初始化</span><br>git submodule deinit &lt;path&gt; <span class="hljs-comment">#移除子模块，恢复到未初始化的状态（不是删除仓库对子模块的引用）</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="标签处理"><a href="#标签处理" class="headerlink" title="标签处理"></a>标签处理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag -f &lt;tagname&gt; [&lt;commit&gt;] <span class="hljs-comment">#给当前[指定]提交打上标签</span><br>git tag -d &lt;tagname&gt; <span class="hljs-comment">#删除指定标签</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="远端处理"><a href="#远端处理" class="headerlink" title="远端处理"></a>远端处理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote <span class="hljs-comment">#查看当前所有的远端仓库</span><br>git remote show &lt;name&gt; <span class="hljs-comment">#查看指定远端仓库的具体信息，包括pull、push的目标设置</span><br>git remote add &lt;name&gt; &lt;url&gt; <span class="hljs-comment">#添加一个远端仓库</span><br>git remote rename &lt;name&gt; &lt;new-name&gt; <span class="hljs-comment">#重命名远端仓库</span><br>git remote remove &lt;name&gt; &lt;new-name&gt; <span class="hljs-comment">#删除远端仓库</span><br>git remote set-url &lt;name&gt; &lt;url&gt; <span class="hljs-comment">#修改远端仓库地址</span><br>git remote set-url &#123;--add|--delete&#125; &lt;name&gt; &lt;newurl&gt; <span class="hljs-comment">#为远端仓库额外添加或删除地址，借此实现多端提交。</span><br><br>git fetch <span class="hljs-comment">#获取所有远端分支</span><br>git pull <span class="hljs-comment">#获取并合并远端分支到当前状态，等同于 fetch + merge</span><br>git push [--force] <span class="hljs-comment">#将当前本地分支状态[强制]推送到远端分支</span><br>git push &lt;remote&gt; -d &lt;branch&gt; <span class="hljs-comment">#删除目标远程上的分支</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><h3 id="处理网络代理"><a href="#处理网络代理" class="headerlink" title="处理网络代理"></a>处理网络代理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 添加网络代理，url例如http://localhost:10809，具体根据不同的代理软件可能有所不同。</span><br>git config --global http.proxy &lt;url&gt;<br>git config --global https.proxy &lt;url&gt;<br><span class="hljs-comment"># 清除网络代理</span><br>git config --global --<span class="hljs-built_in">unset</span> proxy.http<br>git config --global --<span class="hljs-built_in">unset</span> proxy.https<br></code></pre></td></tr></table></figure>
-
-<h3 id="彻底删除子模块"><a href="#彻底删除子模块" class="headerlink" title="彻底删除子模块"></a>彻底删除子模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git submodule deinit &lt;path&gt; <span class="hljs-comment">#将子模块转为未初始化状态</span><br>git <span class="hljs-built_in">rm</span> &lt;path&gt; <span class="hljs-comment">#在子模块未初始化时调用，能彻底删除子模块引用，且自动修改.gitmodules文件</span><br><span class="hljs-built_in">rm</span> -rf .git/modules/&lt;path&gt; <span class="hljs-comment">#删除失效的子模块仓库</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="撤回上次提交版本"><a href="#撤回上次提交版本" class="headerlink" title="撤回上次提交版本"></a>撤回上次提交版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset HEAD~1 <span class="hljs-comment">#将仓库区和暂存区撤回到上次提交之前的状态</span><br>git push --force <span class="hljs-comment">#强制覆盖远端分支以丢弃上次提交版本</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="清除所有历史记录"><a href="#清除所有历史记录" class="headerlink" title="清除所有历史记录"></a>清除所有历史记录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout --orphan temp <span class="hljs-comment">#创建并切换到一个新的空分支，保留工作区文件</span><br>git branch -D &lt;branch&gt; <span class="hljs-comment">#删除旧分支</span><br>git branch -m &lt;branch&gt; <span class="hljs-comment">#空分支继续使用旧分支的名称</span><br>git add . <span class="hljs-comment">#提交当前所有文件到空分支暂存区</span><br>git commit -m <span class="hljs-string">&#x27;-&#x27;</span> <span class="hljs-comment">#提交暂存区文件作为初始提交</span><br>git push --force <span class="hljs-comment">#强制覆盖到远程仓库，分支记录将重新开始</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="清除工作区中所有未被跟踪的文件"><a href="#清除工作区中所有未被跟踪的文件" class="headerlink" title="清除工作区中所有未被跟踪的文件"></a>清除工作区中所有未被跟踪的文件</h3><p>无法撤销，用前一定要备份！</p>
+<h3 id="仓库初始化和配置">仓库初始化和配置</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init [--bare] <span class="hljs-comment">#在当前文件夹创建一个空仓库</span><br>git <span class="hljs-built_in">clone</span> --recursive &lt;url&gt; <span class="hljs-comment">#从远端克隆一个仓库到当前目录</span><br><br><br>git config &lt;name&gt; <span class="hljs-comment">#查看仓库的指定项配置</span><br>git config [--global] &lt;name&gt; &lt;value&gt; <span class="hljs-comment">#添加或修改[全局]仓库配置</span><br>git config [--global] --<span class="hljs-built_in">unset</span> &lt;name&gt; <span class="hljs-comment">#删除[全局]仓库配置</span><br>git config [--<span class="hljs-built_in">local</span>] --list <span class="hljs-comment">#查看[本地]仓库所有配置</span><br></code></pre></td></tr></table></figure>
+<h3 id="仓库信息查看">仓库信息查看</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch -a <span class="hljs-comment">#查看仓库中的所有分支</span><br>git submodule <span class="hljs-comment">#查看当前分支的子模块</span><br>git <span class="hljs-built_in">log</span> <span class="hljs-comment">#查看当前分支的所有提交记录</span><br>git tag <span class="hljs-comment">#查看当前仓库所有标签</span><br>git status <span class="hljs-comment">#查看存储区状态</span><br>git diff <span class="hljs-comment">#查看文件差异</span><br>git reflog <span class="hljs-comment">#查看当前仓库操作记录（可用于还原reset）</span><br></code></pre></td></tr></table></figure>
+<h3 id="存储区处理">存储区处理</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">git ls-files [--cached] <span class="hljs-comment">#查看工作区[暂存区]文件</span><br><br>git add &lt;file&gt; <span class="hljs-comment">#提交工作区文件到暂存区</span><br>git <span class="hljs-built_in">rm</span> [--cached] &lt;file&gt;... <span class="hljs-comment">#删除工作区[暂存区]文件</span><br>git restore [--staged] &lt;file&gt; <span class="hljs-comment">#复原工作区[暂存区]文件</span><br>git commit -m <span class="hljs-string">&#x27;&lt;message&gt;&#x27;</span> <span class="hljs-comment">#提交暂存区文件到仓库区</span><br><br>git stash <span class="hljs-comment">#暂存工作区修改，使工作区看起来干净了，从而安全执行切换分支等命令</span><br>git stash pop <span class="hljs-comment">#取出暂存的工作区修改</span><br><br>git reset [--hard] &lt;commit&gt; <span class="hljs-comment">#将当前分支[包含工作区]重置到某次提交的状态</span><br></code></pre></td></tr></table></figure>
+<h3 id="分支处理">分支处理</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch -a <span class="hljs-comment">#查看所有分支（包括远端）</span><br>git branch &lt;new-branch&gt; <span class="hljs-comment">#创建一个基于当前分支最新提交的新分支</span><br>git branch &lt;new-branch&gt; &lt;commit&gt; <span class="hljs-comment">#创建一个基于目标提交的新分支</span><br>git branch -m &lt;new-name&gt; <span class="hljs-comment">#重命名当前分支</span><br>git branch -d &lt;branch&gt; <span class="hljs-comment">#删除目标分支</span><br><br>git checkout -b &lt;new-branch&gt; &lt;branch&gt; <span class="hljs-comment">#创建并切换到一个基于目标分支创建的新分支</span><br>git checkout --orphan temp <span class="hljs-comment">#保持工作区不变，创建并切换到一个空分支，</span><br>git switch -c &lt;new-branch&gt; &lt;commit&gt; <span class="hljs-comment">#创建并切换到基于某次提交的新分支</span><br>git switch &lt;branch&gt; <span class="hljs-comment">#切换到目标分支</span><br>git switch --detach &lt;commit&gt; <span class="hljs-comment">#创建并切换到以某次提交为头的临时匿名分支</span><br><br>git rebase -i &lt;commit&gt; <span class="hljs-comment">#进入提交融并功能，可融并指定提交之后的所有提交（使用空融并配置可以退出该功能）</span><br>git rebase &lt;branch&gt; <span class="hljs-comment">#将目标分支覆盖到当前分支</span><br>git merge &lt;branch&gt; <span class="hljs-comment">#将目标分支合并到当前分支</span><br></code></pre></td></tr></table></figure>
+<h3 id="子模块处理">子模块处理</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">git submodule add &lt;url&gt; &lt;path&gt; <span class="hljs-comment">#添加一个子模块到目标路径</span><br>git submodule init <span class="hljs-comment">#初始化子模块，将子模块信息填入config中</span><br>git submodule update <span class="hljs-comment">#检出父项目期望版本的子模块内容，使用前需确保子模块已初始化</span><br>git submodule status <span class="hljs-comment">#查看子模块的状态，例如是否有修改后未提交的内容</span><br>git submodule set-url &lt;path&gt; &lt;url&gt; <span class="hljs-comment">#重新设置子模块的源仓库地址</span><br>git submodule deinit &lt;path&gt; <span class="hljs-comment">#移除子模块，恢复到未初始化的状态（不是删除仓库对子模块的引用）</span><br></code></pre></td></tr></table></figure>
+<h3 id="标签处理">标签处理</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag -f &lt;tagname&gt; [&lt;commit&gt;] <span class="hljs-comment">#给当前[指定]提交打上标签</span><br>git tag -d &lt;tagname&gt; <span class="hljs-comment">#删除指定标签</span><br></code></pre></td></tr></table></figure>
+<h3 id="远端处理">远端处理</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote <span class="hljs-comment">#查看当前所有的远端仓库</span><br>git remote show &lt;name&gt; <span class="hljs-comment">#查看指定远端仓库的具体信息，包括pull、push的目标设置</span><br>git remote add &lt;name&gt; &lt;url&gt; <span class="hljs-comment">#添加一个远端仓库</span><br>git remote rename &lt;name&gt; &lt;new-name&gt; <span class="hljs-comment">#重命名远端仓库</span><br>git remote remove &lt;name&gt; &lt;new-name&gt; <span class="hljs-comment">#删除远端仓库</span><br>git remote set-url &lt;name&gt; &lt;url&gt; <span class="hljs-comment">#修改远端仓库地址</span><br>git remote set-url &#123;--add|--delete&#125; &lt;name&gt; &lt;newurl&gt; <span class="hljs-comment">#为远端仓库额外添加或删除地址，借此实现多端提交。</span><br><br>git fetch <span class="hljs-comment">#获取所有远端分支</span><br>git pull <span class="hljs-comment">#获取并合并远端分支到当前状态，等同于 fetch + merge</span><br>git push [--force] <span class="hljs-comment">#将当前本地分支状态[强制]推送到远端分支</span><br>git push &lt;remote&gt; -d &lt;branch&gt; <span class="hljs-comment">#删除目标远程上的分支</span><br></code></pre></td></tr></table></figure>
+<h2 id="常用操作">常用操作</h2>
+<h3 id="处理网络代理">处理网络代理</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 添加网络代理，url例如http://localhost:10809，具体根据不同的代理软件可能有所不同。</span><br>git config --global http.proxy &lt;url&gt;<br>git config --global https.proxy &lt;url&gt;<br><span class="hljs-comment"># 清除网络代理</span><br>git config --global --<span class="hljs-built_in">unset</span> proxy.http<br>git config --global --<span class="hljs-built_in">unset</span> proxy.https<br></code></pre></td></tr></table></figure>
+<h3 id="彻底删除子模块">彻底删除子模块</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git submodule deinit &lt;path&gt; <span class="hljs-comment">#将子模块转为未初始化状态</span><br>git <span class="hljs-built_in">rm</span> &lt;path&gt; <span class="hljs-comment">#在子模块未初始化时调用，能彻底删除子模块引用，且自动修改.gitmodules文件</span><br><span class="hljs-built_in">rm</span> -rf .git/modules/&lt;path&gt; <span class="hljs-comment">#删除失效的子模块仓库</span><br></code></pre></td></tr></table></figure>
+<h3 id="撤回上次提交版本">撤回上次提交版本</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset HEAD~1 <span class="hljs-comment">#将仓库区和暂存区撤回到上次提交之前的状态</span><br>git push --force <span class="hljs-comment">#强制覆盖远端分支以丢弃上次提交版本</span><br></code></pre></td></tr></table></figure>
+<h3 id="清除所有历史记录">清除所有历史记录</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout --orphan temp <span class="hljs-comment">#创建并切换到一个新的空分支，保留工作区文件</span><br>git branch -D &lt;branch&gt; <span class="hljs-comment">#删除旧分支</span><br>git branch -m &lt;branch&gt; <span class="hljs-comment">#空分支继续使用旧分支的名称</span><br>git add . <span class="hljs-comment">#提交当前所有文件到空分支暂存区</span><br>git commit -m <span class="hljs-string">&#x27;-&#x27;</span> <span class="hljs-comment">#提交暂存区文件作为初始提交</span><br>git push --force <span class="hljs-comment">#强制覆盖到远程仓库，分支记录将重新开始</span><br></code></pre></td></tr></table></figure>
+<h3 id="清除工作区中所有未被跟踪的文件">清除工作区中所有未被跟踪的文件</h3>
+<p>无法撤销，用前一定要备份！</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git clean -dfx <span class="hljs-comment">#清除工作区中所有未被跟踪的文件</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="gitignore-文件"><a href="#gitignore-文件" class="headerlink" title="gitignore 文件"></a>gitignore 文件</h2><h3 id="书写格式"><a href="#书写格式" class="headerlink" title="书写格式"></a>书写格式</h3><ul>
-<li><p>每行一个忽略项。</p>
+<h2 id="gitignore-文件">gitignore 文件</h2>
+<h3 id="书写格式">书写格式</h3>
+<ul>
+<li>
+<p>每行一个忽略项。</p>
 </li>
-<li><p>支持 glob 通配符。</p>
+<li>
+<p>支持 glob 通配符。</p>
 </li>
-<li><p>限定忽略项类型：</p>
+<li>
+<p>限定忽略项类型：</p>
 <ul>
 <li>文件或目录：只填完全名称，如<code>test</code>、<code>text.txt</code>。</li>
 <li>仅目录：添加<code>/</code>后缀，如<code>test/</code>。</li>
 </ul>
 </li>
-<li><p>限定忽略项位置：</p>
+<li>
+<p>限定忽略项位置：</p>
 <ul>
 <li>从当前目录匹配：带<code>/</code>前缀，如<code>/test</code>。</li>
 <li>从任意目录匹配：不带任何前缀，如<code>test</code>。</li>
 </ul>
 </li>
-<li><p>添加<code>!</code>前缀取消忽略，如<code>!test.txt</code>。</p>
+<li>
+<p>添加<code>!</code>前缀取消忽略，如<code>!test.txt</code>。</p>
 <p>注意如果整个目录都被忽略了，那没法生效。</p>
 </li>
 </ul>
-<h3 id="取消跟踪"><a href="#取消跟踪" class="headerlink" title="取消跟踪"></a>取消跟踪</h3><p>gitignore 只能忽略未跟踪文件，如果文件已被跟踪需先从仓库中删去。</p>
+<h3 id="取消跟踪">取消跟踪</h3>
+<p>gitignore 只能忽略未跟踪文件，如果文件已被跟踪需先从仓库中删去。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">rm</span> --cached &lt;file&gt; <span class="hljs-comment"># 删除暂存区中的某文件</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<h2 id="参考资料">参考资料</h2>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/156615362">Git Submodule 命令与理解</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/139321091">Git 合并多个提交的正确方式</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/chinese/news/gitignore-file-how-to-ignore-files-and-folders-in-git/">如何在 Git 中忽略文件和文件夹</a></li>
@@ -946,7 +1065,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -991,32 +1110,6 @@
   
     <article id="comments" lazyload>
       
-  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
-  </br>
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
-      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
-          {
-            el: '#waline',
-            pageview: window.origin.includes("localhost")?false:true,
-            path: window.location.pathname
-          }
-        )
-        Waline.init(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          var imgSelector = '#waline .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
 
     </article>
   
@@ -1068,12 +1161,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -1144,10 +1231,11 @@
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -1246,7 +1334,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
       visible  : CONFIG.anchorjs.visible
@@ -1291,49 +1379,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

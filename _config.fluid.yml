@@ -25,12 +25,6 @@ post:
     enable: true
     type: waline
 
-  # 数学
-  math:
-    enable: true
-    specific: false
-    engine: mathjax
-
 # 关于页
 about:
   avatar: "/assets/img/avatar.jpg"
@@ -44,10 +38,6 @@ about:
 footer:
   statistics:
     enable: true
-
-# 文章pv和uv统计
-waline:
-  serverURL: "waline-1-c7584562.deta.app"
 
 custom_css:
   - "/assets/css/content.css"

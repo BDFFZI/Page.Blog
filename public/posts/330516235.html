@@ -9,8 +9,11 @@
 <link rel="stylesheet" href="/css/bilicard.css">
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
   <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -18,12 +21,12 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【Unity】图形管道笔记基本术语 域、基元、图面： 网格所用的多边形面，如三角面、四边面等。   参数语义语义是附加到着色器输入或输出参数的字符串，用于传达给系统有关参数的预期用途的信息。 用户语义由用户在 IA 阶段定义的语义。用于描述传入的数据类型，以便系统在 VS 阶段分配输入参数；同时也用于在其他着色器中标记要在各阶段传递的数据，虽然此时数据类型已无作用，但语法上还是需要的。 系统语义系">
+    <meta name="description" content="【Unity】图形管道笔记 基本术语   域、基元、图面： 网格所用的多边形面，如三角面、四边面等。   参数语义 语义是附加到着色器输入或输出参数的字符串，用于传达给系统有关参数的预期用途的信息。 用户语义 由用户在 IA 阶段定义的语义。用于描述传入的数据类型，以便系统在 VS 阶段分配输入参数；同时也用于在其他着色器中标记要在各阶段传递的数据，虽然此时数据类型已无作用，但语法上还是需要的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Unity】图形管道笔记">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/330516235.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【Unity】图形管道笔记基本术语 域、基元、图面： 网格所用的多边形面，如三角面、四边面等。   参数语义语义是附加到着色器输入或输出参数的字符串，用于传达给系统有关参数的预期用途的信息。 用户语义由用户在 IA 阶段定义的语义。用于描述传入的数据类型，以便系统在 VS 阶段分配输入参数；同时也用于在其他着色器中标记要在各阶段传递的数据，虽然此时数据类型已无作用，但语法上还是需要的。 系统语义系">
+<meta property="og:description" content="【Unity】图形管道笔记 基本术语   域、基元、图面： 网格所用的多边形面，如三角面、四边面等。   参数语义 语义是附加到着色器输入或输出参数的字符串，用于传达给系统有关参数的预期用途的信息。 用户语义 由用户在 IA 阶段定义的语义。用于描述传入的数据类型，以便系统在 VS 阶段分配输入参数；同时也用于在其他着色器中标记要在各阶段传递的数据，虽然此时数据类型已无作用，但语法上还是需要的。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-14T09:09:00.000Z">
 <meta property="article:modified_time" content="2024-04-28T08:58:08.357Z">
@@ -51,11 +54,11 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -78,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -229,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.4k 字
         
       </span>
     
@@ -317,7 +320,7 @@
         aria-expanded="false"
       >
         Blender
-        <span class="list-group-count">(1)</span>
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -335,6 +338,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495031609.html" title="【Blender】杂项笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】杂项笔记</span>
         </a>
       
     
@@ -803,43 +815,6 @@
       </div>
     </div>
   
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
-        id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
-        aria-expanded="false"
-      >
-        Web
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-c6e190b284633c48e39e55049da3cce8"
-           role="tabpanel" aria-labelledby="heading-c6e190b284633c48e39e55049da3cce8">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3410375722.html" title="【Web】Hexo 使用笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【Web】Hexo 使用笔记</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
         
       </div>
     </div>
@@ -861,35 +836,48 @@
             
               <div class="markdown-body">
                 
-                <h1 id="【Unity】图形管道笔记"><a href="#【Unity】图形管道笔记" class="headerlink" title="【Unity】图形管道笔记"></a>【Unity】图形管道笔记</h1><h2 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h2><ul>
-<li><p>域、基元、图面：</p>
+                <h1>【Unity】图形管道笔记</h1>
+<h2 id="基本术语">基本术语</h2>
+<ul>
+<li>
+<p>域、基元、图面：</p>
 <p>网格所用的多边形面，如三角面、四边面等。</p>
 </li>
 </ul>
-<h2 id="参数语义"><a href="#参数语义" class="headerlink" title="参数语义"></a>参数语义</h2><p>语义是附加到着色器输入或输出参数的字符串，用于传达给系统有关参数的预期用途的信息。</p>
-<h3 id="用户语义"><a href="#用户语义" class="headerlink" title="用户语义"></a>用户语义</h3><p>由用户在 IA 阶段定义的语义。用于描述传入的数据类型，以便系统在 VS 阶段分配输入参数；同时也用于在其他着色器中标记要在各阶段传递的数据，虽然此时数据类型已无作用，但语法上还是需要的。</p>
-<h3 id="系统语义"><a href="#系统语义" class="headerlink" title="系统语义"></a>系统语义</h3><p>系统语义则是系统自带的语义，这些语义为了满足一些功能而存在，如向系统表明着色器输出参数，请求系统自动设置一些特殊值等，其都使用<code>SV_</code>作为前缀。</p>
+<h2 id="参数语义">参数语义</h2>
+<p>语义是附加到着色器输入或输出参数的字符串，用于传达给系统有关参数的预期用途的信息。</p>
+<h3 id="用户语义">用户语义</h3>
+<p>由用户在 IA 阶段定义的语义。用于描述传入的数据类型，以便系统在 VS 阶段分配输入参数；同时也用于在其他着色器中标记要在各阶段传递的数据，虽然此时数据类型已无作用，但语法上还是需要的。</p>
+<h3 id="系统语义">系统语义</h3>
+<p>系统语义则是系统自带的语义，这些语义为了满足一些功能而存在，如向系统表明着色器输出参数，请求系统自动设置一些特殊值等，其都使用<code>SV_</code>作为前缀。</p>
 <p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/direct3dhlsl/dx-graphics-hlsl-semantics#system-value-semantics">https://learn.microsoft.com/zh-cn/windows/win32/direct3dhlsl/dx-graphics-hlsl-semantics#system-value-semantics</a></p>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>在各着色器间都存在输入输出参数，其中一些参数由系统语义明确定义，此外还可以由用户语义自定义一些额外参数。这些数据间通常还存在着共用的传递关系，根据使用情况可以分为以下几类。</p>
-<h3 id="装配数据"><a href="#装配数据" class="headerlink" title="装配数据"></a>装配数据</h3><p>顶点着色器的输入数据，大多由用户语义定义，是来自 IA 阶段的原始网格数据。</p>
+<h2 id="数据类型">数据类型</h2>
+<p>在各着色器间都存在输入输出参数，其中一些参数由系统语义明确定义，此外还可以由用户语义自定义一些额外参数。这些数据间通常还存在着共用的传递关系，根据使用情况可以分为以下几类。</p>
+<h3 id="装配数据">装配数据</h3>
+<p>顶点着色器的输入数据，大多由用户语义定义，是来自 IA 阶段的原始网格数据。</p>
 <ul>
 <li>SV_VertexID：当前顶点在原始网格数据中的排序序号。</li>
 <li>SV_InstanceID：当使用实例化渲染功能时额外传递的实例序号。</li>
 </ul>
-<h3 id="顶点数据"><a href="#顶点数据" class="headerlink" title="顶点数据"></a>顶点数据</h3><p>经过顶点着色器处理后的，系统所用的顶点数据，多个着色器阶段都会用到该数据。</p>
+<h3 id="顶点数据">顶点数据</h3>
+<p>经过顶点着色器处理后的，系统所用的顶点数据，多个着色器阶段都会用到该数据。</p>
 <ul>
 <li>SV_Position：基元光栅化时所用的最终顶点位置。</li>
 </ul>
-<h3 id="外壳数据"><a href="#外壳数据" class="headerlink" title="外壳数据"></a>外壳数据</h3><p>在分割阶段中使用的数据，由外壳着色器创建。</p>
+<h3 id="外壳数据">外壳数据</h3>
+<p>在分割阶段中使用的数据，由外壳着色器创建。</p>
 <ul>
 <li>SV_TessFactor：基元的边缘分割次数。</li>
 <li>SV_InsideTessFactor：基元的内部分割次数。</li>
 </ul>
-<h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><ul>
-<li>如果外壳着色器阶段将任何边缘细化因子设置为 &#x3D; 0 或 NaN，则将剔除补丁，从而不生成可见输出。</li>
+<h4 id="备注">备注</h4>
+<ul>
+<li>如果外壳着色器阶段将任何边缘细化因子设置为 = 0 或 NaN，则将剔除补丁，从而不生成可见输出。</li>
 </ul>
-<h2 id="渲染流程"><a href="#渲染流程" class="headerlink" title="渲染流程"></a>渲染流程</h2><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/overviews-direct3d-11-graphics-pipeline">https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/overviews-direct3d-11-graphics-pipeline</a></p>
-<h3 id="1-输入装配器阶段（IA）"><a href="#1-输入装配器阶段（IA）" class="headerlink" title="1. 输入装配器阶段（IA）"></a>1. 输入装配器阶段（IA）</h3><p>从用户填充的缓冲区中读取基元数据 (点、线和&#x2F;或三角形) ，并将数据组装成将由其他管道阶段使用的基元。</p>
+<h2 id="渲染流程">渲染流程</h2>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/overviews-direct3d-11-graphics-pipeline">https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/overviews-direct3d-11-graphics-pipeline</a></p>
+<h3 id="1-输入装配器阶段（IA）">1. 输入装配器阶段（IA）</h3>
+<p>从用户填充的缓冲区中读取基元数据 (点、线和/或三角形) ，并将数据组装成将由其他管道阶段使用的基元。</p>
 <ol>
 <li>创建输入缓冲区。</li>
 <li>创建输入布局对象。</li>
@@ -897,72 +885,92 @@
 <li>指定基元类型。</li>
 <li>调用绘制方法。</li>
 </ol>
-<h3 id="2-顶点着色器阶段（VS）"><a href="#2-顶点着色器阶段（VS）" class="headerlink" title="2. 顶点着色器阶段（VS）"></a>2. 顶点着色器阶段（VS）</h3><p>处理输入装配器提供的顶点，执行每个顶点运算，例如空间变换、外观变形和每顶点照明。</p>
+<h3 id="2-顶点着色器阶段（VS）">2. 顶点着色器阶段（VS）</h3>
+<p>处理输入装配器提供的顶点，执行每个顶点运算，例如空间变换、外观变形和每顶点照明。</p>
 <ul>
 <li>输入：装配数据</li>
 <li>输出：顶点数据</li>
 </ul>
-<h3 id="3-分割阶段"><a href="#3-分割阶段" class="headerlink" title="3. 分割阶段"></a>3. 分割阶段</h3><p>通过在硬件中实施分割，使图形管道可解算更低画质（多边形数量更少）模型但并以更高画质进行渲染。</p>
+<h3 id="3-分割阶段">3. 分割阶段</h3>
+<p>通过在硬件中实施分割，使图形管道可解算更低画质（多边形数量更少）模型但并以更高画质进行渲染。</p>
 <ul>
-<li><p>补丁：</p>
+<li>
+<p>补丁：</p>
 <p>多边形被分割后产生的新多边形。</p>
 </li>
-<li><p>控制点：</p>
+<li>
+<p>控制点：</p>
 <p>控制点一种顶点，其决定了多边形的形状。如三角形就是有三个控制点，在分割补丁时则是用于计算补丁顶点的参考点，补丁的实际顶点将通过多个控制点及其权重计算得出。</p>
 </li>
-<li><p>修补程序：</p>
+<li>
+<p>修补程序：</p>
 <p>负责将原始域分割为补丁的程序。</p>
 </li>
 </ul>
-<h4 id="3-1-外壳着色器阶段（HS）"><a href="#3-1-外壳着色器阶段（HS）" class="headerlink" title="3.1. 外壳着色器阶段（HS）"></a>3.1. 外壳着色器阶段（HS）</h4><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-stages-hull-shader-design">https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-stages-hull-shader-design</a></p>
+<h4 id="3-1-外壳着色器阶段（HS）">3.1. 外壳着色器阶段（HS）</h4>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-stages-hull-shader-design">https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-stages-hull-shader-design</a></p>
 <p>该阶段由两个函数构成。</p>
-<h5 id="外壳着色器"><a href="#外壳着色器" class="headerlink" title="外壳着色器"></a>外壳着色器</h5><p>计算构成补丁的控制点的顶点数据。</p>
+<h5 id="外壳着色器">外壳着色器</h5>
+<p>计算构成补丁的控制点的顶点数据。</p>
 <ul>
 <li>输入：原始基元控制点的顶点数据、SV_PrimitiveID、SV_OutputControlPointID</li>
 <li>输出：补丁的其中一个控制点的顶点数据</li>
 </ul>
-<h5 id="修补程序常量函数"><a href="#修补程序常量函数" class="headerlink" title="修补程序常量函数"></a>修补程序常量函数</h5><p>为细分器阶段和域着色器阶段提供计算参数。</p>
+<h5 id="修补程序常量函数">修补程序常量函数</h5>
+<p>为细分器阶段和域着色器阶段提供计算参数。</p>
 <ul>
 <li>输入：原始基元控制点的顶点数据、SV_PrimitiveID</li>
 <li>输出：外壳数据</li>
 </ul>
-<h4 id="3-2-细分器阶段"><a href="#3-2-细分器阶段" class="headerlink" title="3.2. 细分器阶段"></a>3.2. 细分器阶段</h4><p>这是一个固定函数阶段，利用从外壳着色器阶段传入的细化因素和分区类型，将域（四边形、三角形或线）分割为很多较小对象（三角形、点或线）。</p>
-<h4 id="3-3-域着色器阶段（DS）"><a href="#3-3-域着色器阶段（DS）" class="headerlink" title="3.3. 域着色器阶段（DS）"></a>3.3. 域着色器阶段（DS）</h4><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-stages-domain-shader-design">https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-stages-domain-shader-design</a></p>
+<h4 id="3-2-细分器阶段">3.2. 细分器阶段</h4>
+<p>这是一个固定函数阶段，利用从外壳着色器阶段传入的细化因素和分区类型，将域（四边形、三角形或线）分割为很多较小对象（三角形、点或线）。</p>
+<h4 id="3-3-域着色器阶段（DS）">3.3. 域着色器阶段（DS）</h4>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-stages-domain-shader-design">https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-stages-domain-shader-design</a></p>
 <p>计算补丁程序生成的新基元的顶点数据。</p>
 <ul>
 <li>输入：外壳数据、补丁控制点的顶点数据、SV_DomainLocation</li>
 <li>输出：补丁的其中一个顶点的顶点数据</li>
 </ul>
-<h3 id="4-几何着色器阶段（GS）"><a href="#4-几何着色器阶段（GS）" class="headerlink" title="4. 几何着色器阶段（GS）"></a>4. 几何着色器阶段（GS）</h3><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/d3d10-graphics-programming-guide-output-stream-stage-getting-started">https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/d3d10-graphics-programming-guide-output-stream-stage-getting-started</a></p>
+<h3 id="4-几何着色器阶段（GS）">4. 几何着色器阶段（GS）</h3>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/d3d10-graphics-programming-guide-output-stream-stage-getting-started">https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/d3d10-graphics-programming-guide-output-stream-stage-getting-started</a></p>
 <p>将顶点作为输入，并能够在输出中生成新顶点，从而实时创造新的网格。</p>
 <ul>
 <li>输入：原始的顶点数据序列</li>
 <li>输出：新增的顶点数据序列</li>
 </ul>
-<h3 id="5-光栅化阶段（RS）"><a href="#5-光栅化阶段（RS）" class="headerlink" title="5. 光栅化阶段（RS）"></a>5. 光栅化阶段（RS）</h3><p>将网格基元映射为屏幕上的“像素”（实际是由 2x2 像素区域构成的片元），并计算对应的顶点数据插值，以便为像素着色器提供输入数据。</p>
-<h3 id="6-像素着色器阶段（PS）"><a href="#6-像素着色器阶段（PS）" class="headerlink" title="6. 像素着色器阶段（PS）"></a>6. 像素着色器阶段（PS）</h3><p>对像素实现丰富的着色技术，例如每像素照明和后期处理。</p>
+<h3 id="5-光栅化阶段（RS）">5. 光栅化阶段（RS）</h3>
+<p>将网格基元映射为屏幕上的“像素”（实际是由 2x2 像素区域构成的片元），并计算对应的顶点数据插值，以便为像素着色器提供输入数据。</p>
+<h3 id="6-像素着色器阶段（PS）">6. 像素着色器阶段（PS）</h3>
+<p>对像素实现丰富的着色技术，例如每像素照明和后期处理。</p>
 <ul>
 <li>输入：顶点数据</li>
 <li>输出：SV_Target、SV_Depth</li>
 </ul>
-<h3 id="7-输出合并阶段（OM）"><a href="#7-输出合并阶段（OM）" class="headerlink" title="7. 输出合并阶段（OM）"></a>7. 输出合并阶段（OM）</h3><p>将像素着色器生成的像素数据按原始三角形的顺序进行进一步处理。</p>
+<h3 id="7-输出合并阶段（OM）">7. 输出合并阶段（OM）</h3>
+<p>将像素着色器生成的像素数据按原始三角形的顺序进行进一步处理。</p>
 <ol>
-<li><p>裁剪测试：</p>
+<li>
+<p>裁剪测试：</p>
 <p>剔除呈现目标区域之外的像素。</p>
 </li>
-<li><p>alpha 测试：</p>
+<li>
+<p>alpha 测试：</p>
 <p>剔除透明度低于指定值的像素。（Direct3D 10 及以上版本不支持，但可通过<code>clip()</code>实现等效操作）</p>
 </li>
-<li><p>模板测试</p>
+<li>
+<p>模板测试</p>
 </li>
-<li><p>深度测试</p>
+<li>
+<p>深度测试</p>
 </li>
-<li><p>混合</p>
+<li>
+<p>混合</p>
 </li>
 </ol>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<h2 id="参考资料">参考资料</h2>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/overviews-direct3d-11-graphics-pipeline">图形管道</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/384124671">深度测试&#x2F;模版测试&#x2F;透明度测试先后顺序是什么样的？</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/384124671">深度测试/模版测试/透明度测试先后顺序是什么样的？</a></li>
 </ul>
 
                 
@@ -1035,7 +1043,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -1080,32 +1088,6 @@
   
     <article id="comments" lazyload>
       
-  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
-  </br>
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
-      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
-          {
-            el: '#waline',
-            pageview: window.origin.includes("localhost")?false:true,
-            path: window.location.pathname
-          }
-        )
-        Waline.init(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          var imgSelector = '#waline .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
 
     </article>
   
@@ -1157,12 +1139,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -1233,10 +1209,11 @@
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -1335,7 +1312,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
       visible  : CONFIG.anchorjs.visible
@@ -1380,49 +1357,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

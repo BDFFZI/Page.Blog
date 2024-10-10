@@ -9,8 +9,11 @@
 <link rel="stylesheet" href="/css/bilicard.css">
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
   <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -18,12 +21,12 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【Unity】个人编码规范文件结构规范先确保动静态分离当一个类存在静态和非静态两种成员时，需要利用 partial 将类分成两部分，分别存放静态与非静态成员。 再按访问修饰符排序 公开成员 保护成员 私有 SerializeField 字段 私有成员 私有用户事件 私有 Unity 事件  最后按成员类型排序 数据结构定义 构造函数 字段 属性 函数  代码设计规范 字段永远是私有的，除了只读字段">
+    <meta name="description" content="【Unity】个人编码规范 文件结构规范 先确保动静态分离 当一个类存在静态和非静态两种成员时，需要利用 partial 将类分成两部分，分别存放静态与非静态成员。 再按访问修饰符排序  公开成员 保护成员 私有 SerializeField 字段 私有成员 私有用户事件 私有 Unity 事件  最后按成员类型排序  数据结构定义 构造函数 字段 属性 函数  代码设计规范  字段永远是私有的，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Unity】个人编码规范">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/3651714765.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【Unity】个人编码规范文件结构规范先确保动静态分离当一个类存在静态和非静态两种成员时，需要利用 partial 将类分成两部分，分别存放静态与非静态成员。 再按访问修饰符排序 公开成员 保护成员 私有 SerializeField 字段 私有成员 私有用户事件 私有 Unity 事件  最后按成员类型排序 数据结构定义 构造函数 字段 属性 函数  代码设计规范 字段永远是私有的，除了只读字段">
+<meta property="og:description" content="【Unity】个人编码规范 文件结构规范 先确保动静态分离 当一个类存在静态和非静态两种成员时，需要利用 partial 将类分成两部分，分别存放静态与非静态成员。 再按访问修饰符排序  公开成员 保护成员 私有 SerializeField 字段 私有成员 私有用户事件 私有 Unity 事件  最后按成员类型排序  数据结构定义 构造函数 字段 属性 函数  代码设计规范  字段永远是私有的，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-02-03T13:16:00.000Z">
 <meta property="article:modified_time" content="2024-02-19T05:25:00.000Z">
@@ -51,11 +54,11 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -78,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -229,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          774 字
+          772 字
         
       </span>
     
@@ -317,7 +320,7 @@
         aria-expanded="false"
       >
         Blender
-        <span class="list-group-count">(1)</span>
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -335,6 +338,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495031609.html" title="【Blender】杂项笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】杂项笔记</span>
         </a>
       
     
@@ -803,43 +815,6 @@
       </div>
     </div>
   
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
-        id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
-        aria-expanded="false"
-      >
-        Web
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-c6e190b284633c48e39e55049da3cce8"
-           role="tabpanel" aria-labelledby="heading-c6e190b284633c48e39e55049da3cce8">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3410375722.html" title="【Web】Hexo 使用笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【Web】Hexo 使用笔记</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
         
       </div>
     </div>
@@ -861,8 +836,12 @@
             
               <div class="markdown-body">
                 
-                <h1 id="【Unity】个人编码规范"><a href="#【Unity】个人编码规范" class="headerlink" title="【Unity】个人编码规范"></a>【Unity】个人编码规范</h1><h2 id="文件结构规范"><a href="#文件结构规范" class="headerlink" title="文件结构规范"></a>文件结构规范</h2><h3 id="先确保动静态分离"><a href="#先确保动静态分离" class="headerlink" title="先确保动静态分离"></a>先确保动静态分离</h3><p>当一个类存在静态和非静态两种成员时，需要利用 partial 将类分成两部分，分别存放静态与非静态成员。</p>
-<h3 id="再按访问修饰符排序"><a href="#再按访问修饰符排序" class="headerlink" title="再按访问修饰符排序"></a>再按访问修饰符排序</h3><ol>
+                <h1>【Unity】个人编码规范</h1>
+<h2 id="文件结构规范">文件结构规范</h2>
+<h3 id="先确保动静态分离">先确保动静态分离</h3>
+<p>当一个类存在静态和非静态两种成员时，需要利用 partial 将类分成两部分，分别存放静态与非静态成员。</p>
+<h3 id="再按访问修饰符排序">再按访问修饰符排序</h3>
+<ol>
 <li>公开成员</li>
 <li>保护成员</li>
 <li>私有 SerializeField 字段</li>
@@ -870,41 +849,47 @@
 <li>私有用户事件</li>
 <li>私有 Unity 事件</li>
 </ol>
-<h3 id="最后按成员类型排序"><a href="#最后按成员类型排序" class="headerlink" title="最后按成员类型排序"></a>最后按成员类型排序</h3><ol>
+<h3 id="最后按成员类型排序">最后按成员类型排序</h3>
+<ol>
 <li>数据结构定义</li>
 <li>构造函数</li>
 <li>字段</li>
 <li>属性</li>
 <li>函数</li>
 </ol>
-<h2 id="代码设计规范"><a href="#代码设计规范" class="headerlink" title="代码设计规范"></a>代码设计规范</h2><ul>
+<h2 id="代码设计规范">代码设计规范</h2>
+<ul>
 <li>字段永远是私有的，除了只读字段。</li>
 <li>用到多个 if 时，尽可能采用级联而非嵌套。</li>
-<li>“!bool”仅用于取反操作，作为逻辑判断时应用“bool &#x3D;&#x3D; false”。</li>
+<li>“!bool”仅用于取反操作，作为逻辑判断时应用“bool == false”。</li>
 <li>当代码中用到 switch 或 if，但无法确定最大数量时，应改用继承重写，委托等方式来替代。</li>
 <li>Start 之前完成所有初始化工作，在 Awake 和 Start 期间可以修改参数，按情况配备初始化函数。</li>
 <li>尽可能利用序列化引用物体而非运行时绑定，从而使引用关系在面板可见。</li>
 </ul>
-<h3 id="模糊要求"><a href="#模糊要求" class="headerlink" title="模糊要求"></a>模糊要求</h3><ul>
+<h3 id="模糊要求">模糊要求</h3>
+<ul>
 <li>函数内容过长时应改为拆成多个局部方法再挨个调用的方式实现。</li>
 <li>代码间的关系应该层级分明，形成树形结构，不要出现越级操作。</li>
 <li>出现复制粘贴的编码方式时，应考虑封装相关代码避免复制粘贴。</li>
 </ul>
-<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>需要限定命名的原因</p>
+<h2 id="命名规范">命名规范</h2>
+<p>需要限定命名的原因</p>
 <ul>
 <li>统一风格，美观。</li>
 <li>便于区分类型和作用。</li>
 <li>避免重名。</li>
 </ul>
 <p>若没有上述十足的理由，不应强制实施命名规范，否则会增加工作负担。</p>
-<h3 id="风格限制"><a href="#风格限制" class="headerlink" title="风格限制"></a>风格限制</h3><ul>
+<h3 id="风格限制">风格限制</h3>
+<ul>
 <li>使用驼峰命名法</li>
 <li>名字要容易理解</li>
 <li>倒序域名化命名</li>
 </ul>
 <p>名称怕短不怕长，可以结合上下文简化名称，但一定要能让别人理解意思。比如对于采用驼峰命名法的名称在其含有的单词间加入空格，放入翻译软件应能正确获取到对应中文名。</p>
 <p>名称结构要层次化，并按从大到小的顺序，便于分类和查找。如 DbTableServer,Db 说明是数据库相关功能，Table 表明是针对数据库中的表功能，Server 表示是一个实例类。</p>
-<h3 id="类型限制"><a href="#类型限制" class="headerlink" title="类型限制"></a>类型限制</h3><ul>
+<h3 id="类型限制">类型限制</h3>
+<ul>
 <li>私有成员首字母小写，其他成员首字母大写。</li>
 </ul>
 <table>
@@ -915,7 +900,8 @@
 <th>示例</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>接口</td>
 <td>对应类名添加<code>I</code>前缀</td>
 <td><code>IInterface</code></td>
@@ -950,8 +936,10 @@
 <td>与对应字段同名，大写开头。</td>
 <td><code>IsDoorOpening</code></td>
 </tr>
-</tbody></table>
-<h3 id="前后缀限制"><a href="#前后缀限制" class="headerlink" title="前后缀限制"></a>前后缀限制</h3><ul>
+</tbody>
+</table>
+<h3 id="前后缀限制">前后缀限制</h3>
+<ul>
 <li>若未指明，则不要私自添加前后缀。</li>
 <li>部分类型要添加特殊的前后缀。</li>
 </ul>
@@ -962,7 +950,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>s,es</td>
 <td>容器</td>
 </tr>
@@ -974,7 +963,8 @@
 <td>Prefab</td>
 <td>用于实例化的预制体</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 
                 
               </div>
@@ -1046,7 +1036,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -1091,32 +1081,6 @@
   
     <article id="comments" lazyload>
       
-  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
-  </br>
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
-      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
-          {
-            el: '#waline',
-            pageview: window.origin.includes("localhost")?false:true,
-            path: window.location.pathname
-          }
-        )
-        Waline.init(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          var imgSelector = '#waline .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
 
     </article>
   
@@ -1168,12 +1132,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -1244,10 +1202,11 @@
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -1346,7 +1305,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
       visible  : CONFIG.anchorjs.visible
@@ -1391,49 +1350,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

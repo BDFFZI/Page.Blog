@@ -9,8 +9,11 @@
 <link rel="stylesheet" href="/css/bilicard.css">
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
   <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -18,12 +21,12 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【Unity】网格数据结构https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;AnatomyofaMesh.html 基本构成网格由以下几部分数据组成：  顶点：3D 空间中的位置集合以及可选的附加数据。 拓扑：网格每个面的结构类型，默认情况下都是三角型。 索引：描述如何将顶点组合成拓扑表面。  对于可变性网格，还包含些额外数据：  混合形状：混合形状数据。 绑定姿势：蒙">
+    <meta name="description" content="【Unity】网格数据结构 https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;AnatomyofaMesh.html 基本构成 网格由以下几部分数据组成：  顶点：3D 空间中的位置集合以及可选的附加数据。 拓扑：网格每个面的结构类型，默认情况下都是三角型。 索引：描述如何将顶点组合成拓扑表面。  对于可变性网格，还包含些额外数据：  混合形状：混合形状数据。 绑定姿势">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Unity】网格数据结构">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/3454640855.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【Unity】网格数据结构https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;AnatomyofaMesh.html 基本构成网格由以下几部分数据组成：  顶点：3D 空间中的位置集合以及可选的附加数据。 拓扑：网格每个面的结构类型，默认情况下都是三角型。 索引：描述如何将顶点组合成拓扑表面。  对于可变性网格，还包含些额外数据：  混合形状：混合形状数据。 绑定姿势：蒙">
+<meta property="og:description" content="【Unity】网格数据结构 https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;AnatomyofaMesh.html 基本构成 网格由以下几部分数据组成：  顶点：3D 空间中的位置集合以及可选的附加数据。 拓扑：网格每个面的结构类型，默认情况下都是三角型。 索引：描述如何将顶点组合成拓扑表面。  对于可变性网格，还包含些额外数据：  混合形状：混合形状数据。 绑定姿势">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-10T08:35:00.000Z">
 <meta property="article:modified_time" content="2024-07-19T06:27:41.284Z">
@@ -51,11 +54,11 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -78,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -317,7 +320,7 @@
         aria-expanded="false"
       >
         Blender
-        <span class="list-group-count">(1)</span>
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -335,6 +338,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495031609.html" title="【Blender】杂项笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】杂项笔记</span>
         </a>
       
     
@@ -803,43 +815,6 @@
       </div>
     </div>
   
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
-        id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
-        aria-expanded="false"
-      >
-        Web
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-c6e190b284633c48e39e55049da3cce8"
-           role="tabpanel" aria-labelledby="heading-c6e190b284633c48e39e55049da3cce8">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3410375722.html" title="【Web】Hexo 使用笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【Web】Hexo 使用笔记</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
         
       </div>
     </div>
@@ -861,8 +836,10 @@
             
               <div class="markdown-body">
                 
-                <h1 id="【Unity】网格数据结构"><a href="#【Unity】网格数据结构" class="headerlink" title="【Unity】网格数据结构"></a>【Unity】网格数据结构</h1><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/AnatomyofaMesh.html">https://docs.unity.cn/cn/2022.3/Manual/AnatomyofaMesh.html</a></p>
-<h2 id="基本构成"><a href="#基本构成" class="headerlink" title="基本构成"></a>基本构成</h2><p>网格由以下几部分数据组成：</p>
+                <h1>【Unity】网格数据结构</h1>
+<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2022.3/Manual/AnatomyofaMesh.html">https://docs.unity.cn/cn/2022.3/Manual/AnatomyofaMesh.html</a></p>
+<h2 id="基本构成">基本构成</h2>
+<p>网格由以下几部分数据组成：</p>
 <ul>
 <li>顶点：3D 空间中的位置集合以及可选的附加数据。</li>
 <li>拓扑：网格每个面的结构类型，默认情况下都是三角型。</li>
@@ -873,7 +850,8 @@
 <li>混合形状：混合形状数据。</li>
 <li>绑定姿势：蒙皮网格中骨架基本姿势数据。</li>
 </ul>
-<h2 id="顶点数据"><a href="#顶点数据" class="headerlink" title="顶点数据"></a>顶点数据</h2><p>顶点数据由多个数组构成，每个数组负责存储一组顶点数据的元素（又称为顶点属性），数组的长度与顶点数量一致，以保证每个顶点对于一组顶点数据。</p>
+<h2 id="顶点数据">顶点数据</h2>
+<p>顶点数据由多个数组构成，每个数组负责存储一组顶点数据的元素（又称为顶点属性），数组的长度与顶点数量一致，以保证每个顶点对于一组顶点数据。</p>
 <p>Unity 支持以下顶点属性：</p>
 <ul>
 <li>位置</li>
@@ -883,16 +861,23 @@
 <li>纹理坐标</li>
 <li>混合指数和骨骼权重</li>
 </ul>
-<h3 id="位置（float3-）"><a href="#位置（float3-）" class="headerlink" title="位置（float3[]）"></a>位置（float3[]）</h3><p>表示顶点在对象空间中的位置，用于确定网格的表面。</p>
-<h3 id="法线（float3）"><a href="#法线（float3）" class="headerlink" title="法线（float3）"></a>法线（float3）</h3><p>从顶点位置的曲面直接“向外”指向的方向，用于计算光照反射效果。</p>
-<h3 id="切线（float4）"><a href="#切线（float4）" class="headerlink" title="切线（float4）"></a>切线（float4）</h3><p>在顶点位置沿曲面的“u”（水平纹理）轴指向的方向，其中 w 分量额外用于表示副切线方向（用于解决图形 API 手系差异），用于实现法线贴图映射。</p>
+<h3 id="位置（float3-）">位置（float3[]）</h3>
+<p>表示顶点在对象空间中的位置，用于确定网格的表面。</p>
+<h3 id="法线（float3）">法线（float3）</h3>
+<p>从顶点位置的曲面直接“向外”指向的方向，用于计算光照反射效果。</p>
+<h3 id="切线（float4）">切线（float4）</h3>
+<p>在顶点位置沿曲面的“u”（水平纹理）轴指向的方向，其中 w 分量额外用于表示副切线方向（用于解决图形 API 手系差异），用于实现法线贴图映射。</p>
 <p>法线、切线、副切线共同构成法线空间，借此才可以实现法线贴图映射。 副切线由计算得出，Unity 的默认计算方式是<code>叉乘(法线,切线)</code>，正好构成左手坐标系，所以通常切线的 w 分量值为 1。</p>
-<h3 id="颜色（float4）"><a href="#颜色（float4）" class="headerlink" title="颜色（float4）"></a>颜色（float4）</h3><p>表示顶点的基色，可借此存储一些自定义顶点数据以实现特效。</p>
-<h3 id="纹理坐标（float2）"><a href="#纹理坐标（float2）" class="headerlink" title="纹理坐标（float2）"></a>纹理坐标（float2）</h3><p>指示纹理的哪个位置与顶点位置的网格表面对齐，以实现纹理到网格表面的映射。</p>
+<h3 id="颜色（float4）">颜色（float4）</h3>
+<p>表示顶点的基色，可借此存储一些自定义顶点数据以实现特效。</p>
+<h3 id="纹理坐标（float2）">纹理坐标（float2）</h3>
+<p>指示纹理的哪个位置与顶点位置的网格表面对齐，以实现纹理到网格表面的映射。</p>
 <p>纹理坐标通常称为 UV， 而这些集合称为通道，最多 8 个通道（UV0~UV7）。默认情况下 Unity 使用 UV0 存储常规纹理 UV；UV1 存储光照贴图 UV；UV2 存储实时光照贴图 UV。</p>
-<h3 id="混合指数和骨骼权重（int，float）"><a href="#混合指数和骨骼权重（int，float）" class="headerlink" title="混合指数和骨骼权重（int，float）"></a>混合指数和骨骼权重（int，float）</h3><p>混合指数是骨骼的索引，用于表示顶点受哪些骨骼的控制；骨骼权重则描述这些控制骨对顶点的影响程度。Unity 将两者放在一起存储。</p>
+<h3 id="混合指数和骨骼权重（int，float）">混合指数和骨骼权重（int，float）</h3>
+<p>混合指数是骨骼的索引，用于表示顶点受哪些骨骼的控制；骨骼权重则描述这些控制骨对顶点的影响程度。Unity 将两者放在一起存储。</p>
 <p>过去 Unity 最多允许一个顶点受 4 根骨骼的影响（使用 BoneWeight 存储），现在则支持最多 256 个骨骼（使用 BoneWeight1 存储）。</p>
-<h2 id="拓扑学（enum）"><a href="#拓扑学（enum）" class="headerlink" title="拓扑学（enum）"></a>拓扑学（enum）</h2><p>拓扑描述网格所具有的面类型，其确定了索引缓冲区的数据结构。</p>
+<h2 id="拓扑学（enum）">拓扑学（enum）</h2>
+<p>拓扑描述网格所具有的面类型，其确定了索引缓冲区的数据结构。</p>
 <p>Unity 支持以下拓扑类型：</p>
 <ul>
 <li>点</li>
@@ -900,11 +885,14 @@
 <li>三角形（默认）</li>
 <li>四边形</li>
 </ul>
-<h2 id="索引数据（int-）"><a href="#索引数据（int-）" class="headerlink" title="索引数据（int[]）"></a>索引数据（int[]）</h2><p>索引数组表示了网格面所引用的顶点数据在顶点属性数组中的位置，其布局受拓扑类型影响。</p>
+<h2 id="索引数据（int-）">索引数据（int[]）</h2>
+<p>索引数组表示了网格面所引用的顶点数据在顶点属性数组中的位置，其布局受拓扑类型影响。</p>
 <p>索引顶点的顺序将决定面的正反，能观察面的顶点索引顺序为顺时针的一面为正面。正反面将影响剔除功能的执行结果。</p>
-<h2 id="混合形状"><a href="#混合形状" class="headerlink" title="混合形状"></a>混合形状</h2><p>混合形状存储了网格的不同形状的版本，Unity 通过对这些形状进行插值以实现变形效果，常用于实现人物表情动画。</p>
+<h2 id="混合形状">混合形状</h2>
+<p>混合形状存储了网格的不同形状的版本，Unity 通过对这些形状进行插值以实现变形效果，常用于实现人物表情动画。</p>
 <p>混合形状的数据是“稀疏的”，只会存储受影响的顶点数据。数据包括位置、法线、切线的增量，以及用于表示对应顶点的索引值。索引值的具体映射与向 Unity 请求数据的方式有关。</p>
-<h2 id="绑定姿势（Matrix4x4-）"><a href="#绑定姿势（Matrix4x4-）" class="headerlink" title="绑定姿势（Matrix4x4[]）"></a>绑定姿势（Matrix4x4[]）</h2><p>绑定姿势用于描述骨架处于初始状态时的变换信息，从而使顶点在后续可以按初始状态时与骨骼的相对位置进行运动。</p>
+<h2 id="绑定姿势（Matrix4x4-）">绑定姿势（Matrix4x4[]）</h2>
+<p>绑定姿势用于描述骨架处于初始状态时的变换信息，从而使顶点在后续可以按初始状态时与骨骼的相对位置进行运动。</p>
 <p>这是一个与骨骼数量一致的矩阵数组，每个矩阵都是从网格的物体空间到对应骨骼空间的变换矩阵。</p>
 
                 
@@ -998,7 +986,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -1043,32 +1031,6 @@
   
     <article id="comments" lazyload>
       
-  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
-  </br>
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
-      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
-          {
-            el: '#waline',
-            pageview: window.origin.includes("localhost")?false:true,
-            path: window.location.pathname
-          }
-        )
-        Waline.init(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          var imgSelector = '#waline .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
 
     </article>
   
@@ -1120,12 +1082,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -1196,10 +1152,11 @@
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -1298,7 +1255,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
       visible  : CONFIG.anchorjs.visible
@@ -1343,49 +1300,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

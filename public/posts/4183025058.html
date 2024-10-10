@@ -9,8 +9,11 @@
 <link rel="stylesheet" href="/css/bilicard.css">
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
   <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -18,12 +21,12 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【Unity】优化着色器性能笔记https:&#x2F;&#x2F;docs.unity.cn&#x2F;2022.3&#x2F;Documentation&#x2F;Manual&#x2F;SL-ShaderPerformance.html 仅执行所需的运算 去除无效计算： 例如为材质增加了基础色功能，但所有材质都只用默认的白色，那这种功能就是无效功能，可去除或借助变体功能拆分成多个着色器。  减少计算频率： 尽可能将计算放在低频率的过程中，例如将像素着">
+    <meta name="description" content="【Unity】优化着色器性能笔记 https:&#x2F;&#x2F;docs.unity.cn&#x2F;2022.3&#x2F;Documentation&#x2F;Manual&#x2F;SL-ShaderPerformance.html 仅执行所需的运算   去除无效计算： 例如为材质增加了基础色功能，但所有材质都只用默认的白色，那这种功能就是无效功能，可去除或借助变体功能拆分成多个着色器。   减少计算频率： 尽可能将计算放在低频率的过程中，例如">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Unity】优化着色器性能笔记">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/4183025058.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【Unity】优化着色器性能笔记https:&#x2F;&#x2F;docs.unity.cn&#x2F;2022.3&#x2F;Documentation&#x2F;Manual&#x2F;SL-ShaderPerformance.html 仅执行所需的运算 去除无效计算： 例如为材质增加了基础色功能，但所有材质都只用默认的白色，那这种功能就是无效功能，可去除或借助变体功能拆分成多个着色器。  减少计算频率： 尽可能将计算放在低频率的过程中，例如将像素着">
+<meta property="og:description" content="【Unity】优化着色器性能笔记 https:&#x2F;&#x2F;docs.unity.cn&#x2F;2022.3&#x2F;Documentation&#x2F;Manual&#x2F;SL-ShaderPerformance.html 仅执行所需的运算   去除无效计算： 例如为材质增加了基础色功能，但所有材质都只用默认的白色，那这种功能就是无效功能，可去除或借助变体功能拆分成多个着色器。   减少计算频率： 尽可能将计算放在低频率的过程中，例如">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-28T08:58:00.000Z">
 <meta property="article:modified_time" content="2024-05-31T09:32:25.970Z">
@@ -51,11 +54,11 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -78,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -317,7 +320,7 @@
         aria-expanded="false"
       >
         Blender
-        <span class="list-group-count">(1)</span>
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -335,6 +338,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495031609.html" title="【Blender】杂项笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】杂项笔记</span>
         </a>
       
     
@@ -803,43 +815,6 @@
       </div>
     </div>
   
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
-        id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
-        aria-expanded="false"
-      >
-        Web
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-c6e190b284633c48e39e55049da3cce8"
-           role="tabpanel" aria-labelledby="heading-c6e190b284633c48e39e55049da3cce8">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3410375722.html" title="【Web】Hexo 使用笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【Web】Hexo 使用笔记</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
         
       </div>
     </div>
@@ -861,16 +836,21 @@
             
               <div class="markdown-body">
                 
-                <h1 id="【Unity】优化着色器性能笔记"><a href="#【Unity】优化着色器性能笔记" class="headerlink" title="【Unity】优化着色器性能笔记"></a>【Unity】优化着色器性能笔记</h1><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderPerformance.html">https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderPerformance.html</a></p>
-<h2 id="仅执行所需的运算"><a href="#仅执行所需的运算" class="headerlink" title="仅执行所需的运算"></a>仅执行所需的运算</h2><ul>
-<li><p>去除无效计算：</p>
+                <h1>【Unity】优化着色器性能笔记</h1>
+<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderPerformance.html">https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderPerformance.html</a></p>
+<h2 id="仅执行所需的运算">仅执行所需的运算</h2>
+<ul>
+<li>
+<p>去除无效计算：</p>
 <p>例如为材质增加了基础色功能，但所有材质都只用默认的白色，那这种功能就是无效功能，可去除或借助变体功能拆分成多个着色器。</p>
 </li>
-<li><p>减少计算频率：</p>
+<li>
+<p>减少计算频率：</p>
 <p>尽可能将计算放在低频率的过程中，例如将像素着色器中的计算移到顶点着色器，甚至完全移出着色器在外部计算再设置回着色器。</p>
 </li>
 </ul>
-<h2 id="降低计算精度"><a href="#降低计算精度" class="headerlink" title="降低计算精度"></a>降低计算精度</h2><p>由于改进的 GPU 寄存器分配或针对低精度数学的“快速路径”执行单元，较低的数字精度通常有更好的运算性能。哪怕没有原始性能优势，低精度运算通常也能起到降低功耗延长电池续航的效果。</p>
+<h2 id="降低计算精度">降低计算精度</h2>
+<p>由于改进的 GPU 寄存器分配或针对低精度数学的“快速路径”执行单元，较低的数字精度通常有更好的运算性能。哪怕没有原始性能优势，低精度运算通常也能起到降低功耗延长电池续航的效果。</p>
 <p>因此只要精度够用，应尽可能降低数字精度。</p>
 <ul>
 <li><code>float</code>：世界位置、纹理坐标</li>
@@ -878,7 +858,8 @@
 <li><code>fixed</code>：普通纹理颜色（这只对非常老的设备有效，目前更推荐 half）</li>
 </ul>
 <p>对于精度的测试必须要在目标设备上进行，因为高端 GPU 通常会将默认精度以下的精度做和默认精度一样的处理（如统一看作<code>float</code>），所以只有在低端设备上才能感受到精度降低带来的优化或显示异常。</p>
-<h2 id="减少复杂运算"><a href="#减少复杂运算" class="headerlink" title="减少复杂运算"></a>减少复杂运算</h2><ul>
+<h2 id="减少复杂运算">减少复杂运算</h2>
+<ul>
 <li>减少超越函数</li>
 </ul>
 <p>超越函数（如<code>pow</code>,<code>exp</code>,<code>log</code>,<code>cos</code>,<code>sin</code>,<code>tan</code>等），会占用大量的 GPU 资源，避免使用。如果可以建议改为在外部预计算然后通过缓冲区或纹理传入。</p>
@@ -886,14 +867,18 @@
 <li>减少自建函数</li>
 </ul>
 <p>如果所需操作可用内置函数实现，就不要自行实现，内置函数有特别的编译优化，会比自己写的好得多。</p>
-<h2 id="选择性执行-Alpha-测试"><a href="#选择性执行-Alpha-测试" class="headerlink" title="选择性执行 Alpha 测试"></a>选择性执行 Alpha 测试</h2><p>Alpha 测试或等效函数<code>clip()</code>在不同平台有不同的性能特征。</p>
+<h2 id="选择性执行-Alpha-测试">选择性执行 Alpha 测试</h2>
+<p>Alpha 测试或等效函数<code>clip()</code>在不同平台有不同的性能特征。</p>
 <ul>
 <li>一般情况下使用该功能移除大部分平台上的透明像素时都可获得少量性能优势。</li>
 <li>但在 ios 或某些 Android 设备的 PowerVR GPU 上，该功能是资源密集型任务，反而会对性能产生负面影响。</li>
 </ul>
-<h2 id="避免使用颜色遮罩"><a href="#避免使用颜色遮罩" class="headerlink" title="避免使用颜色遮罩"></a>避免使用颜色遮罩</h2><p>在某些平台（主要是 iOS 和 Android 设备的移动端 GPU）上，<code>Color Mask</code>是资源密集型的操作，除非绝对需要，否则不要使用。</p>
-<h2 id="优化表面着色器"><a href="#优化表面着色器" class="headerlink" title="优化表面着色器"></a>优化表面着色器</h2><p>针对表面着色器也支持一些特定的功能优化，详细见官方文档。</p>
-<h2 id="调试着色器"><a href="#调试着色器" class="headerlink" title="调试着色器"></a>调试着色器</h2><p>在使用 DirectX 11 或 12 的 Windows 平台上，可以使用 Visual Studio 调试 Unity 应用程序中的着色器，以便分析着色器问题或性能优化点。</p>
+<h2 id="避免使用颜色遮罩">避免使用颜色遮罩</h2>
+<p>在某些平台（主要是 iOS 和 Android 设备的移动端 GPU）上，<code>Color Mask</code>是资源密集型的操作，除非绝对需要，否则不要使用。</p>
+<h2 id="优化表面着色器">优化表面着色器</h2>
+<p>针对表面着色器也支持一些特定的功能优化，详细见官方文档。</p>
+<h2 id="调试着色器">调试着色器</h2>
+<p>在使用 DirectX 11 或 12 的 Windows 平台上，可以使用 Visual Studio 调试 Unity 应用程序中的着色器，以便分析着色器问题或性能优化点。</p>
 <p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/current/Manual/SL-DebuggingD3D11ShadersWithVS.html">https://docs.unity.cn/cn/current/Manual/SL-DebuggingD3D11ShadersWithVS.html</a></p>
 <p>如果使用的是 DirectX 12，Microsoft 建议使用 PIX 而不是 Visual Studio 来调试着色器。</p>
 <p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/current/Manual/DebuggingShadersWithPIX.html">https://docs.unity.cn/cn/current/Manual/DebuggingShadersWithPIX.html</a></p>
@@ -989,7 +974,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -1008,9 +993,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/2373330896.html" title="【软件开发】正则表达式">
+                      <a href="/posts/3073109274.html" title="【数学】矩阵">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【软件开发】正则表达式</span>
+                        <span class="hidden-mobile">【数学】矩阵</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1034,32 +1019,6 @@
   
     <article id="comments" lazyload>
       
-  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
-  </br>
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
-      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
-          {
-            el: '#waline',
-            pageview: window.origin.includes("localhost")?false:true,
-            path: window.location.pathname
-          }
-        )
-        Waline.init(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          var imgSelector = '#waline .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
 
     </article>
   
@@ -1111,12 +1070,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -1187,10 +1140,11 @@
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -1289,7 +1243,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
       visible  : CONFIG.anchorjs.visible
@@ -1334,49 +1288,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

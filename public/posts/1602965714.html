@@ -9,8 +9,11 @@
 <link rel="stylesheet" href="/css/bilicard.css">
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
   <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -18,12 +21,12 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【Unity】URP 中的 UGUIShader 实现参考官方 Shader 代码实现： https:&#x2F;&#x2F;github.com&#x2F;TwoTailsGames&#x2F;Unity-Built-in-Shaders&#x2F;blob&#x2F;master&#x2F;DefaultResourcesExtra&#x2F;UI&#x2F;UI-Default.shader 12345678910111213141516171819202122232425262">
+    <meta name="description" content="【Unity】URP 中的 UGUIShader 实现 参考官方 Shader 代码实现： https:&#x2F;&#x2F;github.com&#x2F;TwoTailsGames&#x2F;Unity-Built-in-Shaders&#x2F;blob&#x2F;master&#x2F;DefaultResourcesExtra&#x2F;UI&#x2F;UI-Default.shader 1234567891011121314151617181920212223242526">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Unity】URP 中的 UGUIShader 实现">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/1602965714.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【Unity】URP 中的 UGUIShader 实现参考官方 Shader 代码实现： https:&#x2F;&#x2F;github.com&#x2F;TwoTailsGames&#x2F;Unity-Built-in-Shaders&#x2F;blob&#x2F;master&#x2F;DefaultResourcesExtra&#x2F;UI&#x2F;UI-Default.shader 12345678910111213141516171819202122232425262">
+<meta property="og:description" content="【Unity】URP 中的 UGUIShader 实现 参考官方 Shader 代码实现： https:&#x2F;&#x2F;github.com&#x2F;TwoTailsGames&#x2F;Unity-Built-in-Shaders&#x2F;blob&#x2F;master&#x2F;DefaultResourcesExtra&#x2F;UI&#x2F;UI-Default.shader 1234567891011121314151617181920212223242526">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-02-28T12:00:00.000Z">
 <meta property="article:modified_time" content="2024-03-14T09:06:31.085Z">
@@ -51,11 +54,11 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -78,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -317,7 +320,7 @@
         aria-expanded="false"
       >
         Blender
-        <span class="list-group-count">(1)</span>
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -335,6 +338,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495031609.html" title="【Blender】杂项笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】杂项笔记</span>
         </a>
       
     
@@ -803,43 +815,6 @@
       </div>
     </div>
   
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
-        id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
-        aria-expanded="false"
-      >
-        Web
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-c6e190b284633c48e39e55049da3cce8"
-           role="tabpanel" aria-labelledby="heading-c6e190b284633c48e39e55049da3cce8">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3410375722.html" title="【Web】Hexo 使用笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【Web】Hexo 使用笔记</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
         
       </div>
     </div>
@@ -861,7 +836,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="【Unity】URP-中的-UGUIShader-实现"><a href="#【Unity】URP-中的-UGUIShader-实现" class="headerlink" title="【Unity】URP 中的 UGUIShader 实现"></a>【Unity】URP 中的 UGUIShader 实现</h1><p>参考官方 Shader 代码实现：</p>
+                <h1>【Unity】URP 中的 UGUIShader 实现</h1>
+<p>参考官方 Shader 代码实现：</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/TwoTailsGames/Unity-Built-in-Shaders/blob/master/DefaultResourcesExtra/UI/UI-Default.shader">https://github.com/TwoTailsGames/Unity-Built-in-Shaders/blob/master/DefaultResourcesExtra/UI/UI-Default.shader</a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><code class="hljs shaderlab">Shader &quot;UI/Template&quot;<br>&#123;<br>	Properties<br>	&#123;<br>		// PerRendererData 表明纹理由每个渲染器提供，似乎是起某种优化作用。<br>		[PerRendererData] _MainTex (&quot;Sprite Texture&quot;, 2D) = &quot;white&quot; &#123;&#125;<br><br>		_Color (&quot;Tint&quot;, Color) = (1,1,1,1)<br><br>		_StencilComp (&quot;Stencil Comparison&quot;, Float) = 8<br>		_Stencil (&quot;Stencil ID&quot;, Float) = 0<br>		_StencilOp (&quot;Stencil Operation&quot;, Float) = 0<br>		_StencilWriteMask (&quot;Stencil Write Mask&quot;, Float) = 255<br>		_StencilReadMask (&quot;Stencil Read Mask&quot;, Float) = 255<br><br>		_ColorMask (&quot;Color Mask&quot;, Float) = 15<br><br>		// 启用Clip功能，Clip掉的像素将不会参与模板测试等。<br>		[Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip (&quot;Use Alpha Clip&quot;, Float) = 0<br>	&#125;<br>	SubShader<br>	&#123;<br>		LOD 100 //内置无光照系列Shader的LOD一般为100<br>		Tags<br>		&#123;<br>			&quot;Queue&quot;=&quot;Transparent&quot; // 渲染顺序为透明队列<br>			&quot;PreviewType&quot;=&quot;Plane&quot; // 材质预览效果为平面<br>			&quot;RenderType&quot;=&quot;Transparent&quot; // 渲染类型为透明<br>			&quot;CanUseSpriteAtlas&quot;=&quot;True&quot; // 表明兼容 LegacySpritePacker 图集功能。<br>			&quot;IgnoreProjector&quot;=&quot;True&quot; // 表明不受内置管线中投影器功能的影响。<br>		&#125;<br><br>		//UI利用模板功能实现遮罩效果<br>		Stencil<br>		&#123;<br>			Ref [_Stencil]<br>			Comp [_StencilComp]<br>			Pass [_StencilOp]<br>			ReadMask [_StencilReadMask]<br>			WriteMask [_StencilWriteMask]<br>		&#125;<br><br>		//渲染器将自动排序，再加上UI都是半透明物体，所以无需深度功能<br>		ZWrite Off<br>		ZTest [unity_GUIZTestMode] // unity_GUIZTestMode 根据当前画布的渲染模式自动设置<br><br>		Blend SrcAlpha OneMinusSrcAlpha<br>		ColorMask [_ColorMask]<br><br>		Pass<br>		&#123;<br>			HLSLPROGRAM<br>			#pragma vertex VertexPass<br>			#pragma fragment PixelPass<br>			#pragma shader_feature _ UNITY_UI_ALPHACLIP<br>			#include &quot;Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl&quot;<br><br>			cbuffer UnityPerMaterial<br>			&#123;<br>			sampler2D _MainTex;<br>			float4 _MainTex_ST;<br>			float4 _Color;<br>			&#125;<br><br>			struct Vertex<br>			&#123;<br>				float3 positionOS:POSITION;<br>				float4 color : COLOR;<br>				float2 uv:TEXCOORD0;<br>			&#125;;<br><br>			struct Pixel<br>			&#123;<br>				float4 positionCS:SV_POSITION;<br>				float4 color : COLOR;<br>				float2 uv:TEXCOORD0;<br>			&#125;;<br><br><br>			Pixel VertexPass(const Vertex vertex)<br>			&#123;<br>				Pixel pixel;<br>				pixel.positionCS = TransformObjectToHClip(vertex.positionOS);<br>				pixel.color = vertex.color * _Color;<br>				pixel.uv = TRANSFORM_TEX(vertex.uv, _MainTex);<br>				return pixel;<br>			&#125;<br><br>			float4 PixelPass(const Pixel pixel):SV_TARGET<br>			&#123;<br>				float4 color = tex2D(_MainTex, pixel.uv) * pixel.color;<br>				#ifdef UNITY_UI_ALPHACLIP<br>				clip (pixel.color.a - 0.001);<br>				#endif<br>				return color;<br>			&#125;<br>			ENDHLSL<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -935,7 +911,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -980,32 +956,6 @@
   
     <article id="comments" lazyload>
       
-  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
-  </br>
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
-      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
-          {
-            el: '#waline',
-            pageview: window.origin.includes("localhost")?false:true,
-            path: window.location.pathname
-          }
-        )
-        Waline.init(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          var imgSelector = '#waline .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
 
     </article>
   
@@ -1057,12 +1007,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -1133,10 +1077,11 @@
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -1235,7 +1180,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
       visible  : CONFIG.anchorjs.visible
@@ -1280,49 +1225,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

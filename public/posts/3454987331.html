@@ -9,8 +9,11 @@
 <link rel="stylesheet" href="/css/bilicard.css">
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
   <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -18,12 +21,12 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【Manim】空间与变换笔记所有常量都可以在constants.py中找到 屏幕空间屏幕中心为原点(0,0,0)，遵循右手坐标系，向右为x轴正方向，向上为y轴正方向，向前为z轴负方向，旋转时正方向为顺时针方向。 相关常量   名称 描述    FRAME_HEIGHT 屏幕高度，默认为8   FRAME_WIDTH 屏幕宽度，默认为ASPECT_RATIO * FRAME_HEIGHT   ASP">
+    <meta name="description" content="【Manim】空间与变换笔记 所有常量都可以在constants.py中找到 屏幕空间 屏幕中心为原点(0,0,0)，遵循右手坐标系，向右为x轴正方向，向上为y轴正方向，向前为z轴负方向，旋转时正方向为顺时针方向。 相关常量    名称 描述     FRAME_HEIGHT 屏幕高度，默认为8   FRAME_WIDTH 屏幕宽度，默认为ASPECT_RATIO * FRAME_HEIGHT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Manim】空间与变换笔记">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/3454987331.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【Manim】空间与变换笔记所有常量都可以在constants.py中找到 屏幕空间屏幕中心为原点(0,0,0)，遵循右手坐标系，向右为x轴正方向，向上为y轴正方向，向前为z轴负方向，旋转时正方向为顺时针方向。 相关常量   名称 描述    FRAME_HEIGHT 屏幕高度，默认为8   FRAME_WIDTH 屏幕宽度，默认为ASPECT_RATIO * FRAME_HEIGHT   ASP">
+<meta property="og:description" content="【Manim】空间与变换笔记 所有常量都可以在constants.py中找到 屏幕空间 屏幕中心为原点(0,0,0)，遵循右手坐标系，向右为x轴正方向，向上为y轴正方向，向前为z轴负方向，旋转时正方向为顺时针方向。 相关常量    名称 描述     FRAME_HEIGHT 屏幕高度，默认为8   FRAME_WIDTH 屏幕宽度，默认为ASPECT_RATIO * FRAME_HEIGHT">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-14T05:29:00.000Z">
 <meta property="article:modified_time" content="2024-02-07T04:39:04.808Z">
@@ -51,11 +54,11 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -78,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -229,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          525 字
+          524 字
         
       </span>
     
@@ -317,7 +320,7 @@
         aria-expanded="false"
       >
         Blender
-        <span class="list-group-count">(1)</span>
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -335,6 +338,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495031609.html" title="【Blender】杂项笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】杂项笔记</span>
         </a>
       
     
@@ -803,43 +815,6 @@
       </div>
     </div>
   
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
-        id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
-        aria-expanded="false"
-      >
-        Web
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-c6e190b284633c48e39e55049da3cce8"
-           role="tabpanel" aria-labelledby="heading-c6e190b284633c48e39e55049da3cce8">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3410375722.html" title="【Web】Hexo 使用笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【Web】Hexo 使用笔记</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
         
       </div>
     </div>
@@ -861,16 +836,20 @@
             
               <div class="markdown-body">
                 
-                <h1 id="【Manim】空间与变换笔记"><a href="#【Manim】空间与变换笔记" class="headerlink" title="【Manim】空间与变换笔记"></a>【Manim】空间与变换笔记</h1><p>所有常量都可以在constants.py中找到</p>
-<h2 id="屏幕空间"><a href="#屏幕空间" class="headerlink" title="屏幕空间"></a>屏幕空间</h2><p>屏幕中心为原点(0,0,0)，遵循右手坐标系，向右为x轴正方向，向上为y轴正方向，向前为z轴负方向，旋转时正方向为顺时针方向。</p>
-<h3 id="相关常量"><a href="#相关常量" class="headerlink" title="相关常量"></a>相关常量</h3><table>
+                <h1>【Manim】空间与变换笔记</h1>
+<p>所有常量都可以在constants.py中找到</p>
+<h2 id="屏幕空间">屏幕空间</h2>
+<p>屏幕中心为原点(0,0,0)，遵循右手坐标系，向右为x轴正方向，向上为y轴正方向，向前为z轴负方向，旋转时正方向为顺时针方向。</p>
+<h3 id="相关常量">相关常量</h3>
+<table>
 <thead>
 <tr>
 <th>名称</th>
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>FRAME_HEIGHT</td>
 <td>屏幕高度，默认为8</td>
 </tr>
@@ -880,7 +859,7 @@
 </tr>
 <tr>
 <td>ASPECT_RATIO</td>
-<td>屏幕宽高比，默认为16 &#x2F; 9</td>
+<td>屏幕宽高比，默认为16 / 9</td>
 </tr>
 <tr>
 <td>FRAME_Y_RADIUS</td>
@@ -890,10 +869,13 @@
 <td>FRAME_X_RADIUS</td>
 <td>屏幕宽度的一半</td>
 </tr>
-</tbody></table>
-<h2 id="向量（np-ndarray）"><a href="#向量（np-ndarray）" class="headerlink" title="向量（np.ndarray）"></a>向量（np.ndarray）</h2><h3 id="创建方式"><a href="#创建方式" class="headerlink" title="创建方式"></a>创建方式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">np.array([x,y,z])<br></code></pre></td></tr></table></figure>
-
-<h3 id="相关常量-1"><a href="#相关常量-1" class="headerlink" title="相关常量"></a>相关常量</h3><table>
+</tbody>
+</table>
+<h2 id="向量（np-ndarray）">向量（np.ndarray）</h2>
+<h3 id="创建方式">创建方式</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">np.array([x,y,z])<br></code></pre></td></tr></table></figure>
+<h3 id="相关常量-2">相关常量</h3>
+<table>
 <thead>
 <tr>
 <th>名称</th>
@@ -901,7 +883,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>RIGHT</td>
 <td>(1,0,0)</td>
 <td></td>
@@ -971,8 +954,10 @@
 <td>(0,0,-1)</td>
 <td></td>
 </tr>
-</tbody></table>
-<h2 id="变换函数"><a href="#变换函数" class="headerlink" title="变换函数"></a>变换函数</h2><p>以下都是Mobject对象的成员函数。</p>
+</tbody>
+</table>
+<h2 id="变换函数">变换函数</h2>
+<p>以下都是Mobject对象的成员函数。</p>
 <table>
 <thead>
 <tr>
@@ -980,7 +965,8 @@
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>shift</td>
 <td>移动物体</td>
 </tr>
@@ -1028,8 +1014,10 @@
 <td>set_width</td>
 <td>设置物体宽度</td>
 </tr>
-</tbody></table>
-<h3 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h3><p>以下为部分举例，因为内容过多，不同函数参数也有不同，所有不方便记。但相关内容我也没在文档里找到，不过我发现在源码里可以找到。每个类可用的参数，都作为字典写在了类结构里，翻翻几个基类的源文件就知道了。</p>
+</tbody>
+</table>
+<h3 id="可选参数">可选参数</h3>
+<p>以下为部分举例，因为内容过多，不同函数参数也有不同，所有不方便记。但相关内容我也没在文档里找到，不过我发现在源码里可以找到。每个类可用的参数，都作为字典写在了类结构里，翻翻几个基类的源文件就知道了。</p>
 <table>
 <thead>
 <tr>
@@ -1037,7 +1025,8 @@
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>aligned_edge</td>
 <td>设置物体相对于目标点的对齐方式</td>
 </tr>
@@ -1065,8 +1054,10 @@
 <td>index_of_submobject_to_align</td>
 <td>对齐到目标的子物体</td>
 </tr>
-</tbody></table>
-<h3 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h3><p>需要配合scene.play使用，下方为举例。</p>
+</tbody>
+</table>
+<h3 id="动画效果">动画效果</h3>
+<p>需要配合scene.play使用，下方为举例。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">self.play(<br>    image.shift,<br>    np.array([<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>])<br>)<br></code></pre></td></tr></table></figure>
 
                 
@@ -1139,7 +1130,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -1184,32 +1175,6 @@
   
     <article id="comments" lazyload>
       
-  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
-  </br>
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
-      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
-          {
-            el: '#waline',
-            pageview: window.origin.includes("localhost")?false:true,
-            path: window.location.pathname
-          }
-        )
-        Waline.init(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          var imgSelector = '#waline .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
 
     </article>
   
@@ -1261,12 +1226,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -1337,10 +1296,11 @@
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -1439,7 +1399,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
       visible  : CONFIG.anchorjs.visible
@@ -1484,49 +1444,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

@@ -1,5 +1,8 @@
 ---
 abbrlink: 3495031609
+categories:
+  - 工作
+  - Blender
 ---
 # 【Blender】杂项笔记
 

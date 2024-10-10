@@ -9,8 +9,11 @@
 <link rel="stylesheet" href="/css/bilicard.css">
 <!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
   <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -18,12 +21,12 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【Unity】可编程渲染管线Unity 最早的内置渲染管线，其代码写死在引擎内核，仅能进行一些有限的阶段控制。因此后来 SRP（可编程渲染管线）来了，使完全由用户定义渲染管线成为现实。 SRP 是一个封装的小型 API 层，提供了从 C# 脚本调度和配置渲染命令的功能。Unity 会将这些命令传递给低级图形框架，后者随后将指令发送给图形 API。 SRP 的组成部分渲染管线实例和渲染管线资源基于">
+    <meta name="description" content="【Unity】可编程渲染管线 Unity 最早的内置渲染管线，其代码写死在引擎内核，仅能进行一些有限的阶段控制。因此后来 SRP（可编程渲染管线）来了，使完全由用户定义渲染管线成为现实。 SRP 是一个封装的小型 API 层，提供了从 C# 脚本调度和配置渲染命令的功能。Unity 会将这些命令传递给低级图形框架，后者随后将指令发送给图形 API。 SRP 的组成部分 渲染管线实例和渲染管线资源">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Unity】可编程渲染管线">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/2520479343.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【Unity】可编程渲染管线Unity 最早的内置渲染管线，其代码写死在引擎内核，仅能进行一些有限的阶段控制。因此后来 SRP（可编程渲染管线）来了，使完全由用户定义渲染管线成为现实。 SRP 是一个封装的小型 API 层，提供了从 C# 脚本调度和配置渲染命令的功能。Unity 会将这些命令传递给低级图形框架，后者随后将指令发送给图形 API。 SRP 的组成部分渲染管线实例和渲染管线资源基于">
+<meta property="og:description" content="【Unity】可编程渲染管线 Unity 最早的内置渲染管线，其代码写死在引擎内核，仅能进行一些有限的阶段控制。因此后来 SRP（可编程渲染管线）来了，使完全由用户定义渲染管线成为现实。 SRP 是一个封装的小型 API 层，提供了从 C# 脚本调度和配置渲染命令的功能。Unity 会将这些命令传递给低级图形框架，后者随后将指令发送给图形 API。 SRP 的组成部分 渲染管线实例和渲染管线资源">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-31T09:31:00.000Z">
 <meta property="article:modified_time" content="2024-05-31T09:31:17.807Z">
@@ -51,11 +54,11 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -78,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -317,7 +320,7 @@
         aria-expanded="false"
       >
         Blender
-        <span class="list-group-count">(1)</span>
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -335,6 +338,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495031609.html" title="【Blender】杂项笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】杂项笔记</span>
         </a>
       
     
@@ -803,43 +815,6 @@
       </div>
     </div>
   
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Web"
-        id="heading-c6e190b284633c48e39e55049da3cce8" role="tab" data-toggle="collapse" href="#collapse-c6e190b284633c48e39e55049da3cce8"
-        aria-expanded="false"
-      >
-        Web
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-c6e190b284633c48e39e55049da3cce8"
-           role="tabpanel" aria-labelledby="heading-c6e190b284633c48e39e55049da3cce8">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3410375722.html" title="【Web】Hexo 使用笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【Web】Hexo 使用笔记</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
         
       </div>
     </div>
@@ -861,15 +836,20 @@
             
               <div class="markdown-body">
                 
-                <h1 id="【Unity】可编程渲染管线"><a href="#【Unity】可编程渲染管线" class="headerlink" title="【Unity】可编程渲染管线"></a>【Unity】可编程渲染管线</h1><p>Unity 最早的内置渲染管线，其代码写死在引擎内核，仅能进行一些有限的阶段控制。因此后来 SRP（可编程渲染管线）来了，使完全由用户定义渲染管线成为现实。</p>
+                <h1>【Unity】可编程渲染管线</h1>
+<p>Unity 最早的内置渲染管线，其代码写死在引擎内核，仅能进行一些有限的阶段控制。因此后来 SRP（可编程渲染管线）来了，使完全由用户定义渲染管线成为现实。</p>
 <p>SRP 是一个封装的小型 API 层，提供了从 C# 脚本调度和配置渲染命令的功能。Unity 会将这些命令传递给低级图形框架，后者随后将指令发送给图形 API。</p>
-<h2 id="SRP-的组成部分"><a href="#SRP-的组成部分" class="headerlink" title="SRP 的组成部分"></a>SRP 的组成部分</h2><h3 id="渲染管线实例和渲染管线资源"><a href="#渲染管线实例和渲染管线资源" class="headerlink" title="渲染管线实例和渲染管线资源"></a>渲染管线实例和渲染管线资源</h3><p>基于 SRP 的渲染管线都有两个关键的自定义元素，这是接入 SRP 的入口，必须要先实现它们。</p>
+<h2 id="SRP-的组成部分">SRP 的组成部分</h2>
+<h3 id="渲染管线实例和渲染管线资源">渲染管线实例和渲染管线资源</h3>
+<p>基于 SRP 的渲染管线都有两个关键的自定义元素，这是接入 SRP 的入口，必须要先实现它们。</p>
 <ul>
 <li>渲染管线资源：负责存储渲染管线所需的数据和配置。</li>
 <li>渲染管线实例：利用渲染管线资源提供的数据，进行实际的渲染流程。</li>
 </ul>
-<h3 id="ScriptableRenderContext"><a href="#ScriptableRenderContext" class="headerlink" title="ScriptableRenderContext"></a>ScriptableRenderContext</h3><p>ScriptableRenderContext 是一个核心类，它是 C# 层代码与 Unity 低级图形代码的接口，借此就可以实际的调度 Unity 的图形功能。</p>
-<h3 id="入口点和回调"><a href="#入口点和回调" class="headerlink" title="入口点和回调"></a>入口点和回调</h3><p>SRP 通过定时调用以下回调，以使用自定义的渲染流程。</p>
+<h3 id="ScriptableRenderContext">ScriptableRenderContext</h3>
+<p>ScriptableRenderContext 是一个核心类，它是 C# 层代码与 Unity 低级图形代码的接口，借此就可以实际的调度 Unity 的图形功能。</p>
+<h3 id="入口点和回调">入口点和回调</h3>
+<p>SRP 通过定时调用以下回调，以使用自定义的渲染流程。</p>
 <ul>
 <li>RenderPipeline.Render：渲染管线的核心函数，由每帧渲染时自动调用。</li>
 <li>RenderPipelineManager 类：提供了一些额外的渲染事件函数可供注册。</li>
@@ -966,7 +946,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -1011,32 +991,6 @@
   
     <article id="comments" lazyload>
       
-  <div style="font-size:12px;text-align:center">当前页访问量 <span class="waline-pageview-count" ></span> 次<div>
-  </br>
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createCssLink('https://cdn.staticfile.org/waline/2.15.5/waline.min.css')
-      Fluid.utils.createScript('https://cdn.staticfile.org/waline/2.15.5/waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-1-c7584562.deta.app","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
-          {
-            el: '#waline',
-            pageview: window.origin.includes("localhost")?false:true,
-            path: window.location.pathname
-          }
-        )
-        Waline.init(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          var imgSelector = '#waline .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
 
     </article>
   
@@ -1088,12 +1042,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -1164,10 +1112,11 @@
       </span>
     
     
-  
-</div>
 
   
+
+</div>
+
   
   
 </div>
@@ -1266,7 +1215,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
       visible  : CONFIG.anchorjs.visible
@@ -1311,49 +1260,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
