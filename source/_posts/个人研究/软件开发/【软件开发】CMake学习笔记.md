@@ -74,6 +74,8 @@ add_custom_target(<projectName> SOURCES <sourceFile>...)
 target_include_directories(<projectName> {PUBLIC|PRIVATE} <headerDir>...)
 # 添加附加库
 target_link_libraries(<projectName> {PUBLIC|PRIVATE} {<projectName>|<libFile>...})
+# 添加预处理定义
+target_compile_definitions(<projectName> {PUBLIC|PRIVATE} <definition>...)
 # 添加编译选项
 target_compile_options(<option>...)
 # 分类到vs中的解决方案文件夹（3.26之前需先打开 USE_FOLDERS 功能）
