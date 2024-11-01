@@ -93,20 +93,18 @@ set_target_properties(<projectName> PROPERTIES FOLDER <folderName>)
 
   部分指令如果去除`target_`前缀和部分参数，可转为对所有项目的设置的指令。
 
-### 逻辑指令
+### 其他指令
+
+#### 逻辑指令
 
 通过逻辑运算控制代码执行。
 
 ```cmake
 # 定义一个宏函数
 macro(<macroName>) \ endmacro()
-# 确认文件是否存在
-if(EXISTS <inputPath>) \ endif()
 # 遍历变量列表
 foreach(<outVar> <inputVarList>) \ endforeach()
 ```
-
-### 其他指令
 
 #### 工具指令
 
@@ -121,32 +119,25 @@ list(REMOVE_ITEM <inputVars> <value> [<value> ...])
 
 # 在vs中将指定文件分类到与文件系统一致的筛选器结构，而不是默认筛选器。
 source_group(TREE <fileRootDir> FILES <inputFile>...)
-
-# 复制并修改文件到指定位置。自动替换文件中的环境变量值（@<var>@）并自动移入当前CMakeLists的构建目录。
-configure_file(<inputFile> <outputFile>)
 ```
 
-#### cmake_path
+#### 文件指令
 
-计算路径相关信息
-
-```cmake
-# 获取父目录地址
-cmake_path(GET <path-var> PARENT_PATH <out-var>)
-# 获取文件名
-cmake_path(GET <path-var> FILENAME <out-var>)
-```
-
-#### file
-
-文件相关处理，如统计复制等。
+处理文件路径相关信息
 
 ```cmake
-# 获取{当前目录|包括子目录}的满足glob通配符的文件并将其路径打包在一个环境变量中
+# 获取{当前目录|包括子目录}的满足glob通配符的文件路径并将其路径打包在一个环境变量中
 file({GLOB | GLOB_RECURSE} <outputVarName> <inputFile>...)
-
+# 确认路径是否存在
+if(EXISTS <inputPath>) \ endif()
+# 获取路径对应的父目录地址
+cmake_path(GET <path-var> PARENT_PATH <out-var>)
+# 获取路径对应的文件名
+cmake_path(GET <path-var> FILENAME <out-var>)
 # 复制文件夹到指定位置
 file(COPY <sourceDir> DESTINATION <destinationDir>)
+# 复制并修改文件到指定位置。自动替换文件中的环境变量值（@<var>@）并自动移入当前CMakeLists的构建目录。
+configure_file(<inputFile> <outputFile>)
 ```
 
 ## 环境变量
