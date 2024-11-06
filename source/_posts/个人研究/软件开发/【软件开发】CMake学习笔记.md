@@ -104,6 +104,10 @@ set_target_properties(<projectName> PROPERTIES FOLDER <folderName>)
 macro(<macroName>) \ endmacro()
 # 遍历变量列表
 foreach(<outVar> <inputVarList>) \ endforeach()
+# 确认路径是否存在
+if(EXISTS <inputPath>) \ endif()
+# 确认字符串是否满足指定的正则表达式
+if(<variable|string> MATCHES <regex>) \ endif()
 ```
 
 #### 工具指令
@@ -114,8 +118,12 @@ foreach(<outVar> <inputVarList>) \ endforeach()
 # 设置开发中的环境变量
 set(<variableName> <variableValue>)
 
-# 从环境变量列表中去除指定项
+# 从变量列表中去除指定项
 list(REMOVE_ITEM <inputVars> <value> [<value> ...])
+# 过滤变量列表
+list(FILTER <list> <INCLUDE|EXCLUDE> REGEX <regular_expression>)
+# 替换变量内容
+string(REPLACE <match-string> <replace-string> <out-var> <input>...)
 
 # 在vs中将指定文件分类到与文件系统一致的筛选器结构，而不是默认筛选器。
 source_group(TREE <fileRootDir> FILES <inputFile>...)
@@ -128,13 +136,11 @@ source_group(TREE <fileRootDir> FILES <inputFile>...)
 ```cmake
 # 获取{当前目录|包括子目录}的满足glob通配符的文件路径并将其路径打包在一个环境变量中
 file({GLOB | GLOB_RECURSE} <outputVarName> <inputFile>...)
-# 确认路径是否存在
-if(EXISTS <inputPath>) \ endif()
 # 获取路径对应的父目录地址
 cmake_path(GET <path-var> PARENT_PATH <out-var>)
 # 获取路径对应的文件名
 cmake_path(GET <path-var> FILENAME <out-var>)
-# 复制文件夹到指定位置
+# 复制文件或文件夹到目标目录
 file(COPY <sourceDir> DESTINATION <destinationDir>)
 # 复制并修改文件到指定位置。自动替换文件中的环境变量值（@<var>@）并自动移入当前CMakeLists的构建目录。
 configure_file(<inputFile> <outputFile>)
