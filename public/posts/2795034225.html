@@ -29,7 +29,7 @@
 <meta property="og:description" content="【软件开发】CMake 学习笔记 CMake 指令 https:&#x2F;&#x2F;cmake.org&#x2F;cmake&#x2F;help&#x2F;latest&#x2F;manual&#x2F;cmake.1.html 1234# 将目标位置的CMakeLists生成为原生构建系统的项目cmake &lt;path&gt;# 编译已生成的原生构建系统的项目cmake --build &lt;path&gt; CMakeLists 指令 核心指令 通常必">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-16T01:07:00.000Z">
-<meta property="article:modified_time" content="2024-10-11T00:59:59.259Z">
+<meta property="article:modified_time" content="2024-11-06T03:15:37.971Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.5k 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          12 分钟
+          13 分钟
         
       </span>
     
@@ -382,28 +382,28 @@
     
       
       
-        <a href="/posts/330516235.html" title="【引擎研究】图形管道笔记"
+        <a href="/posts/330516235.html" title="【技术美术】GPU渲染管线笔记"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">【引擎研究】图形管道笔记</span>
+          <span class="category-post">【技术美术】GPU渲染管线笔记</span>
         </a>
       
     
       
       
-        <a href="/posts/717146744.html" title="【引擎研究】渲染管线空间变换"
+        <a href="/posts/717146744.html" title="【技术美术】渲染管线空间变换"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">【引擎研究】渲染管线空间变换</span>
+          <span class="category-post">【技术美术】渲染管线空间变换</span>
         </a>
       
     
       
       
-        <a href="/posts/3631212322.html" title="【引擎研究】纹理相关属性说明"
+        <a href="/posts/3631212322.html" title="【技术美术】纹理相关属性说明"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">【引擎研究】纹理相关属性说明</span>
+          <span class="category-post">【技术美术】纹理相关属性说明</span>
         </a>
       
     
@@ -541,7 +541,7 @@
 <h4 id="描述项目输出（必须要设置）">描述项目输出（必须要设置）</h4>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 输出为可执行文件</span><br><span class="hljs-keyword">add_executable</span>(&lt;projectName&gt; &lt;sourceFile&gt;...)<br><span class="hljs-comment"># 输出为静态/动态库文件</span><br><span class="hljs-keyword">add_library</span>(&lt;projectName&gt; [STATIC|SHARED] &lt;sourceFile&gt;...)<br><span class="hljs-comment"># 特殊的没有输出的项目</span><br><span class="hljs-keyword">add_custom_target</span>(&lt;projectName&gt; SOURCES &lt;sourceFile&gt;...)<br></code></pre></td></tr></table></figure>
 <h4 id="描述项目环境（指定完项目输出后才可用）">描述项目环境（指定完项目输出后才可用）</h4>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 添加附加包含目录</span><br><span class="hljs-keyword">target_include_directories</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &lt;headerDir&gt;...)<br><span class="hljs-comment"># 添加附加库</span><br><span class="hljs-keyword">target_link_libraries</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &#123;&lt;projectName&gt;|&lt;libFile&gt;...&#125;)<br><span class="hljs-comment"># 添加编译选项</span><br><span class="hljs-keyword">target_compile_options</span>(&lt;<span class="hljs-keyword">option</span>&gt;...)<br><span class="hljs-comment"># 分类到vs中的解决方案文件夹（3.26之前需先打开 USE_FOLDERS 功能）</span><br><span class="hljs-keyword">set_target_properties</span>(&lt;projectName&gt; PROPERTIES FOLDER &lt;folderName&gt;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 添加附加包含目录</span><br><span class="hljs-keyword">target_include_directories</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &lt;headerDir&gt;...)<br><span class="hljs-comment"># 添加附加库</span><br><span class="hljs-keyword">target_link_libraries</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &#123;&lt;projectName&gt;|&lt;libFile&gt;...&#125;)<br><span class="hljs-comment"># 添加预处理定义</span><br><span class="hljs-keyword">target_compile_definitions</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &lt;definition&gt;...)<br><span class="hljs-comment"># 添加编译选项</span><br><span class="hljs-keyword">target_compile_options</span>(&lt;<span class="hljs-keyword">option</span>&gt;...)<br><span class="hljs-comment"># 分类到vs中的解决方案文件夹（3.26之前需先打开 USE_FOLDERS 功能）</span><br><span class="hljs-keyword">set_target_properties</span>(&lt;projectName&gt; PROPERTIES FOLDER &lt;folderName&gt;)<br></code></pre></td></tr></table></figure>
 <ul>
 <li>
 <p>依赖项传递</p>
@@ -556,19 +556,16 @@
 <p>部分指令如果去除<code>target_</code>前缀和部分参数，可转为对所有项目的设置的指令。</p>
 </li>
 </ul>
-<h3 id="逻辑指令">逻辑指令</h3>
-<p>通过逻辑运算控制代码执行。</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 定义一个宏函数</span><br><span class="hljs-keyword">macro</span>(&lt;macroName&gt;) \ <span class="hljs-keyword">endmacro</span>()<br><span class="hljs-comment"># 确认文件是否存在</span><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">EXISTS</span> &lt;inputPath&gt;) \ <span class="hljs-keyword">endif</span>()<br><span class="hljs-comment"># 遍历变量列表</span><br><span class="hljs-keyword">foreach</span>(&lt;outVar&gt; &lt;inputVarList&gt;) \ <span class="hljs-keyword">endforeach</span>()<br></code></pre></td></tr></table></figure>
 <h3 id="其他指令">其他指令</h3>
+<h4 id="逻辑指令">逻辑指令</h4>
+<p>通过逻辑运算控制代码执行。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 定义一个宏函数</span><br><span class="hljs-keyword">macro</span>(&lt;macroName&gt;) \ <span class="hljs-keyword">endmacro</span>()<br><span class="hljs-comment"># 遍历变量列表</span><br><span class="hljs-keyword">foreach</span>(&lt;outVar&gt; &lt;inputVarList&gt;) \ <span class="hljs-keyword">endforeach</span>()<br><span class="hljs-comment"># 确认路径是否存在</span><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">EXISTS</span> &lt;inputPath&gt;) \ <span class="hljs-keyword">endif</span>()<br><span class="hljs-comment"># 确认字符串是否满足指定的正则表达式</span><br><span class="hljs-keyword">if</span>(&lt;variable|<span class="hljs-keyword">string</span>&gt; <span class="hljs-keyword">MATCHES</span> &lt;regex&gt;) \ <span class="hljs-keyword">endif</span>()<br></code></pre></td></tr></table></figure>
 <h4 id="工具指令">工具指令</h4>
 <p>一些功能性的实用指令。</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 设置开发中的环境变量</span><br><span class="hljs-keyword">set</span>(&lt;variableName&gt; &lt;variableValue&gt;)<br><br><span class="hljs-comment"># 从环境变量列表中去除指定项</span><br><span class="hljs-keyword">list</span>(REMOVE_ITEM &lt;inputVars&gt; &lt;value&gt; [&lt;value&gt; ...])<br><br><span class="hljs-comment"># 在vs中将指定文件分类到与文件系统一致的筛选器结构，而不是默认筛选器。</span><br><span class="hljs-keyword">source_group</span>(TREE &lt;fileRootDir&gt; FILES &lt;inputFile&gt;...)<br><br><span class="hljs-comment"># 复制并修改文件到指定位置。自动替换文件中的环境变量值（@&lt;var&gt;@）并自动移入当前CMakeLists的构建目录。</span><br><span class="hljs-keyword">configure_file</span>(&lt;inputFile&gt; &lt;outputFile&gt;)<br></code></pre></td></tr></table></figure>
-<h4 id="cmake-path">cmake_path</h4>
-<p>计算路径相关信息</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 获取父目录地址</span><br>cmake_path(GET &lt;path-var&gt; PARENT_PATH &lt;out-var&gt;)<br><span class="hljs-comment"># 获取文件名</span><br>cmake_path(GET &lt;path-var&gt; FILENAME &lt;out-var&gt;)<br></code></pre></td></tr></table></figure>
-<h4 id="file">file</h4>
-<p>文件相关处理，如统计复制等。</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 获取&#123;当前目录|包括子目录&#125;的满足glob通配符的文件并将其路径打包在一个环境变量中</span><br><span class="hljs-keyword">file</span>(&#123;GLOB | GLOB_RECURSE&#125; &lt;outputVarName&gt; &lt;inputFile&gt;...)<br><br><span class="hljs-comment"># 复制文件夹到指定位置</span><br><span class="hljs-keyword">file</span>(COPY &lt;sourceDir&gt; DESTINATION &lt;destinationDir&gt;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 设置开发中的环境变量</span><br><span class="hljs-keyword">set</span>(&lt;variableName&gt; &lt;variableValue&gt;)<br><br><span class="hljs-comment"># 从变量列表中去除指定项</span><br><span class="hljs-keyword">list</span>(REMOVE_ITEM &lt;inputVars&gt; &lt;value&gt; [&lt;value&gt; ...])<br><span class="hljs-comment"># 过滤变量列表</span><br><span class="hljs-keyword">list</span>(FILTER &lt;<span class="hljs-keyword">list</span>&gt; &lt;<span class="hljs-keyword">INCLUDE</span>|EXCLUDE&gt; REGEX &lt;regular_expression&gt;)<br><span class="hljs-comment"># 替换变量内容</span><br><span class="hljs-keyword">string</span>(REPLACE &lt;match-<span class="hljs-keyword">string</span>&gt; &lt;replace-<span class="hljs-keyword">string</span>&gt; &lt;out-var&gt; &lt;input&gt;...)<br><br><span class="hljs-comment"># 在vs中将指定文件分类到与文件系统一致的筛选器结构，而不是默认筛选器。</span><br><span class="hljs-keyword">source_group</span>(TREE &lt;fileRootDir&gt; FILES &lt;inputFile&gt;...)<br></code></pre></td></tr></table></figure>
+<h4 id="文件指令">文件指令</h4>
+<p>处理文件路径相关信息</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 获取&#123;当前目录|包括子目录&#125;的满足glob通配符的文件路径并将其路径打包在一个环境变量中</span><br><span class="hljs-keyword">file</span>(&#123;GLOB | GLOB_RECURSE&#125; &lt;outputVarName&gt; &lt;inputFile&gt;...)<br><span class="hljs-comment"># 获取路径对应的父目录地址</span><br>cmake_path(GET &lt;path-var&gt; PARENT_PATH &lt;out-var&gt;)<br><span class="hljs-comment"># 获取路径对应的文件名</span><br>cmake_path(GET &lt;path-var&gt; FILENAME &lt;out-var&gt;)<br><span class="hljs-comment"># 复制文件或文件夹到目标目录</span><br><span class="hljs-keyword">file</span>(COPY &lt;sourceDir&gt; DESTINATION &lt;destinationDir&gt;)<br><span class="hljs-comment"># 复制并修改文件到指定位置。自动替换文件中的环境变量值（@&lt;var&gt;@）并自动移入当前CMakeLists的构建目录。</span><br><span class="hljs-keyword">configure_file</span>(&lt;inputFile&gt; &lt;outputFile&gt;)<br></code></pre></td></tr></table></figure>
 <h2 id="环境变量">环境变量</h2>
 <p>仅写出部分通常只读的变量，需用户配置的变量见“环境指令”章节。</p>
 <h3 id="项目相关">项目相关</h3>
@@ -708,8 +705,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/3631212322.html" title="【引擎研究】纹理相关属性说明">
-                        <span class="hidden-mobile">【引擎研究】纹理相关属性说明</span>
+                      <a href="/posts/1794241118.html" title="【软件开发】Doxygen 使用笔记">
+                        <span class="hidden-mobile">【软件开发】Doxygen 使用笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

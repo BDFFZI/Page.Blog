@@ -21,15 +21,15 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【软件开发】vcpkg 学习笔记 &quot;vcpkg&quot;是一个免费开源的 C++包管理器，可以以此很方便的处理第三方库的接入，且可嵌入进 CMake 中。 入门 入门教程请参照： https:&#x2F;&#x2F;learn.microsoft.com&#x2F;zh-cn&#x2F;vcpkg&#x2F;get_started&#x2F;get-started?pivots&#x3D;shell-cmd 大概的接入流程是：  安装 vcpkg。 编写">
+    <meta name="description" content="【软件开发】C++使用笔记 数据类型 值类型 存放在栈空间中的一段内存。  T：左值，最普通的变量，是具有变量名且可取地址的值。  ~  ：右值，常量或不具备名称的值，无变量名不可取地址。通常都是一些生命周期极短的临时值，例如未接收的函数返回值。  指针类型 一种用于保存内存地址的值类型，可以利用特定的访问运算符访问其指向的内存。  T* T[]  引用类型 一种封装的指针类型，像指针一样存储着内">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【软件开发】vcpkg 学习笔记">
-<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/4146197106.html">
+<meta property="og:title" content="【软件开发】C++使用笔记">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/2308421870.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【软件开发】vcpkg 学习笔记 &quot;vcpkg&quot;是一个免费开源的 C++包管理器，可以以此很方便的处理第三方库的接入，且可嵌入进 CMake 中。 入门 入门教程请参照： https:&#x2F;&#x2F;learn.microsoft.com&#x2F;zh-cn&#x2F;vcpkg&#x2F;get_started&#x2F;get-started?pivots&#x3D;shell-cmd 大概的接入流程是：  安装 vcpkg。 编写">
+<meta property="og:description" content="【软件开发】C++使用笔记 数据类型 值类型 存放在栈空间中的一段内存。  T：左值，最普通的变量，是具有变量名且可取地址的值。  ~  ：右值，常量或不具备名称的值，无变量名不可取地址。通常都是一些生命周期极短的临时值，例如未接收的函数返回值。  指针类型 一种用于保存内存地址的值类型，可以利用特定的访问运算符访问其指向的内存。  T* T[]  引用类型 一种封装的指针类型，像指针一样存储着内">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-16T01:08:00.000Z">
-<meta property="article:modified_time" content="2024-10-11T00:59:59.261Z">
+<meta property="article:published_time" content="2024-10-31T02:18:59.799Z">
+<meta property="article:modified_time" content="2024-11-01T08:33:38.448Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -37,7 +37,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>【软件开发】vcpkg 学习笔记 - BDFFZI的小屋</title>
+  <title>【软件开发】C++使用笔记 - BDFFZI的小屋</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【软件开发】vcpkg 学习笔记"></span>
+            <span id="subtitle" data-typed-text="【软件开发】C++使用笔记"></span>
           
         </div>
 
@@ -222,8 +222,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-16 09:08" pubdate>
-          2024年7月16日 上午
+        <time datetime="2024-10-31 10:18" pubdate>
+          2024年10月31日 上午
         </time>
       </span>
     
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          639 字
+          1.3k 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          6 分钟
+          11 分钟
         
       </span>
     
@@ -285,229 +285,6 @@
 <div class="category-list">
   
   
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="个人研究"
-        id="heading-4879b307f0d04954985d8d0f3d54b8fa" role="tab" data-toggle="collapse" href="#collapse-4879b307f0d04954985d8d0f3d54b8fa"
-        aria-expanded="true"
-      >
-        个人研究
-        <span class="list-group-count">(12)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse show" id="collapse-4879b307f0d04954985d8d0f3d54b8fa"
-           role="tabpanel" aria-labelledby="heading-4879b307f0d04954985d8d0f3d54b8fa">
-        
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-  </div>
-
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="博客搭建"
-        id="heading-5015cfdc68085d8b3157455484121939" role="tab" data-toggle="collapse" href="#collapse-5015cfdc68085d8b3157455484121939"
-        aria-expanded="false"
-      >
-        博客搭建
-        <span class="list-group-count">(2)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-5015cfdc68085d8b3157455484121939"
-           role="tabpanel" aria-labelledby="heading-5015cfdc68085d8b3157455484121939">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/3410375722.html" title="【博客搭建】Hexo 使用笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【博客搭建】Hexo 使用笔记</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/1708025467.html" title="【博客搭建】Latex 数学书写笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【博客搭建】Latex 数学书写笔记</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="引擎研究"
-        id="heading-c4c8e03727fb481ff5cd961ded3872aa" role="tab" data-toggle="collapse" href="#collapse-c4c8e03727fb481ff5cd961ded3872aa"
-        aria-expanded="false"
-      >
-        引擎研究
-        <span class="list-group-count">(3)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-c4c8e03727fb481ff5cd961ded3872aa"
-           role="tabpanel" aria-labelledby="heading-c4c8e03727fb481ff5cd961ded3872aa">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/330516235.html" title="【技术美术】GPU渲染管线笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【技术美术】GPU渲染管线笔记</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/717146744.html" title="【技术美术】渲染管线空间变换"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【技术美术】渲染管线空间变换</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/3631212322.html" title="【技术美术】纹理相关属性说明"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【技术美术】纹理相关属性说明</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="软件开发"
-        id="heading-a41622d744ac9c55f5266dcc90ac7599" role="tab" data-toggle="collapse" href="#collapse-a41622d744ac9c55f5266dcc90ac7599"
-        aria-expanded="true"
-      >
-        软件开发
-        <span class="list-group-count">(7)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse show" id="collapse-a41622d744ac9c55f5266dcc90ac7599"
-           role="tabpanel" aria-labelledby="heading-a41622d744ac9c55f5266dcc90ac7599">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/posts/2795034225.html" title="【软件开发】CMake 学习笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【软件开发】CMake 学习笔记</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/1794241118.html" title="【软件开发】Doxygen 使用笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【软件开发】Doxygen 使用笔记</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/3993342442.html" title="【软件开发】Git 概念与常用命令"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【软件开发】Git 概念与常用命令</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/987487183.html" title="【软件开发】Windows 开发笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【软件开发】Windows 开发笔记</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/4146197106.html" title="【软件开发】vcpkg 学习笔记"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">【软件开发】vcpkg 学习笔记</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/2373330896.html" title="【软件开发】正则表达式"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【软件开发】正则表达式</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/2553791405.html" title="【软件开发】设计模式个人解读"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【软件开发】设计模式个人解读</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-        
-      </div>
-    </div>
-  
 </div>
 
 
@@ -520,57 +297,98 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【软件开发】vcpkg 学习笔记</h1>
+            <h1 id="seo-header">【软件开发】C++使用笔记</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>【软件开发】vcpkg 学习笔记</h1>
-<p>&quot;vcpkg&quot;是一个免费开源的 C++包管理器，可以以此很方便的处理第三方库的接入，且可嵌入进 CMake 中。</p>
-<h2 id="入门">入门</h2>
-<p>入门教程请参照：<br>
-<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/vcpkg/get_started/get-started?pivots=shell-cmd">https://learn.microsoft.com/zh-cn/vcpkg/get_started/get-started?pivots=shell-cmd</a></p>
-<p>大概的接入流程是：</p>
-<ol>
-<li>安装 vcpkg。</li>
-<li>编写 CMakePresets，接入 vcpkg 的 CMake 工具链工具。（CMake 笔记中的 CMakePresets 示例）</li>
-<li>使用<code>vcpkg new --application</code>创建清单文件，填写所需库。</li>
-<li>在 CMakeLists 中使用<code>find_package()</code>获取 vcpkg 库。</li>
-<li>使用带有 vcpkg 的 CMakePresets 生成项目，完成接入。</li>
-</ol>
-<h2 id="配置">配置</h2>
-<h3 id="查找包">查找包</h3>
-<p>若要查看 vcpkg 支持的所有包，有两种方式：</p>
+                <h1>【软件开发】C++使用笔记</h1>
+<h2 id="数据类型">数据类型</h2>
+<h3 id="值类型">值类型</h3>
+<p>存放在栈空间中的一段内存。</p>
 <ul>
-<li>可以在安装目录的“vcpkg/ports”文件夹内查看。</li>
-<li>或者从在线的 github 仓库也可以：<br>
-<a target="_blank" rel="noopener" href="https://github.com/microsoft/vcpkg/tree/master/ports">https://github.com/microsoft/vcpkg/tree/master/ports</a></li>
+<li>T：左值，最普通的变量，是具有变量名且可取地址的值。</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext> </mtext></mrow><annotation encoding="application/x-tex">~</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace nobreak"> </span></span></span></span> ：右值，常量或不具备名称的值，无变量名不可取地址。通常都是一些生命周期极短的临时值，例如未接收的函数返回值。</li>
 </ul>
-<h3 id="安装包">安装包</h3>
-<p>vcpkg 支持“经典模式”和“清单模式”两种方式安装包：</p>
+<h3 id="指针类型">指针类型</h3>
+<p>一种用于保存内存地址的值类型，可以利用特定的访问运算符访问其指向的内存。</p>
 <ul>
-<li>经典模式，通过终端指令程序化处理。</li>
-<li>清单模式，通过编辑根目录的“vcpkg.json”文件处理。</li>
+<li>T*</li>
+<li>T[]</li>
 </ul>
-<p>推荐使用清单模式，因为这样使用更透明更清晰:<br>
-<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/vcpkg/reference/vcpkg-json">https://learn.microsoft.com/zh-cn/vcpkg/reference/vcpkg-json</a></p>
-<p>文件内容示例如下：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;gtest&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;imgui&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;features&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;dx12-binding&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;win32-binding&quot;</span><span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
-<h4 id="锁定版本">锁定版本</h4>
-<p>要想锁定包版本必须先提供基线参数，基线参数是vcpkg仓库一次提交的SHA（必须是本地vcpkg仓库中存在的版本），这样所有包版本将都被限制于必须大于等于该基线时的版本。</p>
-<p>当提供基线后才可以使用<code>overrides</code>参数进行版本覆盖，以强制使用特定版本，示例如下：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;builtin-baseline&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;333ba63a16024f05f9172fe403f9eced000389e5&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;overrides&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;imgui&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.91.0&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
-<h3 id="引用包">引用包</h3>
-<p>关于每个包在 CMakeLists 中的使用，基本由以下两个命令构成：</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">find_package</span>(&lt;pkgCMakeName&gt; CONFIG REQUIRED)<br><span class="hljs-keyword">target_link_libraries</span>(&lt;projectName&gt; PRIVATE &lt;pkgCMakeProjectName&gt;)<br></code></pre></td></tr></table></figure>
-<p>其中 <code>projectName</code> 是你自己需要用到该包的项目，而 <code>pkgCMakeName</code> 和 <code>pkgCMakeProjectName</code> 的内容则需要进行推断，具体有两种方法：</p>
+<h3 id="引用类型">引用类型</h3>
+<p>一种封装的指针类型，像指针一样存储着内存地址信息，但像值类型一样直接访问该内存。</p>
+<ul>
+<li>T&amp;：引用左值的引用，针对普通变量的引用。</li>
+<li>T&amp;&amp;：引用右值的引用，使右值类型得以被标识和传递，可借此区分左值来实现一些高性能代码。</li>
+<li>const T&amp;：可用右值赋值的，引用常量左值的引用</li>
+<li>T&amp;&amp;（当 T 是一个由编译器推导的类型）：万能引用，既可能作为左值引用也可能作为右值引用。</li>
+</ul>
+<h4 id="关于引用值类型的重点说明">关于引用值类型的重点说明</h4>
+<p>要注意的是引用类型也是值类型，若有变量名就是左值类型，无关其引用对象的类型。所以无论是右值引用还是万能引用，只要它有变量名，那它就是一个左值。</p>
+<p>由于引用类型的使用就相当于引用对象的值类型，因此引用的左值特性会影响到引用对象的值类型，只要其是左值类型的引用，那该引用的对象也就是左值。</p>
+<ul>
+<li>
+<p>右值的本质：</p>
+<p>所以应将右值引用看成一种特殊的左值引用，该引用的目的仅仅是为了声明引用的对象是一个尚无人认领的临时值，以鼓励使用者按需处理。</p>
+</li>
+<li>
+<p>右值的传递：</p>
+<p>因此传递右值引用的本质就是如何将一个左值引用转为右值引用传递出去。非常简单，强制转换就行。若想泛型化，则可借助模板自动推导返回值万能引用的特性，自动强制转换为所需的引用类型。</p>
+</li>
+</ul>
+<h4 id="不同引用值类型间的转换">不同引用值类型间的转换</h4>
+<ul>
+<li>左值转右值：直接强制转换即可，其标准函数为<code>std::move</code>（很多函数对右值有特殊处理，因此转换后原本的左值引用不该再继续使用）。</li>
+<li>右值转左值：使用变量承接即可（因此当一个右值传入函数时，由于函数参数有名称，该右值将被转换为左值）。</li>
+<li>完美转发：当不希望传递的引用因规则导致类型转换时，可以利用万能引用加传递时强制类型转换实现，其标准函数为<code>std::forward</code>。</li>
+</ul>
+<h2 id="函数匹配顺序">函数匹配顺序</h2>
 <ol>
-<li>通过官方的<code>usage</code>文件得出，这是官方编写的默认引入方法。</li>
-<li>通过查看包安装目录的一个文件得出：<br>
-例如要引入 gtest，通过查看 vcpkg_installed\x64-windows\share\GTestTargets.cmake 文件，其中文件名前缀<code>GTest</code>即<code>pkgCMakeName</code>，文件内的 add_library(GTest::gtest) 则表明<code>GTest::gtest</code>是<code>pkgCMakeProjectName</code>。</li>
+<li>参数完全匹配的普通函数</li>
+<li>参数满足要求的模板函数</li>
+<li>类型转换后可以匹配的普通函数</li>
 </ol>
-<p>示例引用方式如下：</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 改编自 gtest 的 usage 文件</span><br><span class="hljs-keyword">find_package</span>(GTest CONFIG REQUIRED)<br><span class="hljs-keyword">target_link_libraries</span>(Executable PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)<br><span class="hljs-comment"># 通过分析 imguiTargets.cmake 得出</span><br><span class="hljs-keyword">find_package</span>(imgui CONFIG REQUIRED)<br><span class="hljs-keyword">target_link_libraries</span>(Executable PRIVATE imgui::imgui)<br></code></pre></td></tr></table></figure>
+<p>需要注意的是，自动推导的模板函数不支持自动类型转换，必须要输入值与函数参数类型完全匹配才行。</p>
+<h2 id="模板">模板</h2>
+<h3 id="使用场景">使用场景</h3>
+<ul>
+<li>函数模板</li>
+<li>变量模板</li>
+<li>类模板</li>
+</ul>
+<h3 id="需求与概念">需求与概念</h3>
+<p>需求（requires）和概念（concept）是从 C++20 开始新增的两个关键字，可借此轻松实现对模板参数的约束。</p>
+<p>两者相关功能简述如下：</p>
+<ul>
+<li><strong>需求</strong>
+<ol>
+<li>一种语法符号，表示接下来要声明模板约束。</li>
+<li>一种返回布尔值的运算，支持多种运算方法，包括表达式有效性。</li>
+</ol>
+</li>
+<li><strong>概念</strong>
+<ol>
+<li>一种基于模板的编译时推导的常量布尔值。</li>
+<li>一种具有限制要求的模板参数类型。</li>
+<li>一种模板限制要求。</li>
+</ol>
+</li>
+</ul>
+<h4 id="创建概念和需求">创建概念和需求</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>&gt; <span class="hljs-comment">//概念必须使用模板</span><br><span class="hljs-keyword">concept</span> userConcept = <span class="hljs-built_in">requires</span>(T t) <span class="hljs-comment">//requires表达式中要用的变量</span><br>&#123;<br>    t + t; <span class="hljs-comment">//有效性验证：表达式是合法可编译的</span><br>    &#123; t + t &#125; <span class="hljs-keyword">noexcept</span>; <span class="hljs-comment">//异常验证：表达式是不会抛出异常的</span><br>    &#123; t + t &#125; -&gt; std::same_as&lt;<span class="hljs-type">int</span>&gt;; <span class="hljs-comment">//返回类型验证：表达式计算结果满足特定要求</span><br>    <span class="hljs-keyword">typename</span> T::x; <span class="hljs-comment">//类型要求：目标类型结构满足的指定的要求</span><br>    <span class="hljs-keyword">requires</span> std::is_same_v&lt;T, <span class="hljs-type">int</span>&gt;; <span class="hljs-comment">//条件验证：基于布尔值的验证要求</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+<h4 id="使用概念和需求">使用概念和需求</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;userConcept T&gt; <span class="hljs-comment">//将概念作为模板参数类型</span><br>    <span class="hljs-keyword">requires</span> <span class="hljs-comment">//通过requires语法引入约束</span><br>    userConcept <span class="hljs-comment">//将概念作为布尔值条件</span><br>    &amp;&amp; <span class="hljs-built_in">requires</span>(T t) &#123;&#125; <span class="hljs-comment">//通过requires计算的布尔值</span><br>    &amp;&amp; std::is_same_v&lt;T, <span class="hljs-type">int</span>&gt; <span class="hljs-comment">//其他返回布尔值的手段</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Func</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="其他说明">其他说明</h4>
+<ul>
+<li>这些条件和运算本质都是布尔值，因此也支持布尔值的<code>&amp;&amp;</code>和<code>||</code>运算。</li>
+<li>建议将计算布尔值的表达式用<code>()</code>括起来，不然有时会因计算顺序问题导致编译失败。</li>
+</ul>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/99524127">现代 C++之万能引用、完美转发、引用折叠</a></li>
+<li><a target="_blank" rel="noopener" href="https://mq-b.github.io/Modern-Cpp-templates-tutorial/">现代 C++ 模板教程</a></li>
+</ul>
 
                 
               </div>
@@ -578,34 +396,6 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/" class="category-chain-item">个人研究</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" class="category-chain-item">软件开发</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
 </div>
@@ -616,8 +406,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【软件开发】vcpkg 学习笔记</div>
-      <div>https://bdffzi-blog.pages.dev/posts/4146197106.html</div>
+      <div>【软件开发】C++使用笔记</div>
+      <div>https://bdffzi-blog.pages.dev/posts/2308421870.html</div>
     </div>
     <div class="license-meta">
       
@@ -629,7 +419,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月16日</div>
+          <div>2024年10月31日</div>
         </div>
       
       
@@ -661,9 +451,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/3495031609.html" title="【Blender】杂项笔记">
+                      <a href="/posts/3536003429.html" title="【软件开发】C++性能测试">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【Blender】杂项笔记</span>
+                        <span class="hidden-mobile">【软件开发】C++性能测试</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -671,8 +461,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/2795034225.html" title="【软件开发】CMake 学习笔记">
-                        <span class="hidden-mobile">【软件开发】CMake 学习笔记</span>
+                      <a href="/posts/2897877531.html" title="【物理】力学公式">
+                        <span class="hidden-mobile">【物理】力学公式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
