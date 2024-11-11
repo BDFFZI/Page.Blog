@@ -6,7 +6,7 @@ categories:
   - 引擎研究
 ---
 
-# 【引擎研究】图形管道笔记
+# 【技术美术】GPU渲染管线笔记
 
 ## 基本术语
 
@@ -113,7 +113,7 @@ https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-
 - 输入：原始基元控制点的顶点数据、SV_PrimitiveID
 - 输出：外壳数据
 
-#### 3.2. 细分器阶段
+#### 3.2. 细分器阶段（Tessellator）
 
 这是一个固定函数阶段，利用从外壳着色器阶段传入的细化因素和分区类型，将域（四边形、三角形或线）分割为很多较小对象（三角形、点或线）。
 
@@ -152,7 +152,7 @@ https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/d3d10-graphics-progra
 
 1. 裁剪测试：
 
-   剔除呈现目标区域之外的像素。
+   剔除指定区域（通常是视口）之外的像素。
 
 2. alpha 测试：
 
@@ -160,9 +160,15 @@ https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/d3d10-graphics-progra
 
 3. 模板测试
 4. 深度测试
+
+   深度测试分为早期和晚期两种：在晚期执行是传统方案，也即目前的流程；早期则是提前到像素着色器之前，从而免去晚期中的很多无效运算。现代 GPU 大多支持早期深度测试，前提是没有在像素着色器中写入深度或使用 AlphaTest、Blend 等功能，否则会退化为晚期测试。
+
+   Unity 中深度测试默认是早期，根据官方的渲染流程图中可以看出。
+
 5. 混合
 
 ## 参考资料
 
-- [图形管道](https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/overviews-direct3d-11-graphics-pipeline)
+- [Direct3D11 图形管道](https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/overviews-direct3d-11-graphics-pipeline)
 - [深度测试/模版测试/透明度测试先后顺序是什么样的？](https://www.zhihu.com/question/384124671)
+- [Unity Shader-渲染队列，ZTest，ZWrite，Early-Z](https://gwb.tencent.com/community/detail/114229)
