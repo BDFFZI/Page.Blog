@@ -58,6 +58,7 @@
 }
 
 /* 删除线（选读）*/
+.markdown-body s,
 .markdown-body del {
   color: red;
   font-style: italic;

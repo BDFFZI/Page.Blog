@@ -8,7 +8,7 @@ categories:
 
 # 【COM3D2Mod 制作教程（1）】教程简介
 
-教程来自：<https://bdffzi.github.io/opencom3d2/>
+教程来自：<https://bdffzi-opencom3d2.pages.dev/#/Research/MakeMod>（含配套视频）
 
 ## 前言
 
