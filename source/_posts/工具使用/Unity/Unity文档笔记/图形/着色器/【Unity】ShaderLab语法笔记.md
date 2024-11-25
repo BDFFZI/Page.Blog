@@ -92,11 +92,11 @@ Properties
 | Range(\<min>,\<max>) | \<number>                                 | 显示为滑动条的浮点数     |
 | Color                | (\<number>,\<number>,\<number>,\<number>) |
 | Vector               | (\<number>,\<number>,\<number>,\<number>) |
-| 2D                   | "\<defaulttexture>"                       |
-| 2DArray              | ""                                        |
-| 3D                   | ""                                        |
-| Cube                 | ""                                        |
-| CubeArray            | ""                                        |
+| 2D                   | "\<defaulttexture>" {}                    |
+| 2DArray              | "" {}                                     |
+| 3D                   | "" {}                                     |
+| Cube                 | "" {}                                     |
+| CubeArray            | "" {}                                     |
 
 - **number、min、max**
 
