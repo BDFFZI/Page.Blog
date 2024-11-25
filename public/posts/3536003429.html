@@ -21,15 +21,15 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【软件开发】C++性能测试 传递函数 通过变量传递函数并执行    速度 方式 分析     100% 利用模板传递 lambda 表达式。    99% 利用函数指针传递已定义函数。    98% 利用函数指针传递 lambda 表达式。    50% 利用已创建的std::function通过引用传递函数。 缓存了对象   20% 利用 lambda 隐式转换传递std::function引用">
+    <meta name="description" content="【软件开发】C++性能测试 传递函数 通过变量传递函数并执行    速度 方式 备注     100% 利用模板传递 lambda 表达式。 支持捕获变量   100% 利用函数指针传递已定义函数。    100% 利用函数指针传递 lambda 表达式。    50% 利用已创建的std::function（缓存对象）通过引用传递函数。    20% 利用 lambda 隐式转换传递std::f">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【软件开发】C++性能测试">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/3536003429.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【软件开发】C++性能测试 传递函数 通过变量传递函数并执行    速度 方式 分析     100% 利用模板传递 lambda 表达式。    99% 利用函数指针传递已定义函数。    98% 利用函数指针传递 lambda 表达式。    50% 利用已创建的std::function通过引用传递函数。 缓存了对象   20% 利用 lambda 隐式转换传递std::function引用">
+<meta property="og:description" content="【软件开发】C++性能测试 传递函数 通过变量传递函数并执行    速度 方式 备注     100% 利用模板传递 lambda 表达式。 支持捕获变量   100% 利用函数指针传递已定义函数。    100% 利用函数指针传递 lambda 表达式。    50% 利用已创建的std::function（缓存对象）通过引用传递函数。    20% 利用 lambda 隐式转换传递std::f">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-01T07:05:28.709Z">
-<meta property="article:modified_time" content="2024-11-01T07:25:59.615Z">
+<meta property="article:published_time" content="2024-06-11T08:38:00.000Z">
+<meta property="article:modified_time" content="2024-11-19T14:58:03.869Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,8 +222,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-11-01 15:05" pubdate>
-          2024年11月1日 下午
+        <time datetime="2024-06-11 16:38" pubdate>
+          2024年6月11日 下午
         </time>
       </span>
     
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          108 字
+          146 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -285,6 +285,274 @@
 <div class="category-list">
   
   
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="个人研究"
+        id="heading-4879b307f0d04954985d8d0f3d54b8fa" role="tab" data-toggle="collapse" href="#collapse-4879b307f0d04954985d8d0f3d54b8fa"
+        aria-expanded="true"
+      >
+        个人研究
+        <span class="list-group-count">(17)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-4879b307f0d04954985d8d0f3d54b8fa"
+           role="tabpanel" aria-labelledby="heading-4879b307f0d04954985d8d0f3d54b8fa">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="博客搭建"
+        id="heading-5015cfdc68085d8b3157455484121939" role="tab" data-toggle="collapse" href="#collapse-5015cfdc68085d8b3157455484121939"
+        aria-expanded="false"
+      >
+        博客搭建
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-5015cfdc68085d8b3157455484121939"
+           role="tabpanel" aria-labelledby="heading-5015cfdc68085d8b3157455484121939">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3410375722.html" title="【博客搭建】Hexo 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【博客搭建】Hexo 使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1708025467.html" title="【博客搭建】Latex 数学书写笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【博客搭建】Latex 数学书写笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="技术美术"
+        id="heading-5522ec16884806604bdf90feaec75ee5" role="tab" data-toggle="collapse" href="#collapse-5522ec16884806604bdf90feaec75ee5"
+        aria-expanded="false"
+      >
+        技术美术
+        <span class="list-group-count">(5)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-5522ec16884806604bdf90feaec75ee5"
+           role="tabpanel" aria-labelledby="heading-5522ec16884806604bdf90feaec75ee5">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/330516235.html" title="【技术美术】GPU渲染管线笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】GPU渲染管线笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3740891544.html" title="【技术美术】不同物体的渲染处理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】不同物体的渲染处理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/717146744.html" title="【技术美术】渲染管线空间变换"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】渲染管线空间变换</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/596080998.html" title="【技术美术】程序化噪波实现"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】程序化噪波实现</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3631212322.html" title="【技术美术】纹理相关属性说明"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】纹理相关属性说明</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="软件开发"
+        id="heading-a41622d744ac9c55f5266dcc90ac7599" role="tab" data-toggle="collapse" href="#collapse-a41622d744ac9c55f5266dcc90ac7599"
+        aria-expanded="true"
+      >
+        软件开发
+        <span class="list-group-count">(10)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-a41622d744ac9c55f5266dcc90ac7599"
+           role="tabpanel" aria-labelledby="heading-a41622d744ac9c55f5266dcc90ac7599">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2308421870.html" title="【软件开发】C++使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】C++使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3536003429.html" title="【软件开发】C++性能测试"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">【软件开发】C++性能测试</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2795034225.html" title="【软件开发】CMake 学习笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】CMake 学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1794241118.html" title="【软件开发】Doxygen 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Doxygen 使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3993342442.html" title="【软件开发】Git 概念与常用命令"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Git 概念与常用命令</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1922506091.html" title="【软件开发】Glob 通配符"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Glob 通配符</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/987487183.html" title="【软件开发】Windows 开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Windows 开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4146197106.html" title="【软件开发】vcpkg 学习笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】vcpkg 学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2373330896.html" title="【软件开发】正则表达式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】正则表达式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2553791405.html" title="【软件开发】设计模式个人解读"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】设计模式个人解读</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
 </div>
 
 
@@ -310,34 +578,61 @@
 <tr>
 <th>速度</th>
 <th>方式</th>
-<th>分析</th>
+<th>备注</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>100%</td>
 <td>利用模板传递 lambda 表达式。</td>
-<td></td>
+<td>支持捕获变量</td>
 </tr>
 <tr>
-<td>99%</td>
+<td>100%</td>
 <td>利用函数指针传递已定义函数。</td>
 <td></td>
 </tr>
 <tr>
-<td>98%</td>
+<td>100%</td>
 <td>利用函数指针传递 lambda 表达式。</td>
 <td></td>
 </tr>
 <tr>
 <td>50%</td>
-<td>利用已创建的<code>std::function</code>通过引用传递函数。</td>
-<td>缓存了对象</td>
+<td>利用已创建的<code>std::function</code>（缓存对象）通过引用传递函数。</td>
+<td></td>
 </tr>
 <tr>
 <td>20%</td>
-<td>利用 lambda 隐式转换传递<code>std::function</code>引用。</td>
-<td>未缓存对象</td>
+<td>利用 lambda 隐式转换传递<code>std::function</code>（实时创建）引用。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="多态实现">多态实现</h2>
+<table>
+<thead>
+<tr>
+<th>速度</th>
+<th>方式</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100%</td>
+<td>基于模板实现</td>
+<td></td>
+</tr>
+<tr>
+<td>100%</td>
+<td>基于通用成员结构</td>
+<td></td>
+</tr>
+<tr>
+<td>1%</td>
+<td>基于虚函数实现</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -348,6 +643,34 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/" class="category-chain-item">个人研究</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" class="category-chain-item">软件开发</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
 </div>
@@ -371,7 +694,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年11月1日</div>
+          <div>2024年6月11日</div>
         </div>
       
       
@@ -403,9 +726,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/1922506091.html" title="【软件开发】Glob 通配符">
+                      <a href="/posts/987487183.html" title="【软件开发】Windows 开发笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【软件开发】Glob 通配符</span>
+                        <span class="hidden-mobile">【软件开发】Windows 开发笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
