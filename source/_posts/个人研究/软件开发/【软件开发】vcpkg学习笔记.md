@@ -59,7 +59,7 @@ https://learn.microsoft.com/zh-cn/vcpkg/reference/vcpkg-json
 
 #### 锁定版本
 
-要想锁定包版本必须先提供基线参数，基线参数是vcpkg仓库一次提交的SHA（必须是本地vcpkg仓库中存在的版本），这样所有包版本将都被限制于必须大于等于该基线时的版本。
+要想锁定包版本必须先提供基线参数，基线参数是 vcpkg 仓库一次提交的 SHA（必须是本地 vcpkg 仓库中存在的版本），这样所有包版本将都被限制于必须大于等于该基线时的版本。
 
 当提供基线后才可以使用`overrides`参数进行版本覆盖，以强制使用特定版本，示例如下：
 
@@ -75,20 +75,20 @@ https://learn.microsoft.com/zh-cn/vcpkg/reference/vcpkg-json
 }
 ```
 
-
 ### 引用包
 
-关于每个包在 CMakeLists 中的使用，基本由以下两个命令构成：
+关于每个包在 CMakeLists 中的使用，一般由以下两个命令构成：
 
 ```cmake
 find_package(<pkgCMakeName> CONFIG REQUIRED)
 target_link_libraries(<projectName> PRIVATE <pkgCMakeProjectName>)
 ```
 
-其中 `projectName` 是你自己需要用到该包的项目，而 `pkgCMakeName` 和 `pkgCMakeProjectName` 的内容则需要进行推断，具体有两种方法：
+其中 `projectName` 是你自己需要用到该包的项目，而 `pkgCMakeName` 和 `pkgCMakeProjectName` 的内容则需要进行推断，具体有三种方法：
 
-1. 通过官方的`usage`文件得出，这是官方编写的默认引入方法。
-2. 通过查看包安装目录的一个文件得出：  
+1. CMake 构建时会自动启发式生成使用方法并打印在构建结果中。
+2. 通过官方的`usage`文件得出，这是官方编写的默认引入方法。
+3. 通过查看包安装目录的一个文件得出：  
    例如要引入 gtest，通过查看 vcpkg_installed\x64-windows\share\GTestTargets.cmake 文件，其中文件名前缀`GTest`即`pkgCMakeName`，文件内的 add_library(GTest::gtest) 则表明`GTest::gtest`是`pkgCMakeProjectName`。
 
 示例引用方式如下：
