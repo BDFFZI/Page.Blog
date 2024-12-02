@@ -4,9 +4,6 @@ date: 2024-3-4 17:09
 categories:
   - 工具使用
   - Unity
-  - Unity文档笔记
-  - 图形
-  - 渲染管线
 ---
 # 【Unity】光照解决方案笔记
 

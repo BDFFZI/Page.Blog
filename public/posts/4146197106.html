@@ -29,7 +29,7 @@
 <meta property="og:description" content="【软件开发】vcpkg 学习笔记 &quot;vcpkg&quot;是一个免费开源的 C++包管理器，可以以此很方便的处理第三方库的接入，且可嵌入进 CMake 中。 入门 入门教程请参照： https:&#x2F;&#x2F;learn.microsoft.com&#x2F;zh-cn&#x2F;vcpkg&#x2F;get_started&#x2F;get-started?pivots&#x3D;shell-cmd 大概的接入流程是：  安装 vcpkg。 编写">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-16T01:08:00.000Z">
-<meta property="article:modified_time" content="2024-10-10T12:30:10.552Z">
+<meta property="article:modified_time" content="2024-11-27T10:49:06.384Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          639 字
+          664 字
         
       </span>
     
@@ -295,7 +295,7 @@
         aria-expanded="true"
       >
         个人研究
-        <span class="list-group-count">(17)</span>
+        <span class="list-group-count">(18)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -368,7 +368,7 @@
         aria-expanded="false"
       >
         技术美术
-        <span class="list-group-count">(5)</span>
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -382,10 +382,10 @@
     
       
       
-        <a href="/posts/330516235.html" title="【技术美术】GPU渲染管线笔记"
+        <a href="/posts/330516235.html" title="【技术美术】GPU 渲染管线笔记"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">【技术美术】GPU渲染管线笔记</span>
+          <span class="category-post">【技术美术】GPU 渲染管线笔记</span>
         </a>
       
     
@@ -395,6 +395,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【技术美术】不同物体的渲染处理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/6523980.html" title="【技术美术】光照模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】光照模型</span>
         </a>
       
     
@@ -602,14 +611,15 @@
 <p>文件内容示例如下：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;gtest&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;imgui&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;features&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;dx12-binding&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;win32-binding&quot;</span><span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
 <h4 id="锁定版本">锁定版本</h4>
-<p>要想锁定包版本必须先提供基线参数，基线参数是vcpkg仓库一次提交的SHA（必须是本地vcpkg仓库中存在的版本），这样所有包版本将都被限制于必须大于等于该基线时的版本。</p>
+<p>要想锁定包版本必须先提供基线参数，基线参数是 vcpkg 仓库一次提交的 SHA（必须是本地 vcpkg 仓库中存在的版本），这样所有包版本将都被限制于必须大于等于该基线时的版本。</p>
 <p>当提供基线后才可以使用<code>overrides</code>参数进行版本覆盖，以强制使用特定版本，示例如下：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;builtin-baseline&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;333ba63a16024f05f9172fe403f9eced000389e5&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;overrides&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;imgui&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.91.0&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
 <h3 id="引用包">引用包</h3>
-<p>关于每个包在 CMakeLists 中的使用，基本由以下两个命令构成：</p>
+<p>关于每个包在 CMakeLists 中的使用，一般由以下两个命令构成：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">find_package</span>(&lt;pkgCMakeName&gt; CONFIG REQUIRED)<br><span class="hljs-keyword">target_link_libraries</span>(&lt;projectName&gt; PRIVATE &lt;pkgCMakeProjectName&gt;)<br></code></pre></td></tr></table></figure>
-<p>其中 <code>projectName</code> 是你自己需要用到该包的项目，而 <code>pkgCMakeName</code> 和 <code>pkgCMakeProjectName</code> 的内容则需要进行推断，具体有两种方法：</p>
+<p>其中 <code>projectName</code> 是你自己需要用到该包的项目，而 <code>pkgCMakeName</code> 和 <code>pkgCMakeProjectName</code> 的内容则需要进行推断，具体有三种方法：</p>
 <ol>
+<li>CMake 构建时会自动启发式生成使用方法并打印在构建结果中。</li>
 <li>通过官方的<code>usage</code>文件得出，这是官方编写的默认引入方法。</li>
 <li>通过查看包安装目录的一个文件得出：<br>
 例如要引入 gtest，通过查看 vcpkg_installed\x64-windows\share\GTestTargets.cmake 文件，其中文件名前缀<code>GTest</code>即<code>pkgCMakeName</code>，文件内的 add_library(GTest::gtest) 则表明<code>GTest::gtest</code>是<code>pkgCMakeProjectName</code>。</li>

@@ -21,15 +21,15 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【技术美术】GPU渲染管线笔记 基本术语   域、基元、图面： 网格所用的多边形面，如三角面、四边面等。   参数语义 语义是附加到着色器输入或输出参数的字符串，用于传达给系统有关参数的预期用途的信息。 用户语义 由用户在 IA 阶段定义的语义。用于描述传入的数据类型，以便系统在 VS 阶段分配输入参数；同时也用于在其他着色器中标记要在各阶段传递的数据，虽然此时数据类型已无作用，但语法上还是需要的">
+    <meta name="description" content="【技术美术】GPU 渲染管线笔记 基本术语   基元、图面： 网格中所使用的顶点数据布局，常见的如点、线、三角面等，特殊的甚至包括一些带邻近基元的基元类型。   参数语义 语义是附加到着色器输入或输出参数的字符串，用于传达给系统有关参数的预期用途的信息。 用户语义 由用户在 IA 阶段定义的语义。用于描述传入的数据类型，以便系统在 VS 阶段分配输入参数；同时也用于在其他着色器中标记要在各阶段传递">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【技术美术】GPU渲染管线笔记">
+<meta property="og:title" content="【技术美术】GPU 渲染管线笔记">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/330516235.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【技术美术】GPU渲染管线笔记 基本术语   域、基元、图面： 网格所用的多边形面，如三角面、四边面等。   参数语义 语义是附加到着色器输入或输出参数的字符串，用于传达给系统有关参数的预期用途的信息。 用户语义 由用户在 IA 阶段定义的语义。用于描述传入的数据类型，以便系统在 VS 阶段分配输入参数；同时也用于在其他着色器中标记要在各阶段传递的数据，虽然此时数据类型已无作用，但语法上还是需要的">
+<meta property="og:description" content="【技术美术】GPU 渲染管线笔记 基本术语   基元、图面： 网格中所使用的顶点数据布局，常见的如点、线、三角面等，特殊的甚至包括一些带邻近基元的基元类型。   参数语义 语义是附加到着色器输入或输出参数的字符串，用于传达给系统有关参数的预期用途的信息。 用户语义 由用户在 IA 阶段定义的语义。用于描述传入的数据类型，以便系统在 VS 阶段分配输入参数；同时也用于在其他着色器中标记要在各阶段传递">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-14T09:09:00.000Z">
-<meta property="article:modified_time" content="2024-11-19T14:42:49.777Z">
+<meta property="article:modified_time" content="2024-12-02T10:15:57.736Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -37,7 +37,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>【技术美术】GPU渲染管线笔记 - BDFFZI的小屋</title>
+  <title>【技术美术】GPU 渲染管线笔记 - BDFFZI的小屋</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【技术美术】GPU渲染管线笔记"></span>
+            <span id="subtitle" data-typed-text="【技术美术】GPU 渲染管线笔记"></span>
           
         </div>
 
@@ -295,7 +295,7 @@
         aria-expanded="true"
       >
         个人研究
-        <span class="list-group-count">(17)</span>
+        <span class="list-group-count">(18)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -368,7 +368,7 @@
         aria-expanded="true"
       >
         技术美术
-        <span class="list-group-count">(5)</span>
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -382,10 +382,10 @@
     
       
       
-        <a href="/posts/330516235.html" title="【技术美术】GPU渲染管线笔记"
+        <a href="/posts/330516235.html" title="【技术美术】GPU 渲染管线笔记"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">【技术美术】GPU渲染管线笔记</span>
+          <span class="category-post">【技术美术】GPU 渲染管线笔记</span>
         </a>
       
     
@@ -395,6 +395,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【技术美术】不同物体的渲染处理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/6523980.html" title="【技术美术】光照模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】光照模型</span>
         </a>
       
     
@@ -565,17 +574,17 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【技术美术】GPU渲染管线笔记</h1>
+            <h1 id="seo-header">【技术美术】GPU 渲染管线笔记</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>【技术美术】GPU渲染管线笔记</h1>
+                <h1>【技术美术】GPU 渲染管线笔记</h1>
 <h2 id="基本术语">基本术语</h2>
 <ul>
 <li>
-<p>域、基元、图面：</p>
-<p>网格所用的多边形面，如三角面、四边面等。</p>
+<p>基元、图面：</p>
+<p>网格中所使用的顶点数据布局，常见的如点、线、三角面等，特殊的甚至包括一些带邻近基元的基元类型。</p>
 </li>
 </ul>
 <h2 id="参数语义">参数语义</h2>
@@ -629,12 +638,16 @@
 <p>通过在硬件中实施分割，使图形管道可解算更低画质（多边形数量更少）模型但并以更高画质进行渲染。</p>
 <ul>
 <li>
+<p>域：</p>
+<p>用于分隔的多边形。</p>
+</li>
+<li>
 <p>补丁：</p>
-<p>多边形被分割后产生的新多边形。</p>
+<p>域被分割后产生的新多边形。</p>
 </li>
 <li>
 <p>控制点：</p>
-<p>控制点一种顶点，其决定了多边形的形状。如三角形就是有三个控制点，在分割补丁时则是用于计算补丁顶点的参考点，补丁的实际顶点将通过多个控制点及其权重计算得出。</p>
+<p>本质是一个顶点，其决定了域的形状，如三角形域就是有三个控制点。在分割补丁时会将其作为补丁顶点的参考点，通过权重混合多个控制点来得出。</p>
 </li>
 <li>
 <p>修补程序：</p>
@@ -754,7 +767,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【技术美术】GPU渲染管线笔记</div>
+      <div>【技术美术】GPU 渲染管线笔记</div>
       <div>https://bdffzi-blog.pages.dev/posts/330516235.html</div>
     </div>
     <div class="license-meta">

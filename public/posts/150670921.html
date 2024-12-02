@@ -29,7 +29,7 @@
 <meta property="og:description" content="【Unity】光照解决方案笔记 https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;BestPracticeLightingPipelines.html 确定对象显示效果的三阶段   剔除 列出了需要渲染的对象，确保这些对象摄像机可见（视锥体剔除）且不被遮挡（遮挡剔除）。   渲染 将这些对象绘制到基于像素的缓冲区中（通过正确的光照以及它们的一些属性）。   后期处理 在">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-04T09:09:00.000Z">
-<meta property="article:modified_time" content="2024-10-10T12:30:10.568Z">
+<meta property="article:modified_time" content="2024-12-02T11:47:31.469Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          2.2k 字
         
       </span>
     
@@ -475,6 +475,15 @@
     
       
       
+        <a href="/posts/150670921.html" title="【Unity】光照解决方案笔记"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">【Unity】光照解决方案笔记</span>
+        </a>
+      
+    
+      
+      
         <a href="/posts/2970632423.html" title="【Unity】各种操作触发 GC 情况"
            class="list-group-item list-group-item-action
            ">
@@ -508,17 +517,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity文档笔记"
         id="heading-680a95aa049e61aff0e7c7ac93d60748" role="tab" data-toggle="collapse" href="#collapse-680a95aa049e61aff0e7c7ac93d60748"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         Unity文档笔记
-        <span class="list-group-count">(15)</span>
+        <span class="list-group-count">(14)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-680a95aa049e61aff0e7c7ac93d60748"
+      <div class="category-collapse collapse " id="collapse-680a95aa049e61aff0e7c7ac93d60748"
            role="tabpanel" aria-labelledby="heading-680a95aa049e61aff0e7c7ac93d60748">
         
         
@@ -535,17 +544,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="图形"
         id="heading-9be72ba165a45aaed9f950ec718475be" role="tab" data-toggle="collapse" href="#collapse-9be72ba165a45aaed9f950ec718475be"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         图形
-        <span class="list-group-count">(14)</span>
+        <span class="list-group-count">(13)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-9be72ba165a45aaed9f950ec718475be"
+      <div class="category-collapse collapse " id="collapse-9be72ba165a45aaed9f950ec718475be"
            role="tabpanel" aria-labelledby="heading-9be72ba165a45aaed9f950ec718475be">
         
         
@@ -580,32 +589,23 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染管线"
         id="heading-a0975e312ca4746045ba2e028a24b7ab" role="tab" data-toggle="collapse" href="#collapse-a0975e312ca4746045ba2e028a24b7ab"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         渲染管线
-        <span class="list-group-count">(2)</span>
+        <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-a0975e312ca4746045ba2e028a24b7ab"
+      <div class="category-collapse collapse " id="collapse-a0975e312ca4746045ba2e028a24b7ab"
            role="tabpanel" aria-labelledby="heading-a0975e312ca4746045ba2e028a24b7ab">
         
         
           
   <div class="category-post-list">
     
-    
-      
-      
-        <a href="/posts/150670921.html" title="【Unity】光照解决方案笔记"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">【Unity】光照解决方案笔记</span>
-        </a>
-      
     
       
       
@@ -892,6 +892,14 @@
 <li>间接光照</li>
 </ul>
 <p>由于光从表面反射并通过介质（如大气或半透明物质）传播和散射而形成的结果。</p>
+<ul>
+<li>局部光照：</li>
+</ul>
+<p>只考虑简单的直接光照构成的视觉效果。</p>
+<ul>
+<li>全局光照：</li>
+</ul>
+<p>考虑各种复杂的光照因素构造的结果，包括间接光照。</p>
 <h2 id="全局光照（GI）">全局光照（GI）</h2>
 <p>全局光照 (Global Illumination) 是一组特殊照明技术的总称，它<strong>考虑了综合且复杂的现实光照模型</strong>（如光的反射、折射等），并以此<strong>对直接和间接光照</strong>进行建模，从而为游戏<strong>提供逼真的光照效果</strong>。</p>
 <p>从使用角度来看可以将 GI 简单理解为<strong>产生间接光的手段</strong>。单纯的兰伯特光照之类的经验光照模型技术并不是 GI。</p>
@@ -1182,27 +1190,6 @@
   <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
   
   
-    <span>></span>
-    
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/" class="category-chain-item">渲染管线</a>
-  
-  
-
-  
-
-  
-
-  
 
   
 
@@ -1267,9 +1254,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/330516235.html" title="【技术美术】GPU渲染管线笔记">
+                      <a href="/posts/330516235.html" title="【技术美术】GPU 渲染管线笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【技术美术】GPU渲染管线笔记</span>
+                        <span class="hidden-mobile">【技术美术】GPU 渲染管线笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
