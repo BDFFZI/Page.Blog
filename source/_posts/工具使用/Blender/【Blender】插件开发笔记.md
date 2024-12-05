@@ -1,7 +1,6 @@
 ---
 abbrlink: 953923210
 date: 2024-01-20 09:56
-update: 2024-2-19 16:37
 categories:
   - 工具使用
   - Blender
