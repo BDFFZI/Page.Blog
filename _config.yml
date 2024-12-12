@@ -15,7 +15,7 @@ default_layout: draft
 index_generator:
   path: ""
   per_page: 10
-  order_by: "-date"
+  order_by: "-updated"
 
 # hexo-renderer-markdown-it渲染器（旧渲染器hexo-renderer-marked已移除）
 markdown:

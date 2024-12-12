@@ -23,10 +23,16 @@ index:
 
 # 文章页
 post:
+  # 更新时间
+  updated:
+    enable: true
   # 侧边分类栏
   category_bar:
     # 需要显式启用
     specific: false
+  # 侧边目录
+  toc:
+    collapseDepth: 2
 
   # 评论
   comments:
