@@ -45,9 +45,11 @@ CMake 中没有常规编程语言中的变量概念，所有中间数据都用�
 #### 基本读写
 
 ```cmake
-# 设置环境变量
-set(<varName> <varValue>)
-# 获取环境变量（下方代码将被直接替换成环境变量值）
+# 设置环境变量[环境变量作用域扩大到父范围（默认为当前函数或目录）]
+set(<varName> <varValue> [PARENT_SCOPE])
+# 设置缓存变量（相当于全局变量）
+set(<varName> <varValue>... CACHE <type> <docstring> [FORCE])
+# 获取环境变量（下方代码将被直接替换成环境变量值）（支持嵌套使用）
 ${<varName>}
 ```
 
@@ -105,8 +107,8 @@ list(APPEND <list> <value>)
 #### 条件执行
 
 ```cmake
-# 基本用法
-if(<bool>) \ endif()
+# 基本用法：[不]满足条件时执行
+if([NOT] <bool>) \ endif()
 # 比较变量的值（由于没有变量的概念，都是通过显式指定比较方式来比较）
 if(<variableName> EQUAL <value>)
 # 确认字符串是否满足指定的正则表达式
