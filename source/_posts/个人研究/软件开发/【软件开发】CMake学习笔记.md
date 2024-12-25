@@ -8,6 +8,14 @@ categories:
 
 # 【软件开发】CMake 学习笔记
 
+## CMake 是什么？
+
+是构建系统（如 Visual Studio）的文件（如 .vcxproj .sln）的创建器，具体要生成的构建系统可以通过 CMakePresets 文件中的 generator 指定。
+
+构建系统一般不是跨平台的，但 CMake 支持在不同的操作系统上生成不同的构建系统文件，通过这种包装的方式从而实现了 C++项目的跨平台。
+
+![](../../../assets/images/JiilV.png)
+
 ## CMake 指令
 
 https://cmake.org/cmake/help/latest/manual/cmake.1.html
@@ -21,151 +29,218 @@ cmake --build <path>
 
 ## CMakeLists 指令
 
-### 核心指令
+`CMakeLists.txt`是生成 CMake 项目的说明文件，用专门的 CMake 语言编写，由于 CMake 也是一种编程语言，因此也支持判断循环等，此外还提供了很多便利的功能性指令。
 
-通常必不可少的指令。
+`CMakeLists.txt`可以有多份，但每个文件夹至多能放一个，此外顶层`CMakeLists.txt`文件中的首条指令必须用于指定 CMake 版本，版本指令如下：
 
 ```cmake
 # 描述CMake的最低支持版本（顶层CMake文件必带）
 cmake_minimum_required(VERSION <version>)
-# 创建一个项目
-project(<projectName>)
+```
+
+### 环境变量
+
+CMake 中没有常规编程语言中的变量概念，所有中间数据都用环境变量存储。环境变量即一对字符串键值组，恰好充当变量名和变量值。用户可以自己设置环境变量，也可以获取系统的环境变量。
+
+#### 基本读写
+
+```cmake
+# 设置环境变量
+set(<varName> <varValue>)
+# 获取环境变量（下方代码将被直接替换成环境变量值）
+${<varName>}
+```
+
+#### 编辑内容
+
+```cmake
+# 替换变量内容
+string(REPLACE <match-string> <replace-string> <out-var> <input>...)
+```
+
+#### 预设环境变量
+
+CMake 系统预设的环境变量，用户可以从中读写一些重要的配置数据。
+
+- 编译环境
+
+  1. `CMAKE_CXX_STANDARD`：项目中所用的 C++标准（数字，如 17、20）
+  2. `CMAKE_CXX_STANDARD_REQUIRED`：指定的 C++标准是否是必须的，从而决定编译器不支持时是否停止生成（布尔值）
+
+- 项目信息
+
+  1. `<projectName>_VERSION_MAJOR`：声明项目时额外提供的主版本号。
+  2. `<projectName>_VERSION_MINOR`：声明项目时额外提供的次版本号。
+
+- 目录
+
+  1. `CMAKE_SOURCE_DIR`：顶级 CMakeLists 的源目录。
+  2. `CMAKE_BINARY_DIR`：顶级 CMakeLists 的构建目录。
+  3. `CMAKE_CURRENT_SOURCE_DIR`：当前 CMakeLists 的源目录。
+  4. `CMAKE_CURRENT_BINARY_DIR`：当前 CMakeLists 的构建目录。
+  5. `PROJECT_BINARY_DIR`：上次调用`project()`的 CMakeLists 对应的构建目录。
+  6. `PROJECT_SOURCE_DIR`：上次调用`project()`的 CMakeLists 对应的源目录。
+
+  备注：指令 5、6 不受`add_subdirectory()`影响。
+
+### 环境变量列表
+
+CMake 中没有常规编程语言中数组的概念，相应的是改用“环境变量列表”代替。环境变量列表本质也是一个环境变量，其值也是一个字符串，但特别的是该值通常是由多个用“;”分隔的条目组成。
+
+许多指令都支持环境变量列表作为输入来支持多参数，同时也配有专门的工具指令来编辑环境变量列表。
+
+```cmake
+# 从变量列表中去除指定项
+list(REMOVE_ITEM <list> <value> [<value> ...])
+# 根据正则表达式过滤变量列表
+list(FILTER <list> <INCLUDE|EXCLUDE> REGEX <regex>)
+# 追加条目
+list(APPEND <list> <value>)
+```
+
+### 流程控制
+
+既然是编程语言，自然也支持逻辑控制。
+
+#### 条件执行
+
+```cmake
+# 基本用法
+if(<bool>) \ endif()
+# 比较变量的值（由于没有变量的概念，都是通过显式指定比较方式来比较）
+if(<variableName> EQUAL <value>)
+# 确认字符串是否满足指定的正则表达式
+if(<var> MATCHES <regex>)
+# 查看环境变量是否定义
+if(DEFINED <variableName>)
+# 确认路径是否存在
+if(EXISTS <inputPath>)
+```
+
+#### 遍历执行
+
+```cmake
+# 遍历环境变量列表
+foreach(<var> <list>) \ endforeach()
+```
+
+### 函数定义
+
+既然是编程语言，自然也支持自定义函数。
+
+```cmake
+# 定义一个宏函数
+macro(<macroName>) \ endmacro()
+```
+
+### 依赖处理
+
+由于`CMakeLists.txt`可以有多份，甚至打包成模块，因此需要相关的指令处理依赖。
+
+```cmake
 # 添加一个子目录（子目录需要带有CMakeLists）
 add_subdirectory(<source_dir>)
 # 寻找一个模块（带有特定配置文件的目录将会被识别为模块，可当成项目使用）
 find_package(<packageName> CONFIG REQUIRED)
 ```
 
-### 环境指令
+### 项目创建
 
-用于描述开发环境
+`CMakeLists.txt`主要用于创建 C++项目，必然需要很多声明项目属性的指令。每个`CMakeLists.txt`文件中只能声明一个项目，当有多个项目时需要创建多份`CMakeLists.txt`。
 
-```cmake
-# 设置所需的C++标准库版本（需在指定项目输出前使用）
-set(CMAKE_CXX_STANDARD <version>)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-# 添加全局附加包含目录
-include_directories(<headerDir>...)
-# 添加全局附加库
-link_libraries({<projectName>|<libFile>...})
-# 添加全局编译选项
-add_compile_options(<option>...)
-```
+#### 项目基础配置
 
-### 项目指令
-
-针对单个项目的信息描述指令。
-
-#### 描述项目输出（必须要设置）
+以下指令是创建一个项目必须要提供的。
 
 ```cmake
-# 输出为可执行文件
+# 创建一个项目
+project(<projectName>)
+# 声明项目的输出为可执行文件
 add_executable(<projectName> <sourceFile>...)
-# 输出为静态/动态库文件
+# 声明项目的输出为静态/动态库文件
 add_library(<projectName> [STATIC|SHARED] <sourceFile>...)
-# 特殊的没有输出的项目
+# 声明项目是特殊的无输出项目
 add_custom_target(<projectName> SOURCES <sourceFile>...)
 ```
 
-#### 描述项目环境（指定完项目输出后才可用）
+#### 项目可选配置
+
+可选的影响项目属性的配置
 
 ```cmake
-# 添加附加包含目录
+# 为项目添加附加包含目录
 target_include_directories(<projectName> {PUBLIC|PRIVATE} <headerDir>...)
-# 添加附加库
+# 为项目添加附加库
 target_link_libraries(<projectName> {PUBLIC|PRIVATE} {<projectName>|<libFile>...})
-# 添加预处理定义
+# 为项目添加预处理定义
 target_compile_definitions(<projectName> {PUBLIC|PRIVATE} <definition>...)
-# 添加编译选项
+# 为项目添加编译选项
 target_compile_options(<option>...)
-# 分类到vs中的解决方案文件夹（3.26之前需先打开 USE_FOLDERS 功能）
+# 将项目分类到vs中的解决方案文件夹（3.26之前需先打开 USE_FOLDERS 功能）
 set_target_properties(<projectName> PROPERTIES FOLDER <folderName>)
 ```
 
-- 依赖项传递
+- 依赖项传递说明：
 
   - `PUBLIC`：使用该选项添加引用，引用的头文件将传染给使用该项目的其他项目。
   - `PRIVATE`：引用不具备传染性，其他使用该项目的项目可能要再次添加头文件引用。
 
   除非项目已经将引用的库完全封装，希望后续的使用者不要再直接调用该引用的库时才该用`PRIVATE`，否则应设置为`PUBLIC`。
 
-- 全局项目设置
+- 全局项目设置说明：
 
-  部分指令如果去除`target_`前缀和部分参数，可转为对所有项目的设置的指令。
+  上述部分指令如果去除`target_`前缀和部分参数，可转为对所有项目的设置的指令。
 
-### 其他指令
+#### 全局项目配置
 
-#### 逻辑指令
-
-通过逻辑运算控制代码执行。
+以下指令对所有项目都生效
 
 ```cmake
-# 定义一个宏函数
-macro(<macroName>) \ endmacro()
-# 遍历变量列表
-foreach(<outVar> <inputVarList>) \ endforeach()
-# 确认路径是否存在
-if(EXISTS <inputPath>) \ endif()
-# 确认字符串是否满足指定的正则表达式
-if(<variable|string> MATCHES <regex>) \ endif()
+# 设置全局项目的编译选项
+add_compile_options(<option>...)
 ```
 
-#### 工具指令
+### 文件系统
 
-一些功能性的实用指令。
+既然是基于文件的生成系统，自然经常需要和文件系统打交道。
 
-```cmake
-# 设置开发中的环境变量
-set(<variableName> <variableValue>)
-
-# 从变量列表中去除指定项
-list(REMOVE_ITEM <inputVars> <value> [<value> ...])
-# 过滤变量列表
-list(FILTER <list> <INCLUDE|EXCLUDE> REGEX <regular_expression>)
-# 替换变量内容
-string(REPLACE <match-string> <replace-string> <out-var> <input>...)
-
-# 在vs中将指定文件分类到与文件系统一致的筛选器结构，而不是默认筛选器。
-source_group(TREE <fileRootDir> FILES <inputFile>...)
-```
-
-#### 文件指令
-
-处理文件路径相关信息
+#### 文件处理
 
 ```cmake
-# 获取{当前目录|包括子目录}的满足glob通配符的文件路径并将其路径打包在一个环境变量中
-file({GLOB | GLOB_RECURSE} <outputVarName> <inputFile>...)
-# 获取路径对应的父目录地址
-cmake_path(GET <path-var> PARENT_PATH <out-var>)
-# 获取路径对应的文件名
-cmake_path(GET <path-var> FILENAME <out-var>)
+# 获取{当前目录|包括子目录}的满足glob通配符的文件路径并将其路径打包在一个变量列表中
+file({GLOB | GLOB_RECURSE} <list> <glob>...)
+# 获取相对路径
+file(RELATIVE_PATH <output> <root-path> <path>)
+
+# 创建或覆盖一个文件并写入指定内容
+file(WRITE <file> <content>)
+# 向指定文件末尾追加内容
+file(APPEND <file> <content>)
 # 复制文件或文件夹到目标目录
 file(COPY <sourceDir> DESTINATION <destinationDir>)
 # 复制并修改文件到指定位置。自动替换文件中的环境变量值（@<var>@）并自动移入当前CMakeLists的构建目录。
 configure_file(<inputFile> <outputFile>)
 ```
 
-## 环境变量
+#### 路径计算
 
-仅写出部分通常只读的变量，需用户配置的变量见“环境指令”章节。
+```cmake
+# 获取路径对应的父目录地址
+cmake_path(GET <path-var> PARENT_PATH <out-var>)
+# 获取路径对应的文件名
+cmake_path(GET <path-var> FILENAME <out-var>)
+```
 
-### 项目相关
+### 其他特殊指令
 
-- `<projectName>_VERSION_MAJOR`：声明项目时额外提供的主版本号。
-- `<projectName>_VERSION_MINOR`：声明项目时额外提供的次版本号。
+其他一些特殊但常用的指令
 
-### 目录相关
-
-- `PROJECT_BINARY_DIR`：上次调用`project()`的 CMakeLists 对应的构建目录。
-- `PROJECT_SOURCE_DIR`：上次调用`project()`的 CMakeLists 对应的源目录。
-
-注意：`add_subdirectory()`不会影响以上两条变量的值。
-
-- `CMAKE_SOURCE_DIR`：顶级 CMakeLists 的源目录。
-- `CMAKE_BINARY_DIR`：顶级 CMakeLists 的构建目录。
-- `CMAKE_CURRENT_SOURCE_DIR`：当前 CMakeLists 的源目录。
-- `CMAKE_CURRENT_BINARY_DIR`：当前 CMakeLists 的构建目录。
+```cmake
+# 在vs中将指定文件分类到与文件系统一致的筛选器结构，而不是默认筛选器。
+source_group(TREE <fileRootDir> FILES <inputFile>...)
+# 在vs中禁用对指定文件的编译
+set_property(SOURCE <files> PROPERTY VS_SETTINGS "ExcludedFromBuild=true")
+```
 
 ## CMakePresets
 
