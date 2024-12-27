@@ -80,6 +80,7 @@ CMake 系统预设的环境变量，用户可以从中读写一些重要的配�
   4. `CMAKE_CURRENT_BINARY_DIR`：当前 CMakeLists 的构建目录。
   5. `PROJECT_BINARY_DIR`：上次调用`project()`的 CMakeLists 对应的构建目录。
   6. `PROJECT_SOURCE_DIR`：上次调用`project()`的 CMakeLists 对应的源目录。
+  7. `CMAKE_RUNTIME_OUTPUT_DIRECTORY`：构建系统最终输出的二进制文件的地址。
 
   备注：指令 5、6 不受`add_subdirectory()`影响。
 
@@ -130,7 +131,7 @@ foreach(<var> <list>) \ endforeach()
 
 ```cmake
 # 定义一个宏函数
-macro(<macroName>) \ endmacro()
+macro(<macroName> [inputVar]...) \ endmacro()
 ```
 
 ### 依赖处理
@@ -144,11 +145,11 @@ add_subdirectory(<source_dir>)
 find_package(<packageName> CONFIG REQUIRED)
 ```
 
-### 项目创建
+### 项目配置
 
 `CMakeLists.txt`主要用于创建 C++项目，必然需要很多声明项目属性的指令。每个`CMakeLists.txt`文件中只能声明一个项目，当有多个项目时需要创建多份`CMakeLists.txt`。
 
-#### 项目基础配置
+#### 基础配置
 
 以下指令是创建一个项目必须要提供的。
 
@@ -163,7 +164,7 @@ add_library(<projectName> [STATIC|SHARED] <sourceFile>...)
 add_custom_target(<projectName> SOURCES <sourceFile>...)
 ```
 
-#### 项目可选配置
+#### 可选配置
 
 可选的影响项目属性的配置
 
@@ -191,13 +192,22 @@ set_target_properties(<projectName> PROPERTIES FOLDER <folderName>)
 
   上述部分指令如果去除`target_`前缀和部分参数，可转为对所有项目的设置的指令。
 
-#### 全局项目配置
+#### 全局配置
 
 以下指令对所有项目都生效
 
 ```cmake
 # 设置全局项目的编译选项
 add_compile_options(<option>...)
+```
+
+#### 读取配置
+
+反向获取关于项目的一些配置信息
+
+```cmake
+# 获取项目类型（EXECUTABLE|STATIC_LIBRARY）
+get_target_property(<outVar> <projectName> TYPE)
 ```
 
 ### 文件系统

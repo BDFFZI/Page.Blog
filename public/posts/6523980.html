@@ -28,8 +28,8 @@
 <meta property="og:site_name" content="BDFFZI的小屋">
 <meta property="og:description" content="【技术美术】光照模型 光照模型实际就是用于计算光照效果的方法，发展至今已有多种光照模型可用。 光照类型 从来源分类  直接光：直接来自光源的光。 间接光：通过其他表面反射的光。  从组成分类：  漫射光：光在粗糙的表面进行多次反射后再反射进眼睛的光。 镜射光：光在光滑表面进行一次反射后直接反射进眼睛的光。 环境光：从其他物体表面反射的光照在物体上后再反射的光。 次表面散射：光通过一些半透明的物体内">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-02T10:15:57.736Z">
-<meta property="article:modified_time" content="2024-12-02T11:48:54.563Z">
+<meta property="article:published_time" content="2024-11-28T05:47:17.449Z">
+<meta property="article:modified_time" content="2024-12-10T06:30:44.068Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,8 +222,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-02 18:15" pubdate>
-          2024年12月2日 晚上
+        <time datetime="2024-11-28 13:47" pubdate>
+          2024年11月28日 下午
         </time>
       </span>
     
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          928 字
+          945 字
         
       </span>
     
@@ -579,7 +579,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年12月2日 晚上
+                    本文最后更新于 2024年12月10日 下午
                   
                 
               </p>
@@ -645,7 +645,8 @@
 <h3 id="CookTorrance">CookTorrance</h3>
 <p><a target="_blank" rel="noopener" href="https://graphicscompendium.com/gamedev/15-pbr">https://graphicscompendium.com/gamedev/15-pbr</a></p>
 <p>1982 年提出，相比前几代的经验光照模型，由于其是基于真实物理现象设计（PBR 模型），因此拥有更真实的呈现效果和物理正确性，如今更是被广泛使用。</p>
-<p>Unity 中对于该公式的镜射系数的实现。</p>
+<p>Unity 中对于该公式的镜射系数的实现：</p>
+<p><a target="_blank" rel="noopener" href="https://community.arm.com/cfs-file/__key/communityserver-blogs-components-weblogfiles/00-00-00-20-66/siggraph2015_2D00_mmg_2D00_renaldas_2D00_notes.pdf">https://community.arm.com/cfs-file/__key/communityserver-blogs-components-weblogfiles/00-00-00-20-66/siggraph2015_2D00_mmg_2D00_renaldas_2D00_notes.pdf</a></p>
 <p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mi>D</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mfrac><mrow><mi>r</mi><mi>o</mi><mi>u</mi><mi>g</mi><mi>h</mi><mi>n</mi><mi>e</mi><mi>s</mi><msup><mi>s</mi><mn>2</mn></msup></mrow><mrow><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mover accent="true"><mi>n</mi><mo>⃗</mo></mover><mo>⋅</mo><mover accent="true"><mi>h</mi><mo>⃗</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>∗</mo><mo stretchy="false">(</mo><mi>r</mi><mi>o</mi><mi>u</mi><mi>g</mi><mi>h</mi><mi>n</mi><mi>e</mi><mi>s</mi><msup><mi>s</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>V</mi><mo>∗</mo><mi>F</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>l</mi><mo>⃗</mo></mover><mo>⋅</mo><mover accent="true"><mi>h</mi><mo>⃗</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>∗</mo><mo stretchy="false">(</mo><mi>r</mi><mi>o</mi><mi>u</mi><mi>g</mi><mi>h</mi><mi>n</mi><mi>e</mi><mi>s</mi><mi>s</mi><mo>+</mo><mn>0.5</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>s</mi><mi>p</mi><mi>e</mi><mi>c</mi><mi>u</mi><mi>l</mi><mi>a</mi><mi>r</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mfrac><mrow><mi>D</mi><mo>∗</mo><mi>V</mi><mo>∗</mo><mi>F</mi></mrow><mn>4</mn></mfrac></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mfrac><mrow><mi>r</mi><mi>o</mi><mi>u</mi><mi>g</mi><mi>h</mi><mi>n</mi><mi>e</mi><mi>s</mi><msup><mi>s</mi><mn>2</mn></msup></mrow><mrow><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mover accent="true"><mi>n</mi><mo>⃗</mo></mover><mo>⋅</mo><mover accent="true"><mi>h</mi><mo>⃗</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>∗</mo><mo stretchy="false">(</mo><mi>r</mi><mi>o</mi><mi>u</mi><mi>g</mi><mi>h</mi><mi>n</mi><mi>e</mi><mi>s</mi><msup><mi>s</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>∗</mo><mo stretchy="false">(</mo><mover accent="true"><mi>l</mi><mo>⃗</mo></mover><mo>⋅</mo><mover accent="true"><mi>h</mi><mo>⃗</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>∗</mo><mo stretchy="false">(</mo><mi>r</mi><mi>o</mi><mi>u</mi><mi>g</mi><mi>h</mi><mi>n</mi><mi>e</mi><mi>s</mi><mi>s</mi><mo>+</mo><mn>0.5</mn><mo stretchy="false">)</mo><mo>∗</mo><mn>4</mn></mrow></mfrac></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
 D &amp;= \frac{roughness^2}{((\vec{n} \cdot \vec{h})^2*(roughness^2-1)+1)^2} \\
 \\
@@ -764,7 +765,7 @@ c-16-25.333-24-45-24-59z"/></svg></span></span></span></span></span></span></spa
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月2日</div>
+          <div>2024年11月28日</div>
         </div>
       
       
