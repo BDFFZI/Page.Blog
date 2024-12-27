@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/JiilV.png">
 <meta property="article:published_time" content="2024-07-16T01:07:00.000Z">
-<meta property="article:modified_time" content="2024-12-27T01:25:12.167Z">
+<meta property="article:modified_time" content="2024-12-27T08:20:25.727Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/JiilV.png">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          2.4k 字
         
       </span>
     
@@ -581,7 +581,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年12月27日 上午
+                    本文最后更新于 2024年12月27日 下午
                   
                 
               </p>
@@ -604,7 +604,7 @@
 <h3 id="环境变量">环境变量</h3>
 <p>CMake 中没有常规编程语言中的变量概念，所有中间数据都用环境变量存储。环境变量即一对字符串键值组，恰好充当变量名和变量值。用户可以自己设置环境变量，也可以获取系统的环境变量。</p>
 <h4 id="基本读写">基本读写</h4>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 设置环境变量</span><br><span class="hljs-keyword">set</span>(&lt;varName&gt; &lt;varValue&gt;)<br><span class="hljs-comment"># 获取环境变量（下方代码将被直接替换成环境变量值）</span><br><span class="hljs-variable">$&#123;&lt;varName&gt;&#125;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 设置环境变量[环境变量作用域扩大到父范围（默认为当前函数或目录）]</span><br><span class="hljs-keyword">set</span>(&lt;varName&gt; &lt;varValue&gt; [PARENT_SCOPE])<br><span class="hljs-comment"># 设置缓存变量（相当于全局变量）</span><br><span class="hljs-keyword">set</span>(&lt;varName&gt; &lt;varValue&gt;... CACHE &lt;type&gt; &lt;docstring&gt; [FORCE])<br><span class="hljs-comment"># 获取环境变量（下方代码将被直接替换成环境变量值）（支持嵌套使用）</span><br><span class="hljs-variable">$&#123;&lt;varName&gt;&#125;</span><br></code></pre></td></tr></table></figure>
 <h4 id="编辑内容">编辑内容</h4>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 替换变量内容</span><br><span class="hljs-keyword">string</span>(REPLACE &lt;match-<span class="hljs-keyword">string</span>&gt; &lt;replace-<span class="hljs-keyword">string</span>&gt; &lt;out-var&gt; &lt;input&gt;...)<br></code></pre></td></tr></table></figure>
 <h4 id="预设环境变量">预设环境变量</h4>
@@ -645,7 +645,7 @@
 <h3 id="流程控制">流程控制</h3>
 <p>既然是编程语言，自然也支持逻辑控制。</p>
 <h4 id="条件执行">条件执行</h4>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 基本用法</span><br><span class="hljs-keyword">if</span>(&lt;bool&gt;) \ <span class="hljs-keyword">endif</span>()<br><span class="hljs-comment"># 比较变量的值（由于没有变量的概念，都是通过显式指定比较方式来比较）</span><br><span class="hljs-keyword">if</span>(&lt;variableName&gt; <span class="hljs-keyword">EQUAL</span> &lt;value&gt;)<br><span class="hljs-comment"># 确认字符串是否满足指定的正则表达式</span><br><span class="hljs-keyword">if</span>(&lt;var&gt; <span class="hljs-keyword">MATCHES</span> &lt;regex&gt;)<br><span class="hljs-comment"># 查看环境变量是否定义</span><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">DEFINED</span> &lt;variableName&gt;)<br><span class="hljs-comment"># 确认路径是否存在</span><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">EXISTS</span> &lt;inputPath&gt;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 基本用法：[不]满足条件时执行</span><br><span class="hljs-keyword">if</span>([<span class="hljs-keyword">NOT</span>] &lt;bool&gt;) \ <span class="hljs-keyword">endif</span>()<br><span class="hljs-comment"># 比较变量的值（由于没有变量的概念，都是通过显式指定比较方式来比较）</span><br><span class="hljs-keyword">if</span>(&lt;variableName&gt; <span class="hljs-keyword">EQUAL</span> &lt;value&gt;)<br><span class="hljs-comment"># 确认字符串是否满足指定的正则表达式</span><br><span class="hljs-keyword">if</span>(&lt;var&gt; <span class="hljs-keyword">MATCHES</span> &lt;regex&gt;)<br><span class="hljs-comment"># 查看环境变量是否定义</span><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">DEFINED</span> &lt;variableName&gt;)<br><span class="hljs-comment"># 确认路径是否存在</span><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">EXISTS</span> &lt;inputPath&gt;)<br></code></pre></td></tr></table></figure>
 <h4 id="遍历执行">遍历执行</h4>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 遍历环境变量列表</span><br><span class="hljs-keyword">foreach</span>(&lt;var&gt; &lt;<span class="hljs-keyword">list</span>&gt;) \ <span class="hljs-keyword">endforeach</span>()<br></code></pre></td></tr></table></figure>
 <h3 id="函数定义">函数定义</h3>
