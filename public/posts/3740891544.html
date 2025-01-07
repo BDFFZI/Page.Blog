@@ -29,7 +29,7 @@
 <meta property="og:description" content="【技术美术】不同物体的渲染处理 渲染顺序 不透明物体（从近到远）-&gt; 天空盒 -&gt; 透明物体（从远到近）  1 和 2 的顺序原因是为了减少 Overdraw，尽可能利用 early-z 减少需要渲染的像素。 3 的顺序原因是为了确保混合正确，因为透明物体依赖后面物体的颜色。  透明物体渲染 透明物体有两种渲染方式：   关闭深度写入（始终渲染后面） 透明物体必须按顺序渲染，但排序又是">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-11-19T02:53:00.000Z">
-<meta property="article:modified_time" content="2024-11-19T14:54:01.043Z">
+<meta property="article:modified_time" content="2024-11-25T06:11:58.494Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -579,7 +579,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年11月19日 晚上
+                    本文最后更新于 2024年11月25日 下午
                   
                 
               </p>
