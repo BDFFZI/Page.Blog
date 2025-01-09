@@ -12,7 +12,7 @@ navbar:
 footer:
   # 网站pv与uv统计
   statistics:
-    enable: true
+    enable: false # 由于动不动就要换网址，浏览统计已经失去意义。
 
 # 主页
 index:
