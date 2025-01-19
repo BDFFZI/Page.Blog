@@ -47,8 +47,8 @@ CMake 中没有常规编程语言中的变量概念，所有中间数据都用�
 ```cmake
 # 设置环境变量[环境变量作用域扩大到父范围（默认为当前函数或目录）]
 set(<varName> <varValue> [PARENT_SCOPE])
-# 设置缓存变量（相当于全局变量）
-set(<varName> <varValue>... CACHE <type> <docstring> [FORCE])
+# 设置缓存变量（全局作用域，持久存储在磁盘）（必须设置FORCE，否则有缓存时不会设置）
+set(<varName> <varValue>... CACHE <type> <docstring> FORCE)
 # 获取环境变量（下方代码将被直接替换成环境变量值）（支持嵌套使用）
 ${<varName>}
 ```
