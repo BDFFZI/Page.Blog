@@ -29,7 +29,7 @@
 <meta property="og:description" content="【软件开发】C++使用笔记 数据类型 值类型 存放在栈空间中的一段内存。  T：左值，最普通的变量，是具有变量名且可取地址的值。  ~  ：右值，常量或不具备名称的值，无变量名不可取地址。通常都是一些生命周期极短的临时值，例如未接收的函数返回值。  备注： 右值及其相关的一系列操作都是 C++11 才新增的功能。 指针类型 一种用于保存内存地址的值类型，可以利用特定的访问运算符访问其指向的内存。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-11T08:38:00.000Z">
-<meta property="article:modified_time" content="2025-01-07T10:08:04.196Z">
+<meta property="article:modified_time" content="2025-01-31T12:24:32.238Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -586,7 +586,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年1月7日 晚上
+                    本文最后更新于 2025年1月31日 晚上
                   
                 
               </p>
@@ -724,23 +724,23 @@
 <ul>
 <li>默认构造函数：
 <ul>
-<li>定义了任何构造函数。</li>
+<li>定义了任何构造函数。（可控）</li>
 <li>成员无法被默认构造。</li>
 </ul>
 </li>
 <li>默认拷贝/移动构造函数：
 <ul>
-<li>定义了拷贝或移动构造函数中的任何一个。</li>
+<li>定义了拷贝或移动构造函数中的任何一个。（可控）</li>
 <li>成员无法被拷贝 / 移动构造。</li>
 <li>父类满足了上述条件。</li>
 </ul>
 </li>
 <li>默认拷贝/移动赋值运算符：
 <ul>
-<li>定义了拷贝或移动赋值运算符中的任何一个。</li>
+<li>定义了拷贝或移动赋值运算符中的任何一个。（可控）</li>
+<li>成员是引用类型。（可控）</li>
 <li>成员无法被拷贝 / 移动赋值。</li>
 <li>父类满足了上述条件。</li>
-<li>成员是引用类型。</li>
 </ul>
 </li>
 </ul>
@@ -925,9 +925,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/3536003429.html" title="【软件开发】C++性能测试">
+                      <a href="/posts/3631212322.html" title="【技术美术】纹理相关属性说明">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【软件开发】C++性能测试</span>
+                        <span class="hidden-mobile">【技术美术】纹理相关属性说明</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -935,8 +935,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/1922506091.html" title="【软件开发】Glob 通配符">
-                        <span class="hidden-mobile">【软件开发】Glob 通配符</span>
+                      <a href="/posts/3536003429.html" title="【软件开发】C++性能测试">
+                        <span class="hidden-mobile">【软件开发】C++性能测试</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
