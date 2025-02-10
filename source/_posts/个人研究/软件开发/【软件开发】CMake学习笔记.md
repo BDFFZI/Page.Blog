@@ -21,10 +21,12 @@ categories:
 https://cmake.org/cmake/help/latest/manual/cmake.1.html
 
 ```bash
-# 将目标位置的CMakeLists生成为原生构建系统的项目
+# 基于目标位置的“cmake项目”生成“构建系统项目”
 cmake <path>
-# 编译已生成的原生构建系统的项目
-cmake --build <path>
+# 编译目标位置的“构建系统项目”，输出其二进制文件[编译cmake项目中的自定义目标]
+cmake --build <path> [--target <target>]
+# 运行.cmake脚本并为脚本设置可选参数
+cmake [-D <var>=<value>]... -P <cmakeScript>
 ```
 
 ## CMakeLists 指令
@@ -55,10 +57,10 @@ ${<varName>}
 
 #### 编辑内容
 
-```cmake
-# 替换变量内容
-string(REPLACE <match-string> <replace-string> <out-var> <input>...)
-```
+环境变量本质就是字符串，可以采用 `string`、`list`、包括再次使用 `set` 等命令来编辑。另外针对非局部作用域变量的编辑还有几个注意点：
+
+1. 对缓存变量和父作用域变量编辑，只会修改以其为初值的局部变量，因此修改完必须再次显式设置为缓存变量。
+2. 缓存变量可以在构建 cmake 文件时从命令行设置 `-D<var>=<value>`，注意代码中也要 `set` 该缓存命令才行，但不要用 `FORCE` 关键字。
 
 #### 预设环境变量
 
@@ -82,7 +84,7 @@ CMake 系统预设的环境变量，用户可以从中读写一些重要的配�
   4. `CMAKE_CURRENT_BINARY_DIR`：当前 CMakeLists 的构建目录。
   5. `PROJECT_BINARY_DIR`：上次调用`project()`的 CMakeLists 对应的构建目录。
   6. `PROJECT_SOURCE_DIR`：上次调用`project()`的 CMakeLists 对应的源目录。
-  7. `CMAKE_RUNTIME_OUTPUT_DIRECTORY`：构建系统最终输出的二进制文件的地址。
+  7. `CMAKE_RUNTIME_OUTPUT_DIRECTORY`：构建系统最终输出的二进制文件的目录。
 
   备注：指令 5、6 不受`add_subdirectory()`影响。
 
@@ -181,6 +183,12 @@ target_compile_definitions(<projectName> {PUBLIC|PRIVATE} <definition>...)
 target_compile_options(<option>...)
 # 将项目分类到vs中的解决方案文件夹（3.26之前需先打开 USE_FOLDERS 功能）
 set_target_properties(<projectName> PROPERTIES FOLDER <folderName>)
+# 为项目设置编译事件（如下方为编译后执行某cmake脚本）
+add_custom_command(
+    TARGET ${target}
+    POST_BUILD
+    COMMAND cmake -D target=${target} -P script.cmake
+)
 ```
 
 - 依赖项传递说明：
