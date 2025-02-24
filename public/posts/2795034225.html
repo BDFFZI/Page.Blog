@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/JiilV.png">
 <meta property="article:published_time" content="2024-07-16T01:07:00.000Z">
-<meta property="article:modified_time" content="2025-01-17T12:04:37.222Z">
+<meta property="article:modified_time" content="2025-02-09T15:26:36.783Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/JiilV.png">
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          2.6k 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          20 分钟
+          22 分钟
         
       </span>
     
@@ -588,7 +588,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年1月17日 晚上
+                    本文最后更新于 2025年2月9日 晚上
                   
                 
               </p>
@@ -603,7 +603,7 @@
 <p><img src="/assets/images/JiilV.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h2 id="CMake-指令">CMake 指令</h2>
 <p><a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/latest/manual/cmake.1.html">https://cmake.org/cmake/help/latest/manual/cmake.1.html</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 将目标位置的CMakeLists生成为原生构建系统的项目</span><br>cmake &lt;path&gt;<br><span class="hljs-comment"># 编译已生成的原生构建系统的项目</span><br>cmake --build &lt;path&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 基于目标位置的“cmake项目”生成“构建系统项目”</span><br>cmake &lt;path&gt;<br><span class="hljs-comment"># 编译目标位置的“构建系统项目”，输出其二进制文件[编译cmake项目中的自定义目标]</span><br>cmake --build &lt;path&gt; [--target &lt;target&gt;]<br><span class="hljs-comment"># 运行.cmake脚本并为脚本设置可选参数</span><br>cmake [-D &lt;var&gt;=&lt;value&gt;]... -P &lt;cmakeScript&gt;<br></code></pre></td></tr></table></figure>
 <h2 id="CMakeLists-指令">CMakeLists 指令</h2>
 <p><code>CMakeLists.txt</code>是生成 CMake 项目的说明文件，用专门的 CMake 语言编写，由于 CMake 也是一种编程语言，因此也支持判断循环等，此外还提供了很多便利的功能性指令。</p>
 <p><code>CMakeLists.txt</code>可以有多份，但每个文件夹至多能放一个，此外顶层<code>CMakeLists.txt</code>文件中的首条指令必须用于指定 CMake 版本，版本指令如下：</p>
@@ -613,7 +613,11 @@
 <h4 id="基本读写">基本读写</h4>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 设置环境变量[环境变量作用域扩大到父范围（默认为当前函数或目录）]</span><br><span class="hljs-keyword">set</span>(&lt;varName&gt; &lt;varValue&gt; [PARENT_SCOPE])<br><span class="hljs-comment"># 设置缓存变量（全局作用域，持久存储在磁盘）（必须设置FORCE，否则有缓存时不会设置）</span><br><span class="hljs-keyword">set</span>(&lt;varName&gt; &lt;varValue&gt;... CACHE &lt;type&gt; &lt;docstring&gt; FORCE)<br><span class="hljs-comment"># 获取环境变量（下方代码将被直接替换成环境变量值）（支持嵌套使用）</span><br><span class="hljs-variable">$&#123;&lt;varName&gt;&#125;</span><br></code></pre></td></tr></table></figure>
 <h4 id="编辑内容">编辑内容</h4>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 替换变量内容</span><br><span class="hljs-keyword">string</span>(REPLACE &lt;match-<span class="hljs-keyword">string</span>&gt; &lt;replace-<span class="hljs-keyword">string</span>&gt; &lt;out-var&gt; &lt;input&gt;...)<br></code></pre></td></tr></table></figure>
+<p>环境变量本质就是字符串，可以采用 <code>string</code>、<code>list</code>、包括再次使用 <code>set</code> 等命令来编辑。另外针对非局部作用域变量的编辑还有几个注意点：</p>
+<ol>
+<li>对缓存变量和父作用域变量编辑，只会修改以其为初值的局部变量，因此修改完必须再次显式设置为缓存变量。</li>
+<li>缓存变量可以在构建 cmake 文件时从命令行设置 <code>-D&lt;var&gt;=&lt;value&gt;</code>，注意代码中也要 <code>set</code> 该缓存命令才行，但不要用 <code>FORCE</code> 关键字。</li>
+</ol>
 <h4 id="预设环境变量">预设环境变量</h4>
 <p>CMake 系统预设的环境变量，用户可以从中读写一些重要的配置数据。</p>
 <ul>
@@ -640,7 +644,7 @@
 <li><code>CMAKE_CURRENT_BINARY_DIR</code>：当前 CMakeLists 的构建目录。</li>
 <li><code>PROJECT_BINARY_DIR</code>：上次调用<code>project()</code>的 CMakeLists 对应的构建目录。</li>
 <li><code>PROJECT_SOURCE_DIR</code>：上次调用<code>project()</code>的 CMakeLists 对应的源目录。</li>
-<li><code>CMAKE_RUNTIME_OUTPUT_DIRECTORY</code>：构建系统最终输出的二进制文件的地址。</li>
+<li><code>CMAKE_RUNTIME_OUTPUT_DIRECTORY</code>：构建系统最终输出的二进制文件的目录。</li>
 </ol>
 <p>备注：指令 5、6 不受<code>add_subdirectory()</code>影响。</p>
 </li>
@@ -668,7 +672,7 @@
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 创建一个项目</span><br><span class="hljs-keyword">project</span>(&lt;projectName&gt;)<br><span class="hljs-comment"># 声明项目的输出为可执行文件</span><br><span class="hljs-keyword">add_executable</span>(&lt;projectName&gt; &lt;sourceFile&gt;...)<br><span class="hljs-comment"># 声明项目的输出为静态/动态库文件</span><br><span class="hljs-keyword">add_library</span>(&lt;projectName&gt; [STATIC|SHARED] &lt;sourceFile&gt;...)<br><span class="hljs-comment"># 声明项目是特殊的无输出项目</span><br><span class="hljs-keyword">add_custom_target</span>(&lt;projectName&gt; SOURCES &lt;sourceFile&gt;...)<br></code></pre></td></tr></table></figure>
 <h4 id="可选配置">可选配置</h4>
 <p>可选的影响项目属性的配置</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 为项目添加附加包含目录</span><br><span class="hljs-keyword">target_include_directories</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &lt;headerDir&gt;...)<br><span class="hljs-comment"># 为项目添加附加库</span><br><span class="hljs-keyword">target_link_libraries</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &#123;&lt;projectName&gt;|&lt;libFile&gt;...&#125;)<br><span class="hljs-comment"># 为项目添加预处理定义</span><br><span class="hljs-keyword">target_compile_definitions</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &lt;definition&gt;...)<br><span class="hljs-comment"># 为项目添加编译选项</span><br><span class="hljs-keyword">target_compile_options</span>(&lt;<span class="hljs-keyword">option</span>&gt;...)<br><span class="hljs-comment"># 将项目分类到vs中的解决方案文件夹（3.26之前需先打开 USE_FOLDERS 功能）</span><br><span class="hljs-keyword">set_target_properties</span>(&lt;projectName&gt; PROPERTIES FOLDER &lt;folderName&gt;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 为项目添加附加包含目录</span><br><span class="hljs-keyword">target_include_directories</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &lt;headerDir&gt;...)<br><span class="hljs-comment"># 为项目添加附加库</span><br><span class="hljs-keyword">target_link_libraries</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &#123;&lt;projectName&gt;|&lt;libFile&gt;...&#125;)<br><span class="hljs-comment"># 为项目添加预处理定义</span><br><span class="hljs-keyword">target_compile_definitions</span>(&lt;projectName&gt; &#123;PUBLIC|PRIVATE&#125; &lt;definition&gt;...)<br><span class="hljs-comment"># 为项目添加编译选项</span><br><span class="hljs-keyword">target_compile_options</span>(&lt;<span class="hljs-keyword">option</span>&gt;...)<br><span class="hljs-comment"># 将项目分类到vs中的解决方案文件夹（3.26之前需先打开 USE_FOLDERS 功能）</span><br><span class="hljs-keyword">set_target_properties</span>(&lt;projectName&gt; PROPERTIES FOLDER &lt;folderName&gt;)<br><span class="hljs-comment"># 为项目设置编译事件（如下方为编译后执行某cmake脚本）</span><br><span class="hljs-keyword">add_custom_command</span>(<br>    <span class="hljs-keyword">TARGET</span> <span class="hljs-variable">$&#123;target&#125;</span><br>    POST_BUILD<br>    <span class="hljs-keyword">COMMAND</span> cmake -D <span class="hljs-keyword">target</span>=<span class="hljs-variable">$&#123;target&#125;</span> -P script.cmake<br>)<br></code></pre></td></tr></table></figure>
 <ul>
 <li>
 <p>依赖项传递说明：</p>
