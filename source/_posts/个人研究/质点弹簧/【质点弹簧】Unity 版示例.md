@@ -5,6 +5,8 @@ categories:
 ---
 # 【质点弹簧】Unity 版示例
 
+该Demo实现自该教程：https://www.cnblogs.com/BDFFZI/p/18733944
+
 急速搭建的 Unity 版本的质点弹簧 Demo，不要在意帧率，这个 Demo 没有做任何优化。整个 Demo 就一个文件，直接在 Unity 创建里创建一个名为“MassSpring”的空脚本将下面代码替换进去，然后随便拖到一个场景物体上即可。
 
 ```C#
