@@ -1,3 +1,8 @@
+---
+categories:
+  - 工具使用
+  - Unity
+---
 # 【Unity】脚本生命周期
 
 ## 执行顺序
