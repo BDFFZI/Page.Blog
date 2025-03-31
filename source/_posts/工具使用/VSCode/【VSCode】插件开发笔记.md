@@ -1,3 +1,8 @@
+---
+categories:
+  - 工具使用
+  - VSCode
+---
 # VSCode 插件开发笔记
 
 ## VSCode 的插件实质
