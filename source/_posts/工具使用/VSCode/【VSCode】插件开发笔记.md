@@ -2,6 +2,7 @@
 categories:
   - 工具使用
   - VSCode
+abbrlink: 1043904924
 ---
 # VSCode 插件开发笔记
 
