@@ -21,15 +21,15 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【Linux】Linux 使用笔记 权限属性 权限属性共 10 位，如 drwxrwxrwx。 文件类型 第一位表示文件类型：  d：目录。 l：目录映射。 -：文件。  权限控制 其他位分别是面向不同用户的读写权限：  区间一：文件所属者。 区间二：与所属者同组的用户。 区间三：其他用户。  读写权限分三种类型，对目录和文件作用各不同：  对于文件：  r：可读。 w：可写。 x：可执行（对二进">
+    <meta name="description" content="【Linux】Linux 使用笔记 系统目录结构  &#x2F;etc：系统管理所用的一些配置文件和子目录。 &#x2F;dev：计算机外部设备，Linux 中外设交互与文件交互一致。 &#x2F;proc：存储当前内核运行状态，类似设备映射成文件，此处映射的是内存信息。 &#x2F;usr：Unix 系统资源的缩写，用户的程序和文件大多放在该目录，类似 Windows 的 ProgramFiles 文件夹。  &#x2F;lib：各种程序共享的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Linux】Linux 使用笔记">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/2845903494.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【Linux】Linux 使用笔记 权限属性 权限属性共 10 位，如 drwxrwxrwx。 文件类型 第一位表示文件类型：  d：目录。 l：目录映射。 -：文件。  权限控制 其他位分别是面向不同用户的读写权限：  区间一：文件所属者。 区间二：与所属者同组的用户。 区间三：其他用户。  读写权限分三种类型，对目录和文件作用各不同：  对于文件：  r：可读。 w：可写。 x：可执行（对二进">
+<meta property="og:description" content="【Linux】Linux 使用笔记 系统目录结构  &#x2F;etc：系统管理所用的一些配置文件和子目录。 &#x2F;dev：计算机外部设备，Linux 中外设交互与文件交互一致。 &#x2F;proc：存储当前内核运行状态，类似设备映射成文件，此处映射的是内存信息。 &#x2F;usr：Unix 系统资源的缩写，用户的程序和文件大多放在该目录，类似 Windows 的 ProgramFiles 文件夹。  &#x2F;lib：各种程序共享的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-31T09:30:00.000Z">
-<meta property="article:modified_time" content="2024-10-10T12:30:10.568Z">
+<meta property="article:modified_time" content="2025-04-29T12:09:35.885Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          180 字
+          1.8k 字
         
       </span>
     
@@ -243,7 +243,7 @@
         
         
         
-          2 分钟
+          16 分钟
         
       </span>
     
@@ -293,7 +293,7 @@
         aria-expanded="true"
       >
         工具使用
-        <span class="list-group-count">(25)</span>
+        <span class="list-group-count">(29)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -440,7 +440,7 @@
         aria-expanded="false"
       >
         Unity
-        <span class="list-group-count">(21)</span>
+        <span class="list-group-count">(24)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -452,6 +452,15 @@
           
   <div class="category-post-list">
     
+    
+      
+      
+        <a href="/posts/1233487121.html" title="【Unity】UGUI"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】UGUI</span>
+        </a>
+      
     
       
       
@@ -468,6 +477,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【Unity】个人编码规范</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/806518232.html" title="【Unity】人形动画"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】人形动画</span>
         </a>
       
     
@@ -509,10 +527,19 @@
     
       
       
-        <a href="/posts/2261641482.html" title="【技术美术】投影矩阵和线性深度推导"
+        <a href="/posts/4114572923.html" title="【Unity】脚本生命周期"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">【技术美术】投影矩阵和线性深度推导</span>
+          <span class="category-post">【Unity】脚本生命周期</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2226898333.html" title="【Unity】骨骼动画"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】骨骼动画</span>
         </a>
       
     
@@ -852,6 +879,43 @@
       </div>
     </div>
   
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="VSCode"
+        id="heading-92ce826772dd138cdcbd6cbc6d5b29c4" role="tab" data-toggle="collapse" href="#collapse-92ce826772dd138cdcbd6cbc6d5b29c4"
+        aria-expanded="false"
+      >
+        VSCode
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-92ce826772dd138cdcbd6cbc6d5b29c4"
+           role="tabpanel" aria-labelledby="heading-92ce826772dd138cdcbd6cbc6d5b29c4">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1043904924.html" title="VSCode 插件开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">VSCode 插件开发笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
         
       </div>
     </div>
@@ -873,7 +937,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年10月10日 晚上
+                    本文最后更新于 2025年4月29日 晚上
                   
                 
               </p>
@@ -882,8 +946,43 @@
               <div class="markdown-body">
                 
                 <h1>【Linux】Linux 使用笔记</h1>
-<h2 id="权限属性">权限属性</h2>
-<p>权限属性共 10 位，如 drwxrwxrwx。</p>
+<h2 id="系统目录结构">系统目录结构</h2>
+<ul>
+<li><code>/etc</code>：系统管理所用的一些配置文件和子目录。</li>
+<li><code>/dev</code>：计算机外部设备，Linux 中外设交互与文件交互一致。</li>
+<li><code>/proc</code>：存储当前内核运行状态，类似设备映射成文件，此处映射的是内存信息。</li>
+<li><code>/usr</code>：Unix 系统资源的缩写，用户的程序和文件大多放在该目录，类似 Windows 的 ProgramFiles 文件夹。
+<ul>
+<li><code>/lib</code>：各种程序共享的动态链接库。</li>
+<li><code>/bin</code>：存放各种常见二进制命令程序。</li>
+<li><code>/sbin</code>：超级管理员使用的命令程序或守护进程程序。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><code>/root</code>：默认为空，为系统管理员分配的默认用户目录。</li>
+<li><code>/home</code>：默认为空。存储为每个用户分配的默认用户目录。</li>
+<li><code>/opt</code>：默认为空。但为计算机额外安装软件时，通常存储在该目录。</li>
+<li><code>/srv</code>：默认为空。存储一些守护进程启动后需要提取的数据。</li>
+<li><code>/media</code>：默认为空。部分设备（如 U 盘、光驱）会挂载在该目录。</li>
+<li><code>/mnt</code>：默认为空。用于让用户临时挂载其他文件系统，以此访问存储外设的内容。</li>
+<li><code>/lost+found</code>：默认为空，非法关机后会存储一些相关文件。</li>
+</ul>
+<hr>
+<ul>
+<li><code>/boot</code>：Linux 启动所需的一些核心文件。</li>
+<li><code>/sys</code>：从 Linux2.6 开始的一个新文件系统，用于映射内核设备树。</li>
+<li><code>/run</code>：一个临时文件系统，存储本次启动后的系统信息，重启时会被置空。</li>
+<li><code>/tmp</code>：存储一些短期临时文件，重启时可能被删除。</li>
+<li><code>/var</code>：该目录存储一些长期的，会不断扩充的文件，例如日志文件。
+<ul>
+<li><code>/tmp</code>：存储长期临时文件。</li>
+</ul>
+</li>
+</ul>
+<h2 id="文件权限属性">文件权限属性</h2>
+<p>文件权限属性共 10 位，如 drwxrwxrwx。</p>
 <h3 id="文件类型">文件类型</h3>
 <p>第一位表示文件类型：</p>
 <ul>
@@ -914,6 +1013,176 @@
 <li>x：可 cd 进目录，查看目录下文件的详细属性和文件内容。</li>
 </ul>
 </li>
+</ul>
+<h2 id="特殊目录文件">特殊目录文件</h2>
+<ul>
+<li><code>~</code>：当前用户目录。</li>
+<li><code>/</code>：根目录。</li>
+<li><code>.</code>：当前目录。</li>
+<li><code>..</code>：当前父目录。</li>
+</ul>
+<hr>
+<ul>
+<li><code>~/.bashrc</code>：终端在每次启动前都会加载的文件，可用于配置终端环境，特定于用户。</li>
+<li><code>etc/.bashrc</code>：与上一个文件相同，但影响所有全局。</li>
+<li><code>etc/profile</code>：与上一个文件相同，但影响所有全局。</li>
+</ul>
+<h2 id="常用命令">常用命令</h2>
+<h3 id="文件系统管理">文件系统管理</h3>
+<ul>
+<li><code>ls</code>（list files）：列出目录内容。
+<ul>
+<li><code>-l</code>：显示详细信息。</li>
+<li><code>-a</code>：显示隐藏文件。</li>
+</ul>
+</li>
+<li><code>cd</code>（change directory）：切换工作目录。</li>
+<li><code>pwd</code>（print work directory）：显示工作目录路径。</li>
+<li><code>mkdir</code>（make directory）：创建一个新目录。</li>
+<li><code>rmdir</code>（remove directory）：移除一个空目录。</li>
+<li><code>cp</code>（copy file）：复制文件或目录。</li>
+<li><code>mv</code>（move file）：移动文件或目录（可用于改名）。</li>
+<li><code>rm</code>（remove）：删除文件或目录。</li>
+<li><code>chmod [ugoa] [+-][rwx]</code>（change mode）：修改文件权限。
+<ul>
+<li><code>u</code>：文件拥有者。</li>
+<li><code>g</code>：与拥有者同组用户。</li>
+<li><code>o</code>：其他用户。</li>
+<li><code>a</code>：所有用户。</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件内容查看">文件内容查看</h3>
+<ul>
+<li><code>cat</code>：显示文件内容。</li>
+<li><code>tac</code>：倒序显示文件内容。</li>
+<li><code>nl</code>：显示文件内容并附带行号。</li>
+<li><code>more</code>：以翻页的方式显示文件内容。
+<ul>
+<li>ctrl-b：上一页。</li>
+<li>space：下一页。</li>
+<li>enter：下一行。</li>
+<li>/{string}：搜索。</li>
+<li>q：离开。</li>
+</ul>
+</li>
+<li><code>less</code>：在<code>more</code>基础上增加一些功能（但不显示阅读进度）。
+<ul>
+<li>[pagedown]：下一行。</li>
+<li>[pageup]：上一行。</li>
+<li>/{string}：向下搜索。</li>
+<li>?{string}：向上搜索。</li>
+<li>n：重复前一个搜索操作。</li>
+<li>N：反向重复前一个搜索操作。</li>
+</ul>
+</li>
+<li><code>head [-n &lt;number&gt;]</code>：显示文件前几行。</li>
+<li><code>tail [-n &lt;number&gt;]</code>：显示文件后几行。</li>
+</ul>
+<h3 id="进程管理">进程管理</h3>
+<ul>
+<li><code>ps</code>（process status）：查看当前进程信息。
+<ul>
+<li><code>-e</code>：显示所有进程。</li>
+<li><code>-x</code>：显示当前用户所有进程。</li>
+<li><code>-xu</code>:详细显示当前用户所有进程。</li>
+<li><code>-u</code>：显示与终端关联的进程。</li>
+<li><code>-a</code>：显示与当前终端关联的进程；作为附加参数时表示是否包含其他用户进程。</li>
+<li><code>-xua</code>：详细显示所有进程。</li>
+</ul>
+</li>
+<li><code>top</code>：实时显示当前进程信息。
+<ul>
+<li><code>-u &lt;user&gt;</code>：仅显示指定用户的进程。</li>
+</ul>
+</li>
+<li><code>jobs</code>：显示与当前终端关联的后台进程。
+<ul>
+<li><code>-l</code>：显示进程的详细信息。</li>
+</ul>
+</li>
+<li><code>kill &#123;%&lt;jobnumber&gt;|&lt;pid&gt;&#125;</code>：杀死指定进程。
+<ul>
+<li><code>-STOP</code>：改为暂停进程。</li>
+<li><code>-CONT</code>：改为继续进程。</li>
+</ul>
+</li>
+<li><code>fg</code>（foreground）：将最近挂起的后台进程放到前台运行。
+<ul>
+<li><code>%&lt;jobnumber&gt;</code>：改为指定序号的后台进程。</li>
+</ul>
+</li>
+<li><code>bg</code>（background）：将最近挂起的后台进程放到后台运行。
+<ul>
+<li><code>%&lt;jobnumber&gt;</code>：改为指定序号的后台进程。</li>
+</ul>
+</li>
+<li><code>disown %&lt;jobnumber&gt;</code>：将指定后台进程移出后台任务列表使其不会收到终端停止时发送的 SIGHUP 信号。（注意！该命令不会自动调整标准输出，可能导致程序运行异常）</li>
+<li><code>nohup &lt;command&gt; &amp;</code>（no hang up）：类似<code>disown</code>，会阻止进程接收 SIGHUP 信号，同时启动时会自动调整进程的标准输入输出设置（输出默认写入到当前目录的 nohup.out 文件）。</li>
+</ul>
+<h3 id="查看系统信息">查看系统信息</h3>
+<ul>
+<li><code>lsblk</code>：显示磁盘信息。</li>
+<li><code>df -h</code>：显示文件系统占用磁盘空间的情况。</li>
+<li><code>du -h</code>：显示目标文件占用磁盘的大小。</li>
+<li><code>whereis &lt;command&gt;</code>：显示命令所在的文件地址。</li>
+<li><code>uname -a</code>：显示操作系统信息。</li>
+</ul>
+<h3 id="磁盘分区管理">磁盘分区管理</h3>
+<ul>
+<li><code>fdisk</code>：管理磁盘分区。
+<ul>
+<li><code>-l</code>：显示详细磁盘信息。</li>
+</ul>
+</li>
+</ul>
+<h3 id="网络内容处理">网络内容处理</h3>
+<ul>
+<li><code>wget &lt;url&gt; -O &lt;path&gt;</code>：下载网络资源到目标位置。</li>
+<li><code>curl &lt;url&gt;</code>：发送 Get 请求来获取网址内容。</li>
+</ul>
+<h3 id="终端交互">终端交互</h3>
+<ul>
+<li><code>sudo</code>：以管理员身份运行命令或切换到管理员账号。</li>
+<li><code>clear</code>：清理终端内容。</li>
+<li><code>source</code>：在当前终端环境下读取并执行目标文件。</li>
+</ul>
+<hr>
+<ul>
+<li><code>&quot;&lt;string&gt;&quot;</code>：表示一个字符串，字符串支持无缝拼接。</li>
+<li><code>export &lt;var&gt;=&quot;&lt;string&gt;&quot;</code>：设置环境变量。</li>
+<li><code>$&lt;var&gt;</code>：提取变量内容，可在字符串中使用。</li>
+</ul>
+<hr>
+<ul>
+<li><code>echo &quot;&lt;string&gt;&quot;...</code>：在终端中输出字符串到标准输出。</li>
+<li><code>read &lt;var&gt;</code>：读取一行标准输入数据并保存为指定变量。</li>
+<li><code>tee [file]...</code>：读取标准输入数据，并将其内容输出成文件。
+<ul>
+<li>ctrl-d：完成输入。</li>
+</ul>
+</li>
+<li><code>grep &lt;pattern&gt; [file]...</code>：读取文件或标准输入，输出其中匹配正则表达式的那一行文本。</li>
+<li><code>wc</code>（word count）：读取文件或标准输入，输出其中内容的行数或字数等。
+<ul>
+<li><code>-l</code>：输出行数。</li>
+<li><code>-w</code>：输出单词数。</li>
+<li><code>-c</code>：输出字节数。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><code>&amp;</code>: 同时运行两个命令，若第二个命令为空，则表示后台运行第一个命令。</li>
+<li><code>|</code>：将前一条命令的标准输出作为下一条命令的标准输入。</li>
+<li><code>&gt;</code>：将前一条命令的标准输出重定向到一个文件中。</li>
+<li><code>&gt;&gt;</code>：将前一条命令的标准输出重定向到一个文件的末尾。</li>
+</ul>
+<hr>
+<ul>
+<li>ctrl-c：停止命令。</li>
+<li>ctrl-z：将当前进程暂停并放到后台。</li>
+<li>tab：命令提示或智能补全。</li>
 </ul>
 
                 
