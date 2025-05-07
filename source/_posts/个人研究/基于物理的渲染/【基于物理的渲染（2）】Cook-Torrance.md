@@ -1,73 +1,10 @@
----
-categories:
-  - 个人研究
-  - 技术美术
-abbrlink: 2677748470
----
+# 【基于物理的渲染（2）】Cook-Torrance
 
-# 【技术美术】基于物理的渲染
-
-基于物理的渲染本质任然是对现实光照的近似，但由于其基于物理规律，因此效果比传统的经验光照模型要好很多，且参数也更统一。
-
-## 三要素
-
-一个光照模型能被称为是基于物理的渲染，通常需要满足三个条件：
-
-- 基于微表面模型。
-- 遵循能量守恒。
-- 使用基于物理的 BRDF。
-
-### 微表面模型
-
-微表面模型采用了微分的思想看待物体表面。无论表面是粗糙还是光滑，只要从足够小的尺度下观察，它们都是由一堆微小镜面构成的，因此物体表面的每一点都可以采用相同的光照计算公式。
-
-### 能量守恒
-
-物体表面反射光的总量一定小于等于入射光的总量。镜射光越多，漫射光越少；反射光斑越大，反射光亮度越低。
-
-### 基于物理的 BRDF
+## BRDF
 
 BRDF 直译为双向散射分布函数，是一种解释光反射强度的模型。双向散射是指其将反射光描述为由镜射光和漫射光两种。基于物理的 BRDF 说明该公式不能是传统的经验模型，而是遵循各种物理现象而设计的模型。
 
-## 反射率方程
-
-反射率方程描述了反射光和入射光之间的关系：
-
-$$
-L_o(p,w_o)=\int_\Omega f_r(p,w_i,w_o)L_i(p,w_i)(n\cdot w_i)dw_i
-$$
-
-- 微分立体角：角的三维类比，表示球面上的矩形区域，微分说明该区域面积极其微小。（有时也会表示面方向，因此可以被点乘）
-- $w_i$：到光源方向的微分立体角（入射方向）。
-- $w_o$：到观察方向的微分立体角（反射方向）。
-- $L_i(p,w_i)$：代表当前位置和面积受到的入射光。
-- $n\cdot w_i$：表面接收的光强与入射光和表面法线夹角有关。
-- $f_r$：BDRF（双向反射分布函数）。
-
-该公式是基于“辐射度量学”得出的。
-
-- 辐射功率：光的每时间做工能量。
-- 辐射强度：光在每单位立体角上的辐射功率。
-- 辐照度（Irradiance）：每单位面积受到的辐射强度。
-- 辐射率（Radiance）：每单位垂直面积受到的辐射强度。
-
-对应到反射率方程中为：
-
-- $Irradiance = L_i(p,w_i)$
-- $Radiance = Irradiance * (n\cdot w_i)$
-
-转换到具体实现中，可解释为如下公式：
-
-$$
-L_o = \sum_{m} f_r * i_{m}*(N \cdot L_m)
-$$
-
-- $m$：逐灯光遍历
-- $i_m$：受到的灯光强度
-- $N$：物体表面法线。
-- $L_m$：表面到灯光的方向。
-
-## CookTorrance
+## Cook-Torrance
 
 CookTorrance 是最常用的基于物理的 BDRF，相比过去的一些经验模型，它的效果更加真实，符合物理规律。CookTorrance 中有很多过去 Lambert 和 Phong 的影子，可以说就是由它们为基础慢慢发展出的新时代光照模型，也是目前主流的光照模型。
 
@@ -189,7 +126,7 @@ $$F_0 = \operatorname{lerp}(0.04,albedo,metallic)$$
 
 不过该方法将菲涅尔函数的输出由标量改为了向量，且携带了镜射光的反射率信息，因此要修改 CookTorrance 公式，使镜射光部分不要再乘 $k_s$ 了（$k_df_d+k_sf_s \to k_df_d+f_s$）。
 
-### Unity 中的镜射系数计算
+## Unity 中的镜射系数计算
 
 <https://community.arm.com/cfs-file/__key/communityserver-blogs-components-weblogfiles/00-00-00-20-66/siggraph2015_2D00_mmg_2D00_renaldas_2D00_notes.pdf>
 
@@ -210,40 +147,6 @@ $$
 $G*F$ 是拟合的近似公式。在原始公式中，$G$ 使用的是 $G_{SKSm}$，但 $F$ 的公式不清楚，因为原始公式和最终公式的效果并不相同。
 
 $(N \cdot L)(N \cdot V)$被从分子分母中约分以加快速度。
-
-## 基于图片的渲染（IBL）
-
-上述 CookTorrance 公式中还缺少环境光的处理，在 PBR 中环境光是用 IBL 实现的。
-
-IBL 中由于光来自一个完整的球面，因此需要对球面积分计算，但这样工作量太大了。考虑到物体表面受到的环境光不会改变，因此可以提前预处理，将部分光照提前计算存放到环境贴图中。因此对于间接光，不能直接使用直接光的反射率方程。
-
-在Unity中：预计算的漫射光使用SH存储；镜射光使用立方体纹理存储，并根据不同粗糙度存储了多份放在了mipmap中。
-
-漫射光最简单，从SH中取出的就是辐射率，直接乘上漫射的反射率即可。镜射光则需要根据不同的粗糙度采样不同mipmap的立方体贴图来获得进行一定处理后的辐射率，然后乘上反射衰减和高光颜色。
-
-```hlsl
-float3 GlobalIlluminationDiffuse_Unity(float3 n, float3 diffuse)
-{
-    half3 radiance = SampleSH(n);
-
-    return diffuse * radiance;
-}
-
-float3 GlobalIlluminationSpecular_Unity(float3 n, float3 v, float3 specular, float metallic, float perceptualRoughness, float roughness, float roughness2)
-{
-    float3 radiance = GlossyEnvironmentReflection(reflect(-v, n), perceptualRoughness, 1);
-
-    //反射衰减（确保能量守恒）
-    float surfaceReduction = 1.0 / (roughness2 + 1.0);
-
-    //镜射光反射率
-    float fresnel = Pow4(1.0 - saturate(dot(n, v))); //菲涅尔效应导致光全反射
-    float ks = lerp(0.04, 1, metallic); //镜射率
-    specular = lerp(specular, saturate(ks + roughness), fresnel);
-
-    return specular * radiance * surfaceReduction;
-}
-```
 
 ## 参考资料
 
