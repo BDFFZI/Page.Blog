@@ -1,3 +1,9 @@
+---
+categories:
+  - 个人研究
+  - 基于物理的渲染
+abbrlink: 1881413206
+---
 # 【基于物理的渲染（2）】Cook-Torrance
 
 ## BRDF
