@@ -142,6 +142,8 @@ categories:
 ### 系统软件管理
 
 - `apt`：管理deb软件。
+  - `list --installed | grep <pattern>`：查找本地已安装的且名词符合要求的软件包。
+  - `autoremove`：自动移除未被依赖且非用户主动安装的软件包。
 - `snap`：管理snap软件。
 
 ### 进程管理
