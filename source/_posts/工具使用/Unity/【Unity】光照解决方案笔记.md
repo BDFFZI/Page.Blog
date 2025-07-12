@@ -8,7 +8,7 @@ categories:
 
 # 【Unity】光照解决方案笔记
 
-https://docs.unity.cn/cn/2022.3/Manual/BestPracticeLightingPipelines.html
+<https://docs.unity.cn/cn/2022.3/Manual/BestPracticeLightingPipelines.html>
 
 ## 确定对象显示效果的三阶段
 
@@ -62,7 +62,7 @@ GI 提供几种方法，如：
 
 ## 如何点亮你的项目？
 
-https://docs.unity.cn/cn/2022.3/uploads/Main/BestPracticeLightingPipeline15.svg
+<https://docs.unity.cn/cn/2022.3/uploads/Main/BestPracticeLightingPipeline15.svg>
 
 1. 选择渲染管线
 
@@ -171,7 +171,7 @@ https://docs.unity.cn/cn/2022.3/uploads/Main/BestPracticeLightingPipeline15.svg
 要最大程度减少烘焙时间并同时保持足够的光照质量，最重要的就是限制场景中标记为“Contribute GI”的对象数量。
 
 照明优化教程：
-https://learn.unity.com/project/lighting-optimization-with-precomputed-realtime-gi
+<https://learn.unity.com/project/lighting-optimization-with-precomputed-realtime-gi>
 
 ## 光照模式
 
@@ -199,7 +199,7 @@ Light 组件和 Lighting Settings Asset 中都有一个光照模式的设置，�
 
 - Subtractive
 
-  最早的混合光照模式。将大部分光照和阴影都采取烘焙实现，仅提供主方向光的实时灯光。
+  最早的混合光照模式。将大部分光照和阴影都烘焙至光照贴图，仅提供主方向光的实时灯光。
 
   光照效果比较简陋，但在低端硬件上非常有用。
 
@@ -214,7 +214,7 @@ Light 组件和 Lighting Settings Asset 中都有一个光照模式的设置，�
 
 - BakedIndirect
 
-  仅烘焙间接光，直接光和阴影都采用实时计算。
+  仅将间接光烘焙至光照贴图，直接光和阴影都采用实时计算。
 
   光照效果逼真，但有一定的性能问题。
 
@@ -227,9 +227,16 @@ Light 组件和 Lighting Settings Asset 中都有一个光照模式的设置，�
 
 - Shadowmask
 
-  升级版 BakedIndirect，针对静态物体阴影进行了优化，可同时采取烘焙和实时两种方案，且可以超出阴影距离限制。
+  在 BakedIndirect 基础上增加了对静态物体的阴影进行了额外处理，使其支持实时或烘焙两种方案，且烘焙方案可以超出阴影距离限制。
 
-  光照效果更逼真，且在性能上有一定优化。
+  光照效果更逼真，且可通过采用烘焙阴影优化一定的性能。
+
+  Shadowmask具有多重含义：
+  - 表示一种光照混合模式。
+  - 表示一种静态阴影功能。
+  - 表示一种额外的光照贴图，用于存储阴影信息。
+
+  三者的关系在于，Shadowmask（光照模式）就是在BakedIndirect模式基础上增加了可选的Shadowmask（阴影功能），该功能会通过存储额外的Shadowmask（光照贴图）来实现烘焙阴影。**当Shadowmask（阴影功能）没有开启时，Shadowmask（光照模式）就会退化为BakedIndirect，下表中的分歧点就是出自这个原因。**
 
   | 接收光照     | 静态物体             | 动态物体             |
   | ------------ | -------------------- | -------------------- |
@@ -238,12 +245,12 @@ Light 组件和 Lighting Settings Asset 中都有一个光照模式的设置，�
   | 静态物体阴影 | 阴影贴图 \| 阴影遮罩 | 阴影贴图 \| 光照探针 |
   | 动态物体阴影 | 阴影贴图             | 阴影贴图             |
 
-  - 阴影遮罩：一种额外的光照贴图，用于确定目标像素是否在阴影中。
-
-  针对静态物体阴影方案有两种模式：
+  Shadowmask模式在质量面板提供了两种方式，用于决定如何开启静态阴影：
 
   - DistanceShadowmask：阴影距离内采用阴影贴图实现，超出则采用烘焙实现。
   - Shadowmask：全距离的都采用烘焙实现。
+
+  当采用烘焙实现时，静态物体将不再参与阴影贴图的计算，故不会投射阴影，此时为了接受到的其他静态物体阴影，便会从预先计算的shadowmask中获取。
 
 ## 后处理间接光
 
