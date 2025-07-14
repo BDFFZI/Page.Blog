@@ -32,8 +32,8 @@
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/%E6%AD%A3%E4%BA%A4%E6%8A%95%E5%BD%B1%E6%98%A0%E5%B0%84.drawio.svg">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1%E6%98%A0%E5%B0%84.drawio.svg">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-6.png">
-<meta property="article:published_time" content="2025-03-27T11:12:39.275Z">
-<meta property="article:modified_time" content="2025-04-29T12:12:00.878Z">
+<meta property="article:published_time" content="2025-06-09T10:34:16.870Z">
+<meta property="article:modified_time" content="2025-06-09T10:34:16.870Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1.jpg">
@@ -225,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-27 19:12" pubdate>
-          2025年3月27日 晚上
+        <time datetime="2025-06-09 18:34" pubdate>
+          2025年6月9日 晚上
         </time>
       </span>
     
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k 字
+          4k 字
         
       </span>
     
@@ -248,7 +248,7 @@
         
         
         
-          31 分钟
+          34 分钟
         
       </span>
     
@@ -816,14 +816,6 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">【技术美术】投影矩阵和线性深度推导</h1>
             
-              <p id="updated-time" class="note note-info" style="">
-                
-                  
-                    本文最后更新于 2025年4月29日 晚上
-                  
-                
-              </p>
-            
             
               <div class="markdown-body">
                 
@@ -857,6 +849,14 @@
 </ul>
 <p>如果是从相机中直接获取投影矩阵（<code>Camera.projectionMatrix</code>），Unity 始终返回 OpenGL 风格。但若想获取着色器中实际使用的矩阵，则需要调用<code>GL.GetGPUProjectionMatrix</code>，而该矩阵会随图形 API 不同而不同。</p>
 <p>综上所述，投影矩阵在 Unity 中有多种实现方式，但考虑 Unity 的深度图是采用 Direct3D 风格存储的（包括那些解算深度图的函数），而且 Windows 平台更常用，故在此仅推导 Direct3D 风格的透视矩阵。</p>
+<h3 id="关于DX在Unity中被故意反转的问题">关于DX在Unity中被故意反转的问题</h3>
+<p>上文对NDC空间的描述是没有错的，但当使用DX渲染时，在Unity中输出NDC坐标，却会发现y轴被上下翻转，这样的情况如果直接渲染到屏幕，模型一定是颠倒的。但为什么我们最终看到的画面是正确的？</p>
+<h4 id="DX与OpenGL纹理坐标的差异">DX与OpenGL纹理坐标的差异</h4>
+<p>DX的二维坐标均采用右手坐标系，纹理坐标也遵循该守则，即左上角为原点，y向下增加。但Unity中uv却是使用的OpenGL风格，即左下角为原点，y向上增加。</p>
+<h4 id="实现DX与OpenGL纹理坐标的兼容">实现DX与OpenGL纹理坐标的兼容</h4>
+<p>为了使DX在采样纹理时能兼容该UV坐标系，Unity在存储DX平台的纹理时会故意上下颠倒存储，这样用颠倒的UV采用时，反而能负负得正，使采样结果正确。</p>
+<p>这一特性对渲染纹理也不例外。而恰巧Unity渲染时不是将结果直接输出到屏幕，而是先放到一个渲染纹理中，所以为了遵守规则，故意使模型渲染到的NDC空间上下颠倒。</p>
+<p>因此如果渲染一个平面，最底部反而是NDC的最大y值。然后经过反转存储（投影矩阵y轴取反，导致模型颠倒着渲染到纹理），和反转读取（DX使用OpenGL的UV读取纹理），负负得正，模型最终不会有问题，但Shader中计算的NDC坐标，由于缺少反转读取的过程，它依然是反的。</p>
 <h3 id="投影矩阵的构成">投影矩阵的构成</h3>
 <p>投影矩阵有两种类型：</p>
 <ul>
@@ -1178,7 +1178,7 @@ z&amp;=\frac{nf}{(n-f)z&#x27;-n}\\
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月27日</div>
+          <div>2025年6月9日</div>
         </div>
       
       
@@ -1210,9 +1210,9 @@ z&amp;=\frac{nf}{(n-f)z&#x27;-n}\\
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/2455373060.html" title="【数学】二维直线">
+                      <a href="/posts/3146662037.html" title="【技术美术】模型文件构成">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【数学】二维直线</span>
+                        <span class="hidden-mobile">【技术美术】模型文件构成</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1220,8 +1220,8 @@ z&amp;=\frac{nf}{(n-f)z&#x27;-n}\\
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/1043904924.html" title="VSCode 插件开发笔记">
-                        <span class="hidden-mobile">VSCode 插件开发笔记</span>
+                      <a href="/posts/2271595116.html" title="【人工智能】 模型优化">
+                        <span class="hidden-mobile">【人工智能】 模型优化</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
