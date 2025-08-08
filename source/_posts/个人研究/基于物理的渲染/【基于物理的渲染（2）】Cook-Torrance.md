@@ -158,7 +158,7 @@ $$
 \begin{aligned}
 D &= \frac{a^2}{((H \cdot N)^2(a^2-1)+1)^2} \\
 \\
-G*F &= \frac{1}{(L \cdot H)^2(a+0.5)}\\
+G*F &= \frac{1}{\operatorname{max}((L \cdot H)^2,0.1)(a+0.5)}\\
 \\
 f_s &= \frac{D * G * F}{4}
 \end{aligned}
