@@ -137,7 +137,7 @@ git submodule init #初始化子模块，将子模块信息填入config中
 git submodule update #检出父项目期望版本的子模块内容，使用前需确保子模块已初始化
 git submodule status #查看子模块的状态，例如是否有修改后未提交的内容
 git submodule set-url <path> <url> #重新设置子模块的源仓库地址
-git submodule deinit <path> #移除子模块，恢复到未初始化的状态（不是删除仓库对子模块的引用）
+git submodule deinit <path> #移除子模块，恢复到未初始化的状态（这不是删除，彻底删除见后续的“常用操作”）
 ```
 
 ### 标签处理
@@ -175,8 +175,8 @@ git push <remote> -d <branch> #删除目标远程上的分支
 git config --global http.proxy <url>
 git config --global https.proxy <url>
 # 清除网络代理
-git config --global --unset proxy.http
-git config --global --unset proxy.https
+git config --global --unset http.proxy
+git config --global --unset https.proxy
 ```
 
 ### 彻底删除子模块
@@ -211,6 +211,17 @@ git push --force #强制覆盖到远程仓库，分支记录将重新开始
 
 ```bash
 git clean -dfx #清除工作区中所有未被跟踪的文件
+```
+
+### Unity项目默认忽略文件
+
+```text
+/*/*
+/*.*
+!/Assets/*
+!/Packages/*
+!/ProjectSettings/*
+!/.gitignore
 ```
 
 ## gitignore 文件
