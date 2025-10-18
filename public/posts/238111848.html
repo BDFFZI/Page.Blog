@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/%E8%BE%90%E7%85%A7%E5%BA%A6%E5%92%8C%E8%BE%90%E5%B0%84%E7%8E%87.drawio.svg">
 <meta property="article:published_time" content="2025-06-09T10:34:16.870Z">
-<meta property="article:modified_time" content="2025-06-09T10:34:16.870Z">
+<meta property="article:modified_time" content="2025-07-14T16:07:19.504Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/%E8%BE%90%E7%85%A7%E5%BA%A6%E5%92%8C%E8%BE%90%E5%B0%84%E7%8E%87.drawio.svg">
@@ -813,6 +813,14 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">【基于物理的渲染（1）】反射率方程</h1>
             
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年7月15日 凌晨
+                  
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
@@ -848,9 +856,9 @@
 <h3 id="计算辐射率">计算辐射率</h3>
 <p>辐射率就是辐照度吗？肯定不是。考虑能量守恒，上图的a和b区域的每单位面积接收的辐射能量是不同的，因为他们的面积总大小不一样，但辐射能量的总量却是一样的。</p>
 <p>通过对比面积的比值，我们可以用辐照度求出辐射率。而这一比值可以利用物体表面法向和光源方向的夹角配合三角函数求出：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">反照率 = 辐照度 * cos(θ)<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">辐射率 = 辐照度 * cos(θ)<br></code></pre></td></tr></table></figure>
 <p>由于表面法向和光源方向都是单位向量，故也可简写为：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">反照率 = 辐照度 * dot(n,l)<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">辐射率 = 辐照度 * dot(n,l)<br></code></pre></td></tr></table></figure>
 <p>由此我们便求出了一个微表面能接收到最大光照能量。</p>
 <h2 id="反射分布函数">反射分布函数</h2>
 <p>所有微表面反照率的总和等于辐照度，但现实中的反射光却不一定等于入射光。因为根据材质的不同，反射光和入射光会存在一些差异。例如黑色物体会吸收光；粗糙的物体光斑更大更暗；镜面在特定角度能看到高光，有些角度又看不到。</p>

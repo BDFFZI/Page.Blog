@@ -29,7 +29,7 @@
 <meta property="og:description" content="【Unity】网格数据结构 https:&#x2F;&#x2F;docs.unity.cn&#x2F;cn&#x2F;2022.3&#x2F;Manual&#x2F;AnatomyofaMesh.html 基本构成 网格由以下几部分数据组成：  顶点：3D 空间中的位置集合以及可选的附加数据。 拓扑：网格每个面的结构类型，默认情况下都是三角型。 索引：描述如何将顶点组合成拓扑表面。  对于可变性网格，还包含些额外数据：  混合形状：混合形状数据。 绑定姿势">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-10T08:35:00.000Z">
-<meta property="article:modified_time" content="2025-06-09T10:34:16.908Z">
+<meta property="article:modified_time" content="2025-07-14T15:14:41.799Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -937,7 +937,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年6月9日 晚上
+                    本文最后更新于 2025年7月14日 晚上
                   
                 
               </p>
@@ -976,7 +976,7 @@
 <p>从顶点位置的曲面直接“向外”指向的方向，用于计算光照反射效果。</p>
 <h3 id="切线（float4）">切线（float4）</h3>
 <p>在顶点位置沿曲面的“u”（水平纹理）轴指向的方向，其中 w 分量额外用于表示副切线方向（用于解决图形 API 手系差异），用于实现法线贴图映射。</p>
-<p>法线、切线、副切线共同构成法线空间，借此才可以实现法线贴图映射。 副切线由计算得出，Unity 的默认计算方式是<code>叉乘(法线,切线)</code>，正好构成左手坐标系，所以通常切线的 w 分量值为 1。</p>
+<p>法线、切线、副切线共同构成法线空间，借此才可以实现法线贴图映射。 副切线由计算得出，Unity 的默认计算方式是<code>叉乘(法线,切线)</code>，正好构成左手坐标系，但由于Unity接受的法线贴图为OpenGL标准（右手坐标系）所以切线的 w 分量通常值为 -1。</p>
 <h3 id="颜色（float4）">颜色（float4）</h3>
 <p>表示顶点的基色，可借此存储一些自定义顶点数据以实现特效。</p>
 <h3 id="纹理坐标（float2）">纹理坐标（float2）</h3>
