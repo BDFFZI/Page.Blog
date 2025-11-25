@@ -26,7 +26,7 @@ categories:
 
 系统语义则是系统自带的语义，这些语义为了满足一些功能而存在，如向系统表明着色器输出参数，请求系统自动设置一些特殊值等，其都使用`SV_`作为前缀。
 
-https://learn.microsoft.com/zh-cn/windows/win32/direct3dhlsl/dx-graphics-hlsl-semantics#system-value-semantics
+<https://learn.microsoft.com/zh-cn/windows/win32/direct3dhlsl/dx-graphics-hlsl-semantics#system-value-semantics>
 
 ## 数据类型
 
@@ -58,17 +58,17 @@ https://learn.microsoft.com/zh-cn/windows/win32/direct3dhlsl/dx-graphics-hlsl-se
 
 ## 渲染流程
 
-https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/overviews-direct3d-11-graphics-pipeline
+<https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/overviews-direct3d-11-graphics-pipeline>
 
 ### 1. 输入装配器阶段（IA）
 
 从用户填充的缓冲区中读取基元数据 (点、线和/或三角形) ，并将数据组装成将由其他管道阶段使用的基元。
 
-1.  创建输入缓冲区。
-2.  创建输入布局对象。
-3.  将对象绑定到输入。
-4.  指定基元类型。
-5.  调用绘制方法。
+1. 创建输入缓冲区。
+2. 创建输入布局对象。
+3. 将对象绑定到输入。
+4. 指定基元类型。
+5. 调用绘制方法。
 
 ### 2. 顶点着色器阶段（VS）
 
@@ -99,7 +99,7 @@ https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/overviews-direct3d-11
 
 #### 3.1. 外壳着色器阶段（HS）
 
-https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-stages-hull-shader-design
+<https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-stages-hull-shader-design>
 
 该阶段由两个函数构成。
 
@@ -123,7 +123,7 @@ https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-
 
 #### 3.3. 域着色器阶段（DS）
 
-https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-stages-domain-shader-design
+<https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-stages-domain-shader-design>
 
 计算补丁程序生成的新基元的顶点数据。
 
@@ -132,7 +132,7 @@ https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/direct3d-11-advanced-
 
 ### 4. 几何着色器阶段（GS）
 
-https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/d3d10-graphics-programming-guide-output-stream-stage-getting-started
+<https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/d3d10-graphics-programming-guide-output-stream-stage-getting-started>
 
 将顶点作为输入，并能够在输出中生成新顶点，从而实时创造新的网格。
 
@@ -142,6 +142,14 @@ https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/d3d10-graphics-progra
 ### 5. 光栅化阶段（RS）
 
 将网格基元映射为屏幕上的“像素”（实际是由 2x2 像素区域构成的片元），并计算对应的顶点数据插值，以便为像素着色器提供输入数据。
+
+1. 裁剪测试：
+
+   剔除指定区域（通常是视口）之外的像素。
+
+2. 早期深度测试：
+
+   当像素着色器没有修改深度需求时，可以使用早期深度测试来提前剔除像素，从而避免运行无效的像素着色器计算。
 
 ### 6. 像素着色器阶段（PS）
 
@@ -154,22 +162,18 @@ https://learn.microsoft.com/zh-cn/windows/win32/direct3d11/d3d10-graphics-progra
 
 将像素着色器生成的像素数据按原始三角形的顺序进行进一步处理。
 
-1. 裁剪测试：
+1. Alpha 测试：
 
-   剔除指定区域（通常是视口）之外的像素。
+   剔除透明度低于指定值的像素。这是旧API管线的功能了，实际上从 Direct3D 10 开始就没有该功能了，但可通过`clip()`实现等效操作。由于clip发生在深度模板测试之前，因此可以使像素不写入深度，从而与不透明物体兼容。
 
-2. alpha 测试：
-
-   剔除透明度低于指定值的像素。（Direct3D 10 及以上版本不支持，但可通过`clip()`实现等效操作）
-
-3. 模板测试
-4. 深度测试
+2. 模板测试
+3. 深度测试
 
    深度测试分为早期和晚期两种：在晚期执行是传统方案，也即目前的流程；早期则是提前到像素着色器之前，从而免去晚期中的很多无效运算。现代 GPU 大多支持早期深度测试，前提是没有在像素着色器中写入深度或使用 AlphaTest、Blend 等功能，否则会退化为晚期测试。
 
    Unity 中深度测试默认是早期，根据官方的渲染流程图中可以看出。
 
-5. 混合
+4. 混合
 
 ## 参考资料
 
