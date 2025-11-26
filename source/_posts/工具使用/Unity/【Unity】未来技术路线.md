@@ -26,8 +26,8 @@ categories:
 
 - Cinemachine：超强相机控制。
 - Timeline：制作基于场景范围的分镜动画。
-- Sequences：串联Timeline制作完整的过场动画。
-- Animation Rigging：实现复杂动画约束。
+- Sequences：汇总分镜信息，串联Timeline制作完整过场动画。
+- Animation Rigging：实现复杂变换约束。
 - Polybrush：Unity内修改模型数据，调整美术效果。
 - ProBuilder：Unity内快速建模，搭建测试场景。
 
