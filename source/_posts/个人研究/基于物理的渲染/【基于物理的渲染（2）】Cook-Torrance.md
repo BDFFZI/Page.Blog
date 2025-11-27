@@ -102,7 +102,7 @@ $$
 G 用于表现微表面之间的遮挡导致的光线衰减现象，这在粗糙的表面尤为明显。下述是使用 Smith 计算 G 的方法：
 
 $$
-G_{Smith} = \frac{(N \cdot L)}{lerp(N \cdot L,1,k)} *\frac{(N \cdot V)}{lerp(N \cdot V,1,k)}
+G_{Smith} = \frac{(N \cdot L)}{lerp(k,1,N \cdot L)} *\frac{(N \cdot V)}{lerp(k,1,N \cdot V)}
 $$
 
 $$
@@ -118,7 +118,7 @@ $$
 此外还有一种效果接近，但性能更好的方法：
 
 $$
-G_{SKSm}=\frac{(N \cdot L)(N \cdot V)}{lerp((L \cdot H)^2,1,a)}
+G_{SKSm}=\frac{(N \cdot L)(N \cdot V)}{lerp(a,1,(L \cdot H)^2)}
 $$
 
 #### 菲涅尔效应
@@ -126,7 +126,7 @@ $$
 F 表示一个 0-1 的光线反射率，反应的是现实中的菲涅尔效应，描述了不同折射率的物体在不同观察角度下反射光线不同的特点。一般它的公式采用如下近似值：
 
 $$
-F = lerp((1-(V \cdot N))^5,1,F_0)
+F = lerp(F_0,1,(1-(V \cdot N))^5)
 $$
 
 $$
