@@ -1,0 +1,45 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" style="background: transparent; background-color: transparent;" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="161px" height="162px" viewBox="-0.5 -0.5 161 162" content="&lt;mxfile&gt;&lt;diagram id=&quot;7GK3C2VLpeTGXjBI2U8B&quot; name=&quot;第 1 页&quot;&gt;7VnbbqMwEP0aXlfEDmAeN+llX1aq1JV2++iCE1AJRsbNZb9+DbbB3BSa0DTV9iVijs3YM+eMGYgFl5v9PcNZ9JOGJLGAHe4teGMBAMFM/BbAQQIzYEtgzeJQQTXwGP8lCtTTXuOQ5I2JnNKEx1kTDGiakoA3MMwY3TWnrWjSXDXDa9IBHgOcdNHfccgjiSLg1fgPEq8jvfLM9eXIBuvJKpI8wiHdGRC8teCSUcrl1Wa/JEmRO50Xed/dwGi1MUZSPuYGvY8tTl5VcGpj/KCjFXeIxApjsYtiTh4zHBQjO0GtwCK+SYQ1E5c4z2S2V/GeiAUWqzhJljShTGApTQsXOWf0hWjQAhCBZ+i6YiTEeVTcVboqjAfMOWGpQJDYEBJoNzoV8JYwTvYGpKK9J3RDODuIKWoUIBWxlp6r7F1NZIVFJokaxEo868p3nV9xoVI8wM98RLrT8Huh0TpnRooHM5DTVxZoeUKJkbAh425OjJidnpA1xkiCebxtir8vDWqFBxqL3VUph24z5XDWyqTcu7rLFOsRR2DecsQxWxPecVSyUoU9jijnEkTp6rsSouawlV//ExDlnkmU4Icd/gjD/ubbQANPJeD5FXBThGZX1sG0HgiLxZYJ0+A+5tKjo6wnvZi4rj0Vhnb0Jr3I9F2lhjrFDk7U0FExTqeh6ilysoYqwn3bNSivFDRIe2G05fN1dFzm6NAsX0HvM0j5+MamKjSdOLvb2KAeAaAJ2hoAJyugC5yYX+3R+aXjn0m4WR2iEFYoIEHQVyLPyJk7Nd0tzo7zj3qemPMPpdub6KSc26DpyIPvRve5TdapdI980emyez3VDSfqh2DrxRV471fd3mTHuY/8Rj8EfXhiP/Tmyrc/kvY5dFpV7l3/oY6O055HOCsbIHzIyiVFDb8QHkSKq1x+qyt6mnKcsNutYClXwiixcuPOwnJu+tskRoQX/FwuWfhklGNu2Jmhj4AUaxiKWeQpzn5RmQ/zVbzTSfUoaLi5Qn6TBe3CUBPoUVO72E9qrkZ8M/q8tJzX86LWI9CBF6NlNqLn/V9pcQYeVdPTIsz6Y7k88+p/HODtPw==&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <g>
+            <ellipse cx="80" cy="80" rx="80" ry="80" fill="none" stroke="#82b366" stroke-dasharray="8 8" pointer-events="all" style="stroke: light-dark(rgb(130, 179, 102), rgb(68, 110, 44));"/>
+        </g>
+        <g>
+            <path d="M 80 120 L 80 80" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/>
+        </g>
+        <g/>
+        <g>
+            <path d="M 80 160 L 144.32 126.72" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/>
+        </g>
+        <g>
+            <path d="M 144.96 126.72 L 80 80" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/>
+        </g>
+        <g>
+            <ellipse cx="80" cy="80" rx="40" ry="40" fill="none" stroke="#82b366" pointer-events="all" style="stroke: light-dark(rgb(130, 179, 102), rgb(68, 110, 44));"/>
+        </g>
+        <g>
+            <path d="M 80 160 L 80 120" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/>
+        </g>
+        <g>
+            <path d="M 119 71 L 112 103" fill="none" stroke="#b85450" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(184, 84, 80), rgb(215, 129, 126));"/>
+        </g>
+        <g>
+            <path d="M 80 120 L 112 103" fill="none" stroke="#b85450" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(184, 84, 80), rgb(215, 129, 126));"/>
+        </g>
+        <g>
+            <path d="M 158.24 62.88 L 80 80" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke" style="stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/>
+        </g>
+        <g>
+            <ellipse cx="119" cy="71" rx="3" ry="3" fill="#000000" stroke="none" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/>
+            <rect x="109" y="61" width="20" height="20" fill="none" stroke="none" pointer-events="all"/>
+        </g>
+        <g>
+            <ellipse cx="112" cy="103" rx="3" ry="3" fill="#000000" stroke="none" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/>
+            <rect x="102" y="93" width="20" height="20" fill="none" stroke="none" pointer-events="all"/>
+        </g>
+        <g>
+            <ellipse cx="80" cy="120" rx="3" ry="3" fill="#000000" stroke="none" pointer-events="all" style="fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));"/>
+            <rect x="70" y="110" width="20" height="20" fill="none" stroke="none" pointer-events="all"/>
+        </g>
+    </g>
+</svg>

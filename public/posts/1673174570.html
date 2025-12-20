@@ -1,0 +1,1608 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【计算机】字符编码的发展与关系 编码方案与字符集 字符编码说到底就是一种将字符存储在计算机中的方式，如通常会将字符与一个二进制串对应，从而映射到字节流中。而表示字符与二进制串对应关系的表叫做字符集，而具体将对应的二进制串映射到字节流中的方法则叫编码方案。 所以说编码方案和字符集不是同一种东西，两者配合才构成一个完整的字符编码。通常一个系列的编码考虑兼容性都会使用同一个字符集，但一个字符集可能有多个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【计算机】字符编码的发展与关系">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/1673174570.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="【计算机】字符编码的发展与关系 编码方案与字符集 字符编码说到底就是一种将字符存储在计算机中的方式，如通常会将字符与一个二进制串对应，从而映射到字节流中。而表示字符与二进制串对应关系的表叫做字符集，而具体将对应的二进制串映射到字节流中的方法则叫编码方案。 所以说编码方案和字符集不是同一种东西，两者配合才构成一个完整的字符编码。通常一个系列的编码考虑兼容性都会使用同一个字符集，但一个字符集可能有多个">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-31T03:17:00.000Z">
+<meta property="article:modified_time" content="2025-06-09T10:34:16.899Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>【计算机】字符编码的发展与关系 - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【计算机】字符编码的发展与关系"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-31 11:17" pubdate>
+          2024年1月31日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="书本知识"
+        id="heading-354731d93298dbc21277fecc71bd98ea" role="tab" data-toggle="collapse" href="#collapse-354731d93298dbc21277fecc71bd98ea"
+        aria-expanded="true"
+      >
+        书本知识
+        <span class="list-group-count">(56)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-354731d93298dbc21277fecc71bd98ea"
+           role="tabpanel" aria-labelledby="heading-354731d93298dbc21277fecc71bd98ea">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数学"
+        id="heading-6e65831863dbf272b7a65cd8df1a440d" role="tab" data-toggle="collapse" href="#collapse-6e65831863dbf272b7a65cd8df1a440d"
+        aria-expanded="false"
+      >
+        数学
+        <span class="list-group-count">(31)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-6e65831863dbf272b7a65cd8df1a440d"
+           role="tabpanel" aria-labelledby="heading-6e65831863dbf272b7a65cd8df1a440d">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1813400594.html" title="【数学】四元数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】四元数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1161830664.html" title="【数学】因式分解"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】因式分解</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2836726743.html" title="【数学】基本定义"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】基本定义</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3453628432.html" title="【数学】复数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】复数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/902237443.html" title="【数学】方程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】方程</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/347938505.html" title="【数学】标量"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】标量</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2188116445.html" title="【数学】概率论与数理统计"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】概率论与数理统计</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1583582889.html" title="【数学】组合与排列"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】组合与排列</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/425437888.html" title="【数学】集合"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】集合</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="几何"
+        id="heading-0b5e7f199500356627971c8a4d5d3cd2" role="tab" data-toggle="collapse" href="#collapse-0b5e7f199500356627971c8a4d5d3cd2"
+        aria-expanded="false"
+      >
+        几何
+        <span class="list-group-count">(7)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-0b5e7f199500356627971c8a4d5d3cd2"
+           role="tabpanel" aria-labelledby="heading-0b5e7f199500356627971c8a4d5d3cd2">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2455373060.html" title="【数学】二维直线"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】二维直线</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3519951511.html" title="【数学】交点计算"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】交点计算</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3947478613.html" title="【数学】圆"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】圆</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1529812320.html" title="【数学】平面几何"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】平面几何</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/873648569.html" title="【数学】球"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】球</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1015488478.html" title="【数学】立体几何"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】立体几何</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1885603555.html" title="【数学】解析几何"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】解析几何</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="函数"
+        id="heading-870a51ba2a9edfadc62ce99af52cabd1" role="tab" data-toggle="collapse" href="#collapse-870a51ba2a9edfadc62ce99af52cabd1"
+        aria-expanded="false"
+      >
+        函数
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-870a51ba2a9edfadc62ce99af52cabd1"
+           role="tabpanel" aria-labelledby="heading-870a51ba2a9edfadc62ce99af52cabd1">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1651395419.html" title="【数学】三角函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】三角函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3146816869.html" title="【数学】函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1125538061.html" title="【数学】反三角函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】反三角函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1107161955.html" title="【数学】对数函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】对数函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1329016021.html" title="【数学】幂函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】幂函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1596422862.html" title="【数学】指数函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】指数函数</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="微积分"
+        id="heading-8b2d89e19451ea39e7847bc23434f30d" role="tab" data-toggle="collapse" href="#collapse-8b2d89e19451ea39e7847bc23434f30d"
+        aria-expanded="false"
+      >
+        微积分
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-8b2d89e19451ea39e7847bc23434f30d"
+           role="tabpanel" aria-labelledby="heading-8b2d89e19451ea39e7847bc23434f30d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/834995837.html" title="【数学】偏导数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】偏导数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1738405951.html" title="【数学】微分"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】微分</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1881172680.html" title="【数学】微分方程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】微分方程</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1989047768.html" title="【数学】极限"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】极限</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1306067451.html" title="【数学】泰勒级数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】泰勒级数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4279880610.html" title="【数学】积分"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】积分</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="线性代数"
+        id="heading-4d08a6448db7cfb8b33bafbf40911872" role="tab" data-toggle="collapse" href="#collapse-4d08a6448db7cfb8b33bafbf40911872"
+        aria-expanded="false"
+      >
+        线性代数
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-4d08a6448db7cfb8b33bafbf40911872"
+           role="tabpanel" aria-labelledby="heading-4d08a6448db7cfb8b33bafbf40911872">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1182456995.html" title="【数学】向量"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】向量</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4251411578.html" title="【数学】坐标系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】坐标系</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3073109274.html" title="【数学】矩阵"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数学】矩阵</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数据库"
+        id="heading-68051bf4aa2743b030984b694628ee9c" role="tab" data-toggle="collapse" href="#collapse-68051bf4aa2743b030984b694628ee9c"
+        aria-expanded="false"
+      >
+        数据库
+        <span class="list-group-count">(4)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-68051bf4aa2743b030984b694628ee9c"
+           role="tabpanel" aria-labelledby="heading-68051bf4aa2743b030984b694628ee9c">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/4219286117.html" title="【数据库】库处理语句"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数据库】库处理语句</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/372718776.html" title="【数据库】数据处理语句"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数据库】数据处理语句</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4147230756.html" title="【数据库】表处理语句"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数据库】表处理语句</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3037167271.html" title="【数据库】视图处理语句"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【数据库】视图处理语句</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="汇编"
+        id="heading-ef3380de76fd90069a3644053bc3379d" role="tab" data-toggle="collapse" href="#collapse-ef3380de76fd90069a3644053bc3379d"
+        aria-expanded="false"
+      >
+        汇编
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-ef3380de76fd90069a3644053bc3379d"
+           role="tabpanel" aria-labelledby="heading-ef3380de76fd90069a3644053bc3379d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3178886567.html" title="【汇编】基本概念"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【汇编】基本概念</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2731825535.html" title="【汇编】寄存器速查"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【汇编】寄存器速查</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1744230454.html" title="【汇编】操作码速查"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【汇编】操作码速查</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="物理"
+        id="heading-920632dabac77e0e51002a969396ea04" role="tab" data-toggle="collapse" href="#collapse-920632dabac77e0e51002a969396ea04"
+        aria-expanded="false"
+      >
+        物理
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-920632dabac77e0e51002a969396ea04"
+           role="tabpanel" aria-labelledby="heading-920632dabac77e0e51002a969396ea04">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2213629956.html" title="【物理】几何光学"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【物理】几何光学</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2897877531.html" title="【物理】力学公式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【物理】力学公式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/558360582.html" title="【物理】辐射度量学"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【物理】辐射度量学</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="英语"
+        id="heading-4145d4c179e1aafdb5a0295da9a82d42" role="tab" data-toggle="collapse" href="#collapse-4145d4c179e1aafdb5a0295da9a82d42"
+        aria-expanded="false"
+      >
+        英语
+        <span class="list-group-count">(12)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-4145d4c179e1aafdb5a0295da9a82d42"
+           role="tabpanel" aria-labelledby="heading-4145d4c179e1aafdb5a0295da9a82d42">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3481354081.html" title="【英语】介词"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】介词</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1170703467.html" title="【英语】动词"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】动词</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4121327623.html" title="【英语】单词"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】单词</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/648367824.html" title="【英语】句子"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】句子</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4168832070.html" title="【英语】名词"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】名词</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1864774520.html" title="【英语】常用代词笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】常用代词笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1922779167.html" title="【英语】常用疑问词笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】常用疑问词笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3611936726.html" title="【英语】形容词与副词"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】形容词与副词</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1226664103.html" title="【英语】表示数字"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】表示数字</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3075658332.html" title="【英语】表示时态"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】表示时态</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2556572278.html" title="【英语】表示时间"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】表示时间</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1271277138.html" title="【英语】音标"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【英语】音标</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="计算机"
+        id="heading-8a2b56e293ee788f1057ad236e06559e" role="tab" data-toggle="collapse" href="#collapse-8a2b56e293ee788f1057ad236e06559e"
+        aria-expanded="true"
+      >
+        计算机
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-8a2b56e293ee788f1057ad236e06559e"
+           role="tabpanel" aria-labelledby="heading-8a2b56e293ee788f1057ad236e06559e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1673174570.html" title="【计算机】字符编码的发展与关系"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">【计算机】字符编码的发展与关系</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1481637271.html" title="【计算机】常见 CPU 指令集发展及其关系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【计算机】常见 CPU 指令集发展及其关系</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1207529237.html" title="【计算机】计算机组成原理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【计算机】计算机组成原理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【计算机】字符编码的发展与关系</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年6月9日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>【计算机】字符编码的发展与关系</h1>
+<h2 id="编码方案与字符集">编码方案与字符集</h2>
+<p>字符编码说到底就是一种将字符存储在计算机中的方式，如通常会将字符与一个二进制串对应，从而映射到字节流中。而表示字符与二进制串对应关系的表叫做字符集，而具体将对应的二进制串映射到字节流中的方法则叫编码方案。</p>
+<p>所以说编码方案和字符集不是同一种东西，两者配合才构成一个完整的字符编码。通常一个系列的编码考虑兼容性都会使用同一个字符集，但一个字符集可能有多个编码方案，这些编码方案之间可能兼容也可能不兼容。</p>
+<p>所以，虽然看起来下文较多的讲述编码方案，但要知道每种编码都有隐含的字符集在内，一般编码名即使是字符集的名称。</p>
+<h2 id="ASCII（美国信息交换标准代码）">ASCII（美国信息交换标准代码）</h2>
+<p>ASCII发布于1967年，是相当早期的编码标准，并一直沿用至今，奠定了后续编码标准的基础。</p>
+<p>其采用一个字节对应一个字符的形式，但也因此只能存储字母数字等西文字符，不能满足全球化的需求。</p>
+<h2 id="ANSI码（美国国家标准学会码）">ANSI码（美国国家标准学会码）</h2>
+<p>由于ASCII不能满足全球化的需求，所以之后各国都开始以ASCII为基础定制自己本国的编码格式，如GB2312（一种中文编码），Shift_JIS（一种日文编码）等。</p>
+<p>这些编码都有同一特性：和ASCII兼容，但互相之间不兼容。所以使用这些编码同时只能显示一种地区支持的语言。</p>
+<p>这类的编码格式种类繁杂，因此一个叫ASNI的组织站了出来，定制了一个叫“代码页”的标准，其统计了这类编码格式，给每个格式都分配了专属的代码页编号，也因此这类编码又被称做ANSI编码。</p>
+<p>所以说ANSI码并不是指一个特定的文本编码，而是指代一群有相同特征的编码。</p>
+<h3 id="GB系列编码">GB系列编码</h3>
+<p>GB是“国标”的拼音首字母，是中国地区的ANSI码，其一共有三代：“GB2312”、“GBK”、“GB18030”，三者都是按顺序发展出来。</p>
+<h4 id="GB2312">GB2312</h4>
+<p>GB2312是最早的中文编码标准，每个字占两个字节，与ASCII兼容，一共收录了6763个汉字以及682个特殊符号，已经包含了所有生活中的常用汉字了。</p>
+<h4 id="GBK">GBK</h4>
+<p>GB2312只有6000多个汉字，肯定是无法满足所有汉字的数量需求的，因此GBK得以出现，在与GB2312兼容的基础上，将汉字数量扩充到了20902个，符号数达到了984个，并且包含了对繁体字的支持。</p>
+<h4 id="GB18030">GB18030</h4>
+<p>即使GBK的字符数高达两万多，但依旧是不够中国地区使用的，在与GBK兼容的基础上，这次直接将每字符两字节改为了四字节，还增加了很多少数民族所用的文字。</p>
+<h2 id="Unicode（万国码）">Unicode（万国码）</h2>
+<p>ANSI码只是让各国有了自己的字符编码，但依旧没有满足全球化的需求，现在急需一款能在全球通用的字符编码，于是Unicode编码得以出现。</p>
+<p>最开始的时候有多个组织都在试图制定全球通用的编码标准，比如一个是ISO定制的UCS，还有一个是统一码联盟指定的“Unicode”。当然，1991年前后，人们很开就意识到世界不需要两个通用编码标准，所以两者开始合并成果并协同后续工作，于是现代的Unicode得以诞生。</p>
+<h3 id="UCS-4与UTF-32">UCS-4与UTF-32</h3>
+<p>这两个编码方案都是4字节的定长存储，但这太浪费空间了所以很少使用。其他地方两者基本一样，UTF-32的提出主要是为了ISO和统一码联盟两者字符集互相兼容而产生的。</p>
+<h3 id="UCS-2与UTF-16">UCS-2与UTF-16</h3>
+<p>UCS-2是很早期的Unicode编码方案，采用2字节的定长方式存储字符，很显然现在它已经被淘汰了，因为2字节根本无法满足存储全球文字的需求。</p>
+<p>所以UTF-16诞生了，它是UCS-2的升级版，所以与之兼容，同时将定长存储改为了变长存储，需要时会将字符空间扩展到4字节。</p>
+<p>因为最低两字节，所以UTF-16有字节序的问题，因此会在文本开头带上额外的DOM（字节序标记），用于标识大端模式（BE）还是小端模式（LE），在Windows环境下通常会将UTF-16<br>
+LE直接叫做“Unicode”。</p>
+<h3 id="UTF-8">UTF-8</h3>
+<p>UTF-8是较新的编码方案同时也是最流行的编码方案，它采用变长存储，与ASCII兼容，最低时一个字符只需1字节，直接化身ASCII码，所以在多语言文本环境（如HTML文件）中能很大的节省空间，同时扩展性也很强。</p>
+<h4 id="UTF-8-BOM">UTF-8 BOM</h4>
+<p>因为UTF-8是最低单字节的变长编码，所以实际上它是不需要BOM的，而且这不符合Unix使用习惯，因为Unix在设计上不建议这种看不见的文本内容；加BOM是微软的习惯，用于区分ASCII和UTF-8。所以虽然有这种编码方式，但因为兼容性的原因并不推荐。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27136737">刨根究底字符编码之七——ANSI编码与代码页</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1343240">一图弄懂ASCII、GB2312、GBK、GB18030编码</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/malecrab/p/5300503.html">细说：Unicode, UTF-8, UTF-16, UTF-32, UCS-2, UCS-4</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/308677093">Java 为什么使用 UTF-16 而不是更节省内存的 UTF-8？</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20167122">「带 BOM 的 UTF-8」和「无 BOM 的 UTF-8」有什么区别？网页代码一般使用哪个？</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B9%A6%E6%9C%AC%E7%9F%A5%E8%AF%86/" class="category-chain-item">书本知识</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E4%B9%A6%E6%9C%AC%E7%9F%A5%E8%AF%86/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="category-chain-item">计算机</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【计算机】字符编码的发展与关系</div>
+      <div>https://bdffzi-blog.pages.dev/posts/1673174570.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月31日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/3651714765.html" title="【Unity】个人编码规范">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【Unity】个人编码规范</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/440186531.html" title="【COM3D2Mod 制作教程（8）】实战！制作衣服部分（下）">
+                        <span class="hidden-mobile">【COM3D2Mod 制作教程（8）】实战！制作衣服部分（下）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
