@@ -231,15 +231,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/1910260985.html" target="_self">
-          【基于物理的渲染（3）】基于图片的渲染
+        <a href="/posts/2656087290.html" target="_self">
+          【技术美术】光照技术概述
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/1910260985.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2656087290.html" target="_self">
         <div>
-          【基于物理的渲染（3）】基于图片的渲染 上述 CookTorrance 公式中还缺少环境光的处理，在 PBR 中环境光是用 IBL 实现的。 IBL 中由于光来自一个完整的球面，因此需要对球面积分计算，但这样工作量太大了。考虑到物体表面受到的环境光不会改变，因此可以提前预处理，将部分光照提前计算存放到环境贴图中。因此对于间接光，不能直接使用直接光的反射率方程。 在Unity中：预计算的漫射光使用S
+          【技术美术】光照技术概述 和现实一样，即使是游戏中的虚拟物体，我们也可以认为都是因为发光才可见，包括不含光照计算的特效，因为本质上他们是发出的自发光。所以说，任何物体的渲染，本质都是在做光的渲染。 光的属性  可溯源的：光不是凭空产生的，一定是有源头的。 可传递的：光是可以通过介质传递的，也正是因为传递会使光的能量发生变化，我们才能观测到传递的介质。 可叠加的：光的能量可以直接简单的相加来合成的，
         </div>
       </a>
 
@@ -247,8 +247,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-01 19:49" pubdate>
-              2025-12-01
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
             </time>
           </div>
         
@@ -276,13 +276,6 @@
   <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E6%8B%9F/" class="category-chain-item">光照模拟</a>
   
   
-    <span>></span>
-    
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E6%8B%9F/%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E6%B8%B2%E6%9F%93/" class="category-chain-item">基于物理的渲染</a>
-  
-  
-
-  
 
   
 
@@ -306,15 +299,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/3146662037.html" target="_self">
-          【技术美术】原始模型文件的内容
+        <a href="/posts/2440912354.html" target="_self">
+          【技术美术】各项异性光照
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3146662037.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2440912354.html" target="_self">
         <div>
-          【技术美术】原始模型文件的内容 基于 glfw 推导得出，原始模型文件的内容构成如下：  一些节点  普通节点（所有节点的基类，可作为空物体、骨骼使用）  名称 变换信息 子节点索引   网格节点  普通节点信息 关联的网格索引 关联的蒙皮索引   相机节点 灯光节点   一些材质  名称 材质属性   一些网格  名称 一些子网格（因为设置了不同材质）  顶点  位置 法线 纹理坐标 关联在蒙皮
+          【技术美术】各项异性光照 各项同性与各项异性 一颗光滑的球被灯光照到，默认高光函数会形成一个圆斑，因为他用于计算高光的属性从任意表面向四周都是均匀相同的变化率（光滑的球面法线）。而在各向异性的表面上，则有可能形成条纹，因为其用于计算光照的属性，在条纹的垂直方向和水平方向上变化率是不同的（例如切线）。简要来说：  各项同性：从物体表面一点往四周出发，其属性变化率都是一致的。 各项异性：从物体表面一点
         </div>
       </a>
 
@@ -322,8 +315,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-26 22:39" pubdate>
-              2025-11-26
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
             </time>
           </div>
         
@@ -348,7 +341,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E6%B8%B2%E6%9F%93%E8%B5%84%E6%BA%90/" class="category-chain-item">渲染资源</a>
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E6%8B%9F/" class="category-chain-item">光照模拟</a>
   
   
 
@@ -374,15 +367,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/1097932020.html" target="_self">
-          【技术美术】TRS矩阵
+        <a href="/posts/4246974515.html" target="_self">
+          【技术美术】次表面散射
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/1097932020.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/4246974515.html" target="_self">
         <div>
-          【技术美术】TRS矩阵 TRS 矩阵是最常用的变换矩阵，其本质就是平移、旋转、缩放矩阵的复合，其复合顺序为： 平移矩阵∗旋转矩阵∗缩放矩阵平移矩阵 * 旋转矩阵 * 缩放矩阵平移矩阵∗旋转矩阵∗缩放矩阵 本文 TRS 矩阵以行业主流的左手坐标系为准，则： 平移矩阵（Translate） [100x010y001z0001] \begin{bmatrix} 1&amp;0&amp;0&amp;x\\
+          【技术美术】次表面散射 此处次表面散射更准确的名字应该叫“次表面漫反射”，因为它不会发生透射现象，所以不应该称之为散射（散射应该是反射和透射的总称，典型的例子就是双向散射分布函数）。次表面散射相当于是对漫反射的一次升级。 注意：下方以皮肤次表面散射为例，但这套方法对所有散射现象都是有效的，不过是换个 LUT 的事（本质就是 R(r)R(r)R(r) 不同） 次表面散射现象 在半透明的物体上，当光接
         </div>
       </a>
 
@@ -390,8 +383,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-30 17:03" pubdate>
-              2025-11-30
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
             </time>
           </div>
         
@@ -416,7 +409,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E7%A9%BA%E9%97%B4%E7%9F%A9%E9%98%B5/" class="category-chain-item">空间矩阵</a>
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E6%8B%9F/" class="category-chain-item">光照模拟</a>
   
   
 
@@ -442,15 +435,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/4243868598.html" target="_self">
-          【技术美术】个人引擎内的投影矩阵
+        <a href="/posts/1043904924.html" target="_self">
+          VSCode 插件开发笔记
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/4243868598.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/1043904924.html" target="_self">
         <div>
-          【技术美术】个人引擎内的投影矩阵 Unity 中官推的投影矩阵风格是 OpenGL，这可以直接从相机组件中拿到，但在DX平台，Unity传入着色器时实际上会将该矩阵转为 DX 风格。 DX 风格没必要了解，而且此处也不是 Unity 中使用的 DX 风格，而是个人自制游戏引擎时做的推导文章。 此处采用的NDC空间为：  x：从左到右 (-1,1) y：从下到上 (-1,1) z：从前到后 (0,1
+          VSCode 插件开发笔记 VSCode 的插件实质 VSCode 在设计之初就考虑了扩展性，甚至很多 VSCode 的核心功能也是基于扩展的方式编写的，并且使用的扩展 API 也是一样的。 VSCode 的源代码基本都是用 TS 编写的，所以他的扩展编写也基本一样，使用 TS 或 JS 开发。 VSCode 插件其实就是一个 node.js 包，插件的各种配置信息也都存在包中的 package.
         </div>
       </a>
 
@@ -458,8 +451,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-30 17:43" pubdate>
-              2025-11-30
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
             </time>
           </div>
         
@@ -474,353 +467,13 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/" class="category-chain-item">个人研究</a>
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/VSCode/" class="category-chain-item">VSCode</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E7%A9%BA%E9%97%B4%E7%9F%A9%E9%98%B5/" class="category-chain-item">空间矩阵</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/3126809525.html" target="_self">
-          【技术美术】切线空间
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3126809525.html" target="_self">
-        <div>
-          【技术美术】切线空间 切线空间是利用顶点法线、切线构成的以顶点方向为坐标系的3D空间，用于实现法线贴图、视差贴图等技术。 切线空间基向量 切线空间的三个基向量为：  z轴：法线（normal） x轴：切线（tangent） y轴：副切线（bitangent）  法线 没有什么特殊的地方，因为这是由用户自己定义的顶点正前方，一般指向模型外侧。 切线 由系统计算的顶点左侧方向。具体而言，顶点的左侧与其
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-30 22:55" pubdate>
-              2025-11-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/" class="category-chain-item">个人研究</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E7%A9%BA%E9%97%B4%E7%9F%A9%E9%98%B5/" class="category-chain-item">空间矩阵</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/3964607565.html" target="_self">
-          【技术美术】平面反射
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3964607565.html" target="_self">
-        <div>
-          【技术美术】平面反射  如上图所示，实现平面反射说到底就是要实现，P 采样到 A，Q 采样到 B。A~B显然是需要渲染到纹理以供采样的，实现该过程有两种方法：  最简单的方式是放一个镜像的摄像机 E’ 去渲染 A，B。 更高级的做法是E不动，但渲染每个物体的镜像（A’，B’），因此需要给每个物体做一步镜像变换。  镜像矩阵推导  镜像矩阵的作用如上，使顶点相对平面镜像，即 P′=MPP&#x27;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-26 22:39" pubdate>
-              2025-11-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/" class="category-chain-item">个人研究</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E7%A9%BA%E9%97%B4%E7%9F%A9%E9%98%B5/" class="category-chain-item">空间矩阵</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/2261641482.html" target="_self">
-          【技术美术】投影矩阵和线性深度推导
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/2261641482.html" target="_self">
-        <div>
-          【技术美术】投影矩阵和线性深度推导 网络上有很多投影矩阵的推导，也有很多声称是基于 Unity 的，但和我的实测都不一致（现在看来是因为这些文章并不全面），此外有一些 Unity 本身的函数我也搞不懂它的原理，遂最终选择自行研究，总算把这些问题解决了。 现在通过这篇文章，你就可以完全搞懂 Unity 的投影矩阵是啥样，又是怎么来的。以及 Unity 逆推线性深度的函数是如何实现的。不过该文章也不是
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-26 22:39" pubdate>
-              2025-11-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/" class="category-chain-item">个人研究</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E7%A9%BA%E9%97%B4%E7%9F%A9%E9%98%B5/" class="category-chain-item">空间矩阵</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/1813400594.html" target="_self">
-          【数学】四元数
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/1813400594.html" target="_self">
-        <div>
-          【数学】四元数 https://github.com/Krasjet/quaternion 定义 四元数本质是一种具有三个虚数的高阶复数，四元数集英文表示为 HHH，对于任意四元数 q∈Hq \in Hq∈H，可表示为如下形式： q=a+bi+cj+dkq = a+bi+cj+dk q=a+bi+cj+dk 其中 a,b,c,d∈Ra,b,c,d \in Ra,b,c,d∈R 且 i2=j2=k2
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-10 20:06" pubdate>
-              2024-10-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E4%B9%A6%E6%9C%AC%E7%9F%A5%E8%AF%86/" class="category-chain-item">书本知识</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E4%B9%A6%E6%9C%AC%E7%9F%A5%E8%AF%86/%E6%95%B0%E5%AD%A6/" class="category-chain-item">数学</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/330516235.html" target="_self">
-          【技术美术】D3D中GPU渲染管线流程详解
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/330516235.html" target="_self">
-        <div>
-          【技术美术】D3D中GPU渲染管线流程详解 基本术语   基元、图面： 网格中所使用的顶点数据布局，常见的如点、线、三角面等，特殊的甚至包括一些带邻近基元的基元类型。   参数语义 语义是附加到着色器输入或输出参数的字符串，用于传达给系统有关参数的预期用途的信息。 用户语义 由用户在 IA 阶段定义的语义。用于描述传入的数据类型，以便系统在 VS 阶段分配输入参数；同时也用于在其他着色器中标记要在
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-03-14 17:09" pubdate>
-              2024-03-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/" class="category-chain-item">个人研究</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/" class="category-chain-item">渲染管线</a>
-  
-  
-
   
 
   
@@ -859,8 +512,313 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-10-18 00:46" pubdate>
-              2025-10-18
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/4133014859.html" target="_self">
+          【Unity】热更新原理与 Xlua 配置
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/4133014859.html" target="_self">
+        <div>
+          【Unity】热更新原理与 Xlua 配置 热更新 直接理解即是让代码可以像资源包一样被运行时更新。当然它其实还一个名称叫热修复，即实现不重新打包项目也能把 Bug 修好，这也正是它常用的地方。 原理   C# 无法直接热更新 C# 是编译型语言，需要先编译成 IL 再送到虚拟机里才可运行。部分平台不支持 C# 编译器的使用,所以没法通过直接重新编译 C# 代码来实现热更新。   lua 可以轻松
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-04 18:35" pubdate>
+              2024-02-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/150670921.html" target="_self">
+          【Unity】光照解决方案笔记
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/150670921.html" target="_self">
+        <div>
+          【Unity】光照解决方案笔记 https://docs.unity.cn/cn/2022.3/Manual/BestPracticeLightingPipelines.html 确定对象显示效果的三阶段   剔除 列出了需要渲染的对象，确保这些对象摄像机可见（视锥体剔除）且不被遮挡（遮挡剔除）。   渲染 将这些对象绘制到基于像素的缓冲区中（通过正确的光照以及它们的一些属性）。   后期处理 在
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-04 17:09" pubdate>
+              2024-03-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/4239874620.html" target="_self">
+          【Unity】图形渲染瓶颈与批处理优化
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/4239874620.html" target="_self">
+        <div>
+          【Unity】图形渲染瓶颈与批处理优化 图形渲染 工作方式 显卡的工作方式并非连续的，一般分三步。  上传更新渲染数据至显存 设置显卡的渲染管线状态 启动绘制并等待绘制结果  性能瓶颈 由于显卡是大规模并行计算，绘制几个或几千个三角面在速度上基本没有区别，这时候瓶颈就容易出现在工作方式中第一第二点上。   内存到显存的传输是有代价的 如果对比过 Unity 的作业系统就会发现一点，对应一些数据量大
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-04 17:08" pubdate>
+              2024-02-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/2970632423.html" target="_self">
+          【Unity】各种操作触发 GC 情况
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2970632423.html" target="_self">
+        <div>
+          【Unity】各种操作触发 GC 情况 在 Update 中持续执行下列操作，统计每帧触发 GC 的情况，仅首帧触发 GC 的情况不计入。 使用 Linq 处理数据 基本上使用就会分配内存，所以不要用。 利用 Foreach 遍历容器 不会分配内存，可以用，但根据不同的迭代器实现，速度可能不如 For 循环。 将值类型装箱 会触发内存分配，不要使用。 使用 enum 做键的字典 使用 enum 作
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-04 16:42" pubdate>
+              2024-02-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/3651714765.html" target="_self">
+          【Unity】个人编码规范
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3651714765.html" target="_self">
+        <div>
+          【Unity】个人编码规范 文件结构规范 先确保动静态分离 当一个类存在静态和非静态两种成员时，需要利用 partial 将类分成两部分，分别存放静态与非静态成员。 再按访问修饰符排序  公开成员 保护成员 私有 SerializeField 字段 私有成员 私有用户事件 私有 Unity 事件  最后按成员类型排序  数据结构定义 构造函数 字段 属性 函数  代码设计规范  字段永远是私有的，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-03 21:16" pubdate>
+              2024-02-03
             </time>
           </div>
         

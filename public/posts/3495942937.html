@@ -29,8 +29,8 @@
 <meta property="og:description" content="【技术美术】渲染空间变换概述 GPU渲染管线中，我们只要知道如何在屏幕上画画就行，在一个2D坐标系上表示2D物体是很简单的。但在引擎渲染管线中，为了在屏幕上显示一个仿真的游戏世界，该任务就变成了如何将3D画面，映射到2D屏幕中。 为此人们发明了一套空间变换流程，利用多个矩阵来实现3D到2D的变换。（提示：矩阵&#x3D;空间&#x3D;变换，不同的术语只是从不同的角度理解而已） 渲染空间  渲染管线中的空间变换共经历">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-25.png">
-<meta property="article:published_time" content="2025-11-29T13:23:31.423Z">
-<meta property="article:modified_time" content="2025-12-18T10:30:14.046Z">
+<meta property="article:published_time" content="2025-12-23T12:57:56.505Z">
+<meta property="article:modified_time" content="2025-12-23T13:12:39.027Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/image-25.png">
@@ -222,8 +222,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-11-29 21:23" pubdate>
-          2025年11月29日 晚上
+        <time datetime="2025-12-23 20:57" pubdate>
+          2025年12月23日 晚上
         </time>
       </span>
     
@@ -336,15 +336,6 @@
     
       
       
-        <a href="/posts/2271595116.html" title="【人工智能】 模型优化"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【人工智能】 模型优化</span>
-        </a>
-      
-    
-      
-      
         <a href="/posts/2647627493.html" title="【人工智能】分类模型"
            class="list-group-item list-group-item-action
            ">
@@ -367,6 +358,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【人工智能】机器学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2271595116.html" title="【人工智能】模型优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】模型优化</span>
         </a>
       
     
@@ -990,10 +990,10 @@
     
       
       
-        <a href="/posts/987487183.html" title="【软件开发】Windows 开发笔记"
+        <a href="/posts/987487183.html" title="【软件开发】Windows开发笔记"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">【软件开发】Windows 开发笔记</span>
+          <span class="category-post">【软件开发】Windows开发笔记</span>
         </a>
       
     
@@ -1060,7 +1060,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年12月18日 晚上
+                    本文最后更新于 2025年12月23日 晚上
                   
                 
               </p>
@@ -1085,7 +1085,7 @@
 <h3 id="物体空间">物体空间</h3>
 <p>在游戏引擎中，顶点不再是屏幕空间，而是基于物体空间的，物体空间就是以物体自身为世界原点的坐标系。因为游戏中，大部分物体是复用的，或需要实时变换的，所以建模师都是以物体为单位来建模，自然的这样建出来的模型顶点，都是以模型的原点为基点。</p>
 <p>物体空间是基于TRS矩阵实现的，利用物体的位置、旋转、缩放即可制作一个TRS矩阵：</p>
-<p><a href="/posts/1097932020">【技术美术】TRS矩阵</a></p>
+<p><a href="./%E3%80%90%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF%E3%80%91TRS%E7%9F%A9%E9%98%B5.md">【技术美术】TRS矩阵</a></p>
 <h3 id="世界空间">世界空间</h3>
 <p>由于模型本身的顶点是不考虑其他物体的，但物体间的交互、相对位置是存在的，因此需将其统一到一个新的空间坐标系，即“世界空间”，这样子才能批量统一的处理网格数据，并使不同物体间的数据可以互通。</p>
 <p>世界空间对应没有矩阵实现，因为世界空间是最根源的基空间，物体空间的基向量也是基于世界空间的，所以硬要说的话，世界空间等于单位矩阵。</p>
@@ -1151,7 +1151,7 @@
 <h3 id="世界到视图">世界到视图</h3>
 <p>视图空间相当于把所有世界中的物体重新以相机的坐标系来表示。如果把相机也看成物体，那该矩阵恰巧是“物体到世界”的反向操作，所以只要把矩阵求逆，另外再加上z轴翻转即可。</p>
 <h3 id="视图到剪辑">视图到剪辑</h3>
-<p><a href="/posts/2261641482">【技术美术】投影矩阵和线性深度推导</a></p>
+<p><a href="./%E3%80%90%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF%E3%80%91%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5%E5%92%8C%E7%BA%BF%E6%80%A7%E6%B7%B1%E5%BA%A6%E6%8E%A8%E5%AF%BC.md">【技术美术】投影矩阵和线性深度推导</a></p>
 <h2 id="NDC空间兼容性">NDC空间兼容性</h2>
 <p>前文说到 NDC 空间变体很多，这在 Unity 中也是一样，因此在不同的图像接口环境下，会出现一些特殊情况：</p>
 <h3 id="z轴翻转">z轴翻转</h3>
@@ -1226,7 +1226,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年11月29日</div>
+          <div>2025年12月23日</div>
         </div>
       
       
@@ -1258,9 +1258,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/3966975174.html" title="【技术美术】引擎渲染管线概述">
+                      <a href="/posts/2261641482.html" title="【技术美术】投影矩阵和线性深度推导">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【技术美术】引擎渲染管线概述</span>
+                        <span class="hidden-mobile">【技术美术】投影矩阵和线性深度推导</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1268,8 +1268,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/1671240167.html" title="【技术美术】GPU渲染管线概述">
-                        <span class="hidden-mobile">【技术美术】GPU渲染管线概述</span>
+                      <a href="/posts/3126809525.html" title="【技术美术】切线空间">
+                        <span class="hidden-mobile">【技术美术】切线空间</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

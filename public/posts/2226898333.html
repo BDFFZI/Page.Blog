@@ -28,8 +28,8 @@
 <meta property="og:site_name" content="BDFFZI的小屋">
 <meta property="og:description" content="【Unity】骨骼动画 蒙皮模型 蒙皮模型的结构 直接将蒙皮模型拖进场景中并观察其子节点，最简单的蒙皮模型中由骨架和蒙皮网格两部分组成。   骨架 由一堆空物体组成，每个空物体代表一根骨骼。   蒙皮网格 蒙皮网格相比普通网格多了一些数据：  一组模型空间转骨骼空间矩阵，每个矩阵对应一个骨骼。 每个顶点所要跟随的骨骼矩阵索引。 每个顶点所要跟随的骨骼矩阵权重。  为了支持这些新属性，蒙皮网格需要使">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-06-09T10:34:16.908Z">
-<meta property="article:modified_time" content="2025-06-09T10:34:16.908Z">
+<meta property="article:published_time" content="2025-12-23T12:57:56.525Z">
+<meta property="article:modified_time" content="2025-12-23T13:32:41.062Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -220,8 +220,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-06-09 18:34" pubdate>
-          2025年6月9日 晚上
+        <time datetime="2025-12-23 20:57" pubdate>
+          2025年12月23日 晚上
         </time>
       </span>
     
@@ -943,6 +943,14 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">【Unity】骨骼动画</h1>
             
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年12月23日 晚上
+                  
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
@@ -969,7 +977,7 @@
 <h3 id="顶点与骨骼的关联">顶点与骨骼的关联</h3>
 <p>蒙皮网格的顶点会跟随骨骼，效果就好比把该顶点挂为该骨骼的子物体，因此当骨骼发生变换时，顶点也会跟着变换，从而实现了提线木偶版的效果。</p>
 <p>具体实现是 Unity 通过在计算着色器中用矩阵变换实现的，其通过矩阵计算新顶点位置的方式如下：</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">新顶点位置 <span class="hljs-operator">=</span>（世界空间到模型空间 * 骨骼空间到世界空间 * 初始模型空间到骨骼空间）* 初始顶点位置<br></code></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">新顶点位置 =（世界空间到模型空间 * 骨骼空间到世界空间 * 初始模型空间到骨骼空间）* 初始顶点位置<br></code></pre></td></tr></table></figure>
 <ul>
 <li>骨骼空间到世界空间：随着骨骼的变换而改变，这就是带动顶点的关键。</li>
 <li>初始模型空间到骨骼空间：一般由模型文件提供，或者也可以用世界空间桥接计算。</li>
@@ -1038,7 +1046,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年6月9日</div>
+          <div>2025年12月23日</div>
         </div>
       
       
@@ -1070,9 +1078,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/4114572923.html" title="【Unity】脚本生命周期">
+                      <a href="/posts/1043904924.html" title="VSCode 插件开发笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【Unity】脚本生命周期</span>
+                        <span class="hidden-mobile">VSCode 插件开发笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1080,8 +1088,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/1043904924.html" title="VSCode 插件开发笔记">
-                        <span class="hidden-mobile">VSCode 插件开发笔记</span>
+                      <a href="/posts/2200103232.html" title="【Unity】未来技术路线">
+                        <span class="hidden-mobile">【Unity】未来技术路线</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

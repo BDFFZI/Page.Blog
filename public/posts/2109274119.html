@@ -29,8 +29,8 @@
 <meta property="og:description" content="【质点弹簧】如何做一个不会崩溃的质点弹簧 演示视频见：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV15vPie8EEd&#x2F; 在绳索、布料、软体等软性物质的模拟上，质点弹簧绝对是最流行的一种物理模型，相关资料在网上非常多。但无一例外的都绕不过一个痛点：动不动就崩溃给你看。那有没有一种能实现绝对不会崩溃的质点弹簧模型，或者说我们能始终确切的知道它崩溃的边缘在哪里，而不是和传统质点弹">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/%E8%B4%A8%E7%82%B9%E5%BC%B9%E7%B0%A7%E7%9A%84%E5%BC%B9%E5%8A%9B%E7%B3%BB%E6%95%B0%E9%99%90%E5%88%B6.drawio.svg">
-<meta property="article:published_time" content="2025-06-09T10:34:16.877Z">
-<meta property="article:modified_time" content="2025-06-09T10:34:16.877Z">
+<meta property="article:published_time" content="2025-12-23T12:57:56.491Z">
+<meta property="article:modified_time" content="2025-12-23T12:57:56.491Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/%E8%B4%A8%E7%82%B9%E5%BC%B9%E7%B0%A7%E7%9A%84%E5%BC%B9%E5%8A%9B%E7%B3%BB%E6%95%B0%E9%99%90%E5%88%B6.drawio.svg">
@@ -222,8 +222,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-06-09 18:34" pubdate>
-          2025年6月9日 晚上
+        <time datetime="2025-12-23 20:57" pubdate>
+          2025年12月23日 晚上
         </time>
       </span>
     
@@ -336,15 +336,6 @@
     
       
       
-        <a href="/posts/2271595116.html" title="【人工智能】 模型优化"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">【人工智能】 模型优化</span>
-        </a>
-      
-    
-      
-      
         <a href="/posts/2647627493.html" title="【人工智能】分类模型"
            class="list-group-item list-group-item-action
            ">
@@ -367,6 +358,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【人工智能】机器学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2271595116.html" title="【人工智能】模型优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】模型优化</span>
         </a>
       
     
@@ -990,10 +990,10 @@
     
       
       
-        <a href="/posts/987487183.html" title="【软件开发】Windows 开发笔记"
+        <a href="/posts/987487183.html" title="【软件开发】Windows开发笔记"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">【软件开发】Windows 开发笔记</span>
+          <span class="category-post">【软件开发】Windows开发笔记</span>
         </a>
       
     
@@ -1113,7 +1113,7 @@
 <li>这种力是距离约束，却不会立即将物体拉到规定的距离上。</li>
 </ol>
 <p>第一点我们已经实现，因为当前使用的积分方法中，修改位置就会累计速度。而第二点中，在“非规定距离”的选择上隐含了一些很重要的限制条件：</p>
-<p><img src="/assets/images/%E8%B4%A8%E7%82%B9%E5%BC%B9%E7%B0%A7%E7%9A%84%E5%BC%B9%E5%8A%9B%E7%B3%BB%E6%95%B0%E9%99%90%E5%88%B6.drawio.svg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/assets/images/%E8%B4%A8%E7%82%B9%E5%BC%B9%E7%B0%A7%E7%9A%84%E5%BC%B9%E5%8A%9B%E7%B3%BB%E6%95%B0%E9%99%90%E5%88%B6.drawio.svg" srcset="/img/loading.gif" lazyload alt="质点弹簧的弹力系数限制"></p>
 <p>若当前质点距离弹簧约束的最佳距离位置为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>，那么质点下一次可移动到的距离只能在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>2</mn><mi>a</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,2a]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mord mathnormal">a</span><span class="mclose">]</span></span></span></span> 间选择，因为超过这些距离后，质点每次迭代只会离目标越来越远，最终崩溃。考虑弹簧还会累计速度，若不存在阻力的话，那距离选择更是被限制在了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,a]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">a</span><span class="mclose">]</span></span></span></span>。这一很关键的限制在传统的弹力系数上却没有体现，这就是为什么调大了就会崩溃。</p>
 <p>恰好我们这里使用位移施加力，因此我们不再使用传统的弹力系数，而是改成一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,2]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mclose">]</span></span></span></span> 的比例值，对应的就是上述的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>2</mn><mi>a</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,2a]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mord mathnormal">a</span><span class="mclose">]</span></span></span></span>。这样我们才能更清晰更稳定的控制弹簧弹力的大小。</p>
 <h2 id="处理弹簧阻力">处理弹簧阻力</h2>
@@ -1203,7 +1203,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年6月9日</div>
+          <div>2025年12月23日</div>
         </div>
       
       

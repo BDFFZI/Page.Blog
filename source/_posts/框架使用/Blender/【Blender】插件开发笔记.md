@@ -2,7 +2,7 @@
 abbrlink: 953923210
 date: 2024-01-20 09:56
 categories:
-  - 工具使用
+  - 框架使用
   - Blender
 ---
 

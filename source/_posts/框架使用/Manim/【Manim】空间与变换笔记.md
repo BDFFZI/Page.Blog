@@ -2,7 +2,7 @@
 abbrlink: 3454987331
 date: 2024-01-14 13:29
 categories:
-  - 工具使用
+  - 框架使用
   - Manim
 ---
 # 【Manim】空间与变换笔记
