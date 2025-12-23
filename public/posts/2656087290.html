@@ -1,0 +1,1684 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【技术美术】光照技术概述 和现实一样，即使是游戏中的虚拟物体，我们也可以认为都是因为发光才可见，包括不含光照计算的特效，因为本质上他们是发出的自发光。所以说，任何物体的渲染，本质都是在做光的渲染。 光的属性  可溯源的：光不是凭空产生的，一定是有源头的。 可传递的：光是可以通过介质传递的，也正是因为传递会使光的能量发生变化，我们才能观测到传递的介质。 可叠加的：光的能量可以直接简单的相加来合成的，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【技术美术】光照技术概述">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/2656087290.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="【技术美术】光照技术概述 和现实一样，即使是游戏中的虚拟物体，我们也可以认为都是因为发光才可见，包括不含光照计算的特效，因为本质上他们是发出的自发光。所以说，任何物体的渲染，本质都是在做光的渲染。 光的属性  可溯源的：光不是凭空产生的，一定是有源头的。 可传递的：光是可以通过介质传递的，也正是因为传递会使光的能量发生变化，我们才能观测到传递的介质。 可叠加的：光的能量可以直接简单的相加来合成的，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-28.png">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-26.png">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-27.png">
+<meta property="article:published_time" content="2025-12-01T11:49:29.477Z">
+<meta property="article:modified_time" content="2025-12-18T10:30:14.039Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/image-28.png">
+  
+  
+  
+  <title>【技术美术】光照技术概述 - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【技术美术】光照技术概述"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-01 19:49" pubdate>
+          2025年12月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          33 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="个人研究"
+        id="heading-4879b307f0d04954985d8d0f3d54b8fa" role="tab" data-toggle="collapse" href="#collapse-4879b307f0d04954985d8d0f3d54b8fa"
+        aria-expanded="true"
+      >
+        个人研究
+        <span class="list-group-count">(49)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-4879b307f0d04954985d8d0f3d54b8fa"
+           role="tabpanel" aria-labelledby="heading-4879b307f0d04954985d8d0f3d54b8fa">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="人工智能"
+        id="heading-f068f0dad74789bee210163c40a4b50d" role="tab" data-toggle="collapse" href="#collapse-f068f0dad74789bee210163c40a4b50d"
+        aria-expanded="false"
+      >
+        人工智能
+        <span class="list-group-count">(7)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-f068f0dad74789bee210163c40a4b50d"
+           role="tabpanel" aria-labelledby="heading-f068f0dad74789bee210163c40a4b50d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2271595116.html" title="【人工智能】 模型优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】 模型优化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2647627493.html" title="【人工智能】分类模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】分类模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3185489077.html" title="【人工智能】回归模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】回归模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1895473833.html" title="【人工智能】机器学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】机器学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/174149413.html" title="【人工智能】深度学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】深度学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3849948103.html" title="【人工智能】特征处理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】特征处理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3501776197.html" title="【人工智能】训练模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】训练模型</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="博客搭建"
+        id="heading-5015cfdc68085d8b3157455484121939" role="tab" data-toggle="collapse" href="#collapse-5015cfdc68085d8b3157455484121939"
+        aria-expanded="false"
+      >
+        博客搭建
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-5015cfdc68085d8b3157455484121939"
+           role="tabpanel" aria-labelledby="heading-5015cfdc68085d8b3157455484121939">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3410375722.html" title="【博客搭建】Hexo 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【博客搭建】Hexo 使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1708025467.html" title="【博客搭建】Latex 数学书写笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【博客搭建】Latex 数学书写笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="技术美术"
+        id="heading-5522ec16884806604bdf90feaec75ee5" role="tab" data-toggle="collapse" href="#collapse-5522ec16884806604bdf90feaec75ee5"
+        aria-expanded="true"
+      >
+        技术美术
+        <span class="list-group-count">(26)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-5522ec16884806604bdf90feaec75ee5"
+           role="tabpanel" aria-labelledby="heading-5522ec16884806604bdf90feaec75ee5">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3740891544.html" title="【技术美术】不同物体的渲染处理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】不同物体的渲染处理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/596080998.html" title="【技术美术】程序化噪波实现"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】程序化噪波实现</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/514348372.html" title="【技术美术】视差贴图"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】视差贴图</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="光照模拟"
+        id="heading-07d8d0fb2c11b00108d3a293b579230b" role="tab" data-toggle="collapse" href="#collapse-07d8d0fb2c11b00108d3a293b579230b"
+        aria-expanded="true"
+      >
+        光照模拟
+        <span class="list-group-count">(10)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-07d8d0fb2c11b00108d3a293b579230b"
+           role="tabpanel" aria-labelledby="heading-07d8d0fb2c11b00108d3a293b579230b">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2656087290.html" title="【技术美术】光照技术概述"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">【技术美术】光照技术概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/6523980.html" title="【技术美术】光照模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】光照模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3.html" title="【技术美术】卡通风格渲染"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】卡通风格渲染</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2812972532.html" title="【技术美术】双向反射分布函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】双向反射分布函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3105478131.html" title="【技术美术】双向透射分布函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】双向透射分布函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2440912354.html" title="【技术美术】各项异性光照"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】各项异性光照</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4246974515.html" title="【技术美术】次表面散射"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】次表面散射</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基于物理的渲染"
+        id="heading-70338facc89fd700a98e78d1a5f7f53b" role="tab" data-toggle="collapse" href="#collapse-70338facc89fd700a98e78d1a5f7f53b"
+        aria-expanded="false"
+      >
+        基于物理的渲染
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-70338facc89fd700a98e78d1a5f7f53b"
+           role="tabpanel" aria-labelledby="heading-70338facc89fd700a98e78d1a5f7f53b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/238111848.html" title="【基于物理的渲染（1）】反射率方程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【基于物理的渲染（1）】反射率方程</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1881413206.html" title="【基于物理的渲染（2）】Cook-Torrance"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【基于物理的渲染（2）】Cook-Torrance</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1910260985.html" title="【基于物理的渲染（3）】基于图片的渲染"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【基于物理的渲染（3）】基于图片的渲染</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染管线"
+        id="heading-a0975e312ca4746045ba2e028a24b7ab" role="tab" data-toggle="collapse" href="#collapse-a0975e312ca4746045ba2e028a24b7ab"
+        aria-expanded="false"
+      >
+        渲染管线
+        <span class="list-group-count">(4)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a0975e312ca4746045ba2e028a24b7ab"
+           role="tabpanel" aria-labelledby="heading-a0975e312ca4746045ba2e028a24b7ab">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/330516235.html" title="【技术美术】D3D中GPU渲染管线流程详解"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】D3D中GPU渲染管线流程详解</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1671240167.html" title="【技术美术】GPU渲染管线概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】GPU渲染管线概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3174050793.html" title="【技术美术】GPU绘制画面的基本原理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】GPU绘制画面的基本原理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3966975174.html" title="【技术美术】引擎渲染管线概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】引擎渲染管线概述</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染资源"
+        id="heading-1f5d181b3b680d7df37b568951e86182" role="tab" data-toggle="collapse" href="#collapse-1f5d181b3b680d7df37b568951e86182"
+        aria-expanded="false"
+      >
+        渲染资源
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-1f5d181b3b680d7df37b568951e86182"
+           role="tabpanel" aria-labelledby="heading-1f5d181b3b680d7df37b568951e86182">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3146662037.html" title="【技术美术】原始模型文件的内容"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】原始模型文件的内容</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3631212322.html" title="【技术美术】纹理技术概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】纹理技术概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3617523748.html" title="【技术美术】顶点技术概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】顶点技术概述</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="空间矩阵"
+        id="heading-cbe14df0b649f6e7c5f15b08dd54dfa3" role="tab" data-toggle="collapse" href="#collapse-cbe14df0b649f6e7c5f15b08dd54dfa3"
+        aria-expanded="false"
+      >
+        空间矩阵
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-cbe14df0b649f6e7c5f15b08dd54dfa3"
+           role="tabpanel" aria-labelledby="heading-cbe14df0b649f6e7c5f15b08dd54dfa3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1097932020.html" title="【技术美术】TRS矩阵"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】TRS矩阵</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4243868598.html" title="【技术美术】个人引擎内的投影矩阵"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】个人引擎内的投影矩阵</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3126809525.html" title="【技术美术】切线空间"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】切线空间</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3964607565.html" title="【技术美术】平面反射"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】平面反射</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2261641482.html" title="【技术美术】投影矩阵和线性深度推导"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】投影矩阵和线性深度推导</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495942937.html" title="【技术美术】渲染空间变换概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】渲染空间变换概述</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="质点弹簧"
+        id="heading-76e96b096533f8785d2c6beda92f167e" role="tab" data-toggle="collapse" href="#collapse-76e96b096533f8785d2c6beda92f167e"
+        aria-expanded="false"
+      >
+        质点弹簧
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-76e96b096533f8785d2c6beda92f167e"
+           role="tabpanel" aria-labelledby="heading-76e96b096533f8785d2c6beda92f167e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1515214792.html" title="【质点弹簧】Unity 版示例"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【质点弹簧】Unity 版示例</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2109274119.html" title="【质点弹簧】如何做一个不会崩溃的质点弹簧"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【质点弹簧】如何做一个不会崩溃的质点弹簧</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/95218190.html" title="【质点弹簧】质点位置积分"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【质点弹簧】质点位置积分</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="软件开发"
+        id="heading-a41622d744ac9c55f5266dcc90ac7599" role="tab" data-toggle="collapse" href="#collapse-a41622d744ac9c55f5266dcc90ac7599"
+        aria-expanded="false"
+      >
+        软件开发
+        <span class="list-group-count">(11)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a41622d744ac9c55f5266dcc90ac7599"
+           role="tabpanel" aria-labelledby="heading-a41622d744ac9c55f5266dcc90ac7599">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2308421870.html" title="【软件开发】C++使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】C++使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3536003429.html" title="【软件开发】C++性能测试"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】C++性能测试</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2795034225.html" title="【软件开发】CMake 学习笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】CMake 学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1794241118.html" title="【软件开发】Doxygen 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Doxygen 使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3993342442.html" title="【软件开发】Git 概念与常用命令"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Git 概念与常用命令</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1922506091.html" title="【软件开发】Glob 通配符"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Glob 通配符</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/987487183.html" title="【软件开发】Windows 开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Windows 开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4146197106.html" title="【软件开发】vcpkg 学习笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】vcpkg 学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2533997342.html" title="【软件开发】如何做出好的项目"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】如何做出好的项目</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2373330896.html" title="【软件开发】正则表达式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】正则表达式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2553791405.html" title="【软件开发】设计模式个人解读"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】设计模式个人解读</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【技术美术】光照技术概述</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年12月18日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>【技术美术】光照技术概述</h1>
+<p>和现实一样，即使是游戏中的虚拟物体，我们也可以认为都是因为发光才可见，包括不含光照计算的特效，因为本质上他们是发出的自发光。所以说，任何物体的渲染，本质都是在做光的渲染。</p>
+<h2 id="光的属性">光的属性</h2>
+<ul>
+<li>可溯源的：光不是凭空产生的，一定是有源头的。</li>
+<li>可传递的：光是可以通过介质传递的，也正是因为传递会使光的能量发生变化，我们才能观测到传递的介质。</li>
+<li>可叠加的：光的能量可以直接简单的相加来合成的，大部分情况下光都是由若干不同类型的光组合而成。</li>
+</ul>
+<h2 id="光照分类">光照分类</h2>
+<h3 id="按光的能量来源分类">按光的能量来源分类</h3>
+<ul>
+<li>直接光：从光源直接打到物体后反射到眼睛的光。</li>
+<li>间接光：从其他物体反射到物体再反射到眼睛的光。</li>
+<li>自发光：物体自身表面发出的光。</li>
+</ul>
+<h3 id="按光的传递方式分类">按光的传递方式分类</h3>
+<ul>
+<li>反射光：光碰到介质后返回原介质的光。</li>
+<li>透射光：光碰到介质后穿过介质从另一端射出的光。</li>
+<li>自发光：物体本身就是光源，导致光线直接进入眼睛的光。</li>
+</ul>
+<h3 id="按光的反射方式分类">按光的反射方式分类</h3>
+<ul>
+<li>漫反射光（简称漫射光）：光在物体表面或内部多次弹射后再反射进眼睛的光。</li>
+<li>镜反射光（简称镜射光）：光在物体表面未经二次弹射，直接反射进眼睛的光。</li>
+</ul>
+<p>如果一个函数同时具有这两种光，则可称其为“双向反射分布函数（BRDF）”。</p>
+<h3 id="按光的透射方式分类">按光的透射方式分类</h3>
+<ul>
+<li>漫透射光：光在穿过介质的过程中，经过了多次弹射。</li>
+<li>镜透射光：光在穿过介质的过程中，没有经过额外弹射。</li>
+</ul>
+<p>如果一个函数同时具有这两种光，则可称其为“双向透射分布函数（BTDF）”。</p>
+<h3 id="按光的反射位置分类">按光的反射位置分类</h3>
+<ul>
+<li>非次表面：入射光与出射光位置相同，如默认的漫射、镜射光。</li>
+<li>次表面：入射光和出射光位置不同，如次表面漫射。</li>
+</ul>
+<h2 id="光照物理">光照物理</h2>
+<p>关于光有很多物理现象，人们对此总结出了各种经验公式和解决方案。（此处暂只讨论与光有关的物理现象，更多的是描述光的组成和物体间的关系，不涉及具体的光照反射计算）</p>
+<p>首先我们需要获取一些关照计算上所需的参数：</p>
+<ul>
+<li><code>float3 n</code>：法线方向（normal）</li>
+<li><code>float3 v</code>：相机方向（viewDir）</li>
+<li><code>float3 l</code>：灯光方向（lightDir）</li>
+<li><code>float3 albedo</code>：反照率。物体反射光照的比例，更通俗名称叫颜色。</li>
+<li><code>float metallic</code>：金属度。确定漫射和镜射的权重分配。</li>
+<li><code>float smoothness</code>：光滑度。用于形容物体表面形状，对镜射光影响很大。</li>
+</ul>
+<p>此外在此基础上还有些可预计算的常用参数：</p>
+<ul>
+<li><code>float3 h = normalize(v + l);</code>：半角向量。一种经验参数，其混合了相机和灯光方向信息。</li>
+<li><code>float roughness = max(HALF_MIN_SQRT, pow(1 - smoothness, 2));</code>：粗糙度。</li>
+</ul>
+<p>注意：光照计算中存在光滑度和粗糙度两种工作流，Unity使用的是光滑度，但DCC软件一般用粗糙度，不过这两者是可以相互转换的。</p>
+<h3 id="微表面模型">微表面模型</h3>
+<p><img src="/assets/images/image-28.png" srcset="/img/loading.gif" lazyload alt="微表面模型"></p>
+<p>从整体来看，物体表面各式各样没有规则。但利用积分的思想，我们可以想象这些表面都是有无数个相同的微小表面组合而成，于是我们便可以对各种物体的表面进行一套统一计算，一套针对微表面的计算。</p>
+<h3 id="辐射度量学">辐射度量学</h3>
+<p>辐射度量学是一种物理学科，但我们不需要深入学习，仅仅了解其中的一些学术概念就行。</p>
+<ul>
+<li>辐射能量：光源做工。</li>
+<li>辐射功率：光源每单位时间做工。</li>
+<li>辐射强度：光源从每单位立体角发出的辐射功率。</li>
+<li>辐照度（Irradiance）：光源照射到微表面的辐射强度。</li>
+<li>辐射率（Radiance）：光源照射到微表面后反射的辐射强度。</li>
+</ul>
+<p>我们光照计算实际上只要考虑：获取“辐照度”和计算“辐射率”就行，这个过程也不是一定非要物理的，只是单纯用他们的名字和关系来表示一些计算中的光照参数。</p>
+<p>其中辐射率是基于辐照度计算的，这两者代表入射光每单位（微分立体角）的总光强和出射光每单位的总光强。可想而知，如果两者面积总量一样，根据能量守恒，两者的值应该是相等的。但实际情况中，由于角度倾斜的原因，入射光的截面积和接收光的表面积是不一定对等的，所以反射时每单位面积的光强就会被均分。</p>
+<p>具体而言两者的关系与法线有关，其公式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float radiance = saturate(dot(n,l)) * irradiance;<br></code></pre></td></tr></table></figure>
+<h3 id="光照分布函数">光照分布函数</h3>
+<p><img src="/assets/images/image-26.png" srcset="/img/loading.gif" lazyload alt="光照分布函数"></p>
+<p>人们发现光从表现效果上，基本都可以被看成是由几种简单的光组合而成（见上文的光照分类）。因此根据具体实现的光照类型，光照函数被分为了一下 3 类：</p>
+<ul>
+<li>BRDF：双向反射分布函数（描述反射现象）</li>
+<li>BTDF：双向透射分布函数（描述透射现象）</li>
+<li>BSDF：双向散射分布函数（BRDF+BTDF）</li>
+</ul>
+<p>基本上这些函数就是“反射”、“透射”和“漫射”、“镜射”的排列组合：</p>
+<ul>
+<li>漫射：低频模糊，光线柔和。</li>
+<li>镜射：高频清晰，能形成清晰光源画面。</li>
+</ul>
+<p>注意：这些公式仅仅是一种分类，给我们一个计算光照的骨架，所以其具体实现完全可以因人而异自由搭配。</p>
+<ul>
+<li><a href="/posts/2812972532">【技术美术】双向反射分布函数</a></li>
+<li><a href="/posts/3105478131">【技术美术】双向透射分布函数</a></li>
+</ul>
+<h3 id="介电质全反射">介电质全反射</h3>
+<p>只要是介电质（可以简单理解成所有物体吧），那就一定会发生轻微的全反射（即光线不被反照率影响，没有经过任何吸收就全部反射），这在后续的镜射率和非涅尔效应中也会有所体现，该最低全反射率是一个常量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float dielectricSpec = 0.04;<br></code></pre></td></tr></table></figure>
+<h3 id="能量守恒">能量守恒</h3>
+<p>如果要制作一个真实的光照，我们同样要考虑到能量守恒（当然，非物理的风格化光照不需要，否则反而还不好看）。根据“双向反射分布”，我们将光拆分为了“漫射光”和“镜射光”分开计算，因此也要注意两者在光能量上的分配。</p>
+<p>对此人们使用一种称为“金属度”的参数，来分配两者的权重，越金属其漫射光越弱，镜射光越强，而这权重具体反映到的则是“反照率”的变化。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float3 diffuse = lerp(albedo * (1 - dielectricSpec), 0, metallic); //漫射反照率<br>float3 specular = lerp(dielectricSpec, albedo, metallic); //镜射反照率<br></code></pre></td></tr></table></figure>
+<p>注意：虽然非物理光照一般不用遵照能量守恒，但其金属度的概念却已经深度人性，即使卡通渲染，也经常会利用金属度来控制高光（镜射光）的强弱。</p>
+<h3 id="菲涅尔效应">菲涅尔效应</h3>
+<p><img src="/assets/images/image-27.png" srcset="/img/loading.gif" lazyload alt="菲涅尔效应"></p>
+<p>菲涅尔是一种物理现象，其反应了物体的反照率强会随着物体折射率、法线、观察角度的不同而发生变化。最显著的例子是水面，垂直看水面时，清澈见底，平行看水面时则只能看到倒影而看不清水底了。</p>
+<p>原始的非涅尔公式较为复杂还涉及折射率信息，难以使用，因为人们根据其实际表现形式，推出了一套经验公式（越掠角反射率越强，甚至全反射）。此外非涅尔只会影响到镜射光，故可简单将其视作是对镜射光的一道后处理。虽然漫射光也是一种反射光，但其是经过多次随机反弹后反射的光，故可以简单认为其丢失了法线、方向等信息，因此不会因为菲涅尔效应而发生变化。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float F = pow(1 - saturate(dot(n, v)), 4); //反射率增强系数（非涅尔系数）<br></code></pre></td></tr></table></figure>
+<p>在Unity中，非涅尔引起的反射率是有上限的，故不一定全反射，具体和物体的镜射率和光滑度有关。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float reflectivity = lerp(dielectricSpec, 1, metallic) //镜射率<br>float grazingTerm = saturate(reflectivity + smoothness);//掠角反射率<br>specular = lerp(specular, grazingTerm, F);<br></code></pre></td></tr></table></figure>
+<h3 id="几何遮蔽">几何遮蔽</h3>
+<p>几何遮蔽用于表现微表面之间的遮挡导致的光线衰减现象，这在粗糙的表面尤为明显。这同样只对镜射光生效（漫射光本身就是经历过各种遮挡反弹返回的光，所以实际上已经考虑了几何遮蔽），可视作是镜射光的一道系数，其越大镜射光越亮，越小镜射光越小。</p>
+<p>几何遮蔽有多种近似公式，在Unity中对直接光计算使用的是 sksm 几何遮蔽算法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float G = saturate(dot(n, l) * dot(n, v)) / lerp(roughness, 1, pow(saturate(dot(l,h)), 2))<br></code></pre></td></tr></table></figure>
+<p>从该公式中可以观察到：</p>
+<ol>
+<li>分子分母的角度点乘次数都是平方且几何意义相似，故可以粗略看成是相等的。</li>
+<li>lerp操作的终点是1，恰巧也是点乘的上限，所以可以猜出其数值会被限制在0-1。</li>
+<li>当点乘结果不为1时（即光照视角倾斜于表面），粗糙度将作为分母影响结果大小（越粗糙分母越大，得到的结果越小），从而满足了几何遮蔽衰减光照的效果。</li>
+</ol>
+<p>对于间接光，因为不用考虑角度问题，Unity则比较简单，直接根据粗糙度衰减即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float G = 1 / (1 + pow(roughness,2));<br></code></pre></td></tr></table></figure>
+<h2 id="入射光计算">入射光计算</h2>
+<p>计算反射光前，必须先获取入射光信息。</p>
+<h3 id="直接光">直接光</h3>
+<p>注意：对于直接光来说，入射光等价于辐照度，因此进行实际反射计算前，需转换为辐射率。</p>
+<h4 id="实时灯光">实时灯光</h4>
+<p>直接从原始光源获取的灯光。Unity中将实时灯光分为“主灯光”和“附加灯光”两类，“主灯光”是平行光，但平行光也可以成为“附加灯光”，“附加灯光”自身也有很多种类。不过这些灯光信息都已经被Unity封装，成了一种可以统一处理的存在。</p>
+<ul>
+<li><code>float3 positionWS</code>：微表面所在的世界空间位置。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float shadowMask = 1; //阴影遮罩技术，用于实现超远距离烘焙阴影，具体数值从哪来的，目前我也不知道<br>Light mainLight = GetMainLight(TransformWorldToShadowCoord(positionWS), positionWS, shadowMask);<br>for (int i = 0; i &lt; GetAdditionalLightsCount(); i++)<br>    Light additionalLight = GetAdditionalLight(i, positionWS, shadowMask);<br></code></pre></td></tr></table></figure>
+<p>Unity提供的光照信息中并没有直接提供辐照度，需要利用光照信息计算。</p>
+<ul>
+<li><code>Light light</code>：从Unity中获取的原始灯光信息（上文的计算结果）。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float3 irradiance = light.color * light.distanceAttenuation * light.shadowAttenuation;<br></code></pre></td></tr></table></figure>
+<h3 id="间接光">间接光</h3>
+<p>间接光又叫环境光，是来自于环境中即四面八方的光。相比直接光，环境光是不可数的，因此无法直接实时计算，故环境光一般是基于一种叫“IBL”（基于图像的照明）的烘焙灯光技术实现的（将HDR环境贴图视作光源，均匀的随机采样若干次，再以实时灯光的方式计算累加）。</p>
+<p>由于“双向反射分布”的存在，故环境光针对“漫射”、“镜射”两种光，也根据其特性，使用了两种不同的烘焙方式：“光照探针”和“反射探针”。</p>
+<p>注意：间接光由于是预计算的，导致其存储的已经是计算好的辐射率，所以不需要额外的转换。</p>
+<h4 id="光照探针">光照探针</h4>
+<p>光照探针存储的是漫射光信息。漫射光是粗糙的低频灯光，因此不需要形成像镜子那种清晰的反射画面，依此特性，为了减少内存提高性能，可以将其用球谐函数（SH）存储。</p>
+<p>球谐函数类似于用泰勒级数解三角函数，通过有限的多项式就可以近似出超越函数的效果，进而使得三角函数可被实际用于计算，非常实用。同理球谐函数只需要存储几个多项式的参数，就可以实现输入方向输出该方向大概亮度的功能，内存占用少计算也高效。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float3 irradiance = SampleSH(n);<br></code></pre></td></tr></table></figure>
+<h4 id="反射探针">反射探针</h4>
+<p>镜射光是高频的需要形成清晰镜面的光照，因此不能使用SH，转而使用环境贴图存储。此外镜射光还与视角和材质粗糙度有关，其中视角是动态的因此无法烘焙，但粗糙度是固定的01范围，因此可以针对不同的粗糙度多烘焙几张。由于越粗糙频率越低，贴图分辨率需求越小，因此这多张不同粗糙度烘焙的贴图可以利用mipmap存储，借此还能实现GPU自动插值纹理内容。</p>
+<p>环境贴图本质就是一张具有mipmap的立方体纹理，因此只要根据粗糙度和微表面法向，就能取出对应的镜射光辐照度。</p>
+<ul>
+<li>UNITY_SPECCUBE_LOD_STEPS：unity中默认环境贴图的最大mipmap等级。</li>
+<li>unity_SpecCube0：unity中的默认环境贴图。</li>
+<li>samplerunity_SpecCube0：unity中默认环境贴图的采样器。</li>
+<li>unity_SpecCube0_HDR：unity中默认环境贴图的编码信息。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float pr = 1 - s; //直觉上的粗糙度（perceptualRoughness）<br>float mipLevel = pr * (1.7 - 0.7 * pr) * UNITY_SPECCUBE_LOD_STEPS;<br>float4 encodedIrradiance = unity_SpecCube0.SampleLevel(samplerunity_SpecCube0, reflect(-v, n), mipLevel);<br>float3 irradiance = DecodeHDREnvironment(encodedIrradiance, unity_SpecCube0_HDR);//环境贴图一般是HDR贴图<br></code></pre></td></tr></table></figure>
+<h3 id="自发光">自发光</h3>
+<h4 id="光照贴图">光照贴图</h4>
+<p>光照贴图是通过预计算将最终的光照结果烘焙到纹理中，下次渲染时便可避免高昂的光照计算，直接使用。由于是已经计算好的，所以光照贴图某种意义上已经不是光照了，直接看成自发光就好。</p>
+<h2 id="光照模型">光照模型</h2>
+<p>光照模型是指用数学手段具体实现的完整光照计算方案，相当于是上述各种光照物理的实现和汇总，有了光照模型就可以实际的进行光照模拟计算了。</p>
+<p><a href="/posts/6523980">【技术美术】光照模型</a></p>
+<h3 id="PBR光照模型">PBR光照模型</h3>
+<p>PBR 光照模型是市面上最主流的光照模型，同时也是引擎默认的光照模型，出于兼容性的缘故，基本所有的其他光照模型都是以其为基础进行修改的，因此 PBR 是必须要学会的一个光照模型。</p>
+<p>PBR 模型的具体实现各式各样，导致每家渲染引擎都有着不同的 PBR 效果，因为 PBR 本质还是一种经验模型，只是其经验来源更加严谨完整。不过无论是哪一家的 PBR，基本上都是上文那些各种光学现象的汇总。</p>
+<p>提示：如果想更深入的了解 PBR 并实现 Unity 中的同款，可以参考“基于物理的渲染”文集。</p>
+<h2 id="特殊光照实现">特殊光照实现</h2>
+<p>因为计算机无法真实模拟现实物体的所有性质（例如不可能真的把一根一根的头发丝做出来），因此对一些特殊光照效果，需要进行专门的处理（通过调整光照计算函数，用经验公式的方法近似模拟这些效果）。一些常用的特殊光照效果如下：</p>
+<ul>
+<li>次表面散射</li>
+<li>透射折射</li>
+<li>各向异性光照</li>
+<li>卡通风格光照</li>
+<li>薄膜干涉</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/" class="category-chain-item">个人研究</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E6%8B%9F/" class="category-chain-item">光照模拟</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【技术美术】光照技术概述</div>
+      <div>https://bdffzi-blog.pages.dev/posts/2656087290.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/3.html" title="【技术美术】卡通风格渲染">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【技术美术】卡通风格渲染</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/3126809525.html" title="【技术美术】切线空间">
+                        <span class="hidden-mobile">【技术美术】切线空间</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

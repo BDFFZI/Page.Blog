@@ -1,0 +1,1438 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【Unity】脚本生命周期 执行顺序 现象  Start,Update 全部按批执行 Awake 在场景初始化回调前触发 后拖入场景的脚本先执行  结论 Awake 被认为是一种初始化，而 Start 不是 创建 AddComponent | Instantiate | … 现象  Awake 在物体创建后立即触发 Start 必在当前帧被执行 只要在当前帧的 Update 之前创建，Update">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Unity】脚本生命周期">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/4114572923.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="【Unity】脚本生命周期 执行顺序 现象  Start,Update 全部按批执行 Awake 在场景初始化回调前触发 后拖入场景的脚本先执行  结论 Awake 被认为是一种初始化，而 Start 不是 创建 AddComponent | Instantiate | … 现象  Awake 在物体创建后立即触发 Start 必在当前帧被执行 只要在当前帧的 Update 之前创建，Update">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-09T10:34:16.908Z">
+<meta property="article:modified_time" content="2025-06-09T10:34:16.908Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>【Unity】脚本生命周期 - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【Unity】脚本生命周期"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-06-09 18:34" pubdate>
+          2025年6月9日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          603 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          6 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="工具使用"
+        id="heading-f9513da884f0c50f60fcee13e0e8a92e" role="tab" data-toggle="collapse" href="#collapse-f9513da884f0c50f60fcee13e0e8a92e"
+        aria-expanded="true"
+      >
+        工具使用
+        <span class="list-group-count">(30)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-f9513da884f0c50f60fcee13e0e8a92e"
+           role="tabpanel" aria-labelledby="heading-f9513da884f0c50f60fcee13e0e8a92e">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Blender"
+        id="heading-482982e64aebd743da9392fbc4b1f5d8" role="tab" data-toggle="collapse" href="#collapse-482982e64aebd743da9392fbc4b1f5d8"
+        aria-expanded="false"
+      >
+        Blender
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-482982e64aebd743da9392fbc4b1f5d8"
+           role="tabpanel" aria-labelledby="heading-482982e64aebd743da9392fbc4b1f5d8">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/953923210.html" title="【Blender】插件开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495031609.html" title="【Blender】杂项笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】杂项笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Linux"
+        id="heading-edc9f0a5a5d57797bf68e37364743831" role="tab" data-toggle="collapse" href="#collapse-edc9f0a5a5d57797bf68e37364743831"
+        aria-expanded="false"
+      >
+        Linux
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-edc9f0a5a5d57797bf68e37364743831"
+           role="tabpanel" aria-labelledby="heading-edc9f0a5a5d57797bf68e37364743831">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2845903494.html" title="【Linux】Linux 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Linux】Linux 使用笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Manim"
+        id="heading-cbcd3fecff4c0ef0c063f8c41726d34a" role="tab" data-toggle="collapse" href="#collapse-cbcd3fecff4c0ef0c063f8c41726d34a"
+        aria-expanded="false"
+      >
+        Manim
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-cbcd3fecff4c0ef0c063f8c41726d34a"
+           role="tabpanel" aria-labelledby="heading-cbcd3fecff4c0ef0c063f8c41726d34a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3454987331.html" title="【Manim】空间与变换笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Manim】空间与变换笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity"
+        id="heading-82dd98f1d663acc318e6a8ec4ab69b7a" role="tab" data-toggle="collapse" href="#collapse-82dd98f1d663acc318e6a8ec4ab69b7a"
+        aria-expanded="true"
+      >
+        Unity
+        <span class="list-group-count">(25)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-82dd98f1d663acc318e6a8ec4ab69b7a"
+           role="tabpanel" aria-labelledby="heading-82dd98f1d663acc318e6a8ec4ab69b7a">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1233487121.html" title="【Unity】UGUI"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】UGUI</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1602965714.html" title="【Unity】URP 中的 UGUIShader 实现"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】URP 中的 UGUIShader 实现</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3651714765.html" title="【Unity】个人编码规范"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】个人编码规范</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/806518232.html" title="【Unity】人形动画"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】人形动画</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/150670921.html" title="【Unity】光照解决方案笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】光照解决方案笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2970632423.html" title="【Unity】各种操作触发 GC 情况"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】各种操作触发 GC 情况</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4239874620.html" title="【Unity】图形渲染瓶颈与批处理优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】图形渲染瓶颈与批处理优化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2200103232.html" title="【Unity】未来技术路线"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】未来技术路线</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4133014859.html" title="【Unity】热更新原理与 Xlua 配置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】热更新原理与 Xlua 配置</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4114572923.html" title="【Unity】脚本生命周期"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">【Unity】脚本生命周期</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2226898333.html" title="【Unity】骨骼动画"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】骨骼动画</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity文档笔记"
+        id="heading-680a95aa049e61aff0e7c7ac93d60748" role="tab" data-toggle="collapse" href="#collapse-680a95aa049e61aff0e7c7ac93d60748"
+        aria-expanded="false"
+      >
+        Unity文档笔记
+        <span class="list-group-count">(14)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-680a95aa049e61aff0e7c7ac93d60748"
+           role="tabpanel" aria-labelledby="heading-680a95aa049e61aff0e7c7ac93d60748">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="图形"
+        id="heading-9be72ba165a45aaed9f950ec718475be" role="tab" data-toggle="collapse" href="#collapse-9be72ba165a45aaed9f950ec718475be"
+        aria-expanded="false"
+      >
+        图形
+        <span class="list-group-count">(13)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-9be72ba165a45aaed9f950ec718475be"
+           role="tabpanel" aria-labelledby="heading-9be72ba165a45aaed9f950ec718475be">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/36610906.html" title="【Unity】加载纹理和网格数据"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】加载纹理和网格数据</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/289693924.html" title="【Unity】材质"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】材质</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染管线"
+        id="heading-a0975e312ca4746045ba2e028a24b7ab" role="tab" data-toggle="collapse" href="#collapse-a0975e312ca4746045ba2e028a24b7ab"
+        aria-expanded="false"
+      >
+        渲染管线
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a0975e312ca4746045ba2e028a24b7ab"
+           role="tabpanel" aria-labelledby="heading-a0975e312ca4746045ba2e028a24b7ab">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2520479343.html" title="【Unity】可编程渲染管线"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】可编程渲染管线</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="着色器"
+        id="heading-e0817a039882aebbaa735b4880479e60" role="tab" data-toggle="collapse" href="#collapse-e0817a039882aebbaa735b4880479e60"
+        aria-expanded="false"
+      >
+        着色器
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-e0817a039882aebbaa735b4880479e60"
+           role="tabpanel" aria-labelledby="heading-e0817a039882aebbaa735b4880479e60">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3793607597.html" title="【Unity】PassCode 语法笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】PassCode 语法笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1843614380.html" title="【Unity】ShaderLab 语法笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】ShaderLab 语法笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4183025058.html" title="【Unity】优化着色器性能笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】优化着色器性能笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3863423297.html" title="【Unity】着色器变体笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器变体笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3262553639.html" title="【Unity】着色器平台差异笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器平台差异笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2077063050.html" title="【Unity】着色器核心概念笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器核心概念笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="纹理"
+        id="heading-2763023e85350f867a89d225f598b467" role="tab" data-toggle="collapse" href="#collapse-2763023e85350f867a89d225f598b467"
+        aria-expanded="false"
+      >
+        纹理
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-2763023e85350f867a89d225f598b467"
+           role="tabpanel" aria-labelledby="heading-2763023e85350f867a89d225f598b467">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/865694442.html" title="【Unity】Mipmaps（多级渐进纹理）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】Mipmaps（多级渐进纹理）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1386286002.html" title="【Unity】纹理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】纹理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="网格"
+        id="heading-16bf955c22835b6acbc202bd2738b50c" role="tab" data-toggle="collapse" href="#collapse-16bf955c22835b6acbc202bd2738b50c"
+        aria-expanded="false"
+      >
+        网格
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-16bf955c22835b6acbc202bd2738b50c"
+           role="tabpanel" aria-labelledby="heading-16bf955c22835b6acbc202bd2738b50c">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3454640855.html" title="【Unity】网格数据结构"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】网格数据结构</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/810271066.html" title="【Unity】网格笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】网格笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="脚本"
+        id="heading-ba311d8a6a1386ac811b1caa28ef029d" role="tab" data-toggle="collapse" href="#collapse-ba311d8a6a1386ac811b1caa28ef029d"
+        aria-expanded="false"
+      >
+        脚本
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-ba311d8a6a1386ac811b1caa28ef029d"
+           role="tabpanel" aria-labelledby="heading-ba311d8a6a1386ac811b1caa28ef029d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/305640944.html" title="【Unity】作业系统"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】作业系统</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="VSCode"
+        id="heading-92ce826772dd138cdcbd6cbc6d5b29c4" role="tab" data-toggle="collapse" href="#collapse-92ce826772dd138cdcbd6cbc6d5b29c4"
+        aria-expanded="false"
+      >
+        VSCode
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-92ce826772dd138cdcbd6cbc6d5b29c4"
+           role="tabpanel" aria-labelledby="heading-92ce826772dd138cdcbd6cbc6d5b29c4">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1043904924.html" title="VSCode 插件开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">VSCode 插件开发笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【Unity】脚本生命周期</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>【Unity】脚本生命周期</h1>
+<h2 id="执行顺序">执行顺序</h2>
+<h3 id="现象">现象</h3>
+<ul>
+<li>Start,Update 全部按批执行</li>
+<li>Awake 在场景初始化回调前触发</li>
+<li>后拖入场景的脚本先执行</li>
+</ul>
+<h3 id="结论">结论</h3>
+<p>Awake 被认为是一种初始化，而 Start 不是</p>
+<h2 id="创建">创建</h2>
+<h3 id="AddComponent-Instantiate-…">AddComponent | Instantiate | …</h3>
+<h4 id="现象-2">现象</h4>
+<ul>
+<li>Awake 在物体创建后立即触发</li>
+<li>Start 必在当前帧被执行</li>
+<li>只要在当前帧的 Update 之前创建，Update 肯定会在当前帧触发，否则跳到下一帧触发</li>
+<li>Start 每帧会有多个批次，Update 一帧只触发一批</li>
+</ul>
+<h4 id="结论-2">结论</h4>
+<p>Awake 是构造函数的代替品</br><br>
+Start 可以确保给予你在正式开始前（其他各种杂项事件前）的回调机会</br><br>
+多个事件执行前都会检查一次 Start 调用，以提到保底的作用，所以其和 Update 并没有直接关系</p>
+<h2 id="销毁">销毁</h2>
+<ul>
+<li>都不是真正的从内存中移除，而是以标记的方式来使物体不可见。</li>
+</ul>
+<h3 id="Destroy">Destroy</h3>
+<h4 id="现象-3">现象</h4>
+<ul>
+<li>物体被销毁后本应执行的事件函数立即不再执行</li>
+<li>物体被销毁的当前帧，该物体的所有属性依旧可以被读写复制和查找</li>
+<li>从第二帧开始，Unity 属性失效，但 C# 端属性仍可继续乃至持续访问</li>
+</ul>
+<h4 id="结论-3">结论</h4>
+<p>被销毁物体不会没有立即消失，而是进入了一种冻结状态，但自身仍带有所有属性。<br>
+所以说调用该函数实际是将该物体标记为需要删除，并立即停止其行动能力，待当前帧结束后，Unity 系统才会正式将其移出可见环境。<br>
+但这仍只是一种标记，物体仍在内存中。</br><br>
+Unity 是 C++引擎，其所有功能都通过 C++过了一遍，相信是其通过了某些条件判断，所以大家都当做看不见该物体了。<br>
+但用户层的代码写在 C#中，并没有这一审核的过程，所以依旧可以“看见”该物体。</p>
+<h3 id="DestroyImmediate">DestroyImmediate</h3>
+<h4 id="现象-4">现象</h4>
+<ul>
+<li>C# 端属性依旧可以读写，但 Unity 属性全部失效</li>
+<li>不再可见，无法搜索到</li>
+</ul>
+<h4 id="结论-4">结论</h4>
+<p>从 Unity 层来看确实消失的无影无踪了，这与 Destroy 的情况类似。<br>
+只是将 Unity 不可见的这一过程从当前帧结束时提前为了调用函数后立即触发。</p>
+<h2 id="其他">其他</h2>
+<ul>
+<li>所有可以使用 Awake 事件的脚本都无法用构造函数创建</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【Unity】脚本生命周期</div>
+      <div>https://bdffzi-blog.pages.dev/posts/4114572923.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年6月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/806518232.html" title="【Unity】人形动画">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【Unity】人形动画</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/2226898333.html" title="【Unity】骨骼动画">
+                        <span class="hidden-mobile">【Unity】骨骼动画</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

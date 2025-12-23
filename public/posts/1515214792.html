@@ -1,0 +1,1501 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【质点弹簧】Unity 版示例 该Demo实现自该教程：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;BDFFZI&#x2F;p&#x2F;18733944 急速搭建的 Unity 版本的质点弹簧 Demo，不要在意帧率，这个 Demo 没有做任何优化。整个 Demo 就一个文件，直接在 Unity 创建里创建一个名为“MassSpring”的空脚本将下面代码替换进去，然后随便拖到一个场景物体上即可。 123456">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【质点弹簧】Unity 版示例">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/1515214792.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="【质点弹簧】Unity 版示例 该Demo实现自该教程：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;BDFFZI&#x2F;p&#x2F;18733944 急速搭建的 Unity 版本的质点弹簧 Demo，不要在意帧率，这个 Demo 没有做任何优化。整个 Demo 就一个文件，直接在 Unity 创建里创建一个名为“MassSpring”的空脚本将下面代码替换进去，然后随便拖到一个场景物体上即可。 123456">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-09T10:34:16.877Z">
+<meta property="article:modified_time" content="2025-06-09T10:34:16.877Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>【质点弹簧】Unity 版示例 - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【质点弹簧】Unity 版示例"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-06-09 18:34" pubdate>
+          2025年6月9日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="个人研究"
+        id="heading-4879b307f0d04954985d8d0f3d54b8fa" role="tab" data-toggle="collapse" href="#collapse-4879b307f0d04954985d8d0f3d54b8fa"
+        aria-expanded="true"
+      >
+        个人研究
+        <span class="list-group-count">(49)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-4879b307f0d04954985d8d0f3d54b8fa"
+           role="tabpanel" aria-labelledby="heading-4879b307f0d04954985d8d0f3d54b8fa">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="人工智能"
+        id="heading-f068f0dad74789bee210163c40a4b50d" role="tab" data-toggle="collapse" href="#collapse-f068f0dad74789bee210163c40a4b50d"
+        aria-expanded="false"
+      >
+        人工智能
+        <span class="list-group-count">(7)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-f068f0dad74789bee210163c40a4b50d"
+           role="tabpanel" aria-labelledby="heading-f068f0dad74789bee210163c40a4b50d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2271595116.html" title="【人工智能】 模型优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】 模型优化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2647627493.html" title="【人工智能】分类模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】分类模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3185489077.html" title="【人工智能】回归模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】回归模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1895473833.html" title="【人工智能】机器学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】机器学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/174149413.html" title="【人工智能】深度学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】深度学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3849948103.html" title="【人工智能】特征处理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】特征处理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3501776197.html" title="【人工智能】训练模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】训练模型</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="博客搭建"
+        id="heading-5015cfdc68085d8b3157455484121939" role="tab" data-toggle="collapse" href="#collapse-5015cfdc68085d8b3157455484121939"
+        aria-expanded="false"
+      >
+        博客搭建
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-5015cfdc68085d8b3157455484121939"
+           role="tabpanel" aria-labelledby="heading-5015cfdc68085d8b3157455484121939">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3410375722.html" title="【博客搭建】Hexo 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【博客搭建】Hexo 使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1708025467.html" title="【博客搭建】Latex 数学书写笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【博客搭建】Latex 数学书写笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="技术美术"
+        id="heading-5522ec16884806604bdf90feaec75ee5" role="tab" data-toggle="collapse" href="#collapse-5522ec16884806604bdf90feaec75ee5"
+        aria-expanded="false"
+      >
+        技术美术
+        <span class="list-group-count">(26)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-5522ec16884806604bdf90feaec75ee5"
+           role="tabpanel" aria-labelledby="heading-5522ec16884806604bdf90feaec75ee5">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3740891544.html" title="【技术美术】不同物体的渲染处理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】不同物体的渲染处理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/596080998.html" title="【技术美术】程序化噪波实现"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】程序化噪波实现</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/514348372.html" title="【技术美术】视差贴图"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】视差贴图</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="光照模拟"
+        id="heading-07d8d0fb2c11b00108d3a293b579230b" role="tab" data-toggle="collapse" href="#collapse-07d8d0fb2c11b00108d3a293b579230b"
+        aria-expanded="false"
+      >
+        光照模拟
+        <span class="list-group-count">(10)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-07d8d0fb2c11b00108d3a293b579230b"
+           role="tabpanel" aria-labelledby="heading-07d8d0fb2c11b00108d3a293b579230b">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2656087290.html" title="【技术美术】光照技术概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】光照技术概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/6523980.html" title="【技术美术】光照模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】光照模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3.html" title="【技术美术】卡通风格渲染"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】卡通风格渲染</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2812972532.html" title="【技术美术】双向反射分布函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】双向反射分布函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3105478131.html" title="【技术美术】双向透射分布函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】双向透射分布函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2440912354.html" title="【技术美术】各项异性光照"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】各项异性光照</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4246974515.html" title="【技术美术】次表面散射"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】次表面散射</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基于物理的渲染"
+        id="heading-70338facc89fd700a98e78d1a5f7f53b" role="tab" data-toggle="collapse" href="#collapse-70338facc89fd700a98e78d1a5f7f53b"
+        aria-expanded="false"
+      >
+        基于物理的渲染
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-70338facc89fd700a98e78d1a5f7f53b"
+           role="tabpanel" aria-labelledby="heading-70338facc89fd700a98e78d1a5f7f53b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/238111848.html" title="【基于物理的渲染（1）】反射率方程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【基于物理的渲染（1）】反射率方程</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1881413206.html" title="【基于物理的渲染（2）】Cook-Torrance"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【基于物理的渲染（2）】Cook-Torrance</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1910260985.html" title="【基于物理的渲染（3）】基于图片的渲染"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【基于物理的渲染（3）】基于图片的渲染</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染管线"
+        id="heading-a0975e312ca4746045ba2e028a24b7ab" role="tab" data-toggle="collapse" href="#collapse-a0975e312ca4746045ba2e028a24b7ab"
+        aria-expanded="false"
+      >
+        渲染管线
+        <span class="list-group-count">(4)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a0975e312ca4746045ba2e028a24b7ab"
+           role="tabpanel" aria-labelledby="heading-a0975e312ca4746045ba2e028a24b7ab">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/330516235.html" title="【技术美术】D3D中GPU渲染管线流程详解"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】D3D中GPU渲染管线流程详解</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1671240167.html" title="【技术美术】GPU渲染管线概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】GPU渲染管线概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3174050793.html" title="【技术美术】GPU绘制画面的基本原理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】GPU绘制画面的基本原理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3966975174.html" title="【技术美术】引擎渲染管线概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】引擎渲染管线概述</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染资源"
+        id="heading-1f5d181b3b680d7df37b568951e86182" role="tab" data-toggle="collapse" href="#collapse-1f5d181b3b680d7df37b568951e86182"
+        aria-expanded="false"
+      >
+        渲染资源
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-1f5d181b3b680d7df37b568951e86182"
+           role="tabpanel" aria-labelledby="heading-1f5d181b3b680d7df37b568951e86182">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3146662037.html" title="【技术美术】原始模型文件的内容"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】原始模型文件的内容</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3631212322.html" title="【技术美术】纹理技术概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】纹理技术概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3617523748.html" title="【技术美术】顶点技术概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】顶点技术概述</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="空间矩阵"
+        id="heading-cbe14df0b649f6e7c5f15b08dd54dfa3" role="tab" data-toggle="collapse" href="#collapse-cbe14df0b649f6e7c5f15b08dd54dfa3"
+        aria-expanded="false"
+      >
+        空间矩阵
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-cbe14df0b649f6e7c5f15b08dd54dfa3"
+           role="tabpanel" aria-labelledby="heading-cbe14df0b649f6e7c5f15b08dd54dfa3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1097932020.html" title="【技术美术】TRS矩阵"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】TRS矩阵</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4243868598.html" title="【技术美术】个人引擎内的投影矩阵"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】个人引擎内的投影矩阵</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3126809525.html" title="【技术美术】切线空间"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】切线空间</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3964607565.html" title="【技术美术】平面反射"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】平面反射</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2261641482.html" title="【技术美术】投影矩阵和线性深度推导"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】投影矩阵和线性深度推导</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495942937.html" title="【技术美术】渲染空间变换概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】渲染空间变换概述</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="质点弹簧"
+        id="heading-76e96b096533f8785d2c6beda92f167e" role="tab" data-toggle="collapse" href="#collapse-76e96b096533f8785d2c6beda92f167e"
+        aria-expanded="true"
+      >
+        质点弹簧
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-76e96b096533f8785d2c6beda92f167e"
+           role="tabpanel" aria-labelledby="heading-76e96b096533f8785d2c6beda92f167e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1515214792.html" title="【质点弹簧】Unity 版示例"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">【质点弹簧】Unity 版示例</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2109274119.html" title="【质点弹簧】如何做一个不会崩溃的质点弹簧"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【质点弹簧】如何做一个不会崩溃的质点弹簧</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/95218190.html" title="【质点弹簧】质点位置积分"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【质点弹簧】质点位置积分</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="软件开发"
+        id="heading-a41622d744ac9c55f5266dcc90ac7599" role="tab" data-toggle="collapse" href="#collapse-a41622d744ac9c55f5266dcc90ac7599"
+        aria-expanded="false"
+      >
+        软件开发
+        <span class="list-group-count">(11)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a41622d744ac9c55f5266dcc90ac7599"
+           role="tabpanel" aria-labelledby="heading-a41622d744ac9c55f5266dcc90ac7599">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2308421870.html" title="【软件开发】C++使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】C++使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3536003429.html" title="【软件开发】C++性能测试"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】C++性能测试</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2795034225.html" title="【软件开发】CMake 学习笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】CMake 学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1794241118.html" title="【软件开发】Doxygen 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Doxygen 使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3993342442.html" title="【软件开发】Git 概念与常用命令"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Git 概念与常用命令</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1922506091.html" title="【软件开发】Glob 通配符"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Glob 通配符</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/987487183.html" title="【软件开发】Windows 开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Windows 开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4146197106.html" title="【软件开发】vcpkg 学习笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】vcpkg 学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2533997342.html" title="【软件开发】如何做出好的项目"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】如何做出好的项目</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2373330896.html" title="【软件开发】正则表达式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】正则表达式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2553791405.html" title="【软件开发】设计模式个人解读"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】设计模式个人解读</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【质点弹簧】Unity 版示例</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>【质点弹簧】Unity 版示例</h1>
+<p>该Demo实现自该教程：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/BDFFZI/p/18733944">https://www.cnblogs.com/BDFFZI/p/18733944</a></p>
+<p>急速搭建的 Unity 版本的质点弹簧 Demo，不要在意帧率，这个 Demo 没有做任何优化。整个 Demo 就一个文件，直接在 Unity 创建里创建一个名为“MassSpring”的空脚本将下面代码替换进去，然后随便拖到一个场景物体上即可。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-keyword">using</span> System.Collections.Generic;<br><span class="hljs-keyword">using</span> UnityEditor;<br><span class="hljs-keyword">using</span> UnityEngine;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MassSpring</span> : <span class="hljs-title">MonoBehaviour</span><br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Spring</span><br>    &#123;<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">readonly</span> Transform pointA;<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">readonly</span> Transform pointB;<br>        <span class="hljs-keyword">public</span> <span class="hljs-built_in">float</span> length;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Spring</span>(<span class="hljs-params">Transform pointA, Transform pointB</span>)</span><br>        &#123;<br>            <span class="hljs-keyword">this</span>.pointA = pointA;<br>            <span class="hljs-keyword">this</span>.pointB = pointB;<br>        &#125;<br>    &#125;<br><br>    [<span class="hljs-meta">SerializeField</span>] [Range(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>)] <span class="hljs-built_in">float</span> elasticity = <span class="hljs-number">0.75f</span>;<br>    [<span class="hljs-meta">SerializeField</span>] [Range(<span class="hljs-number">0</span>, <span class="hljs-number">0.999f</span>)] <span class="hljs-built_in">float</span> drag = <span class="hljs-number">0.01f</span>;<br>    [<span class="hljs-meta">SerializeField</span>] <span class="hljs-built_in">int</span> size = <span class="hljs-number">30</span>;<br>    [<span class="hljs-meta">SerializeField</span>] <span class="hljs-built_in">int</span> unit = <span class="hljs-number">1</span>;<br>    [<span class="hljs-meta">SerializeField</span>] <span class="hljs-built_in">bool</span> ropeOrCloth;<br>    [<span class="hljs-meta">SerializeField</span>] <span class="hljs-built_in">bool</span> useGravity;<br><br>    <span class="hljs-keyword">readonly</span> List&lt;Spring&gt; allSprings = <span class="hljs-keyword">new</span> List&lt;Spring&gt;();<br>    <span class="hljs-keyword">readonly</span> List&lt;Transform&gt; allPoints = <span class="hljs-keyword">new</span> List&lt;Transform&gt;();<br>    <span class="hljs-keyword">readonly</span> Dictionary&lt;Transform, Vector3&gt; lastPositions = <span class="hljs-keyword">new</span> Dictionary&lt;Transform, Vector3&gt;();<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span>()</span><br>    &#123;<br>        <span class="hljs-keyword">if</span> (ropeOrCloth) <span class="hljs-comment">//软绳</span><br>        &#123;<br>            <span class="hljs-comment">//添加质点</span><br>            Transform[] points = <span class="hljs-keyword">new</span> Transform[size];<br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++)<br>            &#123;<br>                Vector3 position = <span class="hljs-keyword">new</span> Vector3(i * unit, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>                GameObject point = <span class="hljs-keyword">new</span> GameObject();<br>                allPoints.Add(point.transform);<br>                lastPositions[point.transform] = position;<br>                point.transform.position = position;<br>                points[i] = point.transform;<br>            &#125;<br><br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; size - <span class="hljs-number">1</span>; i++)<br>            &#123;<br>                allSprings.Add(<span class="hljs-keyword">new</span> Spring(points[i], points[i + <span class="hljs-number">1</span>]));<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-comment">//布料</span><br>        &#123;<br>            <span class="hljs-comment">//添加质点</span><br>            Transform[,] points = <span class="hljs-keyword">new</span> Transform[size, size];<br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>, y = <span class="hljs-number">0</span>; i &lt; size; i++, y += unit)<br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">0</span>, x = <span class="hljs-number">0</span>; j &lt; size; j++, x += unit)<br>            &#123;<br>                Vector3 position = <span class="hljs-keyword">new</span> Vector3(x, y, <span class="hljs-number">0</span>);<br>                GameObject point = <span class="hljs-keyword">new</span> GameObject();<br>                allPoints.Add(point.transform);<br>                lastPositions[point.transform] = position;<br>                point.transform.position = position;<br>                points[i, j] = point.transform;<br>            &#125;<br><br>            <span class="hljs-comment">//添加弹簧</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = <span class="hljs-number">0</span>; y &lt; size; y++)<br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = <span class="hljs-number">0</span>; x &lt; size; x++)<br>            &#123;<br>                <span class="hljs-comment">//横纵结构</span><br>                <span class="hljs-keyword">if</span> (x + <span class="hljs-number">1</span> &lt; size)<br>                    allSprings.Add(<span class="hljs-keyword">new</span> Spring(points[y, x], points[y, x + <span class="hljs-number">1</span>]));<br>                <span class="hljs-keyword">if</span> (y + <span class="hljs-number">1</span> &lt; size)<br>                    allSprings.Add(<span class="hljs-keyword">new</span> Spring(points[y, x], points[y + <span class="hljs-number">1</span>, x]));<br>                <span class="hljs-comment">//斜向结构</span><br>                <span class="hljs-keyword">if</span> (x + <span class="hljs-number">1</span> &lt; size &amp;&amp; y + <span class="hljs-number">1</span> &lt; size) <span class="hljs-comment">//右下</span><br>                    allSprings.Add(<span class="hljs-keyword">new</span> Spring(points[y, x], points[y + <span class="hljs-number">1</span>, x + <span class="hljs-number">1</span>]));<br>                <span class="hljs-keyword">if</span> (x + <span class="hljs-number">1</span> &lt; size &amp;&amp; y - <span class="hljs-number">1</span> &gt;= <span class="hljs-number">0</span>) <span class="hljs-comment">//右上</span><br>                    allSprings.Add(<span class="hljs-keyword">new</span> Spring(points[y, x], points[y - <span class="hljs-number">1</span>, x + <span class="hljs-number">1</span>]));<br>                <span class="hljs-comment">//抗弯折弹簧</span><br>                <span class="hljs-keyword">if</span> (x + <span class="hljs-number">2</span> &lt; size)<br>                    allSprings.Add(<span class="hljs-keyword">new</span> Spring(points[y, x], points[y, x + <span class="hljs-number">2</span>]));<br>                <span class="hljs-keyword">if</span> (y + <span class="hljs-number">2</span> &lt; size)<br>                    allSprings.Add(<span class="hljs-keyword">new</span> Spring(points[y, x], points[y + <span class="hljs-number">2</span>, x]));<br>            &#125;<br>        &#125;<br><br><br>        <span class="hljs-keyword">foreach</span> (Spring spring <span class="hljs-keyword">in</span> allSprings)<br>        &#123;<br>            spring.length = Vector3.Distance(spring.pointA.position, spring.pointB.position);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-built_in">float</span> <span class="hljs-title">GetOneMinusDrag</span>(<span class="hljs-params">Transform transform</span>)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> transform == Selection.activeTransform ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span> - drag;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Update</span>()</span><br>    &#123;<br>        <span class="hljs-keyword">foreach</span> (Transform point <span class="hljs-keyword">in</span> allPoints)<br>        &#123;<br>            <span class="hljs-comment">//Verlet积分法（但消去了对加速度的计算，完全基于位移控制质点）</span><br>            <span class="hljs-comment">//由于直接基于位移修改和计算，后续的每次力计算都会自动考虑力的相互作用，因此弹簧将自带阻力。</span><br>            <span class="hljs-comment">//由于直接修改位置实现速度更改，质点积分便不能放在末尾更新，否则会步进两次。</span><br>            Vector3 position = point.position;<br>            point.position += (position - lastPositions[point]) * GetOneMinusDrag(point);<br>            lastPositions[point] = position;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (useGravity)<br>            <span class="hljs-keyword">foreach</span> (Transform point <span class="hljs-keyword">in</span> allPoints)<br>            &#123;<br>                <span class="hljs-keyword">const</span> <span class="hljs-built_in">float</span> Gravity = <span class="hljs-number">0.02f</span> * <span class="hljs-number">0.02f</span> * <span class="hljs-number">-9.81f</span>;<br>                point.position += <span class="hljs-keyword">new</span> Vector3(<span class="hljs-number">0</span>, Gravity, <span class="hljs-number">0</span>) * GetOneMinusDrag(point);<br>            &#125;<br><br>        <span class="hljs-keyword">foreach</span> (Spring spring <span class="hljs-keyword">in</span> allSprings)<br>        &#123;<br>            Transform pointA = spring.pointA;<br>            Transform pointB = spring.pointB;<br><br>            <span class="hljs-comment">//使用质点结算了当前速度和力后的位置信息来计算参数（这里力始终直接施加在位移上），这种类似半隐式欧拉的计算方法可以提高模拟稳定性，</span><br>            <span class="hljs-comment">//因为它能考虑到与当前其他力的相互作用，从而能实现一定的弹簧阻力，否则得额外实现弹簧阻力。</span><br>            <span class="hljs-comment">//但这种阻力也有缺点，它会使质点不再遵循能量守恒（释放的弹力会因其他力变化，而不是基于距离的定值），在单摆实验中无法回到相同的高度，而其他实现阻力的方式没有这种问题。</span><br>            Vector3 positionA = pointA.position;<br>            Vector3 positionB = pointB.position;<br>            Vector3 vector = positionA - positionB;<br>            <span class="hljs-comment">// 下面这条注释使用的质点位置是当前帧尚未结算过速度或其他力的位置，也就是说不会受其他力影响，只基于瞬时距离计算，虽然结果不稳定，需要额外配备阻力功能，但它遵循能量守恒定律，可以用单摆做实验</span><br>            <span class="hljs-comment">// Vector3 vector = particleA.lastPosition - particleB.lastPosition;</span><br>            <span class="hljs-keyword">if</span> (vector == Vector3.zero) vector = <span class="hljs-keyword">new</span> Vector3(<span class="hljs-number">0</span>, <span class="hljs-built_in">float</span>.Epsilon, <span class="hljs-number">0</span>);<br>            <span class="hljs-built_in">float</span> distance = vector.magnitude;<br>            <span class="hljs-comment">//胡克定律：弹力=弹力系数*距离*方向</span><br>            <span class="hljs-built_in">float</span> tendency = distance - spring.length; <span class="hljs-comment">//距离（可为负数来使方向取反）</span><br>            Vector3 direction = vector / distance; <span class="hljs-comment">//方向</span><br>            <span class="hljs-comment">//弹力系数实际是有上下限的，若当前质点基于约束位置距离为a，则最高不能超过2a，因为超过后每次迭代，离约束点的位置只会越来越远。</span><br>            <span class="hljs-comment">//故此处的弹力系数是基于位移的，范围为[0,2]，代表的就是上述的范围限制，因此此处得到的“弹力”实际是位移。</span><br>            <span class="hljs-comment">//当弹力系数为1时，得到的位移后顶点是最佳约束点，因为它完美按照了弹簧的距离要求进行位移。</span><br>            <span class="hljs-comment">//若非完美约束点，那最远也不能超过最佳约束点1倍距离，因为大于1后每次迭代只会越来越远，最终弹簧将崩溃。</span><br>            <span class="hljs-comment">//考虑添加力后将累计速度，而速度也会产生位移，除非有足以抵消的阻力（包括半隐式欧拉积分法导致的阻力），否则弹力系数不能超过1。</span><br>            Vector3 move = elasticity * tendency * direction;<br><br>            <span class="hljs-built_in">float</span> moveWeight;<br>            <span class="hljs-keyword">if</span> (ropeOrCloth &amp;&amp; drag &gt; <span class="hljs-number">0.99f</span>)<br>            &#123;<br>                <span class="hljs-comment">//模拟钢绳</span><br>                moveWeight = <span class="hljs-number">1</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                <span class="hljs-comment">//弹簧会使两端质点一起位移来满足约束要求。要考虑两端质点阻力不同，分配不同的位移权重，</span><br>                <span class="hljs-comment">//以便在阻力影响下也能正确达到约束位置，当然最主要的还是为了防止固定点被拉拽。</span><br>                <span class="hljs-built_in">float</span> oneMinusDragB = GetOneMinusDrag(pointB);<br>                <span class="hljs-built_in">float</span> oneMinusDragA = GetOneMinusDrag(pointA);<br>                moveWeight = Mathf.Approximately(oneMinusDragB + oneMinusDragA, <span class="hljs-number">0.0f</span>) ? <span class="hljs-number">0.5f</span> : oneMinusDragB / (oneMinusDragB + oneMinusDragA);<br>            &#125;<br>            pointB.position += moveWeight * move;<br>            pointA.position += (<span class="hljs-number">1</span> - moveWeight) * -move;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnDrawGizmos</span>()</span><br>    &#123;<br>        <span class="hljs-keyword">if</span> (allSprings != <span class="hljs-literal">null</span>)<br>            <span class="hljs-keyword">foreach</span> (Spring spring <span class="hljs-keyword">in</span> allSprings)<br>            &#123;<br>                Gizmos.DrawLine(spring.pointA.position, spring.pointB.position);<br>            &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/" class="category-chain-item">个人研究</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E8%B4%A8%E7%82%B9%E5%BC%B9%E7%B0%A7/" class="category-chain-item">质点弹簧</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【质点弹簧】Unity 版示例</div>
+      <div>https://bdffzi-blog.pages.dev/posts/1515214792.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年6月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/1989047768.html" title="【数学】极限">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【数学】极限</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/2109274119.html" title="【质点弹簧】如何做一个不会崩溃的质点弹簧">
+                        <span class="hidden-mobile">【质点弹簧】如何做一个不会崩溃的质点弹簧</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

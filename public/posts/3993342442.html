@@ -1,0 +1,1614 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【软件开发】Git 概念与常用命令 Git 概念 存储方式 Git 是分布式存储，每一个 clone 下来的仓库都可以看成独立的个体，只是 Git 有提供同步功能，因此 Git 支持离线使用，因为本质上本地和云端是两个仓库。 仓库构成 提交（commit） 提交是存储文件的最基本元素，记录了每次对文件的修改信息，同时也是仓库文件状态判断的基点。多个提交对文件的修改可能是顺序进行也可能是同步进行，同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【软件开发】Git 概念与常用命令">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/3993342442.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="【软件开发】Git 概念与常用命令 Git 概念 存储方式 Git 是分布式存储，每一个 clone 下来的仓库都可以看成独立的个体，只是 Git 有提供同步功能，因此 Git 支持离线使用，因为本质上本地和云端是两个仓库。 仓库构成 提交（commit） 提交是存储文件的最基本元素，记录了每次对文件的修改信息，同时也是仓库文件状态判断的基点。多个提交对文件的修改可能是顺序进行也可能是同步进行，同">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-14T03:43:00.000Z">
+<meta property="article:modified_time" content="2025-09-25T16:36:00.323Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>【软件开发】Git 概念与常用命令 - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【软件开发】Git 概念与常用命令"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-14 11:43" pubdate>
+          2024年1月14日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="个人研究"
+        id="heading-4879b307f0d04954985d8d0f3d54b8fa" role="tab" data-toggle="collapse" href="#collapse-4879b307f0d04954985d8d0f3d54b8fa"
+        aria-expanded="true"
+      >
+        个人研究
+        <span class="list-group-count">(49)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-4879b307f0d04954985d8d0f3d54b8fa"
+           role="tabpanel" aria-labelledby="heading-4879b307f0d04954985d8d0f3d54b8fa">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="人工智能"
+        id="heading-f068f0dad74789bee210163c40a4b50d" role="tab" data-toggle="collapse" href="#collapse-f068f0dad74789bee210163c40a4b50d"
+        aria-expanded="false"
+      >
+        人工智能
+        <span class="list-group-count">(7)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-f068f0dad74789bee210163c40a4b50d"
+           role="tabpanel" aria-labelledby="heading-f068f0dad74789bee210163c40a4b50d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2271595116.html" title="【人工智能】 模型优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】 模型优化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2647627493.html" title="【人工智能】分类模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】分类模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3185489077.html" title="【人工智能】回归模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】回归模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1895473833.html" title="【人工智能】机器学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】机器学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/174149413.html" title="【人工智能】深度学习"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】深度学习</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3849948103.html" title="【人工智能】特征处理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】特征处理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3501776197.html" title="【人工智能】训练模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【人工智能】训练模型</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="博客搭建"
+        id="heading-5015cfdc68085d8b3157455484121939" role="tab" data-toggle="collapse" href="#collapse-5015cfdc68085d8b3157455484121939"
+        aria-expanded="false"
+      >
+        博客搭建
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-5015cfdc68085d8b3157455484121939"
+           role="tabpanel" aria-labelledby="heading-5015cfdc68085d8b3157455484121939">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3410375722.html" title="【博客搭建】Hexo 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【博客搭建】Hexo 使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1708025467.html" title="【博客搭建】Latex 数学书写笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【博客搭建】Latex 数学书写笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="技术美术"
+        id="heading-5522ec16884806604bdf90feaec75ee5" role="tab" data-toggle="collapse" href="#collapse-5522ec16884806604bdf90feaec75ee5"
+        aria-expanded="false"
+      >
+        技术美术
+        <span class="list-group-count">(26)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-5522ec16884806604bdf90feaec75ee5"
+           role="tabpanel" aria-labelledby="heading-5522ec16884806604bdf90feaec75ee5">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3740891544.html" title="【技术美术】不同物体的渲染处理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】不同物体的渲染处理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/596080998.html" title="【技术美术】程序化噪波实现"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】程序化噪波实现</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/514348372.html" title="【技术美术】视差贴图"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】视差贴图</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="光照模拟"
+        id="heading-07d8d0fb2c11b00108d3a293b579230b" role="tab" data-toggle="collapse" href="#collapse-07d8d0fb2c11b00108d3a293b579230b"
+        aria-expanded="false"
+      >
+        光照模拟
+        <span class="list-group-count">(10)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-07d8d0fb2c11b00108d3a293b579230b"
+           role="tabpanel" aria-labelledby="heading-07d8d0fb2c11b00108d3a293b579230b">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2656087290.html" title="【技术美术】光照技术概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】光照技术概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/6523980.html" title="【技术美术】光照模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】光照模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3.html" title="【技术美术】卡通风格渲染"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】卡通风格渲染</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2812972532.html" title="【技术美术】双向反射分布函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】双向反射分布函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3105478131.html" title="【技术美术】双向透射分布函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】双向透射分布函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2440912354.html" title="【技术美术】各项异性光照"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】各项异性光照</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4246974515.html" title="【技术美术】次表面散射"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】次表面散射</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基于物理的渲染"
+        id="heading-70338facc89fd700a98e78d1a5f7f53b" role="tab" data-toggle="collapse" href="#collapse-70338facc89fd700a98e78d1a5f7f53b"
+        aria-expanded="false"
+      >
+        基于物理的渲染
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-70338facc89fd700a98e78d1a5f7f53b"
+           role="tabpanel" aria-labelledby="heading-70338facc89fd700a98e78d1a5f7f53b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/238111848.html" title="【基于物理的渲染（1）】反射率方程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【基于物理的渲染（1）】反射率方程</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1881413206.html" title="【基于物理的渲染（2）】Cook-Torrance"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【基于物理的渲染（2）】Cook-Torrance</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1910260985.html" title="【基于物理的渲染（3）】基于图片的渲染"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【基于物理的渲染（3）】基于图片的渲染</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染管线"
+        id="heading-a0975e312ca4746045ba2e028a24b7ab" role="tab" data-toggle="collapse" href="#collapse-a0975e312ca4746045ba2e028a24b7ab"
+        aria-expanded="false"
+      >
+        渲染管线
+        <span class="list-group-count">(4)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a0975e312ca4746045ba2e028a24b7ab"
+           role="tabpanel" aria-labelledby="heading-a0975e312ca4746045ba2e028a24b7ab">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/330516235.html" title="【技术美术】D3D中GPU渲染管线流程详解"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】D3D中GPU渲染管线流程详解</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1671240167.html" title="【技术美术】GPU渲染管线概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】GPU渲染管线概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3174050793.html" title="【技术美术】GPU绘制画面的基本原理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】GPU绘制画面的基本原理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3966975174.html" title="【技术美术】引擎渲染管线概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】引擎渲染管线概述</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染资源"
+        id="heading-1f5d181b3b680d7df37b568951e86182" role="tab" data-toggle="collapse" href="#collapse-1f5d181b3b680d7df37b568951e86182"
+        aria-expanded="false"
+      >
+        渲染资源
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-1f5d181b3b680d7df37b568951e86182"
+           role="tabpanel" aria-labelledby="heading-1f5d181b3b680d7df37b568951e86182">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3146662037.html" title="【技术美术】原始模型文件的内容"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】原始模型文件的内容</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3631212322.html" title="【技术美术】纹理技术概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】纹理技术概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3617523748.html" title="【技术美术】顶点技术概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】顶点技术概述</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="空间矩阵"
+        id="heading-cbe14df0b649f6e7c5f15b08dd54dfa3" role="tab" data-toggle="collapse" href="#collapse-cbe14df0b649f6e7c5f15b08dd54dfa3"
+        aria-expanded="false"
+      >
+        空间矩阵
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-cbe14df0b649f6e7c5f15b08dd54dfa3"
+           role="tabpanel" aria-labelledby="heading-cbe14df0b649f6e7c5f15b08dd54dfa3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1097932020.html" title="【技术美术】TRS矩阵"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】TRS矩阵</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4243868598.html" title="【技术美术】个人引擎内的投影矩阵"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】个人引擎内的投影矩阵</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3126809525.html" title="【技术美术】切线空间"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】切线空间</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3964607565.html" title="【技术美术】平面反射"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】平面反射</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2261641482.html" title="【技术美术】投影矩阵和线性深度推导"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】投影矩阵和线性深度推导</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495942937.html" title="【技术美术】渲染空间变换概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】渲染空间变换概述</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="质点弹簧"
+        id="heading-76e96b096533f8785d2c6beda92f167e" role="tab" data-toggle="collapse" href="#collapse-76e96b096533f8785d2c6beda92f167e"
+        aria-expanded="false"
+      >
+        质点弹簧
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-76e96b096533f8785d2c6beda92f167e"
+           role="tabpanel" aria-labelledby="heading-76e96b096533f8785d2c6beda92f167e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1515214792.html" title="【质点弹簧】Unity 版示例"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【质点弹簧】Unity 版示例</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2109274119.html" title="【质点弹簧】如何做一个不会崩溃的质点弹簧"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【质点弹簧】如何做一个不会崩溃的质点弹簧</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/95218190.html" title="【质点弹簧】质点位置积分"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【质点弹簧】质点位置积分</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="软件开发"
+        id="heading-a41622d744ac9c55f5266dcc90ac7599" role="tab" data-toggle="collapse" href="#collapse-a41622d744ac9c55f5266dcc90ac7599"
+        aria-expanded="true"
+      >
+        软件开发
+        <span class="list-group-count">(11)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-a41622d744ac9c55f5266dcc90ac7599"
+           role="tabpanel" aria-labelledby="heading-a41622d744ac9c55f5266dcc90ac7599">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2308421870.html" title="【软件开发】C++使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】C++使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3536003429.html" title="【软件开发】C++性能测试"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】C++性能测试</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2795034225.html" title="【软件开发】CMake 学习笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】CMake 学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1794241118.html" title="【软件开发】Doxygen 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Doxygen 使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3993342442.html" title="【软件开发】Git 概念与常用命令"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">【软件开发】Git 概念与常用命令</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1922506091.html" title="【软件开发】Glob 通配符"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Glob 通配符</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/987487183.html" title="【软件开发】Windows 开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Windows 开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4146197106.html" title="【软件开发】vcpkg 学习笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】vcpkg 学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2533997342.html" title="【软件开发】如何做出好的项目"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】如何做出好的项目</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2373330896.html" title="【软件开发】正则表达式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】正则表达式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2553791405.html" title="【软件开发】设计模式个人解读"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】设计模式个人解读</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【软件开发】Git 概念与常用命令</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年9月26日 凌晨
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>【软件开发】Git 概念与常用命令</h1>
+<h2 id="Git-概念">Git 概念</h2>
+<h3 id="存储方式">存储方式</h3>
+<p>Git 是分布式存储，每一个 clone 下来的仓库都可以看成独立的个体，只是 Git 有提供同步功能，因此 Git 支持离线使用，因为本质上本地和云端是两个仓库。</p>
+<h3 id="仓库构成">仓库构成</h3>
+<h4 id="提交（commit）">提交（commit）</h4>
+<p>提交是存储文件的最基本元素，记录了每次对文件的修改信息，同时也是仓库文件状态判断的基点。多个提交对文件的修改可能是顺序进行也可能是同步进行，同步的结果往往会导致冲突。</p>
+<h4 id="分支（branch）">分支（branch）</h4>
+<p>分支引用了提交并将其串成一条时间线，外界也由此得以查看提交。不同分支引用的时间线可能重叠也可能分离，形成一个树状结构，但最终分支都是要合并的，这也意味着所有提交最终都会形成一条唯一的时间线。</p>
+<h4 id="子模块（submodule）">子模块（submodule）</h4>
+<p>子模块是对其他仓库中的引用，具体而言是引用了分支-提交，对本仓库而言它也是一种受版本控制的文件，文件中存放着引用信息，所以和正常文件一样，修改时要添加到暂存区，删除时也要从仓库区中移除。</p>
+<p>子模块所引用的分支版本信息可以从.git/index 文件中找到。</p>
+<h4 id="标签（tag）">标签（tag）</h4>
+<p>标签实质是给提交起一个别名从而方便识别，这是一个可选功能，通常人们会借此把一些关键的提交打上标签，如记录版本号和发布信息。</p>
+<h4 id="远端（remote）">远端（remote）</h4>
+<p>远端是用于同步的其他仓库，以便备份或多人协助，因为是分布式存储，每个仓库都是独立的个体，所以不提供远端也是可以的。</p>
+<h3 id="工作区与暂存区">工作区与暂存区</h3>
+<p>这两个区域是本地工作用仓库独有的内容，在云端的裸仓库中没有这两者的存在。这主要是为了安全和便于工作使用的临时区域，每一次的文件修改都要按顺序提交到每个区域，当仓库指向的提交变更时它们便会被重置。</p>
+<ul>
+<li>工作区：用户编写代码的地方，文件资源管理器能直接看到的部分。</li>
+<li>暂存区：提交代码前必须先将工作区的所有的文件添加到暂存区。</li>
+<li>仓库区：将暂存区的代码修改变成提交，真正的存储到仓库中。</li>
+</ul>
+<h2 id="常用命令">常用命令</h2>
+<h3 id="通用项">通用项</h3>
+<h4 id="选项">选项</h4>
+<ul>
+<li>HEAD：表示最新的一次提交。</li>
+<li>HEAD~1：表示最新提交的前一次提交。</li>
+<li>-h：任何命令加该选项，可以快速查看使用方式。</li>
+<li>–help：任何命令加该选项，可以查看命令的详细手册。</li>
+</ul>
+<h4 id="规则">规则</h4>
+<ul>
+<li>
+<p>commit、tag、branch 互换：</p>
+<p>tag 是 commit 的别名，两者等价。使用 branch 则会使用其 HEAD。</p>
+</li>
+<li>
+<p>file 通配：</p>
+<p>file 支持 glob 通配符，也可用“.”表示全部可处理文件。</p>
+</li>
+</ul>
+<h3 id="仓库初始化和配置">仓库初始化和配置</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init [--bare] <span class="hljs-comment">#在当前文件夹创建一个空仓库</span><br>git <span class="hljs-built_in">clone</span> --recursive &lt;url&gt; <span class="hljs-comment">#从远端克隆一个仓库到当前目录</span><br><br><br>git config &lt;name&gt; <span class="hljs-comment">#查看仓库的指定项配置</span><br>git config [--global] &lt;name&gt; &lt;value&gt; <span class="hljs-comment">#添加或修改[全局]仓库配置</span><br>git config [--global] --<span class="hljs-built_in">unset</span> &lt;name&gt; <span class="hljs-comment">#删除[全局]仓库配置</span><br>git config [--<span class="hljs-built_in">local</span>] --list <span class="hljs-comment">#查看[本地]仓库所有配置</span><br></code></pre></td></tr></table></figure>
+<h3 id="仓库信息查看">仓库信息查看</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch -a <span class="hljs-comment">#查看仓库中的所有分支</span><br>git submodule <span class="hljs-comment">#查看当前分支的子模块</span><br>git <span class="hljs-built_in">log</span> <span class="hljs-comment">#查看当前分支的所有提交记录</span><br>git tag <span class="hljs-comment">#查看当前仓库所有标签</span><br>git status <span class="hljs-comment">#查看存储区状态</span><br>git diff <span class="hljs-comment">#查看文件差异</span><br>git reflog <span class="hljs-comment">#查看当前仓库操作记录（可用于还原reset）</span><br></code></pre></td></tr></table></figure>
+<h3 id="存储区处理">存储区处理</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">git ls-files [--cached] <span class="hljs-comment">#查看工作区[暂存区]文件</span><br><br>git add &lt;file&gt; <span class="hljs-comment">#提交工作区文件到暂存区</span><br>git <span class="hljs-built_in">rm</span> [--cached] &lt;file&gt;... <span class="hljs-comment">#删除工作区[暂存区]文件</span><br>git restore [--staged] &lt;file&gt; <span class="hljs-comment">#复原工作区[暂存区]文件</span><br>git commit -m <span class="hljs-string">&#x27;&lt;message&gt;&#x27;</span> <span class="hljs-comment">#提交暂存区文件到仓库区</span><br><br>git stash <span class="hljs-comment">#暂存工作区修改，使工作区看起来干净了，从而安全执行切换分支等命令</span><br>git stash pop <span class="hljs-comment">#取出暂存的工作区修改</span><br><br>git reset [--hard] &lt;commit&gt; <span class="hljs-comment">#将当前分支[包含工作区]重置到某次提交的状态</span><br></code></pre></td></tr></table></figure>
+<h3 id="分支处理">分支处理</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch -a <span class="hljs-comment">#查看所有分支（包括远端）</span><br>git branch &lt;new-branch&gt; <span class="hljs-comment">#创建一个基于当前分支最新提交的新分支</span><br>git branch &lt;new-branch&gt; &lt;commit&gt; <span class="hljs-comment">#创建一个基于目标提交的新分支</span><br>git branch -m &lt;new-name&gt; <span class="hljs-comment">#重命名当前分支</span><br>git branch -d &lt;branch&gt; <span class="hljs-comment">#删除目标分支</span><br>git branch -u &lt;up-branch&gt; &lt;branch&gt; <span class="hljs-comment">#设置上流分支</span><br><br>git checkout -b &lt;new-branch&gt; &lt;branch&gt; <span class="hljs-comment">#创建并切换到一个基于目标分支创建的新分支</span><br>git checkout --orphan temp <span class="hljs-comment">#保持工作区不变，创建并切换到一个空分支，</span><br>git switch -c &lt;new-branch&gt; &lt;commit&gt; <span class="hljs-comment">#创建并切换到基于某次提交的新分支</span><br>git switch &lt;branch&gt; <span class="hljs-comment">#切换到目标分支</span><br>git switch --detach &lt;commit&gt; <span class="hljs-comment">#创建并切换到以某次提交为头的临时匿名分支</span><br><br>git rebase -i &lt;commit&gt; <span class="hljs-comment">#进入提交融并功能，可融并指定提交之后的所有提交（使用空融并配置可以退出该功能）</span><br>git rebase &lt;branch&gt; <span class="hljs-comment">#将目标分支覆盖到当前分支</span><br>git merge &lt;branch&gt; <span class="hljs-comment">#将目标分支合并到当前分支</span><br></code></pre></td></tr></table></figure>
+<h3 id="子模块处理">子模块处理</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">git submodule add &lt;url&gt; &lt;path&gt; <span class="hljs-comment">#添加一个子模块到目标路径</span><br>git submodule init <span class="hljs-comment">#初始化子模块，将子模块信息填入config中</span><br>git submodule update <span class="hljs-comment">#检出父项目期望版本的子模块内容，使用前需确保子模块已初始化</span><br>git submodule status <span class="hljs-comment">#查看子模块的状态，例如是否有修改后未提交的内容</span><br>git submodule set-url &lt;path&gt; &lt;url&gt; <span class="hljs-comment">#重新设置子模块的源仓库地址</span><br>git submodule deinit &lt;path&gt; <span class="hljs-comment">#移除子模块，恢复到未初始化的状态（这不是删除，彻底删除见后续的“常用操作”）</span><br></code></pre></td></tr></table></figure>
+<h3 id="标签处理">标签处理</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag -f &lt;tagname&gt; [&lt;commit&gt;] <span class="hljs-comment">#给当前[指定]提交打上标签</span><br>git tag -d &lt;tagname&gt; <span class="hljs-comment">#删除指定标签</span><br></code></pre></td></tr></table></figure>
+<h3 id="远端处理">远端处理</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote <span class="hljs-comment">#查看当前所有的远端仓库</span><br>git remote show &lt;name&gt; <span class="hljs-comment">#查看指定远端仓库的具体信息，包括pull、push的目标设置</span><br>git remote add &lt;name&gt; &lt;url&gt; <span class="hljs-comment">#添加一个远端仓库</span><br>git remote rename &lt;name&gt; &lt;new-name&gt; <span class="hljs-comment">#重命名远端仓库</span><br>git remote remove &lt;name&gt; &lt;new-name&gt; <span class="hljs-comment">#删除远端仓库</span><br>git remote set-url &lt;name&gt; &lt;url&gt; <span class="hljs-comment">#修改远端仓库地址</span><br>git remote set-url &#123;--add|--delete&#125; &lt;name&gt; &lt;newurl&gt; <span class="hljs-comment">#为远端仓库额外添加或删除地址，借此实现多端提交。</span><br>git remote set-head &lt;name&gt; &#123;-a|&lt;branch&gt;&#125; <span class="hljs-comment">#修改远程默认分支为&#123;自动识别|指定&#125;的分支</span><br>git remote prune &lt;name&gt; <span class="hljs-comment">#删除远端仓库已不存在但本地残留的分支</span><br><br>git fetch <span class="hljs-comment">#获取所有远端分支</span><br>git pull <span class="hljs-comment">#获取并合并远端分支到当前状态，等同于 fetch + merge</span><br>git push [--force] <span class="hljs-comment">#将当前本地分支状态[强制]推送到远端分支</span><br>git push &lt;remote&gt; -d &lt;branch&gt; <span class="hljs-comment">#删除目标远程上的分支</span><br></code></pre></td></tr></table></figure>
+<h2 id="常用操作">常用操作</h2>
+<h3 id="处理网络代理">处理网络代理</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 添加网络代理，url例如http://localhost:10809，具体根据不同的代理软件可能有所不同。</span><br>git config --global http.proxy &lt;url&gt;<br>git config --global https.proxy &lt;url&gt;<br><span class="hljs-comment"># 清除网络代理</span><br>git config --global --<span class="hljs-built_in">unset</span> http.proxy<br>git config --global --<span class="hljs-built_in">unset</span> https.proxy<br></code></pre></td></tr></table></figure>
+<h3 id="彻底删除子模块">彻底删除子模块</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git submodule deinit &lt;path&gt; <span class="hljs-comment">#将子模块转为未初始化状态</span><br>git <span class="hljs-built_in">rm</span> &lt;path&gt; <span class="hljs-comment">#在子模块未初始化时调用，能彻底删除子模块引用，且自动修改.gitmodules文件</span><br><span class="hljs-built_in">rm</span> -rf .git/modules/&lt;path&gt; <span class="hljs-comment">#删除失效的子模块仓库</span><br></code></pre></td></tr></table></figure>
+<h3 id="撤回上次提交版本">撤回上次提交版本</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset HEAD~1 <span class="hljs-comment">#将仓库区和暂存区撤回到上次提交之前的状态</span><br>git push --force <span class="hljs-comment">#强制覆盖远端分支以丢弃上次提交版本</span><br></code></pre></td></tr></table></figure>
+<h3 id="清除所有历史记录">清除所有历史记录</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout --orphan temp <span class="hljs-comment">#创建并切换到一个新的空分支，保留工作区文件</span><br>git branch -D &lt;branch&gt; <span class="hljs-comment">#删除旧分支</span><br>git branch -m &lt;branch&gt; <span class="hljs-comment">#空分支继续使用旧分支的名称</span><br>git add . <span class="hljs-comment">#提交当前所有文件到空分支暂存区</span><br>git commit -m <span class="hljs-string">&#x27;-&#x27;</span> <span class="hljs-comment">#提交暂存区文件作为初始提交</span><br>git push --force <span class="hljs-comment">#强制覆盖到远程仓库，分支记录将重新开始</span><br></code></pre></td></tr></table></figure>
+<h3 id="清除工作区中所有未被跟踪的文件">清除工作区中所有未被跟踪的文件</h3>
+<p>无法撤销，用前一定要备份！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git clean -dfx <span class="hljs-comment">#清除工作区中所有未被跟踪的文件</span><br></code></pre></td></tr></table></figure>
+<h3 id="Unity项目默认忽略文件">Unity项目默认忽略文件</h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">/*/*<br>/*.*<br>!/Assets/*<br>!/Packages/*<br>!/ProjectSettings/*<br>!/.gitignore<br></code></pre></td></tr></table></figure>
+<h2 id="gitignore-文件">gitignore 文件</h2>
+<h3 id="书写格式">书写格式</h3>
+<ul>
+<li>
+<p>每行一个忽略项。</p>
+</li>
+<li>
+<p>支持 glob 通配符。</p>
+</li>
+<li>
+<p>限定忽略项类型：</p>
+<ul>
+<li>文件或目录：只填完全名称，如<code>test</code>、<code>text.txt</code>。</li>
+<li>仅目录：添加<code>/</code>后缀，如<code>test/</code>。</li>
+</ul>
+</li>
+<li>
+<p>限定忽略项位置：</p>
+<ul>
+<li>从当前目录匹配：带<code>/</code>前缀，如<code>/test</code>。</li>
+<li>从任意目录匹配：不带任何前缀，如<code>test</code>。</li>
+</ul>
+</li>
+<li>
+<p>添加<code>!</code>前缀取消忽略，如<code>!test.txt</code>。</p>
+<p>注意！如果是整个目录被忽略，那该目录的子目录无法取消忽略。解决方法也很简单，不要直接忽略目录，而是用通配符忽略其中的文件。例如实现忽略除指定文件夹外的其他文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">/*/* <span class="hljs-comment"># 忽略当前目录所有子目录文件</span><br>/*.* <span class="hljs-comment"># 忽略当前目录所有文件</span><br>!/CMakeLists.txt <span class="hljs-comment"># 取消忽略文件</span><br>!/Assets/* <span class="hljs-comment"># 取消忽略子目录文件</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="取消跟踪">取消跟踪</h3>
+<p>gitignore 只能忽略未跟踪文件，如果文件已被跟踪需先从仓库中删去。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">rm</span> --cached &lt;file&gt; <span class="hljs-comment"># 删除暂存区中的某文件</span><br></code></pre></td></tr></table></figure>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/156615362">Git Submodule 命令与理解</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/139321091">Git 合并多个提交的正确方式</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/chinese/news/gitignore-file-how-to-ignore-files-and-folders-in-git/">如何在 Git 中忽略文件和文件夹</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/" class="category-chain-item">个人研究</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" class="category-chain-item">软件开发</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【软件开发】Git 概念与常用命令</div>
+      <div>https://bdffzi-blog.pages.dev/posts/3993342442.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/3454987331.html" title="【Manim】空间与变换笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【Manim】空间与变换笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/2553791405.html" title="【软件开发】设计模式个人解读">
+                        <span class="hidden-mobile">【软件开发】设计模式个人解读</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
