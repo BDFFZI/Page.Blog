@@ -10,7 +10,7 @@ categories:
 
 Doxygen 是通过代码注释生成文档的事实标准，借用该工具可以将文档内容与代码写在一起方便维护。
 
-https://github.com/doxygen/doxygen
+<https://github.com/doxygen/doxygen>
 
 ## 注释语法
 
@@ -29,15 +29,19 @@ https://github.com/doxygen/doxygen
 - 单行注释
 
   - 放在注释目标的上面
+
     ```c
     //! 注释内容
     ```
+
   - 放在注释目标的后面
+
     ```c
     //!< 注释内容
     ```
 
 - 文件注释（需放在文件开头）
+
   ```c
   /*! @file
   注释内容

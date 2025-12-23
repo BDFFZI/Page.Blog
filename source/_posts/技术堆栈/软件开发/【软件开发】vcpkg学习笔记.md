@@ -13,7 +13,7 @@ categories:
 ## 入门
 
 入门教程请参照：  
-https://learn.microsoft.com/zh-cn/vcpkg/get_started/get-started?pivots=shell-cmd
+<https://learn.microsoft.com/zh-cn/vcpkg/get_started/get-started?pivots=shell-cmd>
 
 大概的接入流程是：
 
@@ -31,7 +31,7 @@ https://learn.microsoft.com/zh-cn/vcpkg/get_started/get-started?pivots=shell-cmd
 
 - 可以在安装目录的“vcpkg/ports”文件夹内查看。
 - 或者从在线的 github 仓库也可以：  
-   https://github.com/microsoft/vcpkg/tree/master/ports
+   <https://github.com/microsoft/vcpkg/tree/master/ports>
 
 ### 安装包
 
@@ -41,7 +41,7 @@ vcpkg 支持“经典模式”和“清单模式”两种方式安装包：
 - 清单模式，通过编辑根目录的“vcpkg.json”文件处理。
 
 推荐使用清单模式，因为这样使用更透明更清晰:  
-https://learn.microsoft.com/zh-cn/vcpkg/reference/vcpkg-json
+<https://learn.microsoft.com/zh-cn/vcpkg/reference/vcpkg-json>
 
 文件内容示例如下：
 

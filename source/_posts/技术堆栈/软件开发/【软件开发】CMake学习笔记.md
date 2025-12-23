@@ -14,11 +14,11 @@ categories:
 
 构建系统一般不是跨平台的，但 CMake 支持在不同的操作系统上生成不同的构建系统文件，通过这种包装的方式从而实现了 C++项目的跨平台。
 
-![](../../../assets/images/JiilV.png)
+![构建系统](../../../assets/images/JiilV.png)
 
 ## CMake 指令
 
-https://cmake.org/cmake/help/latest/manual/cmake.1.html
+<https://cmake.org/cmake/help/latest/manual/cmake.1.html>
 
 ```bash
 # 基于目标位置的“cmake项目”生成“构建系统项目”
@@ -264,7 +264,7 @@ set_property(SOURCE <files> PROPERTY VS_SETTINGS "ExcludedFromBuild=true")
 
 ## CMakePresets
 
-https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html
+<https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html>
 
 “CMakePresets.json”是 CMake 的配置文件，存放在项目的根目录中，用于配置一些 CMake 构建选项。
 
@@ -300,7 +300,7 @@ https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html
 - 仅添加些文件到 CMake 生成的解决方案文件夹中？
 
   无法直接支持，但可使用`add_custom_target`指令间接实现：  
-  https://stackoverflow.com/questions/20251829/is-it-possible-to-add-files-to-a-cmake-generated-solution-folder-in-visual-studi
+  <https://stackoverflow.com/questions/20251829/is-it-possible-to-add-files-to-a-cmake-generated-solution-folder-in-visual-studi>
 
 ## 参考资料
 

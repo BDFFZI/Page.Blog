@@ -20,7 +20,7 @@ Awake 被认为是一种初始化，而 Start 不是
 
 ## 创建
 
-### AddComponent | Instantiate | ...
+### AddComponent | Instantiate |
 
 #### 现象
 
