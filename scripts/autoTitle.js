@@ -10,5 +10,5 @@
   }
 
   data.title = title[1];
-  console.log(data.source + " Title found: " + title[1]);
+  // console.log(data.source + " Title found: " + title[1]);
 };

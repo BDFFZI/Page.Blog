@@ -38,6 +38,8 @@
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/image-28.png">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
   
   <title>【技术美术】光照技术概述 - BDFFZI的小屋</title>
 
@@ -1095,10 +1097,8 @@
 <li>镜射：高频清晰，能形成清晰光源画面。</li>
 </ul>
 <p>注意：这些公式仅仅是一种分类，给我们一个计算光照的骨架，所以其具体实现完全可以因人而异自由搭配。</p>
-<ul>
-<li><a href="./%E3%80%90%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF%E3%80%91%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0.md">【技术美术】双向反射分布函数</a></li>
-<li><a href="./%E3%80%90%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF%E3%80%91%E5%8F%8C%E5%90%91%E9%80%8F%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0.md">【技术美术】双向透射分布函数</a></li>
-</ul>
+<p>-<a href="/posts/2812972532/">【技术美术】双向反射分布函数</a><br>
+-<a href="/posts/3105478131/">【技术美术】双向透射分布函数</a></p>
 <h3 id="介电质全反射">介电质全反射</h3>
 <p>只要是介电质（可以简单理解成所有物体吧），那就一定会发生轻微的全反射（即光线不被反照率影响，没有经过任何吸收就全部反射），这在后续的镜射率和非涅尔效应中也会有所体现，该最低全反射率是一个常量。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float dielectricSpec = 0.04;<br></code></pre></td></tr></table></figure>
@@ -1163,8 +1163,8 @@
 <h4 id="光照贴图">光照贴图</h4>
 <p>光照贴图是通过预计算将最终的光照结果烘焙到纹理中，下次渲染时便可避免高昂的光照计算，直接使用。由于是已经计算好的，所以光照贴图某种意义上已经不是光照了，直接看成自发光就好。</p>
 <h2 id="光照模型">光照模型</h2>
-<p>光照模型是指用数学手段具体实现的完整光照计算方案，相当于是上述各种光照物理的实现和汇总，有了光照模型就可以实际的进行光照模拟计算了。</p>
-<p><a href="./%E3%80%90%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF%E3%80%91%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B.md">【技术美术】光照模型</a></p>
+<p>光照模型是指用数学手段具体实现的完整光照计算方案，相当于是上述各种光照物理的实现和汇总，有了光照模型就可以实际的进行光照模拟计算了。<br>
+<a href="/posts/6523980/">【技术美术】光照模型</a></p>
 <h3 id="PBR光照模型">PBR光照模型</h3>
 <p>PBR 光照模型是市面上最主流的光照模型，同时也是引擎默认的光照模型，出于兼容性的缘故，基本所有的其他光照模型都是以其为基础进行修改的，因此 PBR 是必须要学会的一个光照模型。</p>
 <p>PBR 模型的具体实现各式各样，导致每家渲染引擎都有着不同的 PBR 效果，因为 PBR 本质还是一种经验模型，只是其经验来源更加严谨完整。不过无论是哪一家的 PBR，基本上都是上文那些各种光学现象的汇总。</p>
@@ -1457,6 +1457,32 @@
     </div>
   
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
   
 </div>
 
@@ -1601,6 +1627,8 @@
   <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

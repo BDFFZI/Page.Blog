@@ -36,6 +36,8 @@
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/image-25.png">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
   
   <title>【技术美术】渲染空间变换概述 - BDFFZI的小屋</title>
 
@@ -1024,8 +1026,8 @@
 <p>“裁剪空间”则是确实存在于图形接口的一个固定范围的方形空间，用于对应到实际的输出附件（如自定义附件或屏幕使用的附件）。<strong>在不同的图形接口中，以及根据接口使用者的设置，其空间参数各种各样</strong>。</p>
 <h3 id="物体空间">物体空间</h3>
 <p>在游戏引擎中，顶点不再是屏幕空间，而是基于物体空间的，物体空间就是以物体自身为世界原点的坐标系。因为游戏中，大部分物体是复用的，或需要实时变换的，所以建模师都是以物体为单位来建模，自然的这样建出来的模型顶点，都是以模型的原点为基点。</p>
-<p>物体空间是基于TRS矩阵实现的，利用物体的位置、旋转、缩放即可制作一个TRS矩阵：</p>
-<p><a href="./%E3%80%90%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF%E3%80%91TRS%E7%9F%A9%E9%98%B5.md">【技术美术】TRS矩阵</a></p>
+<p>物体空间是基于TRS矩阵实现的，利用物体的位置、旋转、缩放即可制作一个TRS矩阵：<br>
+<a href="/posts/1097932020/">【技术美术】TRS矩阵</a></p>
 <h3 id="世界空间">世界空间</h3>
 <p>由于模型本身的顶点是不考虑其他物体的，但物体间的交互、相对位置是存在的，因此需将其统一到一个新的空间坐标系，即“世界空间”，这样子才能批量统一的处理网格数据，并使不同物体间的数据可以互通。</p>
 <p>世界空间对应没有矩阵实现，因为世界空间是最根源的基空间，物体空间的基向量也是基于世界空间的，所以硬要说的话，世界空间等于单位矩阵。</p>
@@ -1091,7 +1093,7 @@
 <h3 id="世界到视图">世界到视图</h3>
 <p>视图空间相当于把所有世界中的物体重新以相机的坐标系来表示。如果把相机也看成物体，那该矩阵恰巧是“物体到世界”的反向操作，所以只要把矩阵求逆，另外再加上z轴翻转即可。</p>
 <h3 id="视图到剪辑">视图到剪辑</h3>
-<p><a href="./%E3%80%90%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF%E3%80%91%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5%E5%92%8C%E7%BA%BF%E6%80%A7%E6%B7%B1%E5%BA%A6%E6%8E%A8%E5%AF%BC.md">【技术美术】投影矩阵和线性深度推导</a></p>
+<p><a href="/posts/2261641482/">【技术美术】投影矩阵和线性深度推导</a></p>
 <h2 id="NDC空间兼容性">NDC空间兼容性</h2>
 <p>前文说到 NDC 空间变体很多，这在 Unity 中也是一样，因此在不同的图像接口环境下，会出现一些特殊情况：</p>
 <h3 id="z轴翻转">z轴翻转</h3>
@@ -1380,6 +1382,32 @@
     </div>
   
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
   
 </div>
 
@@ -1524,6 +1552,8 @@
   <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
