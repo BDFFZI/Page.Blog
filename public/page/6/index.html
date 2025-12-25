@@ -231,15 +231,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/4183025058.html" target="_self">
-          【Unity】优化着色器性能笔记
+        <a href="/posts/2261641482.html" target="_self">
+          【技术美术】投影矩阵和线性深度推导
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/4183025058.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2261641482.html" target="_self">
         <div>
-          【Unity】优化着色器性能笔记 https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderPerformance.html 仅执行所需的运算   去除无效计算： 例如为材质增加了基础色功能，但所有材质都只用默认的白色，那这种功能就是无效功能，可去除或借助变体功能拆分成多个着色器。   减少计算频率： 尽可能将计算放在低频率的过程中，例如
+          【技术美术】投影矩阵和线性深度推导 网络上有很多投影矩阵的推导，也有很多声称是基于 Unity 的，但和我的实测都不一致（现在看来是因为这些文章并不全面），此外有一些 Unity 本身的函数我也搞不懂它的原理，遂最终选择自行研究，总算把这些问题解决了。 现在通过这篇文章，你就可以完全搞懂 Unity 的投影矩阵是啥样，又是怎么来的。以及 Unity 逆推线性深度的函数是如何实现的。不过该文章也不是
         </div>
       </a>
 
@@ -247,8 +247,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-28 16:58" pubdate>
-              2024-04-28
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
             </time>
           </div>
         
@@ -263,30 +263,159 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E7%9D%80%E8%89%B2%E5%99%A8/" class="category-chain-item">着色器</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E7%A9%BA%E9%97%B4%E7%9F%A9%E9%98%B5/" class="category-chain-item">空间矩阵</a>
   
   
 
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/3495942937.html" target="_self">
+          【技术美术】渲染空间变换概述
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3495942937.html" target="_self">
+        <div>
+          【技术美术】渲染空间变换概述 GPU渲染管线中，我们只要知道如何在屏幕上画画就行，在一个2D坐标系上表示2D物体是很简单的。但在引擎渲染管线中，为了在屏幕上显示一个仿真的游戏世界，该任务就变成了如何将3D画面，映射到2D屏幕中。 为此人们发明了一套空间变换流程，利用多个矩阵来实现3D到2D的变换。（提示：矩阵=空间=变换，不同的术语只是从不同的角度理解而已） 渲染空间  渲染管线中的空间变换共经历
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E7%A9%BA%E9%97%B4%E7%9F%A9%E9%98%B5/" class="category-chain-item">空间矩阵</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/238111848.html" target="_self">
+          【基于物理的渲染（1）】反射率方程
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/238111848.html" target="_self">
+        <div>
+          【基于物理的渲染（1）】反射率方程 能量守恒 光是一种能量，遵循的能量守恒原则，物体表面反射光的总量总是小于等于入射光的总量。 微表面模型 微表面模型是指采用了微分的思想看待物体表面。无论表面是粗糙还是光滑，只要从足够小的尺度下观察，它们都是由一堆微小镜面构成的，因此物体表面的每一点都可以看作采用了相同的光照计算公式。因此我们在计算光照时，只需要考虑单个微表面的实现即可。 注意微表面不是一个单个具
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">光照模型</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E6%B8%B2%E6%9F%93/" class="category-chain-item">基于物理的渲染</a>
+  
   
 
   
@@ -313,15 +442,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/3863423297.html" target="_self">
-          【Unity】着色器变体笔记
+        <a href="/posts/1881413206.html" target="_self">
+          【基于物理的渲染（2）】Cook-Torrance
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3863423297.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/1881413206.html" target="_self">
         <div>
-          【Unity】着色器变体笔记 https://docs.unity.cn/2022.3/Documentation/Manual/shader-variants-and-keywords.html 着色器变体可以看成是一种增强版的静态分支功能，同时具备了静态、动态两种分支的优点，是一种非常实用的实现着色器分支的方式。 具有大量着色器变体的着色器被称作“超级着色器”，Unity 的标准着色器就是其中
+          【基于物理的渲染（2）】Cook-Torrance BRDF BRDF 直译为双向散射分布函数，是一种解释光反射强度的模型。双向散射是指其将反射光描述为由镜射光和漫射光两种。基于物理的 BRDF 说明该公式不能是传统的经验模型，而是遵循各种物理现象而设计的模型。 漫射光 漫射光是指光线射入物体内部，在内部多次反弹后返回的光，这类光容易被物体吸收，且反射的方向无序，因此反光将均匀的分布在照射区域。
         </div>
       </a>
 
@@ -329,8 +458,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-26 11:25" pubdate>
-              2024-04-26
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
             </time>
           </div>
         
@@ -345,30 +474,23 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">光照模型</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E6%B8%B2%E6%9F%93/" class="category-chain-item">基于物理的渲染</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E7%9D%80%E8%89%B2%E5%99%A8/" class="category-chain-item">着色器</a>
-  
-  
-
   
 
   
@@ -395,15 +517,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/2520479343.html" target="_self">
-          【Unity】可编程渲染管线
+        <a href="/posts/1910260985.html" target="_self">
+          【基于物理的渲染（3）】基于图片的渲染
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/2520479343.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/1910260985.html" target="_self">
         <div>
-          【Unity】可编程渲染管线 Unity 最早的内置渲染管线，其代码写死在引擎内核，仅能进行一些有限的阶段控制。因此后来 SRP（可编程渲染管线）来了，使完全由用户定义渲染管线成为现实。 SRP 是一个封装的小型 API 层，提供了从 C# 脚本调度和配置渲染命令的功能。Unity 会将这些命令传递给低级图形框架，后者随后将指令发送给图形 API。 SRP 的组成部分 渲染管线实例和渲染管线资源
+          【基于物理的渲染（3）】基于图片的渲染 上述 CookTorrance 公式中还缺少环境光的处理，在 PBR 中环境光是用 IBL 实现的。 IBL 中由于光来自一个完整的球面，因此需要对球面积分计算，但这样工作量太大了。考虑到物体表面受到的环境光不会改变，因此可以提前预处理，将部分光照提前计算存放到环境贴图中。因此对于间接光，不能直接使用直接光的反射率方程。 在Unity中：预计算的漫射光使用S
         </div>
       </a>
 
@@ -411,8 +533,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-31 17:31" pubdate>
-              2024-05-31
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
             </time>
           </div>
         
@@ -427,30 +549,23 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">光照模型</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E6%B8%B2%E6%9F%93/" class="category-chain-item">基于物理的渲染</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/" class="category-chain-item">渲染管线</a>
-  
-  
-
   
 
   
@@ -477,15 +592,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/3793607597.html" target="_self">
-          【Unity】PassCode 语法笔记
+        <a href="/posts/1515214792.html" target="_self">
+          【质点弹簧】Unity 版示例
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3793607597.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/1515214792.html" target="_self">
         <div>
-          【Unity】PassCode 语法笔记 https://docs.unity.cn/cn/2022.3/Manual/SL-ShaderPrograms.html PassCode 区域存放实际的渲染代码，目前支持 3 种写法。   固定函数着色器（过时） https://docs.unity.cn/cn/2019.4/Manual/ShaderTut1.html 一个早期旧版着色器，使用内置的
+          【质点弹簧】Unity 版示例 该Demo实现自该教程：【质点弹簧】如何做一个不会崩溃的质点弹簧 急速搭建的 Unity 版本的质点弹簧 Demo，不要在意帧率，这个 Demo 没有做任何优化。整个 Demo 就一个文件，直接在 Unity 创建里创建一个名为“MassSpring”的空脚本将下面代码替换进去，然后随便拖到一个场景物体上即可。 123456789101112131415161718
         </div>
       </a>
 
@@ -493,8 +608,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-26 11:25" pubdate>
-              2024-04-26
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
             </time>
           </div>
         
@@ -509,30 +624,173 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E4%BB%BF%E7%9C%9F%E6%A8%A1%E6%8B%9F/" class="category-chain-item">仿真模拟</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E7%9D%80%E8%89%B2%E5%99%A8/" class="category-chain-item">着色器</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E4%BB%BF%E7%9C%9F%E6%A8%A1%E6%8B%9F/%E8%B4%A8%E7%82%B9%E5%BC%B9%E7%B0%A7/" class="category-chain-item">质点弹簧</a>
   
   
 
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/2109274119.html" target="_self">
+          【质点弹簧】如何做一个不会崩溃的质点弹簧
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2109274119.html" target="_self">
+        <div>
+          【质点弹簧】如何做一个不会崩溃的质点弹簧 演示视频见：https://www.bilibili.com/video/BV15vPie8EEd/ 在绳索、布料、软体等软性物质的模拟上，质点弹簧绝对是最流行的一种物理模型，相关资料在网上非常多。但无一例外的都绕不过一个痛点：动不动就崩溃给你看。那有没有一种能实现绝对不会崩溃的质点弹簧模型，或者说我们能始终确切的知道它崩溃的边缘在哪里，而不是和传统质点弹
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E4%BB%BF%E7%9C%9F%E6%A8%A1%E6%8B%9F/" class="category-chain-item">仿真模拟</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E4%BB%BF%E7%9C%9F%E6%A8%A1%E6%8B%9F/%E8%B4%A8%E7%82%B9%E5%BC%B9%E7%B0%A7/" class="category-chain-item">质点弹簧</a>
+  
+  
+
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/95218190.html" target="_self">
+          【质点弹簧】质点位置积分
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/95218190.html" target="_self">
+        <div>
+          【质点弹簧】质点位置积分 在物理模拟中，物理系统每帧都需要根据粒子当前位置，速度，加速度等信息计算粒子下个阶段相关信息，而这种一点一点计算位置的操作被称作对粒子位置的积分。 具体而言实现这种积分效果的有两种方法： 欧拉积分法 https://zhuanlan.zhihu.com/p/355170943 欧拉积分法是根据现实中的物理公式来求解下一帧位置的，具体而言分三种：  显式欧拉方法（完全根据当
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E4%BB%BF%E7%9C%9F%E6%A8%A1%E6%8B%9F/" class="category-chain-item">仿真模拟</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E4%BB%BF%E7%9C%9F%E6%A8%A1%E6%8B%9F/%E8%B4%A8%E7%82%B9%E5%BC%B9%E7%B0%A7/" class="category-chain-item">质点弹簧</a>
+  
   
 
   
@@ -591,22 +849,22 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" class="category-chain-item">框架使用</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
   
   
 
@@ -634,15 +892,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/289693924.html" target="_self">
-          【Unity】材质
+        <a href="/posts/305640944.html" target="_self">
+          【Unity】作业系统
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/289693924.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/305640944.html" target="_self">
         <div>
-          【Unity】材质 https://docs.unity.cn/cn/2022.3/Manual/Materials.html 材质简介 在 Unity 中绘制任何东西都需要网格和材质两种资源，网格描述形状，材质描述外观。 材质与着色器紧密相关，就好像是着色器的一个对象实例，必须先有着色器才能创建材质球。 基于物理的渲染材质验证器 在 PBR 渲染中，对于物体的反照率和金属度等实际有一组确认符合现
+          【Unity】作业系统 https://docs.unity.cn/cn/2022.3/Manual/JobSystem.html 技术概述 作业系统是多线程技术的封装，使用户可以充分发挥 CPU 多核优势，大幅提高计算性能。 具体而言 Unity 封装了以下内容：  多线程：Unity 将根据 CPU 内核数量智能创建和分配线程，而无需用户管理。 偷窃工作：Unity 将会自动平衡各个工作线程之
         </div>
       </a>
 
@@ -650,7 +908,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-21 16:47" pubdate>
+            <time datetime="2024-05-21 16:48" pubdate>
               2024-05-21
             </time>
           </div>
@@ -666,271 +924,27 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" class="category-chain-item">框架使用</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E8%84%9A%E6%9C%AC/" class="category-chain-item">脚本</a>
   
   
 
   
 
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/2845903494.html" target="_self">
-          【Linux】Linux 使用笔记
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/2845903494.html" target="_self">
-        <div>
-          【Linux】Linux 使用笔记 系统目录结构  /etc：系统管理所用的一些配置文件和子目录。 /dev：计算机外部设备，Linux 中外设交互与文件交互一致。 /proc：存储当前内核运行状态，类似设备映射成文件，此处映射的是内存信息。 /usr：Unix 系统资源的缩写，用户的程序和文件大多放在该目录，类似 Windows 的 ProgramFiles 文件夹。  /lib：各种程序共享的
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-31 17:30" pubdate>
-              2024-05-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/953923210.html" target="_self">
-          【Blender】插件开发笔记
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/953923210.html" target="_self">
-        <div>
-          【Blender】插件开发笔记 开发环境配置  打开设置“界面-开发选项”： 这样可以通过对功能按钮的右键菜单直接复制或查看其源码，以及快速跳转到 API 手册。 打开设置“界面-Python 工具提示”： 这样可以通过界面的悬停菜单直接查看该条目在代码中的表示方式。 安装 python 环境，下载 fake-bpy-module 包： 这样可以在外部编辑器编写代码，并且有代码代码提示。 下载 V
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-20 09:56" pubdate>
-              2024-01-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Blender/" class="category-chain-item">Blender</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/3495031609.html" target="_self">
-          【Blender】杂项笔记
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3495031609.html" target="_self">
-        <div>
-          【Blender】杂项笔记 空间坐标系 Blender 中的轴向：  Y 轴向前（前视图看向的方向就是前方，其默认向 Y 轴看） Z 轴向上  保持轴向导出到 Unity 时（包括直接保存、导出 FBX 但保持轴向）：  Unity 会继续保持 Y 轴和 Z 轴坐标，但反转 X 轴。  不保持轴向导出到 Unity 时：  顶点数据与保持的情况一致，但模型旋转被修改。 可以推出 Blender 是
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-10 20:00" pubdate>
-              2024-10-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="category-chain-item">工具使用</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Blender/" class="category-chain-item">Blender</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/2373330896.html" target="_self">
-          【软件开发】正则表达式
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/2373330896.html" target="_self">
-        <div>
-          【软件开发】正则表达式 正则表达式是一种强大的高级字符串匹配方法。 通配符 用于代表某些字符。 普通字符  .：除了换行回车符以外的任何单个字符。 \w：匹配任意一个字母、数字、下划线。 \d：匹配任意一个阿拉伯数字。  非打印字符  \f：匹配一个换页符。 \n：匹配一个换行符。 \r：匹配一个回车符。 \t：匹配一个制表符。 \v：匹配一个垂直制表符。 \s：匹配任何空白文字。 \S：匹配任何
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-10 16:30" pubdate>
-              2024-05-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/" class="category-chain-item">个人研究</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%A0%94%E7%A9%B6/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" class="category-chain-item">软件开发</a>
-  
   
 
   
