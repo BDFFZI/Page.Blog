@@ -58,6 +58,11 @@ about:
     - { class: "iconfont icon-bilibili-fill", link: "https://space.bilibili.com/35949109", tip: "Bilibili" }
     - { class: "iconfont icon-wechat-fill", qrcode: "/assets/img/wechat.jpg" }
 
+# 分类页
+category:
+  order_by: "name"
+  post_order_by: "title"
+
 # 评论插件
 giscus:
   repo: "BDFFZI/Page.Blog"

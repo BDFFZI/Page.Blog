@@ -233,15 +233,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/2261641482.html" target="_self">
-          【技术美术】投影矩阵和线性深度推导
+        <a href="/posts/4243868598.html" target="_self">
+          【技术美术】个人引擎内的投影矩阵
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/2261641482.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/4243868598.html" target="_self">
         <div>
-          【技术美术】投影矩阵和线性深度推导 网络上有很多投影矩阵的推导，也有很多声称是基于 Unity 的，但和我的实测都不一致（现在看来是因为这些文章并不全面），此外有一些 Unity 本身的函数我也搞不懂它的原理，遂最终选择自行研究，总算把这些问题解决了。 现在通过这篇文章，你就可以完全搞懂 Unity 的投影矩阵是啥样，又是怎么来的。以及 Unity 逆推线性深度的函数是如何实现的。不过该文章也不是
+          【技术美术】个人引擎内的投影矩阵 Unity 中官推的投影矩阵风格是 OpenGL，这可以直接从相机组件中拿到，但在DX平台，Unity传入着色器时实际上会将该矩阵转为 DX 风格。 DX 风格没必要了解，而且此处也不是 Unity 中使用的 DX 风格，而是个人自制游戏引擎时做的推导文章。 此处采用的NDC空间为：  x：从左到右 (-1,1) y：从下到上 (-1,1) z：从前到后 (0,1
         </div>
       </a>
 
@@ -301,15 +301,83 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/3495942937.html" target="_self">
-          【技术美术】渲染空间变换概述
+        <a href="/posts/3964607565.html" target="_self">
+          【技术美术】平面反射
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3495942937.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3964607565.html" target="_self">
         <div>
-          【技术美术】渲染空间变换概述 GPU渲染管线中，我们只要知道如何在屏幕上画画就行，在一个2D坐标系上表示2D物体是很简单的。但在引擎渲染管线中，为了在屏幕上显示一个仿真的游戏世界，该任务就变成了如何将3D画面，映射到2D屏幕中。 为此人们发明了一套空间变换流程，利用多个矩阵来实现3D到2D的变换。（提示：矩阵=空间=变换，不同的术语只是从不同的角度理解而已） 渲染空间  渲染管线中的空间变换共经历
+          【技术美术】平面反射  如上图所示，实现平面反射说到底就是要实现，P 采样到 A，Q 采样到 B。A~B显然是需要渲染到纹理以供采样的，实现该过程有两种方法：  最简单的方式是放一个镜像的摄像机 E’ 去渲染 A，B。 更高级的做法是E不动，但渲染每个物体的镜像（A’，B’），因此需要给每个物体做一步镜像变换。  镜像矩阵推导  镜像矩阵的作用如上，使顶点相对平面镜像，即 P′=MPP&#x27;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E7%A9%BA%E9%97%B4%E7%9F%A9%E9%98%B5/" class="category-chain-item">空间矩阵</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/2261641482.html" target="_self">
+          【技术美术】投影矩阵和线性深度推导
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2261641482.html" target="_self">
+        <div>
+          【技术美术】投影矩阵和线性深度推导 网络上有很多投影矩阵的推导，也有很多声称是基于 Unity 的，但和我的实测都不一致（现在看来是因为这些文章并不全面），此外有一些 Unity 本身的函数我也搞不懂它的原理，遂最终选择自行研究，总算把这些问题解决了。 现在通过这篇文章，你就可以完全搞懂 Unity 的投影矩阵是啥样，又是怎么来的。以及 Unity 逆推线性深度的函数是如何实现的。不过该文章也不是
         </div>
       </a>
 
@@ -860,81 +928,6 @@
     <span>></span>
     
   <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E6%B8%B2%E6%9F%93/" class="category-chain-item">基于物理的渲染</a>
-  
-  
-
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/36610906.html" target="_self">
-          【Unity】加载纹理和网格数据
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/36610906.html" target="_self">
-        <div>
-          【Unity】加载纹理和网格数据 Unity 使用同步和异步两种方式加载纹理和网格到 GPU，如果资源支持，则 Unity 将默认使用异步加载。同步加载会导致游戏卡顿，但异步则不会，所以考虑性能优化，应尽可能保证资源满足异步加载条件。 工作原理 资源数据由“元数据”（标头数据）和“像素顶点数据”（二进制数据）组成。当资源被要求加载时，其中标头数据必须立即被加载，但二进制数据实际可以在后续慢慢加载。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-31 17:30" pubdate>
-              2024-05-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" class="category-chain-item">框架使用</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
   
   
 
