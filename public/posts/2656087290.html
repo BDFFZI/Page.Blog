@@ -29,10 +29,11 @@
 <meta property="og:description" content="【技术美术】光照技术概述 和现实一样，即使是游戏中的虚拟物体，我们也可以认为都是因为发光才可见，包括不含光照计算的特效，因为本质上他们是发出的自发光。所以说，任何物体的渲染，本质都是在做光的渲染。 光的属性  可溯源的：光不是凭空产生的，一定是有源头的。 可传递的：光是可以通过介质传递的，也正是因为传递会使光的能量发生变化，我们才能观测到传递的介质。 可叠加的：光的能量可以直接简单的相加来合成的，">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-28.png">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-29.png">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-26.png">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-27.png">
 <meta property="article:published_time" content="2025-12-23T12:57:56.492Z">
-<meta property="article:modified_time" content="2025-12-23T14:54:11.281Z">
+<meta property="article:modified_time" content="2026-01-20T13:08:42.857Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/image-28.png">
@@ -238,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.9k 字
+          4k 字
         
       </span>
     
@@ -249,7 +250,7 @@
         
         
         
-          33 分钟
+          34 分钟
         
       </span>
     
@@ -1004,7 +1005,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年12月23日 晚上
+                    本文最后更新于 2026年1月20日 晚上
                   
                 
               </p>
@@ -1076,13 +1077,16 @@
 <li>辐射能量：光源做工。</li>
 <li>辐射功率：光源每单位时间做工。</li>
 <li>辐射强度：光源从每单位立体角发出的辐射功率。</li>
-<li>辐照度（Irradiance）：光源照射到微表面的辐射强度。</li>
-<li>辐射率（Radiance）：光源照射到微表面后反射的辐射强度。</li>
+<li>辐照度（Irradiance）：光源每单位立体角照射到表面的光照强度。</li>
+<li>辐射率（Radiance）：从表面每微表面反射的光照强度。<br>
+<a href="/posts/558360582/">辐射度量学</a></li>
 </ul>
 <p>我们光照计算实际上只要考虑：获取“辐照度”和计算“辐射率”就行，这个过程也不是一定非要物理的，只是单纯用他们的名字和关系来表示一些计算中的光照参数。</p>
 <p>其中辐射率是基于辐照度计算的，这两者代表入射光每单位（微分立体角）的总光强和出射光每单位的总光强。可想而知，如果两者面积总量一样，根据能量守恒，两者的值应该是相等的。但实际情况中，由于角度倾斜的原因，入射光的截面积和接收光的表面积是不一定对等的，所以反射时每单位面积的光强就会被均分。</p>
+<p><img src="/assets/images/image-29.png" srcset="/img/loading.gif" lazyload alt="辐射率与辐照度"></p>
 <p>具体而言两者的关系与法线有关，其公式如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float radiance = saturate(dot(n,l)) * irradiance;<br></code></pre></td></tr></table></figure>
+<p>ps：率和度应该是同一个意思，只是翻译的人没有统一，辐射率称为辐射度我想也没问题，那么“辐照度”和“辐射度”两者的名称差别恰巧反应了其特性：“照射”和“反射”。</p>
 <h3 id="光照分布函数">光照分布函数</h3>
 <p><img src="/assets/images/image-26.png" srcset="/img/loading.gif" lazyload alt="光照分布函数"></p>
 <p>人们发现光从表现效果上，基本都可以被看成是由几种简单的光组合而成（见上文的光照分类）。因此根据具体实现的光照类型，光照函数被分为了一下 3 类：</p>

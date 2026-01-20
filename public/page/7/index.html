@@ -233,6 +233,156 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/posts/1881413206.html" target="_self">
+          【基于物理的渲染（2）】Cook-Torrance
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/1881413206.html" target="_self">
+        <div>
+          【基于物理的渲染（2）】Cook-Torrance BRDF BRDF 直译为双向散射分布函数，是一种解释光反射强度的模型。双向散射是指其将反射光描述为由镜射光和漫射光两种。基于物理的 BRDF 说明该公式不能是传统的经验模型，而是遵循各种物理现象而设计的模型。 漫射光 漫射光是指光线射入物体内部，在内部多次反弹后返回的光，这类光容易被物体吸收，且反射的方向无序，因此反光将均匀的分布在照射区域。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">光照模型</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E6%B8%B2%E6%9F%93/" class="category-chain-item">基于物理的渲染</a>
+  
+  
+
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/1910260985.html" target="_self">
+          【基于物理的渲染（3）】基于图片的渲染
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/1910260985.html" target="_self">
+        <div>
+          【基于物理的渲染（3）】基于图片的渲染 上述 CookTorrance 公式中还缺少环境光的处理，在 PBR 中环境光是用 IBL 实现的。 IBL 中由于光来自一个完整的球面，因此需要对球面积分计算，但这样工作量太大了。考虑到物体表面受到的环境光不会改变，因此可以提前预处理，将部分光照提前计算存放到环境贴图中。因此对于间接光，不能直接使用直接光的反射率方程。 在Unity中：预计算的漫射光使用S
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">光照模型</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E6%B8%B2%E6%9F%93/" class="category-chain-item">基于物理的渲染</a>
+  
+  
+
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/posts/36610906.html" target="_self">
           【Unity】加载纹理和网格数据
         </a>
@@ -839,170 +989,6 @@
     <span>></span>
     
   <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E7%9D%80%E8%89%B2%E5%99%A8/" class="category-chain-item">着色器</a>
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/2077063050.html" target="_self">
-          【Unity】着色器核心概念笔记
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/2077063050.html" target="_self">
-        <div>
-          【Unity】着色器核心概念笔记 https://docs.unity.cn/2022.3/Documentation/Manual/ShadersOverview.html 基本概念 着色器就是 GPU 上运行的程序。 着色器类型 Unity 支持三种着色器。  渲染管线着色器（主要着色器） 计算着色器 光线追踪着色器  着色器组成  着色器信息：如着色器名称、回退着色器等着色器自身的信息。 子
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-26 11:25" pubdate>
-              2024-04-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" class="category-chain-item">框架使用</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E7%9D%80%E8%89%B2%E5%99%A8/" class="category-chain-item">着色器</a>
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/865694442.html" target="_self">
-          【Unity】Mipmaps（多级渐进纹理）
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/865694442.html" target="_self">
-        <div>
-          【Unity】Mipmaps（多级渐进纹理） https://docs.unity.cn/cn/2022.3/Manual/texture-mipmaps.html Mipmaps 是 GPU 支持的一项可选的纹理功能，这会导致额外生成一组基于原纹理但分辨率逐渐降低的小纹理，级别越高分辨率越低，之后 GPU 采样纹理时将通过一套规则选择其中最合适的纹理来进行采样。 Mipmaps 的优缺点   加
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-31 17:31" pubdate>
-              2024-05-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" class="category-chain-item">框架使用</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E7%BA%B9%E7%90%86/" class="category-chain-item">纹理</a>
   
   
 
