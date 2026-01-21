@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-32.png">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-33.png">
 <meta property="article:published_time" content="2025-12-23T12:57:56.492Z">
-<meta property="article:modified_time" content="2026-01-20T14:22:39.805Z">
+<meta property="article:modified_time" content="2026-01-21T15:13:44.823Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/image-35.png">
@@ -1009,7 +1009,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年1月20日 晚上
+                    本文最后更新于 2026年1月21日 晚上
                   
                 
               </p>
@@ -1077,21 +1077,20 @@
 <p><img src="/assets/images/image-30.png" srcset="/img/loading.gif" lazyload alt="微表面模型"></p>
 <p>从整体来看，物体表面各式各样没有规则。但利用积分的思想，我们可以想象这些表面都是有无数个相同的微小表面组合而成，于是我们便可以对各种物体的表面进行一套统一计算，一套针对微表面的计算。</p>
 <h3 id="辐射度量学">辐射度量学</h3>
-<p>辐射度量学是一种物理学科，但我们不需要深入学习，仅仅了解其中的一些学术概念就行。</p>
+<p><a href="/posts/558360582/">辐射度量学</a>是一种物理学科，但我们不需要深入学习，仅仅了解其中的一些学术概念就行。</p>
 <ul>
 <li>辐射能量：光源做工。</li>
 <li>辐射功率：光源每单位时间做工。</li>
 <li>辐射强度：光源从每单位立体角发出的辐射功率。</li>
 <li>辐照度（Irradiance）：光源每单位立体角照射到表面的光照强度。</li>
-<li>辐射率（Radiance）：从表面每微表面反射的光照强度。<br>
-<a href="/posts/558360582/">辐射度量学</a></li>
+<li>辐射率（Radiance）：从表面每微表面反射的光照强度。</li>
 </ul>
 <p>我们光照计算实际上只要考虑：获取“辐照度”和计算“辐射率”就行，这个过程也不是一定非要物理的，只是单纯用他们的名字和关系来表示一些计算中的光照参数。</p>
 <p>其中辐射率是基于辐照度计算的，这两者代表入射光每单位（微分立体角）的总光强和出射光每单位的总光强。可想而知，如果两者面积总量一样，根据能量守恒，两者的值应该是相等的。但实际情况中，由于角度倾斜的原因，入射光的截面积和接收光的表面积是不一定对等的，所以反射时每单位面积的光强就会被均分。</p>
 <p><img src="/assets/images/image-29.png" srcset="/img/loading.gif" lazyload alt="辐射率与辐照度"></p>
 <p>具体而言两者的关系与法线有关，其公式如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float radiance = saturate(dot(n,l)) * irradiance;<br></code></pre></td></tr></table></figure>
-<p>ps：率和度应该是同一个意思，只是翻译的人没有统一，辐射率称为辐射度我想也没问题，那么“辐照度”和“辐射度”两者的名称差别恰巧反应了其特性：“照射”和“反射”。</p>
+<p>提示：‘率’和‘度’应该是同一个意思，只是翻译的人没有统一，辐射率称为辐射度我想也没问题，那么“辐照度”和“辐射度”两者的名称差别恰巧反应了其特性：“照射”和“反射”。</p>
 <h3 id="光照分布函数">光照分布函数</h3>
 <p><img src="/assets/images/image-26.png" srcset="/img/loading.gif" lazyload alt="光照分布函数"></p>
 <p>人们发现光从表现效果上，基本都可以被看成是由几种简单的光组合而成（见上文的光照分类）。因此根据具体实现的光照类型，光照函数被分为了一下 3 类：</p>
