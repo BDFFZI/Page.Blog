@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-32.png">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-33.png">
 <meta property="article:published_time" content="2025-12-23T12:57:56.492Z">
-<meta property="article:modified_time" content="2026-01-21T15:13:44.823Z">
+<meta property="article:modified_time" content="2026-01-22T14:20:06.071Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/image-35.png">
@@ -1009,7 +1009,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年1月21日 晚上
+                    本文最后更新于 2026年1月22日 晚上
                   
                 
               </p>
@@ -1115,7 +1115,7 @@
 <p><img src="/assets/images/image-31.png" srcset="/img/loading.gif" lazyload alt="分布能量守恒"></p>
 <p>对此人们使用一种称为“金属度”的参数，来分配两者的权重，越金属其漫射光越弱，镜射光越强，而这权重具体反映到的则是“反照率”的变化。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float3 diffuse = lerp(albedo * (1 - dielectricSpec), 0, metallic); //漫射反照率<br>float3 specular = lerp(dielectricSpec, albedo, metallic); //镜射反照率<br></code></pre></td></tr></table></figure>
-<p>注意：虽然非物理光照一般不用遵照能量守恒，但其金属度的概念却已经深度人性，即使卡通渲染，也经常会利用金属度来控制高光（镜射光）的强弱。</p>
+<p>注意：虽然非物理光照一般不用遵照能量守恒，但其金属度的概念却已经深度人心，即使卡通渲染，也经常会利用金属度来控制高光（镜射光）的强弱。</p>
 <h3 id="菲涅尔效应">菲涅尔效应</h3>
 <p><img src="/assets/images/image-27.png" srcset="/img/loading.gif" lazyload alt="菲涅尔效应"></p>
 <p>菲涅尔是一种物理现象，其反应了物体的反照率强会随着物体折射率、法线、观察角度的不同而发生变化。最显著的例子是水面，垂直看水面时，清澈见底，平行看水面时则只能看到倒影而看不清水底了。</p>
@@ -1155,7 +1155,7 @@
 <p>间接光又叫环境光，是来自于环境中即四面八方的光。相比直接光，环境光是不可数的，因此无法直接实时计算，故环境光一般是基于一种叫“IBL”（基于图像的照明）的烘焙灯光技术实现的（将HDR环境贴图视作光源，均匀的随机采样若干次，再以实时灯光的方式计算累加）。</p>
 <p>由于“双向反射分布”的存在，故环境光针对“漫射”、“镜射”两种光，也根据其特性，使用了两种不同的烘焙方式：“光照探针”和“反射探针”。</p>
 <p><img src="/assets/images/image-33.png" srcset="/img/loading.gif" lazyload alt="间接光"></p>
-<p>注意：间接光由于是预计算的，导致其存储的已经是计算好的辐射率，所以不需要额外的转换。</p>
+<p>注意：间接光由于是预计算的，导致其存储的已经是计算好的辐照度，所以不需要额外的转换。</p>
 <h4 id="光照探针">光照探针</h4>
 <p>光照探针存储的是漫射光信息。漫射光是粗糙的低频灯光，因此不需要形成像镜子那种清晰的反射画面，依此特性，为了减少内存提高性能，可以将其用球谐函数（SH）存储。</p>
 <p>球谐函数类似于<a href="/posts/1306067451/">泰勒级数</a>解三角函数，通过有限的多项式就可以近似出超越函数的效果，进而使得三角函数可被实际用于计算，非常实用。同理球谐函数只需要存储几个多项式的参数，就可以实现输入方向输出该方向大概亮度的功能，内存占用少计算也高效。</p>
