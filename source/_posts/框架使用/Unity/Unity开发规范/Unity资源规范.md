@@ -240,7 +240,7 @@ Demo 文件夹中配有若干场景（可能也包含这些场景专属的依赖
 
 下面是一个多人协作场景下的文件夹结构示例
 
-![示例文件夹结构](../../../../assets/images/image-30.png)
+![示例文件夹结构](../../../../assets/images/示例文件夹结构.png)
 
 - `Assets/Artworks/Models/手写板`：建模师提供基本的画板模型。
 - `Assets/Artworks/Effects/笔迹拖尾`：特效师提供了基本的绘制时的画笔拖尾特效。
