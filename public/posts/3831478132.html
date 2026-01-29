@@ -1,0 +1,1649 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Unity资源规范 命名规范  一个资源该如何命名？   优先使用英文命名、其次中文，不建议使用汉语拼音。 如果定好了命名语言，尽可能保证同一文件夹的文件都统一，别混用。  123ShiZi &#x2F;&#x2F;不建议（必须人工解读，但没有声调和上下文，难以正确解读。石子、狮子、柿子？）Persimmon &#x2F;&#x2F;正确（放入翻译软件中即可得为：柿子）柿子 &#x2F;&#x2F;正确（一眼看懂，但部分底层软件存在兼容问题，但不会影响功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity资源规范">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/3831478132.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="Unity资源规范 命名规范  一个资源该如何命名？   优先使用英文命名、其次中文，不建议使用汉语拼音。 如果定好了命名语言，尽可能保证同一文件夹的文件都统一，别混用。  123ShiZi &#x2F;&#x2F;不建议（必须人工解读，但没有声调和上下文，难以正确解读。石子、狮子、柿子？）Persimmon &#x2F;&#x2F;正确（放入翻译软件中即可得为：柿子）柿子 &#x2F;&#x2F;正确（一眼看懂，但部分底层软件存在兼容问题，但不会影响功能">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-36.png">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/%E7%A4%BA%E4%BE%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E7%BB%93%E6%9E%84.png">
+<meta property="article:published_time" content="2026-01-29T04:41:46.002Z">
+<meta property="article:modified_time" content="2026-01-29T04:46:31.082Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/image-36.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Unity资源规范 - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Unity资源规范"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-29 12:41" pubdate>
+          2026年1月29日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          33 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="框架使用"
+        id="heading-0ed57408571ff1d51770fac53788b69b" role="tab" data-toggle="collapse" href="#collapse-0ed57408571ff1d51770fac53788b69b"
+        aria-expanded="true"
+      >
+        框架使用
+        <span class="list-group-count">(32)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-0ed57408571ff1d51770fac53788b69b"
+           role="tabpanel" aria-labelledby="heading-0ed57408571ff1d51770fac53788b69b">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Blender"
+        id="heading-482982e64aebd743da9392fbc4b1f5d8" role="tab" data-toggle="collapse" href="#collapse-482982e64aebd743da9392fbc4b1f5d8"
+        aria-expanded="false"
+      >
+        Blender
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-482982e64aebd743da9392fbc4b1f5d8"
+           role="tabpanel" aria-labelledby="heading-482982e64aebd743da9392fbc4b1f5d8">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/953923210.html" title="【Blender】插件开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495031609.html" title="【Blender】杂项笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】杂项笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Linux"
+        id="heading-edc9f0a5a5d57797bf68e37364743831" role="tab" data-toggle="collapse" href="#collapse-edc9f0a5a5d57797bf68e37364743831"
+        aria-expanded="false"
+      >
+        Linux
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-edc9f0a5a5d57797bf68e37364743831"
+           role="tabpanel" aria-labelledby="heading-edc9f0a5a5d57797bf68e37364743831">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2845903494.html" title="【Linux】Linux 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Linux】Linux 使用笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Manim"
+        id="heading-cbcd3fecff4c0ef0c063f8c41726d34a" role="tab" data-toggle="collapse" href="#collapse-cbcd3fecff4c0ef0c063f8c41726d34a"
+        aria-expanded="false"
+      >
+        Manim
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-cbcd3fecff4c0ef0c063f8c41726d34a"
+           role="tabpanel" aria-labelledby="heading-cbcd3fecff4c0ef0c063f8c41726d34a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3454987331.html" title="【Manim】空间与变换笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Manim】空间与变换笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity"
+        id="heading-82dd98f1d663acc318e6a8ec4ab69b7a" role="tab" data-toggle="collapse" href="#collapse-82dd98f1d663acc318e6a8ec4ab69b7a"
+        aria-expanded="true"
+      >
+        Unity
+        <span class="list-group-count">(27)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-82dd98f1d663acc318e6a8ec4ab69b7a"
+           role="tabpanel" aria-labelledby="heading-82dd98f1d663acc318e6a8ec4ab69b7a">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1233487121.html" title="【Unity】UGUI"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】UGUI</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1602965714.html" title="【Unity】URP 中的 UGUIShader 实现"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】URP 中的 UGUIShader 实现</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/806518232.html" title="【Unity】人形动画"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】人形动画</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/150670921.html" title="【Unity】光照解决方案笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】光照解决方案笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2970632423.html" title="【Unity】各种操作触发 GC 情况"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】各种操作触发 GC 情况</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4239874620.html" title="【Unity】图形渲染瓶颈与批处理优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】图形渲染瓶颈与批处理优化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2200103232.html" title="【Unity】未来技术路线"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】未来技术路线</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4133014859.html" title="【Unity】热更新原理与 Xlua 配置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】热更新原理与 Xlua 配置</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4114572923.html" title="【Unity】脚本生命周期"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】脚本生命周期</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2226898333.html" title="【Unity】骨骼动画"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】骨骼动画</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity开发规范"
+        id="heading-3a8ec5f2bcd6db51ebb9183173e80971" role="tab" data-toggle="collapse" href="#collapse-3a8ec5f2bcd6db51ebb9183173e80971"
+        aria-expanded="true"
+      >
+        Unity开发规范
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-3a8ec5f2bcd6db51ebb9183173e80971"
+           role="tabpanel" aria-labelledby="heading-3a8ec5f2bcd6db51ebb9183173e80971">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1518420493.html" title="Unity开发规范"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Unity开发规范</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4118079887.html" title="Unity编码规范"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Unity编码规范</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3831478132.html" title="Unity资源规范"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">Unity资源规范</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity文档笔记"
+        id="heading-680a95aa049e61aff0e7c7ac93d60748" role="tab" data-toggle="collapse" href="#collapse-680a95aa049e61aff0e7c7ac93d60748"
+        aria-expanded="false"
+      >
+        Unity文档笔记
+        <span class="list-group-count">(14)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-680a95aa049e61aff0e7c7ac93d60748"
+           role="tabpanel" aria-labelledby="heading-680a95aa049e61aff0e7c7ac93d60748">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="图形"
+        id="heading-9be72ba165a45aaed9f950ec718475be" role="tab" data-toggle="collapse" href="#collapse-9be72ba165a45aaed9f950ec718475be"
+        aria-expanded="false"
+      >
+        图形
+        <span class="list-group-count">(13)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-9be72ba165a45aaed9f950ec718475be"
+           role="tabpanel" aria-labelledby="heading-9be72ba165a45aaed9f950ec718475be">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/36610906.html" title="【Unity】加载纹理和网格数据"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】加载纹理和网格数据</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/289693924.html" title="【Unity】材质"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】材质</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染管线"
+        id="heading-a0975e312ca4746045ba2e028a24b7ab" role="tab" data-toggle="collapse" href="#collapse-a0975e312ca4746045ba2e028a24b7ab"
+        aria-expanded="false"
+      >
+        渲染管线
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a0975e312ca4746045ba2e028a24b7ab"
+           role="tabpanel" aria-labelledby="heading-a0975e312ca4746045ba2e028a24b7ab">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2520479343.html" title="【Unity】可编程渲染管线"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】可编程渲染管线</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="着色器"
+        id="heading-e0817a039882aebbaa735b4880479e60" role="tab" data-toggle="collapse" href="#collapse-e0817a039882aebbaa735b4880479e60"
+        aria-expanded="false"
+      >
+        着色器
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-e0817a039882aebbaa735b4880479e60"
+           role="tabpanel" aria-labelledby="heading-e0817a039882aebbaa735b4880479e60">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3793607597.html" title="【Unity】PassCode 语法笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】PassCode 语法笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1843614380.html" title="【Unity】ShaderLab 语法笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】ShaderLab 语法笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4183025058.html" title="【Unity】优化着色器性能笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】优化着色器性能笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3863423297.html" title="【Unity】着色器变体笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器变体笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3262553639.html" title="【Unity】着色器平台差异笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器平台差异笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2077063050.html" title="【Unity】着色器核心概念笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器核心概念笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="纹理"
+        id="heading-2763023e85350f867a89d225f598b467" role="tab" data-toggle="collapse" href="#collapse-2763023e85350f867a89d225f598b467"
+        aria-expanded="false"
+      >
+        纹理
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-2763023e85350f867a89d225f598b467"
+           role="tabpanel" aria-labelledby="heading-2763023e85350f867a89d225f598b467">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/865694442.html" title="【Unity】Mipmaps（多级渐进纹理）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】Mipmaps（多级渐进纹理）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1386286002.html" title="【Unity】纹理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】纹理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="网格"
+        id="heading-16bf955c22835b6acbc202bd2738b50c" role="tab" data-toggle="collapse" href="#collapse-16bf955c22835b6acbc202bd2738b50c"
+        aria-expanded="false"
+      >
+        网格
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-16bf955c22835b6acbc202bd2738b50c"
+           role="tabpanel" aria-labelledby="heading-16bf955c22835b6acbc202bd2738b50c">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3454640855.html" title="【Unity】网格数据结构"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】网格数据结构</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/810271066.html" title="【Unity】网格笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】网格笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="脚本"
+        id="heading-ba311d8a6a1386ac811b1caa28ef029d" role="tab" data-toggle="collapse" href="#collapse-ba311d8a6a1386ac811b1caa28ef029d"
+        aria-expanded="false"
+      >
+        脚本
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-ba311d8a6a1386ac811b1caa28ef029d"
+           role="tabpanel" aria-labelledby="heading-ba311d8a6a1386ac811b1caa28ef029d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/305640944.html" title="【Unity】作业系统"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】作业系统</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="VSCode"
+        id="heading-92ce826772dd138cdcbd6cbc6d5b29c4" role="tab" data-toggle="collapse" href="#collapse-92ce826772dd138cdcbd6cbc6d5b29c4"
+        aria-expanded="false"
+      >
+        VSCode
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-92ce826772dd138cdcbd6cbc6d5b29c4"
+           role="tabpanel" aria-labelledby="heading-92ce826772dd138cdcbd6cbc6d5b29c4">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1043904924.html" title="VSCode 插件开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">VSCode 插件开发笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Unity资源规范</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年1月29日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>Unity资源规范</h1>
+<h2 id="命名规范">命名规范</h2>
+<blockquote>
+<p>一个资源该如何命名？</p>
+</blockquote>
+<ul>
+<li>优先使用英文命名、其次中文，不建议使用汉语拼音。</li>
+<li>如果定好了命名语言，尽可能保证同一文件夹的文件都统一，别混用。</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">ShiZi //不建议（必须人工解读，但没有声调和上下文，难以正确解读。石子、狮子、柿子？）<br>Persimmon //正确（放入翻译软件中即可得为：柿子）<br>柿子 //正确（一眼看懂，但部分底层软件存在兼容问题，但不会影响功能使用）<br></code></pre></td></tr></table></figure>
+<ul>
+<li>如果基于英语或拼音，那应采用“帕斯卡命名法”（每个单词首字母大写）。</li>
+<li>确保利用驼峰分割名称后，可从翻译软件中得到对应中文。</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">//正确（大写字母能起到分隔符的作用，添加空格后可以从翻译软件反向查到对应中文）<br>TourGuide<br>TourGuideHat<br></code></pre></td></tr></table></figure>
+<ul>
+<li>不要使用纯简单的字母、数字、预设名称等无意义命名，命名必须能解释自身内容。</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">//错误示范（看了让人不知道相关资源是干啥的）<br>a<br>1<br>白1<br>微信图片_20251224112419_4_2<br>Circle_004 1<br></code></pre></td></tr></table></figure>
+<ul>
+<li>当文件夹用于分类用途时，应将其采用英语且复数形式命名，并优先使用Unity的预设名称（参考存放规范）。</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">//正确（这不仅按规范来了，而且这是Unity标准的存放纹理的文件夹，会影响Unity自动链接纹理的方式）<br>Textures <br></code></pre></td></tr></table></figure>
+<h2 id="存放规范">存放规范</h2>
+<blockquote>
+<p>多个资源该如何存放？</p>
+</blockquote>
+<h3 id="设计理念">设计理念</h3>
+<ul>
+<li>
+<p>存放的目的：</p>
+<blockquote>
+<p>基于作用域控制暴露的文件信息。</p>
+</blockquote>
+<p>存放的基本方法参考了程序中的作用域思想，一个物体的作用域是指“该物体可以被哪些其他物体使用，又或者说可以使用哪些其他物体”。资源存放以文件夹为容器，每个资源的作用域就受限于其所存储的文件夹及其同目录的其他文件夹。这样可以实现封装的思想（不需要关注子文件夹的内容，子文件夹由父文件夹的资源进行调度）以此文件夹才有了收纳作用。</p>
+</li>
+<li>
+<p>存放的方法：</p>
+<blockquote>
+<p>在基本结构下，先按模块放，再按类型放。</p>
+</blockquote>
+<ol>
+<li>兼容特殊文件夹，以Unity的官方文件夹设计为原型。</li>
+<li>实现模块化，便于快速以功能为单位进行文件管理。</li>
+<li>同类型放一起，以便对资源进行各种批量预处理操作。</li>
+</ol>
+</li>
+</ul>
+<h3 id="项目基本结构">项目基本结构</h3>
+<p>这是对原则第一点的实现，定制了对Assets文件夹的标准骨架。其中前缀有加减号表示是文件夹，加减代表其是否展开；此外所有<strong>特殊文件夹都使用英文名称</strong>，示例的自定义文件夹则采用中文命名。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs text">+ Assets<br>  + Artworks：存放美术资源等游戏原始素材。<br>    - Audios：音频文件<br>    - Videos：视频文件<br>    - UI：用户界面用到的图片<br>    - Effects：特效相关<br>    - Models：模型相关<br>  - Editor：存放编辑器扩展，会影响编译范围。（官方）<br>  - Plugins：存放第三方插件，会影响编译顺序。（官方）<br>  - Resources：Resources功能所用，会影响资源剥离。（官方）<br>  - Samples：存放包示例。（官方）<br>  - Scenes：存放打包场景。（官方）<br>  - StreamingAssets：需应用携带但不希望被打包的资源。（官方）<br>  - Settings：存放全局项目设置，例如渲染管线、默认字体、默认导入设置等。<br>  - Sources：存放实现的功能模块，包括源代码、相关Unity资源、做好的预制体等。<br></code></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>Artworks</code> 和 <code>Sources</code>：</p>
+<p>在接入 git 的环境下，美术师主要在 <code>Artworks</code> 文件夹工作，程序员主要在 <code>Sources</code> 文件夹工作，否则所有文件夹都由程序员管理。多人协作时，程序员有义务监督规范项目结构，以便实现功能需求、提高开发效率等。</p>
+</li>
+<li>
+<p><code>Effects</code> 和 <code>Models</code>：</p>
+<blockquote>
+<p><code>Effects</code> 是特效师做好的成品，<code>Models</code> 是建模师提供的原始素材。</p>
+</blockquote>
+<p>这两个文件夹都会存储一些模型材质纹理资源，但两者的目的不同，<code>Effects</code> 由特效师管理，程序员理论上只管使用（通常程序员不会做特效）。<code>Models</code> 则是建模师仅提供资源，由程序员负责管理组装，该文件的内容，程序员能处理也需要处理，因为它通常不能像特效那样拿来就能用。</p>
+</li>
+<li>
+<p><code>Assets</code>：</p>
+<p>该文件夹是Unity文件系统中的根目录，需要注意的是，除了上述提到的结构，以及其他自动生成、插件依赖、无法移动的文件外，<strong>不允许在其中放入其他文件或文件夹</strong>。因为他本身就已经够臃肿了，而且直接放在根目录没有任何收纳作用，<strong>自定义文件夹请放入自己的模块文件夹中</strong>。</p>
+</li>
+<li>
+<p><code>Editor</code>：</p>
+<p>该文件夹是Unity的特殊文件夹，放在其中的脚本可以确保只在编辑器内使用，打包时会自动剥离，该文件夹放在任何子文件夹下都是可以的，故建议还是优先模块化收纳。不过这已经是旧的代码隔离方案了，新方法建议使用 Assembly Definition 功能实现。</p>
+</li>
+</ul>
+<p>Artworks文件夹中已经开始体现 “先按模块放，再按类型放” 的思维模式了。<code>Audios</code>、<code>Videos</code>、<code>UI</code>都是功能明确独立的资源，他们都被分类存放。“纹理”、“材质”、“动画”等资源则没有出现在 <code>Artworks</code> 文件夹，因为他们都强绑定“模型”文件，所以按模块化思想，被细分到了<code>Effects</code>和<code>Models</code>文件夹。</p>
+<h3 id="模块文件夹">模块文件夹</h3>
+<blockquote>
+<p>模块文件夹：一个用来存放实现相同功能的资源的文件夹</p>
+</blockquote>
+<p>这是对原则第二点的相关实现。模块文件夹属于用户自定义文件夹，所以命名没什么特别要求：</p>
+<ol>
+<li>其命名能解释模块内容，且满足“命名规范”。</li>
+<li>模块允许嵌套，一个模块可以进一步细分为若干子模块。</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">+ Effects<br>  + 拖尾<br>    - 拖尾1<br>    - 拖尾2<br>  - 爆炸<br>  - 烟雾<br></code></pre></td></tr></table></figure>
+<p>上述 <code>Effects</code> 中的所有文件夹（包括子文件）都是自定义的模块文件夹。</p>
+<h3 id="类型文件夹">类型文件夹</h3>
+<p>这是对原则第三点的实现。当同目录的同类资源超过两个时就要考虑分类存放，分类时需采用特殊文件夹的形式，常用的特殊文件夹如下：</p>
+<ul>
+<li>Materials：存放材质球资源（官方）</li>
+<li>Textures：存放纹理资源（官方）</li>
+<li>Animations：存放动画相关资源</li>
+<li>Meshes：存放网格资源</li>
+<li>Prefabs：存放预制体资源</li>
+<li>Scripts：存放脚本资源</li>
+</ul>
+<p>如果上述文件夹不能满足需求，你完全可以按需定制，基本规则就是以相关资源的类型英文单词为基准，首字母大写加复数的方式命名文件夹即可，例如：<code>Texts</code>（文本文件）。</p>
+<p>注意：<code>Meshes</code>不等于模型，因为模型本身可以包含很多内容，例如动画。所以具体要按模型的作用进一步细分，如果只是为了提供动画，应将模型放到<code>Animations</code>，如果是提供显示的网格，才该放到<code>Meshes</code>中。</p>
+<h3 id="处理模块依赖">处理模块依赖</h3>
+<p>这是对原则第二点的进一步实现。既然采用了模块化，就必然要处理模块化中的依赖问题。具体处理方式有两种：</p>
+<ol>
+<li>若同一文件夹中的资源都存在一些公共依赖的资源，那可将这些被依赖资源按对应<strong>类型</strong>存放于这些文件的共同父文件夹中。</li>
+<li>若同一文件夹中纯在多个资源，他们之间的依赖资源也各有差异，那可将被依赖资源也作为<strong>模块</strong>的一种，放入同级文件夹。</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs text">+ Models<br>  + 角色舞蹈<br>    动作1.fbx<br>    动作2.fbx<br>    动作3.fbx<br>  + 玩家角色<br>    + Animations<br>      跳跃.fbx<br>      奔跑.fbx<br>    - 角色1<br>    + 角色2 <br>      + Animations：<br>        角色2普攻.fbx<br>        角色2大招.fbx<br>      + Mateirals<br>        角色2.mat<br>      + Textures<br>        角色2.png<br>      角色2.fbx<br>  - 非玩家角色<br>  - 武器<br>  - 载具<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>Models/玩家角色/Animations</code>：该文件夹为特殊分类文件夹，意味着他不是独立模块。其作用域为同目录所有其他文件夹，这意味着“角色1”、“角色2”会引用其中内容。</li>
+<li><code>Models/玩家角色/角色2/Animations</code>：该文件夹也是特殊分类文件夹，其作用域也为当前目录。但当前目录是“角色2”的专用模块文件夹，所以说明该资源仅被“角色2”使用。</li>
+<li><code>Models/角色舞蹈</code>：该文件夹非特殊文件夹，而是作为独立模块存放，这意味着他可能被部分同目录其他模块引用，例如“玩家角色”、“非玩家角色”可以使用该资源，但“武器”、“载具”不需要。不过显而易见的的是这里可以将“玩家角色”、“非玩家角色”进一步模块化为“角色”文件夹，这样“角色舞蹈”就可以按第一种依赖处理方式实现了。</li>
+</ul>
+<h3 id="凸显模块作用">凸显模块作用</h3>
+<p>模块都是为功能而产生，是功能的原始素材，那么最终一定有一个功能的成品。为了突出这一成品的作用，应将其存放到模块文件夹的根目录。</p>
+<p>例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs text">+ Models<br>  + 武器<br>    - Materials<br>    - Textures<br>    武器.fbx<br>  + 载具<br>    - Materials<br>    - Textures<br>    + Meshes<br>      轮胎.fbx<br>      车架.fbx<br>      车架2.fbx<br>    载具.prefab<br>    载具2.prefab<br>+ Effects<br>  + 爆炸<br>    - Textures<br>    + Effects<br>      爆炸核心.vfx<br>      爆炸气体.vfx<br>    + Prefabs<br>      爆炸.prefab<br>      爆炸2.prefab    <br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>Models/武器/武器.fbx</code>：武器文件夹主要提供一个完整的模型显示效果，因此<code>武器.fbx</code>可以作为模块成品放在根目录。</li>
+<li><code>Models/武器/载具.prefab</code>、<code>Models/武器/载具2.prefab</code>：虽然是模型文件夹，但提供预制体也没问题，例如你可以借此拼装模型，添加动画，只要确实是成品即可，并且允许存在多个。</li>
+<li><code>Effects/爆炸/Prefabs</code>：如果你倾向于收纳也没问题，这样的结构还可以无缝映射到AssetBundle系统，第三方模块中（但这样无法凸显成品，毕竟预制体也可能是内部使用的中间产物，建议到时另建文件夹进行区分）。</li>
+</ul>
+<h2 id="其他文件规范">其他文件规范</h2>
+<p>该规范实质属于存放规范的一部分，但仅“特效师”、“程序员”、“场景编辑”等需要操作 Unity 的人员需要阅读。</p>
+<h3 id="第三方文件夹">第三方文件夹</h3>
+<p>项目中大概率会使用第三方提供的功能，对于功能性插件，应放在<code>Plugins</code>文件夹（很多插件包导入时自动就收纳到 <code>Plugins</code> 文件夹了，属于一个事实标准）；对于美术资产，可以考虑放在<code>Artworks</code>文件夹（此时第三方模块可能包含各种美术资源，由于无法细分，所以应放在能兼容这些类型的最小父文件夹中）</p>
+<p><img src="/assets/images/image-36.png" srcset="/img/loading.gif" lazyload alt="示例第三方文件夹"></p>
+<p>例如上图的 <code>Mich-L-Resources</code> 就是第三方资源，其和我们的规范也是对的上的：</p>
+<ol>
+<li><code>Mich-L-Resources</code> 本身就是模块文件夹，体现了“先按模块分”的思想。</li>
+<li><code>Animations</code>、<code>Shaders</code>、<code>Scripts</code> 等都是“再按类型分”的结果。</li>
+<li><code>Characters</code>、<code>HDRP</code> 等则都是根据不同的目的用途，细分的子模块。</li>
+</ol>
+<h3 id="Demo-文件夹">Demo 文件夹</h3>
+<blockquote>
+<p>实现模块的测试和示例部分</p>
+</blockquote>
+<p>从开发角度来讲，Demo场景应该是必然存在的事物，因为没有场景是没法运行查看效果的。而且功能不是一开发出来就任务结束，开发出来后势必存在后期维护和教授他人使用的阶段。故为了满足上述要求，应尽可能的为模块添加 Demo 文件夹。</p>
+<p>Demo 文件夹中配有若干场景（可能也包含这些场景专属的依赖资源），这些场景可以直观呈现模块成品的效果，是一个运行就可以使用的应用案例。如果一个模块添加了Demo文件夹，那么就要在模块内新建一个Sources文件夹收纳原本的文件。</p>
+<p>任何开发成员都可能需要建立Demo文件夹（即包括特效等美术师）。但由于程序功能一般复杂，且出错影响大，故对程序员来讲该规范要求更高。例如下方是程序员视角下的一次Demo文件夹使用案例：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs text">+ Scenes<br>  博物馆.unity<br>+ Sources<br>  + TourGuide<br>    + Demo<br>      TourGuideTest.unity<br>      TourGuideTest.cs<br>    + Sources<br>      + Models<br>        - Materials<br>        - Textures<br>        导游.fbx <br>      + Animations<br>        待机.fbx<br>        走路.fbx<br>        标准人物运动.controller<br>      - Scripts<br>      TourGuide.prefab<br></code></pre></td></tr></table></figure>
+<p>例如上面的示例中，程序员就提供了其负责的导游模块的示例场景。这有以下好处：</p>
+<ol>
+<li>其本人无需运行完整的应用场景（<code>博物馆.unity</code>），就可以直接借用 <code>TourGuideTest.unity</code> 来快速迭代开发新功能。</li>
+<li>如果程序发生异常，或其他模块发生变动，只用测试 <code>TourGuideTest.unity</code> 就可以确定问题是否与导游模块相关。</li>
+<li>其他需要使用导游模块的程序员，不需要专门咨询原作者，直接查看示例场景就可以直到如何使用。</li>
+</ol>
+<p>此外还有一个小细节：模型资源并没有放到 <code>Artworks</code> 中，而是直接放到了 <code>Sources/TourGuide</code> 中，这是基于模块化的思想分配文件夹结构，对于个人开发和内容分发非常方便。以此原理，同样可以把资源分配场景、预制体等目录下。但这种方式也存在一些问题：</p>
+<ol>
+<li>不利于多人开发，工作范围重叠容易冲突。</li>
+<li>造成模块过于臃肿，子文件夹层级过深。</li>
+<li>各层文件夹数量不均，父文件夹失去分类作用。</li>
+</ol>
+<h2 id="实际示例">实际示例</h2>
+<p>下面是一个多人协作场景下的文件夹结构示例</p>
+<p><img src="/assets/images/%E7%A4%BA%E4%BE%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E7%BB%93%E6%9E%84.png" srcset="/img/loading.gif" lazyload alt="示例文件夹结构"></p>
+<ul>
+<li><code>Assets/Artworks/Models/手写板</code>：建模师提供基本的画板模型。</li>
+<li><code>Assets/Artworks/Effects/笔迹拖尾</code>：特效师提供了基本的绘制时的画笔拖尾特效。</li>
+<li><code>Assets/Sources/DrawingBoard</code>：程序员最终将两者组合实现完整画板功能。</li>
+<li><code>Assets/Sources/GameController</code>：可能的额外程序员，用于整合功能模块，实现游戏主逻辑。</li>
+</ul>
+<p>基于模块化的思想管理文件夹带来如下好处：</p>
+<ol>
+<li>每个人都可以有专门的工作文件夹，干活互不冲突，效率很高。</li>
+<li>当涉及模块依赖时，由于模块成品被突出放置，立即就能拿到需要的资源。</li>
+<li>因为功能相关文件都放一起且没有多余，移植到其他项目仅需简单移动文件夹即可。</li>
+</ol>
+<p>基于分类的思想管理带来如下好处：</p>
+<ol>
+<li>查找资源时可以快速定位到目标位置，而不需要筛选其他文件。</li>
+<li>大部分美术资产都需要预处理（如压缩，mipmap等资源优化），由于同类都放一起，批处理非常方便</li>
+<li>不同功能的同类资源，预处理参数一般是不同的（例如背景音和按钮音效，需采用不同的内存加载策略），故先模块再类型，可以自动筛除掉用途不同的同类资源。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" class="category-chain-item">框架使用</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="category-chain-item">Unity开发规范</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Unity资源规范</div>
+      <div>https://bdffzi-blog.pages.dev/posts/3831478132.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/4118079887.html" title="Unity编码规范">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Unity编码规范</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/1518420493.html" title="Unity开发规范">
+                        <span class="hidden-mobile">Unity开发规范</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

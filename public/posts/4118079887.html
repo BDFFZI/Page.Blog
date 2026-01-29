@@ -21,15 +21,15 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【Unity】个人编码规范 文件结构规范 先确保动静态分离 当一个类存在静态和非静态两种成员时，需要利用 partial 将类分成两部分，分别存放静态与非静态成员。 再按访问修饰符排序  公开成员 保护成员 私有 SerializeField 字段 私有成员 私有用户事件 私有 Unity 事件  最后按成员类型排序  数据结构定义 构造函数 字段 属性 函数  代码设计规范  字段永远是私有的，">
+    <meta name="description" content="Unity编码规范 结构规范  让最常用的成员排在前列，让最相关的成员排在一起，便于快速索引有效信息和提示成员功能。  确定类成员的布局方式  按访问修饰符排序：公开-&gt;保护-&gt;私有[SerializeField]-&gt;私有 按是否为静态排序：静态-&gt;非静态 按具体类型排序：数据定义-&gt;事件-&gt;字段-&gt;属性-&gt;函数 按逻辑关系排序：Unity事件、成对">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Unity】个人编码规范">
-<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/3651714765.html">
+<meta property="og:title" content="Unity编码规范">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/4118079887.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【Unity】个人编码规范 文件结构规范 先确保动静态分离 当一个类存在静态和非静态两种成员时，需要利用 partial 将类分成两部分，分别存放静态与非静态成员。 再按访问修饰符排序  公开成员 保护成员 私有 SerializeField 字段 私有成员 私有用户事件 私有 Unity 事件  最后按成员类型排序  数据结构定义 构造函数 字段 属性 函数  代码设计规范  字段永远是私有的，">
+<meta property="og:description" content="Unity编码规范 结构规范  让最常用的成员排在前列，让最相关的成员排在一起，便于快速索引有效信息和提示成员功能。  确定类成员的布局方式  按访问修饰符排序：公开-&gt;保护-&gt;私有[SerializeField]-&gt;私有 按是否为静态排序：静态-&gt;非静态 按具体类型排序：数据定义-&gt;事件-&gt;字段-&gt;属性-&gt;函数 按逻辑关系排序：Unity事件、成对">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-03T13:16:00.000Z">
-<meta property="article:modified_time" content="2025-12-23T14:54:11.281Z">
+<meta property="article:published_time" content="2026-01-29T04:41:46.002Z">
+<meta property="article:modified_time" content="2026-01-29T04:46:31.080Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -37,7 +37,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>【Unity】个人编码规范 - BDFFZI的小屋</title>
+  <title>Unity编码规范 - BDFFZI的小屋</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【Unity】个人编码规范"></span>
+            <span id="subtitle" data-typed-text="Unity编码规范"></span>
           
         </div>
 
@@ -222,8 +222,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-03 21:16" pubdate>
-          2024年2月3日 晚上
+        <time datetime="2026-01-29 12:41" pubdate>
+          2026年1月29日 下午
         </time>
       </span>
     
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          772 字
+          3.3k 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          7 分钟
+          28 分钟
         
       </span>
     
@@ -295,7 +295,7 @@
         aria-expanded="true"
       >
         框架使用
-        <span class="list-group-count">(30)</span>
+        <span class="list-group-count">(32)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -442,7 +442,7 @@
         aria-expanded="true"
       >
         Unity
-        <span class="list-group-count">(25)</span>
+        <span class="list-group-count">(27)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -470,15 +470,6 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">【Unity】URP 中的 UGUIShader 实现</span>
-        </a>
-      
-    
-      
-      
-        <a href="/posts/3651714765.html" title="【Unity】个人编码规范"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">【Unity】个人编码规范</span>
         </a>
       
     
@@ -557,6 +548,61 @@
   </div>
 
           
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity开发规范"
+        id="heading-3a8ec5f2bcd6db51ebb9183173e80971" role="tab" data-toggle="collapse" href="#collapse-3a8ec5f2bcd6db51ebb9183173e80971"
+        aria-expanded="true"
+      >
+        Unity开发规范
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-3a8ec5f2bcd6db51ebb9183173e80971"
+           role="tabpanel" aria-labelledby="heading-3a8ec5f2bcd6db51ebb9183173e80971">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1518420493.html" title="Unity开发规范"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Unity开发规范</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4118079887.html" title="Unity编码规范"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">Unity编码规范</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3831478132.html" title="Unity资源规范"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Unity资源规范</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
   
     
     
@@ -943,12 +989,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">【Unity】个人编码规范</h1>
+            <h1 id="seo-header">Unity编码规范</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年12月23日 晚上
+                    本文最后更新于 2026年1月29日 下午
                   
                 
               </p>
@@ -956,61 +1002,47 @@
             
               <div class="markdown-body">
                 
-                <h1>【Unity】个人编码规范</h1>
-<h2 id="文件结构规范">文件结构规范</h2>
-<h3 id="先确保动静态分离">先确保动静态分离</h3>
-<p>当一个类存在静态和非静态两种成员时，需要利用 partial 将类分成两部分，分别存放静态与非静态成员。</p>
-<h3 id="再按访问修饰符排序">再按访问修饰符排序</h3>
+                <h1>Unity编码规范</h1>
+<h2 id="结构规范">结构规范</h2>
+<blockquote>
+<p>让最常用的成员排在前列，让最相关的成员排在一起，便于快速索引有效信息和提示成员功能。</p>
+</blockquote>
+<p>确定类成员的布局方式</p>
 <ol>
-<li>公开成员</li>
-<li>保护成员</li>
-<li>私有 SerializeField 字段</li>
-<li>私有成员</li>
-<li>私有用户事件</li>
-<li>私有 Unity 事件</li>
+<li>按访问修饰符排序：公开-&gt;保护-&gt;私有[SerializeField]-&gt;私有</li>
+<li>按是否为静态排序：静态-&gt;非静态</li>
+<li>按具体类型排序：数据定义-&gt;事件-&gt;字段-&gt;属性-&gt;函数</li>
+<li>按逻辑关系排序：Unity事件、成对函数等</li>
 </ol>
-<h3 id="最后按成员类型排序">最后按成员类型排序</h3>
-<ol>
-<li>数据结构定义</li>
-<li>构造函数</li>
-<li>字段</li>
-<li>属性</li>
-<li>函数</li>
-</ol>
-<h2 id="代码设计规范">代码设计规范</h2>
-<ul>
-<li>字段永远是私有的，除了只读字段。</li>
-<li>用到多个 if 时，尽可能采用级联而非嵌套。</li>
-<li>“!bool”仅用于取反操作，作为逻辑判断时应用“bool == false”。</li>
-<li>当代码中用到 switch 或 if，但无法确定最大数量时，应改用继承重写，委托等方式来替代。</li>
-<li>Start 之前完成所有初始化工作，在 Awake 和 Start 期间可以修改参数，按情况配备初始化函数。</li>
-<li>尽可能利用序列化引用物体而非运行时绑定，从而使引用关系在面板可见。</li>
-</ul>
-<h3 id="模糊要求">模糊要求</h3>
-<ul>
-<li>函数内容过长时应改为拆成多个局部方法再挨个调用的方式实现。</li>
-<li>代码间的关系应该层级分明，形成树形结构，不要出现越级操作。</li>
-<li>出现复制粘贴的编码方式时，应考虑封装相关代码避免复制粘贴。</li>
-</ul>
+<p>示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Door</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">enum</span> State<br>    &#123;<br>        Closing,<br>        Opening,<br>        Opened<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">event</span> Action Opened;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">event</span> Action Closed;<br><br>    <span class="hljs-keyword">public</span> State CurrentState =&gt; currentState;<br>    <span class="hljs-keyword">public</span> Func&lt;<span class="hljs-built_in">bool</span>&gt; OpenCondition =&gt; openCondition;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Task <span class="hljs-title">OpenAsync</span>()</span> &#123; <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotImplementedException(); &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Task <span class="hljs-title">CloseAsync</span>()</span> &#123; <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotImplementedException(); &#125;<br><br>    [<span class="hljs-meta">SerializeField</span>] AudioSource audioSource;<br>    [<span class="hljs-meta">SerializeField</span>] AudioClip openSound;<br>    [<span class="hljs-meta">SerializeField</span>] AudioClip closeSound;<br><br>    State currentState;<br>    Func&lt;<span class="hljs-built_in">bool</span>&gt; openCondition;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span><br>    &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotImplementedException(); <span class="hljs-comment">//初始化</span><br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PlayOpenAnimation</span>()</span> &#123; <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotImplementedException(); &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PlayCloseAnimation</span>()</span> &#123; <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotImplementedException(); &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 <h2 id="命名规范">命名规范</h2>
-<p>需要限定命名的原因</p>
+<blockquote>
+<p>增强可读性，避免形式主义，追求美观简洁。</p>
+</blockquote>
 <ul>
-<li>统一风格，美观。</li>
-<li>便于区分类型和作用。</li>
-<li>避免重名。</li>
+<li>统一采用英语命名，不要用汉语拼音。</li>
 </ul>
-<p>若没有上述十足的理由，不应强制实施命名规范，否则会增加工作负担。</p>
-<h3 id="风格限制">风格限制</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs csharp">ShiZi <span class="hljs-comment">//错误（必须人工解读，但没有声调和上下文，难以正确解读。石子、狮子、柿子？）</span><br>Persimmon <span class="hljs-comment">//正确（放入翻译软件中即可得为：柿子）</span><br></code></pre></td></tr></table></figure>
 <ul>
-<li>使用驼峰命名法</li>
-<li>名字要容易理解</li>
-<li>倒序域名化命名</li>
+<li>私有成员全部采用“驼峰命名法”</li>
+<li>非私有成员全部采用“帕斯卡命名法”（首字母大写的驼峰命名法）</li>
+<li>确保利用驼峰分割名称后，可从翻译软件中得到对应中文。</li>
 </ul>
-<p>名称怕短不怕长，可以结合上下文简化名称，但一定要能让别人理解意思。比如对于采用驼峰命名法的名称在其含有的单词间加入空格，放入翻译软件应能正确获取到对应中文名。</p>
-<p>名称结构要层次化，并按从大到小的顺序，便于分类和查找。如 DbTableServer,Db 说明是数据库相关功能，Table 表明是针对数据库中的表功能，Server 表示是一个实例类。</p>
-<h3 id="类型限制">类型限制</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> State CurrentStateOfDoor &#123; <span class="hljs-keyword">get</span>;<span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>&#125;; <span class="hljs-comment">//正确（公开成员）</span><br>State currentStateOfDoor; <span class="hljs-comment">//正确（私有成员）</span><br><span class="hljs-comment">//按驼峰分割后“Current State Of Door”可在翻译软件中解读为“门的现状”，正确。</span><br></code></pre></td></tr></table></figure>
 <ul>
-<li>私有成员首字母小写，其他成员首字母大写。</li>
+<li>名称怕短不怕长，除非是 <code>html</code> 这类事实标准，否则不要缩写！</li>
+<li>进行缩写时，对缩写单次采用首字母大写，其余小写的形式。</li>
+<li>不要使用纯简单的字母、数字等无意义名称，名称必须能自注释。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">string</span> AssetBundleName; <span class="hljs-comment">//正确</span><br><span class="hljs-built_in">string</span> AbName; <span class="hljs-comment">//错误（Ab不是标准缩写，也无法被翻译软件解读）</span><br><span class="hljs-built_in">string</span> DbName; <span class="hljs-comment">//正确（Db是标准缩写，可以被翻译软件解读为“数据库名称”）</span><br><span class="hljs-built_in">int</span> A,B,C; <span class="hljs-comment">//错误（完全无法从名称中解读出该成员的含义作用）</span><br><span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i)<span class="hljs-comment">//正确（在当前上下文属于事实标准写法，i为index的缩写）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>不要故意使用匈牙利命名法（添加多余的前后缀），现代IDE能区分类型信息。（单纯是为了避免重名等需求，不受影响）</li>
+<li>不要使用下划线，有了驼峰命名法，没有下划线也能分割内容。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">string</span> userName;<br>Text userNameText; <span class="hljs-comment">//错误（不用写明类型，如果这成了规范，会成为一种无意义的负担）</span><br>Text userNameUI;<span class="hljs-comment">//正确（不仅也避免了和userName重名，而且解释了其作用）</span><br>Text _user_Name;<span class="hljs-comment">//错误（同样是无意义的负担，而且看起来很不规整）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>针对具体类型有一些专门的命名要求</li>
 </ul>
 <table>
 <thead>
@@ -1023,68 +1055,160 @@
 <tbody>
 <tr>
 <td>接口</td>
-<td>对应类名添加<code>I</code>前缀</td>
+<td>对应类名添加<code>I</code>前缀。</td>
 <td><code>IInterface</code></td>
 </tr>
 <tr>
 <td>泛型</td>
-<td>对应类型添加<code>T</code>前缀</td>
+<td>对应类型添加<code>T</code>前缀。</td>
 <td><code>TGeneric</code></td>
 </tr>
 <tr>
 <td>函数</td>
-<td>动作，主动语态。</td>
+<td>表示动作，采用主动语态。</td>
 <td><code>OpenDoor</code></td>
 </tr>
 <tr>
 <td>事件</td>
-<td>动作，被动语态，触发在对应函数开头或期间添加<code>ing</code>后缀，触发在函数结束添加<code>ed</code>后缀。</td>
+<td>表示动作，采用被动语态。 <br/> 触发在对应函数开头或期间使用进行时，触发在函数结束使用过去时。</td>
 <td><code>DoorOpening</code>、<code>DoorOpened</code></td>
 </tr>
 <tr>
-<td>事件函数</td>
-<td>动作，被动语态，添加<code>on</code>前缀。</td>
-<td><code>OnDoorOpen</code></td>
+<td>事件函数（用于实现事件的函数）</td>
+<td>表示动作，采用被动语态，在对应事件命名的基础上添加<code>on</code>前缀。</td>
+<td><code>OnDoorOpening</code>、<code>OnDoorOpened</code></td>
 </tr>
 <tr>
 <td>字段</td>
-<td>名词，被动语态。</td>
+<td>名词和可选的形容词，采用被动语态。由于字段不允许公开，所以永远为小驼峰命名法。</td>
 <td><code>isDoorOpening</code></td>
 </tr>
 <tr>
 <td>属性</td>
-<td>与对应字段同名，大写开头。</td>
+<td>通常与字段对应，故与对应字段同名。且通常属性是公开类型，故一般会采用大写开头。</td>
 <td><code>IsDoorOpening</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="前后缀限制">前后缀限制</h3>
 <ul>
-<li>若未指明，则不要私自添加前后缀。</li>
-<li>部分类型要添加特殊的前后缀。</li>
+<li>针对具体功能也有些专门的命名要求（这些要求不分类型，字段名、类名等都要遵守）：</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>后缀</th>
-<th>描述</th>
+<th>功能</th>
+<th>要求</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>s,es</td>
-<td>容器</td>
+<td>负责UI相关的元素（对应MVC中的V）</td>
+<td>+UI</td>
 </tr>
 <tr>
-<td>UI</td>
-<td>用户界面相关</td>
+<td>负责驱动模块，推进游戏逻辑的元素（对应MVC中的C）</td>
+<td>+Controller</td>
 </tr>
 <tr>
-<td>Prefab</td>
 <td>用于实例化的预制体</td>
+<td>+Prefab</td>
 </tr>
 </tbody>
 </table>
+<h2 id="实现规范">实现规范</h2>
+<blockquote>
+<p>使用优秀的代码设计策略，增加程序的可维护性。</p>
+</blockquote>
+<h3 id="功能性要求">功能性要求</h3>
+<blockquote>
+<p>这些要求会影响你的功能实现，但有助于不同功能间的开发协作。</p>
+</blockquote>
+<ul>
+<li>非常量字段永远不允许公开，应使用属性代替。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> Value;<span class="hljs-comment">//错误（字段操作无法监控，外部程序可以随意操控）</span><br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> Value &#123;<span class="hljs-keyword">get</span>; <span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>;&#125;;<span class="hljs-comment">//正确（属性可以验证操作过程，避免错误行为）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>基于<code>[SerializeField]</code>（或<code>[RequireComponent]</code>）实现依赖注入，而非不受控的依赖获取。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">class</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Play</span>()</span>&#123;<br>        AudioSource audioSource = GetComponent&lt;AudioSource&gt;()<br>        audioSource.Play();<br>    &#125;<br>&#125; <span class="hljs-comment">//错误（无法确保外部环境正确，也无法提醒用户配置）</span><br><br><span class="hljs-keyword">class</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Play</span>()</span>&#123;<br>        audioSource.Play();<br>    &#125;<br>    [<span class="hljs-meta">SerializeField</span>] AudioSource audioSource;<br>&#125; <span class="hljs-comment">//正确（外部用户将会在面板上看到依赖的对象的槽位）</span><br><br>[<span class="hljs-meta">RequireComponent(typeof(AudioSource))</span>]<br><span class="hljs-keyword">class</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Play</span>()</span>&#123;<br>        AudioSource audioSource = GetComponent&lt;AudioSource&gt;()<br>        audioSource.Play();<br>    &#125;<br>&#125; <span class="hljs-comment">//正确（附着的物体将会被强制添加上依赖组件）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>在<code>Awake</code>（或<code>OnEnable</code>）阶段完成功能模块初始化，存在依赖时配合<code>[DefaultExecutionOrder]</code>控制。</li>
+<li>不要基于构造函数、析构函数等C#事件处理数据，应全部在Unity事件中处理，否则部分Unity功能会无法使用。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs csharp">[<span class="hljs-meta">DefaultExecutionOrder(-10)</span>]<span class="hljs-comment">//正确（SeedGenerator的初始化时机被显式指定，便于其他模块使用）</span><br><span class="hljs-keyword">class</span> <span class="hljs-title">SeedGenerator</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">GetSeed</span>()</span> =&gt; currentSeed;<br>    <span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> defaultSeed = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> lastSeed = <span class="hljs-number">9</span>;<br>    <span class="hljs-built_in">int</span> currentSeed = defaultSeed;<span class="hljs-comment">//错误（不允许依赖构造函数等初始化，部分情况下不能正常触发）</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span>&#123;<br>        <span class="hljs-comment">//兜底初始化</span><br>        currentSeed = defaultSeed;<span class="hljs-comment">//正确（在Awake阶段时确保模块被初始化（可用））</span><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnEnable</span>()</span>&#123;<br>        <span class="hljs-comment">//完全初始化</span><br>        currentSeed = lastSeed;<span class="hljs-comment">//正确（基于Unity事件处理数据）</span><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnDisable</span>()</span>&#123;<br>        <span class="hljs-comment">//资源回收</span><br>        currentSeed = <span class="hljs-number">-1</span>;<span class="hljs-comment">//正确（基于Unity事件处理数据）</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title">Random</span> &#123;<br>    [<span class="hljs-meta">SerializeField</span>] A a;<br>    <span class="hljs-built_in">int</span> seed;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span>&#123;<br>        <span class="hljs-comment">//依赖A的初始化</span><br>        seed = a.GetSeed();<span class="hljs-comment">//正确（由顺序被确定，此时a已经执行OnEnable（或Awake），可以使用）</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="可读性要求">可读性要求</h3>
+<blockquote>
+<p>这些要求不会影响功能和程序设计，但可以使代码美观，便于读写。</p>
+</blockquote>
+<ul>
+<li>省略默认代码（如私有访问修饰符），让系统自动提供，从而简化代码减少阅读量。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//错误（显式写明修饰符较冗长且需要专门阅读修饰符的单词内容）</span><br><span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">value</span>; <br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> Value &#123;<span class="hljs-keyword">public</span> <span class="hljs-keyword">get</span>;<span class="hljs-keyword">public</span> <span class="hljs-keyword">set</span>;&#125;<br><span class="hljs-comment">//正确（非常简约，大幅减少代码量，且不需要专门阅读修饰符）</span><br><span class="hljs-built_in">int</span> <span class="hljs-keyword">value</span>;<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> Value &#123;<span class="hljs-keyword">get</span>;<span class="hljs-keyword">set</span>;&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>区分“取反”和“判否”，在判否时显式写明为与否定的比较。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">if</span>(isDoorOpened == <span class="hljs-literal">false</span>)<span class="hljs-comment">//正确</span><br><span class="hljs-keyword">if</span>(isDoorOpened)<span class="hljs-comment">//正确（省略默认代码，减少阅读量）</span><br><span class="hljs-keyword">if</span>(!isDoorOpened)<span class="hljs-comment">//错误（用取反符号判断容易看漏，而且无法显式表达出判否的意图）</span><br><span class="hljs-built_in">bool</span> isDoorClosing = !isDoorOpened;<span class="hljs-comment">//正确（按取反的意图使用取反符号）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>避免使用 var，应显式写明类型信息。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">var</span> a = GetValue(); <span class="hljs-comment">//错误（必须通过二次查询才能获取类型信息，非常影响阅读效率）</span><br><span class="hljs-built_in">int</span> a = GetValue(); <span class="hljs-comment">//正确（一眼就可以看出类型信息，非常直观，清晰的类型名易于理解代码）</span><br>List&lt;<span class="hljs-built_in">int</span>&gt; b = <span class="hljs-keyword">new</span>();<span class="hljs-comment">//正确（最新的语法糖，保留类型信息同时简化代码，比var好）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>当有多个if判断时，使用基于级联的布局方式，而非嵌套。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Func</span>()</span>&#123;<br>    <span class="hljs-keyword">if</span>()&#123;<br>        <span class="hljs-keyword">if</span>()&#123;<br>            <span class="hljs-keyword">if</span>()&#123;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<span class="hljs-comment">//错误（嵌套布局，代码块重合，不满足开闭原则，可维护性差）</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Func</span>()</span>&#123;<br>    <span class="hljs-keyword">if</span>()&#123;&#125;<br>    <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">if</span>()&#123;&#125;<br>    <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">if</span>()&#123;&#125;<br>    <span class="hljs-keyword">return</span>;<br>&#125;<span class="hljs-comment">//正确（各代码块相互独立，不容易误操作，且功能独立易于理解）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>代码中的任何元素（变量函数等）应保持最小作用域，仅放在确实要用的环境中。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//错误（PreProcess仅在Process使用，但放在外部作用域反而会成为读者的干扰项（误以为是有用的独立函数））</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PreProcess</span>()</span>&#123;&#125;;<br><span class="hljs-comment">//错误（同 PreProcess，而且其命名“i”在定义环境下无法向读者解释含义，存在命名错误）</span><br><span class="hljs-built_in">int</span> i;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Process</span>()</span>&#123;<br>    PreProcess();<br>    <span class="hljs-keyword">for</span>(i)&#123;&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Process</span>()</span>&#123;<br>    <span class="hljs-comment">//正确（只有阅读Process的读者，才需要知道PreProcess和processStep的实际功能）</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PreProcess</span>()</span>&#123;&#125;;<br>    <span class="hljs-built_in">int</span> processStep;<br><br>    PreProcess();<br>    <span class="hljs-keyword">for</span>(processStep)&#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>优先使用新式的C#语法糖和功能，减少代码量，统一实现方式。</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs text">//示意例子：<br>Action -&gt; await / async<br>if(a is null) -&gt; ?.<br>a == null ? a:b =&gt; ??<br>for/foreach -&gt; Linq<br>class&#123;&#125; -&gt; var=new &#123;&#125;<br>int i,j,k;k=j;j=i;i=k -&gt; (i,j) = (j,i)<br>.....等等<br></code></pre></td></tr></table></figure>
+<p>注意：部分新式写法存在性能和兼容性问题，例如：Linq 可能产生 GC；空条件运算符对Unity对象无效。故要根据实际情况选择性使用，甚至在性能密集场合，手写的排序比 List.Sort 更高效（因为Sort也有GC）。</p>
+<p>如果偷懒不想阅读 C# 文档，建议使用一下 Rider IDE，远比 VS 等在代码提示和检查上智能的多（毕竟以前都没有免费版），用一遍可以学到很多知识。</p>
+<h3 id="设计性要求">设计性要求</h3>
+<blockquote>
+<p>这些要求影响你如何设计你的代码实现，能大幅增加代码的健壮性，减少问题概率且易于调整扩展。</p>
+</blockquote>
+<h4 id="检错方法">检错方法</h4>
+<ul>
+<li><strong>避免无法预估的if判断</strong></li>
+</ul>
+<p>如果你的代码实现里用到很多if判断，且你无法确定他们的最大数量，可以预见性的，他们未来还会继续增加。那你不应该使用if实现，而是改用委托，由外部调用者实现原本的if代码。</p>
+<ul>
+<li><strong>杜绝复制粘贴的编码方式</strong></li>
+</ul>
+<p>如果你写代码时出现了成段的复制粘贴行为，那说明你的代码需要优化。你应该将你复制的代码进行封装，考虑改用可以共用的函数实现，这样后期修改才不会出现“一个调整，到处要改”的情况。</p>
+<ul>
+<li><strong>保持树型代码引用关系</strong></li>
+</ul>
+<p>如果你有两个不相关的功能 A、B，将A的代码删除后，B却报错了，那你的代码就存在依赖问题。不同功能间的依赖应该是树状的，有明显的层级隔离，一个枝杈不可能影响到另一个枝杈。如果难以理解，那就想这么一个需求，你的每一个功能模块都应该可以做到随时移植到其他项目，且仅依赖必要的其他功能代码。</p>
+<h4 id="开发方法">开发方法</h4>
+<ul>
+<li><strong>基本原则：通过“高内聚低耦合”实现“模块化”</strong></li>
+</ul>
+<p>很多人把自己的功能称为模块，但事实上他们并没有实现模块化。“模块化”在《软件工程》中有专门的定义，逻辑上的功能独立并不能说明你的代码是模块化的。无论多复杂的编码规范技巧，本质都是为了实现“模块化”，实现“高内聚低耦合”，包括我们上面已经提到的几点方案。</p>
+<ul>
+<li><strong>开发技巧：设计模式</strong></li>
+</ul>
+<p>市面上有很多类似的技巧和规范教我们如何高效管理项目，例如《设计模式》就是其中一种，建议看看：<a target="_blank" rel="noopener" href="https://bdffzi.github.io/blog/posts/2553791405">【软件开发】设计模式个人解读</a></p>
+<ul>
+<li><strong>开发框架：MVC框架</strong></li>
+</ul>
+<p>如果你的代码实现了模块化，那必然就会自动使用上MVC框架，因为MVC就代表了三个不同的模块：</p>
+<ul>
+<li>M（模型）：核心功能，类似于API的存在。</li>
+<li>V（视图）：用户界面，与M分离，用于想用户呈现特定的数据交互形式。</li>
+<li>C（控制器）：驱动游戏逻辑，将各个模块桥接，激活。</li>
+</ul>
+<p>如果偷懒，MV可以合成一个模块（但那样不利于自动化测试，因为V只能人工测试），但C一定是分离出来的。一个应用说到底就是由一堆功能模块和驱动模块构成的。</p>
+<ul>
+<li><strong>避免形式主义，不要写没有提到的功能。</strong></li>
+</ul>
+<p>很多首次接触代码设计规范的人，会陷入一种形式主义，一开始就想把代码设计的尽善尽美，很小的一个功能，却花大量的事件用于构建框架。但通常的结果是，这些复杂的框架不仅没起到效果，还严重影响维护和新功能的开发。代码设计应该是动态调整的，不会为未提出的需求做过多准备，但一旦有需求也能迅速改进适应。</p>
+<blockquote>
+<p>没人是先知，人总是活在当下，程序也是一样。项目刚开始时，你可以用一些if，可以少量复制粘贴，可以不用父类抽象，这没问题，因为这样写最简单省时间，只要功能没有改动，这就是当前状态最易于理解的代码。直到功能开始复杂，你就该意识到需要换个策略应对变化了。用上那些你学到的设计技巧，在一次一次迭代中将程序不断调整完善，因地制宜，一砖一瓦，稳稳的做出每个当下的最合适的项目形状。</p>
+</blockquote>
 
                 
               </div>
@@ -1111,6 +1235,13 @@
   <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
   
   
+    <span>></span>
+    
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="category-chain-item">Unity开发规范</a>
+  
+  
+
+  
 
   
 
@@ -1130,8 +1261,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【Unity】个人编码规范</div>
-      <div>https://bdffzi-blog.pages.dev/posts/3651714765.html</div>
+      <div>Unity编码规范</div>
+      <div>https://bdffzi-blog.pages.dev/posts/4118079887.html</div>
     </div>
     <div class="license-meta">
       
@@ -1143,7 +1274,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月3日</div>
+          <div>2026年1月29日</div>
         </div>
       
       
@@ -1175,18 +1306,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/3410375722.html" title="【博客搭建】Hexo 使用笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【博客搭建】Hexo 使用笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/1673174570.html" title="【计算机】字符编码的发展与关系">
-                        <span class="hidden-mobile">【计算机】字符编码的发展与关系</span>
+                      <a href="/posts/3831478132.html" title="Unity资源规范">
+                        <span class="hidden-mobile">Unity资源规范</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
