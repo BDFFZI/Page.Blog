@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/v2-311c31268d37444b3c72f40d4cdd2425_r.png">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-14.png">
 <meta property="article:published_time" content="2025-12-23T12:57:56.495Z">
-<meta property="article:modified_time" content="2026-02-01T04:49:34.057Z">
+<meta property="article:modified_time" content="2026-02-01T10:18:43.928Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/image-13.png">
@@ -1010,7 +1010,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年2月1日 下午
+                    本文最后更新于 2026年2月1日 晚上
                   
                 
               </p>
@@ -1136,7 +1136,7 @@
 <p><img src="/assets/images/v2-311c31268d37444b3c72f40d4cdd2425_r.png" srcset="/img/loading.gif" lazyload alt="散射与法线的关系"></p>
 <p>例如上图就是皮肤中，不同频率的光散射对其法线效果的影响。因为皮肤对红光散射性较好，所以红光的法线看以来越均匀。</p>
 <p>因此我们可以准备两张法线贴图，一张是正常镜射光计算用的高细节法线贴图（镜射光不会散射，所以不受散射物理效果影响），另一张则是模拟法线均匀效果的模糊法线贴图。接着，我们对红绿蓝三色光根据其散射性，分别插值出不同粗糙度的法线贴图，并用其计算 LUT 中的查询参数，最终再将 3 个通道的查询结果合并就可以模拟出这种微表面间的次表面散射效果了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float3 rNormal = normalize(lerp(normal, lowNormal, _NormalWeight.r));<br>float3 gNormal = normalize(lerp(normal, lowNormal, _NormalWeight.g));<br>float3 bNormal = normalize(lerp(normallowNormal, _NormalWeight.b));<br>float rHalfLambert = dot(rNormal, lighdirection) * 0.5 + 0.5;<br>float rAngleScattering = tex(_AngleScatteringMap, float2(rHalfLambertcurvature)).r;<br>float gHalfLambert = dot(gNormal, lighdirection) * 0.5 + 0.5;<br>float gAngleScattering = tex(_AngleScatteringMap, float2(gHalfLambertcurvature)).g;<br>float bHalfLambert = dot(bNormal, lighdirection) * 0.5 + 0.5;<br>float bAngleScattering = tex(_AngleScatteringMap, float2(bHalfLambertcurvature)).b;<br><br>//考虑了微表面间散射的角度次表面散射<br>float3 angleScattering = floa(rAngleScattering, gAngleScatteringbAngleScattering);<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float3 rNormal = normalize(lerp(normal, lowNormal, _NormalWeight.r));<br>float3 gNormal = normalize(lerp(normal, lowNormal, _NormalWeight.g));<br>float3 bNormal = normalize(lerp(normal, lowNormal, _NormalWeight.b));<br>float rHalfLambert = dot(rNormal, lighdirection) * 0.5 + 0.5;<br>float rAngleScattering = tex2D(_AngleScatteringMap, float2(rHalfLambert,curvature)).r;<br>float gHalfLambert = dot(gNormal, lighdirection) * 0.5 + 0.5;<br>float gAngleScattering = tex2D(_AngleScatteringMap, float2(gHalfLambert,curvature)).g;<br>float bHalfLambert = dot(bNormal, lighdirection) * 0.5 + 0.5;<br>float bAngleScattering = tex2D(_AngleScatteringMap, float2(bHalfLambert,curvature)).b;<br><br>//考虑了微表面间散射的角度次表面散射<br>float3 angleScattering = float3(rAngleScattering, gAngleScattering,bAngleScattering);<br></code></pre></td></tr></table></figure>
 <p>实现该效果后，在法线转角处会有一些淡淡的色差效果，比如用皮肤的曲率插值，就会有些红黄光渗出的感觉。这在褶皱明显的表面上表现效果非常好，因为其不仅能缓和法线阴影，而且相比直接平滑法线，它更能体现出散射的效果。</p>
 <p><img src="/assets/images/image-14.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>上图中，图一是原始法线效果，图二是平滑法线效果，图三是根据曲率插值的法线效果。图三明显效果更好，就像是真的有人体组织突出来了一样。</p>
