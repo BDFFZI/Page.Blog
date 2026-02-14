@@ -21,12 +21,12 @@
   <meta name="author" content="BDFFZI">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【技术美术】次表面散射 此处次表面散射更准确的名字应该叫“次表面漫反射”，因为它不会发生透射现象，所以不应该称之为散射（散射应该是反射和透射的总称，典型的例子就是双向散射分布函数）。次表面散射相当于是对漫反射的一次升级。 注意：下方以皮肤次表面散射为例，但这套方法对所有散射现象都是有效的，不过是换个 LUT 的事（本质就是 R(r)R(r)R(r) 不同） 次表面散射现象 在半透明的物体上，当光接">
+    <meta name="description" content="【技术美术】次表面散射 次表面散射的光照组成 次表面散射的光照结构：  从表面直接反弹的光（镜反射光） 进入物体内部的光  在内部经过多次反弹出射的光（漫反射光 + 漫透射光） 被遮挡较少或直接折射的光（镜透射光）    其中漫反射和漫透射本质是同一种光学现象，他们都是模拟光线从物体内部多次弹射的结果，两者的区分只是看出射方向是否超过入射方向的90度。故我认为应将他们统一视为“次表面漫散射”，只是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【技术美术】次表面散射">
 <meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/4246974515.html">
 <meta property="og:site_name" content="BDFFZI的小屋">
-<meta property="og:description" content="【技术美术】次表面散射 此处次表面散射更准确的名字应该叫“次表面漫反射”，因为它不会发生透射现象，所以不应该称之为散射（散射应该是反射和透射的总称，典型的例子就是双向散射分布函数）。次表面散射相当于是对漫反射的一次升级。 注意：下方以皮肤次表面散射为例，但这套方法对所有散射现象都是有效的，不过是换个 LUT 的事（本质就是 R(r)R(r)R(r) 不同） 次表面散射现象 在半透明的物体上，当光接">
+<meta property="og:description" content="【技术美术】次表面散射 次表面散射的光照组成 次表面散射的光照结构：  从表面直接反弹的光（镜反射光） 进入物体内部的光  在内部经过多次反弹出射的光（漫反射光 + 漫透射光） 被遮挡较少或直接折射的光（镜透射光）    其中漫反射和漫透射本质是同一种光学现象，他们都是模拟光线从物体内部多次弹射的结果，两者的区分只是看出射方向是否超过入射方向的90度。故我认为应将他们统一视为“次表面漫散射”，只是">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-13.png">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-12.png">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/v2-311c31268d37444b3c72f40d4cdd2425_r.png">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-14.png">
 <meta property="article:published_time" content="2025-12-23T12:57:56.495Z">
-<meta property="article:modified_time" content="2025-12-23T14:54:11.281Z">
+<meta property="article:modified_time" content="2026-02-01T15:39:58.159Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/image-13.png">
@@ -244,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          4.1k 字
         
       </span>
     
@@ -255,7 +255,7 @@
         
         
         
-          32 分钟
+          34 分钟
         
       </span>
     
@@ -578,10 +578,10 @@
     
       
       
-        <a href="/posts/2440912354.html" title="【技术美术】各项异性光照"
+        <a href="/posts/2440912354.html" title="【技术美术】各向异性光照"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">【技术美术】各项异性光照</span>
+          <span class="category-post">【技术美术】各向异性光照</span>
         </a>
       
     
@@ -1010,7 +1010,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年12月23日 晚上
+                    本文最后更新于 2026年2月1日 晚上
                   
                 
               </p>
@@ -1019,8 +1019,32 @@
               <div class="markdown-body">
                 
                 <h1>【技术美术】次表面散射</h1>
-<p>此处次表面散射更准确的名字应该叫“次表面漫反射”，因为它不会发生透射现象，所以不应该称之为散射（散射应该是反射和透射的总称，典型的例子就是双向散射分布函数）。次表面散射相当于是对漫反射的一次升级。</p>
-<p>注意：下方以皮肤次表面散射为例，但这套方法对所有散射现象都是有效的，不过是换个 LUT 的事（本质就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R(r)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">)</span></span></span></span> 不同）</p>
+<h2 id="次表面散射的光照组成">次表面散射的光照组成</h2>
+<p>次表面散射的光照结构：</p>
+<ul>
+<li>从表面直接反弹的光（镜反射光）</li>
+<li>进入物体内部的光
+<ul>
+<li>在内部经过多次反弹出射的光（漫反射光 + 漫透射光）</li>
+<li>被遮挡较少或直接折射的光（镜透射光）</li>
+</ul>
+</li>
+</ul>
+<p>其中漫反射和漫透射本质是同一种光学现象，他们都是模拟光线从物体内部多次弹射的结果，两者的区分只是看出射方向是否超过入射方向的90度。故我认为应将他们统一视为“次表面漫散射”，只是根据不同的物体属性，其光斑范围会发生变化（这就类似于光滑度对镜反射的影响）。</p>
+<p>他们的关系为：</p>
+<ul>
+<li>lerp（进入物体内部的光，从表面直接反弹的光，金属度）</li>
+<li>lerp（漫反射光，漫透射光，散射度）</li>
+<li>lerp（在内部经过多次反弹出射的光，被遮挡较少或直接折射的光，透射度）</li>
+</ul>
+<p>对上述新增属性的解释：</p>
+<ul>
+<li>散射度：决定散射光的出射位置分布情况（影响散射辐射率）。</li>
+<li>透射度：决定散射光在漫射镜射之间的分布比例（类似金属度）。</li>
+</ul>
+<h2 id="备注">备注</h2>
+<p>本章不介绍完整的次表面散射，只介绍“次表面漫散射”部分。因为它还缺少镜透射现象，<strong>所以不应该称之为散射</strong>（散射应该是反射和透射的总称）。所以要学习完整的次表面散射，还得阅<a href="/posts/3105478131/">【技术美术】双向透射分布函数</a>。</p>
+<p>下方内容以皮肤次表面散射为例，但这套方法对所有散射现象都是有效的，不过是换个 LUT 的事（本质就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R(r)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">)</span></span></span></span> 不同）</p>
 <h2 id="次表面散射现象">次表面散射现象</h2>
 <p>在半透明的物体上，当光接触到表面时，其不会直接被反射或吸收，而是会穿透进内部继续传递，最终从附近的一个临近表面重新射出（如果从背面射出则叫透射）。这种入射位置和出射位置不同的现象，就叫次表面散射。</p>
 <p><img src="/assets/images/image-13.png" srcset="/img/loading.gif" lazyload alt="次散射现象"></p>
@@ -1112,7 +1136,7 @@
 <p><img src="/assets/images/v2-311c31268d37444b3c72f40d4cdd2425_r.png" srcset="/img/loading.gif" lazyload alt="散射与法线的关系"></p>
 <p>例如上图就是皮肤中，不同频率的光散射对其法线效果的影响。因为皮肤对红光散射性较好，所以红光的法线看以来越均匀。</p>
 <p>因此我们可以准备两张法线贴图，一张是正常镜射光计算用的高细节法线贴图（镜射光不会散射，所以不受散射物理效果影响），另一张则是模拟法线均匀效果的模糊法线贴图。接着，我们对红绿蓝三色光根据其散射性，分别插值出不同粗糙度的法线贴图，并用其计算 LUT 中的查询参数，最终再将 3 个通道的查询结果合并就可以模拟出这种微表面间的次表面散射效果了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float3 rNormal = normalize(lerp(normal, lowNormal, _NormalWeight.r));<br>float3 gNormal = normalize(lerp(normal, lowNormal, _NormalWeight.g));<br>float3 bNormal = normalize(lerp(normallowNormal, _NormalWeight.b));<br>float rHalfLambert = dot(rNormal, lighdirection) * 0.5 + 0.5;<br>float rAngleScattering = tex(_AngleScatteringMap, float2(rHalfLambertcurvature)).r;<br>float gHalfLambert = dot(gNormal, lighdirection) * 0.5 + 0.5;<br>float gAngleScattering = tex(_AngleScatteringMap, float2(gHalfLambertcurvature)).g;<br>float bHalfLambert = dot(bNormal, lighdirection) * 0.5 + 0.5;<br>float bAngleScattering = tex(_AngleScatteringMap, float2(bHalfLambertcurvature)).b;<br><br>//考虑了微表面间散射的角度次表面散射<br>float3 angleScattering = floa(rAngleScattering, gAngleScatteringbAngleScattering);<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float3 rNormal = normalize(lerp(normal, lowNormal, _NormalWeight.r));<br>float3 gNormal = normalize(lerp(normal, lowNormal, _NormalWeight.g));<br>float3 bNormal = normalize(lerp(normal, lowNormal, _NormalWeight.b));<br>float rHalfLambert = dot(rNormal, lighdirection) * 0.5 + 0.5;<br>float rAngleScattering = tex2D(_AngleScatteringMap, float2(rHalfLambert,curvature)).r;<br>float gHalfLambert = dot(gNormal, lighdirection) * 0.5 + 0.5;<br>float gAngleScattering = tex2D(_AngleScatteringMap, float2(gHalfLambert,curvature)).g;<br>float bHalfLambert = dot(bNormal, lighdirection) * 0.5 + 0.5;<br>float bAngleScattering = tex2D(_AngleScatteringMap, float2(bHalfLambert,curvature)).b;<br><br>//考虑了微表面间散射的角度次表面散射<br>float3 angleScattering = float3(rAngleScattering, gAngleScattering,bAngleScattering);<br></code></pre></td></tr></table></figure>
 <p>实现该效果后，在法线转角处会有一些淡淡的色差效果，比如用皮肤的曲率插值，就会有些红黄光渗出的感觉。这在褶皱明显的表面上表现效果非常好，因为其不仅能缓和法线阴影，而且相比直接平滑法线，它更能体现出散射的效果。</p>
 <p><img src="/assets/images/image-14.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>上图中，图一是原始法线效果，图二是平滑法线效果，图三是根据曲率插值的法线效果。图三明显效果更好，就像是真的有人体组织突出来了一样。</p>
@@ -1241,9 +1265,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/2440912354.html" title="【技术美术】各项异性光照">
+                      <a href="/posts/2440912354.html" title="【技术美术】各向异性光照">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【技术美术】各项异性光照</span>
+                        <span class="hidden-mobile">【技术美术】各向异性光照</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
