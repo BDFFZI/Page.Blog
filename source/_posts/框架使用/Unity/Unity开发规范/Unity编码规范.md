@@ -163,6 +163,7 @@ class {
 
 - 在`Awake`（或`OnEnable`）阶段完成功能模块初始化，存在依赖时配合`[DefaultExecutionOrder]`控制。
 - 不要基于构造函数、析构函数等C#事件处理数据，应全部在Unity事件中处理，否则部分Unity功能会无法使用。
+- 尽可能禁用编辑器选项 `Reload Domain` 和 `Reload Scene`，从而加快编辑器运行速度，提高开发迭代效率。
 
 ```csharp
 [DefaultExecutionOrder(-10)]//正确（SeedGenerator的初始化时机被显式指定，便于其他模块使用）
