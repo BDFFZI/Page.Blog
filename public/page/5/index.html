@@ -233,6 +233,67 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/posts/2970632423.html" target="_self">
+          【Unity】各种操作触发 GC 情况
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2970632423.html" target="_self">
+        <div>
+          【Unity】各种操作触发 GC 情况 在 Update 中持续执行下列操作，统计每帧触发 GC 的情况，仅首帧触发 GC 的情况不计入。 使用 Linq 处理数据 基本上使用就会分配内存，所以不要用。 利用 Foreach 遍历容器 不会分配内存，可以用，但根据不同的迭代器实现，速度可能不如 For 循环。 将值类型装箱 会触发内存分配，不要使用。 使用 enum 做键的字典 使用 enum 作
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-04 16:42" pubdate>
+              2024-02-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" class="category-chain-item">框架使用</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/posts/4239874620.html" target="_self">
           【Unity】图形渲染瓶颈与批处理优化
         </a>
@@ -744,74 +805,6 @@
       <a class="index-excerpt index-excerpt__noimg" href="/posts/3174050793.html" target="_self">
         <div>
           【技术美术】GPU绘制画面的基本原理 GPU是如何在屏幕上绘制画面的？ GPU是计算机的一部分，自然是基于数学的，也只有数学能足够严谨精确的去描述画面。那问题便可以抽象为“如何用数学表示一幅2D图像？”。 定位画面 上过初中的都知道，直角坐标系嘛。比如我和画画的人约定好，待会他要画一个三角形，那我只要告诉他三个顶点的坐标，那他100%就能在我期望的位置画出三角形。 当然，光一个三角形太简单了，我希
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-23 20:57" pubdate>
-              2025-12-23
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/" class="category-chain-item">渲染管线</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/3966975174.html" target="_self">
-          【技术美术】引擎渲染管线概述
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3966975174.html" target="_self">
-        <div>
-          【技术美术】引擎渲染管线概述 引擎渲染管线是发生在游戏引擎中的完整渲染流程，GPU渲染管线也是其中的一部分，在此GPU相当于是画笔，而引擎则是画家。 在Unity中有内置渲染管线和SRP渲染管线两种，考虑SRP是未来趋势，且更加公开透明，后续引擎渲染管线均指SRP。 引擎渲染管线流程   收集渲染对象，如渲染器、灯光等物体，该部分由SRP自动处理。 更新渲染信息至GPU端，如灯光、时间、矩阵等数据
         </div>
       </a>
 
