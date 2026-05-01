@@ -1,0 +1,1678 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Unity编码规范 结构规范  让最常用的成员排在前列，让最相关的成员排在一起，便于快速索引有效信息和提示成员功能。  确定类成员的布局方式  按访问修饰符排序：公开-&gt;保护-&gt;私有[SerializeField]-&gt;私有 按是否为静态排序：静态-&gt;非静态 按具体类型排序：数据定义-&gt;事件-&gt;字段-&gt;属性-&gt;函数 按逻辑关系排序：Unity事件、成对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity编码规范">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/4118079887.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="Unity编码规范 结构规范  让最常用的成员排在前列，让最相关的成员排在一起，便于快速索引有效信息和提示成员功能。  确定类成员的布局方式  按访问修饰符排序：公开-&gt;保护-&gt;私有[SerializeField]-&gt;私有 按是否为静态排序：静态-&gt;非静态 按具体类型排序：数据定义-&gt;事件-&gt;字段-&gt;属性-&gt;函数 按逻辑关系排序：Unity事件、成对">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-29T04:41:46.002Z">
+<meta property="article:modified_time" content="2026-02-23T14:38:07.440Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Unity编码规范 - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Unity编码规范"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-29 12:41" pubdate>
+          2026年1月29日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          28 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="框架使用"
+        id="heading-0ed57408571ff1d51770fac53788b69b" role="tab" data-toggle="collapse" href="#collapse-0ed57408571ff1d51770fac53788b69b"
+        aria-expanded="true"
+      >
+        框架使用
+        <span class="list-group-count">(32)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-0ed57408571ff1d51770fac53788b69b"
+           role="tabpanel" aria-labelledby="heading-0ed57408571ff1d51770fac53788b69b">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Blender"
+        id="heading-482982e64aebd743da9392fbc4b1f5d8" role="tab" data-toggle="collapse" href="#collapse-482982e64aebd743da9392fbc4b1f5d8"
+        aria-expanded="false"
+      >
+        Blender
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-482982e64aebd743da9392fbc4b1f5d8"
+           role="tabpanel" aria-labelledby="heading-482982e64aebd743da9392fbc4b1f5d8">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/953923210.html" title="【Blender】插件开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】插件开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495031609.html" title="【Blender】杂项笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Blender】杂项笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Linux"
+        id="heading-edc9f0a5a5d57797bf68e37364743831" role="tab" data-toggle="collapse" href="#collapse-edc9f0a5a5d57797bf68e37364743831"
+        aria-expanded="false"
+      >
+        Linux
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-edc9f0a5a5d57797bf68e37364743831"
+           role="tabpanel" aria-labelledby="heading-edc9f0a5a5d57797bf68e37364743831">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2845903494.html" title="【Linux】Linux 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Linux】Linux 使用笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Manim"
+        id="heading-cbcd3fecff4c0ef0c063f8c41726d34a" role="tab" data-toggle="collapse" href="#collapse-cbcd3fecff4c0ef0c063f8c41726d34a"
+        aria-expanded="false"
+      >
+        Manim
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-cbcd3fecff4c0ef0c063f8c41726d34a"
+           role="tabpanel" aria-labelledby="heading-cbcd3fecff4c0ef0c063f8c41726d34a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3454987331.html" title="【Manim】空间与变换笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Manim】空间与变换笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity"
+        id="heading-82dd98f1d663acc318e6a8ec4ab69b7a" role="tab" data-toggle="collapse" href="#collapse-82dd98f1d663acc318e6a8ec4ab69b7a"
+        aria-expanded="true"
+      >
+        Unity
+        <span class="list-group-count">(27)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-82dd98f1d663acc318e6a8ec4ab69b7a"
+           role="tabpanel" aria-labelledby="heading-82dd98f1d663acc318e6a8ec4ab69b7a">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1233487121.html" title="【Unity】UGUI"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】UGUI</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1602965714.html" title="【Unity】URP 中的 UGUIShader 实现"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】URP 中的 UGUIShader 实现</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/806518232.html" title="【Unity】人形动画"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】人形动画</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/150670921.html" title="【Unity】光照解决方案笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】光照解决方案笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2970632423.html" title="【Unity】各种操作触发 GC 情况"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】各种操作触发 GC 情况</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4239874620.html" title="【Unity】图形渲染瓶颈与批处理优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】图形渲染瓶颈与批处理优化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2200103232.html" title="【Unity】未来技术路线"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】未来技术路线</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4133014859.html" title="【Unity】热更新原理与 Xlua 配置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】热更新原理与 Xlua 配置</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4114572923.html" title="【Unity】脚本生命周期"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】脚本生命周期</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2226898333.html" title="【Unity】骨骼动画"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】骨骼动画</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity开发规范"
+        id="heading-3a8ec5f2bcd6db51ebb9183173e80971" role="tab" data-toggle="collapse" href="#collapse-3a8ec5f2bcd6db51ebb9183173e80971"
+        aria-expanded="true"
+      >
+        Unity开发规范
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-3a8ec5f2bcd6db51ebb9183173e80971"
+           role="tabpanel" aria-labelledby="heading-3a8ec5f2bcd6db51ebb9183173e80971">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1518420493.html" title="Unity开发规范"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Unity开发规范</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4118079887.html" title="Unity编码规范"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">Unity编码规范</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3831478132.html" title="Unity资源规范"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Unity资源规范</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Unity文档笔记"
+        id="heading-680a95aa049e61aff0e7c7ac93d60748" role="tab" data-toggle="collapse" href="#collapse-680a95aa049e61aff0e7c7ac93d60748"
+        aria-expanded="false"
+      >
+        Unity文档笔记
+        <span class="list-group-count">(14)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-680a95aa049e61aff0e7c7ac93d60748"
+           role="tabpanel" aria-labelledby="heading-680a95aa049e61aff0e7c7ac93d60748">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="图形"
+        id="heading-9be72ba165a45aaed9f950ec718475be" role="tab" data-toggle="collapse" href="#collapse-9be72ba165a45aaed9f950ec718475be"
+        aria-expanded="false"
+      >
+        图形
+        <span class="list-group-count">(13)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-9be72ba165a45aaed9f950ec718475be"
+           role="tabpanel" aria-labelledby="heading-9be72ba165a45aaed9f950ec718475be">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/36610906.html" title="【Unity】加载纹理和网格数据"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】加载纹理和网格数据</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/289693924.html" title="【Unity】材质"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】材质</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染管线"
+        id="heading-a0975e312ca4746045ba2e028a24b7ab" role="tab" data-toggle="collapse" href="#collapse-a0975e312ca4746045ba2e028a24b7ab"
+        aria-expanded="false"
+      >
+        渲染管线
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a0975e312ca4746045ba2e028a24b7ab"
+           role="tabpanel" aria-labelledby="heading-a0975e312ca4746045ba2e028a24b7ab">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2520479343.html" title="【Unity】可编程渲染管线"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】可编程渲染管线</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="着色器"
+        id="heading-e0817a039882aebbaa735b4880479e60" role="tab" data-toggle="collapse" href="#collapse-e0817a039882aebbaa735b4880479e60"
+        aria-expanded="false"
+      >
+        着色器
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-e0817a039882aebbaa735b4880479e60"
+           role="tabpanel" aria-labelledby="heading-e0817a039882aebbaa735b4880479e60">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3793607597.html" title="【Unity】PassCode 语法笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】PassCode 语法笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1843614380.html" title="【Unity】ShaderLab 语法笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】ShaderLab 语法笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4183025058.html" title="【Unity】优化着色器性能笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】优化着色器性能笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3863423297.html" title="【Unity】着色器变体笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器变体笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3262553639.html" title="【Unity】着色器平台差异笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器平台差异笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2077063050.html" title="【Unity】着色器核心概念笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】着色器核心概念笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="纹理"
+        id="heading-2763023e85350f867a89d225f598b467" role="tab" data-toggle="collapse" href="#collapse-2763023e85350f867a89d225f598b467"
+        aria-expanded="false"
+      >
+        纹理
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-2763023e85350f867a89d225f598b467"
+           role="tabpanel" aria-labelledby="heading-2763023e85350f867a89d225f598b467">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/865694442.html" title="【Unity】Mipmaps（多级渐进纹理）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】Mipmaps（多级渐进纹理）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1386286002.html" title="【Unity】纹理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】纹理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="网格"
+        id="heading-16bf955c22835b6acbc202bd2738b50c" role="tab" data-toggle="collapse" href="#collapse-16bf955c22835b6acbc202bd2738b50c"
+        aria-expanded="false"
+      >
+        网格
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-16bf955c22835b6acbc202bd2738b50c"
+           role="tabpanel" aria-labelledby="heading-16bf955c22835b6acbc202bd2738b50c">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3454640855.html" title="【Unity】网格数据结构"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】网格数据结构</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/810271066.html" title="【Unity】网格笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】网格笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="脚本"
+        id="heading-ba311d8a6a1386ac811b1caa28ef029d" role="tab" data-toggle="collapse" href="#collapse-ba311d8a6a1386ac811b1caa28ef029d"
+        aria-expanded="false"
+      >
+        脚本
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-ba311d8a6a1386ac811b1caa28ef029d"
+           role="tabpanel" aria-labelledby="heading-ba311d8a6a1386ac811b1caa28ef029d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/305640944.html" title="【Unity】作业系统"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【Unity】作业系统</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="VSCode"
+        id="heading-92ce826772dd138cdcbd6cbc6d5b29c4" role="tab" data-toggle="collapse" href="#collapse-92ce826772dd138cdcbd6cbc6d5b29c4"
+        aria-expanded="false"
+      >
+        VSCode
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-92ce826772dd138cdcbd6cbc6d5b29c4"
+           role="tabpanel" aria-labelledby="heading-92ce826772dd138cdcbd6cbc6d5b29c4">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1043904924.html" title="VSCode 插件开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">VSCode 插件开发笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Unity编码规范</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年2月23日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>Unity编码规范</h1>
+<h2 id="结构规范">结构规范</h2>
+<blockquote>
+<p>让最常用的成员排在前列，让最相关的成员排在一起，便于快速索引有效信息和提示成员功能。</p>
+</blockquote>
+<p>确定类成员的布局方式</p>
+<ol>
+<li>按访问修饰符排序：公开-&gt;保护-&gt;私有[SerializeField]-&gt;私有</li>
+<li>按是否为静态排序：静态-&gt;非静态</li>
+<li>按具体类型排序：数据定义-&gt;事件-&gt;字段-&gt;属性-&gt;函数</li>
+<li>按逻辑关系排序：Unity事件、成对函数等</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Door</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">enum</span> State<br>    &#123;<br>        Closing,<br>        Opening,<br>        Opened<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">event</span> Action Opened;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">event</span> Action Closed;<br><br>    <span class="hljs-keyword">public</span> State CurrentState =&gt; currentState;<br>    <span class="hljs-keyword">public</span> Func&lt;<span class="hljs-built_in">bool</span>&gt; OpenCondition =&gt; openCondition;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Task <span class="hljs-title">OpenAsync</span>()</span> &#123; <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotImplementedException(); &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Task <span class="hljs-title">CloseAsync</span>()</span> &#123; <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotImplementedException(); &#125;<br><br>    [<span class="hljs-meta">SerializeField</span>] AudioSource audioSource;<br>    [<span class="hljs-meta">SerializeField</span>] AudioClip openSound;<br>    [<span class="hljs-meta">SerializeField</span>] AudioClip closeSound;<br><br>    State currentState;<br>    Func&lt;<span class="hljs-built_in">bool</span>&gt; openCondition;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span><br>    &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotImplementedException(); <span class="hljs-comment">//初始化</span><br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PlayOpenAnimation</span>()</span> &#123; <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotImplementedException(); &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PlayCloseAnimation</span>()</span> &#123; <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NotImplementedException(); &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h2 id="命名规范">命名规范</h2>
+<blockquote>
+<p>增强可读性，避免形式主义，追求美观简洁。</p>
+</blockquote>
+<ul>
+<li>统一采用英语命名，不要用汉语拼音。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs csharp">ShiZi <span class="hljs-comment">//错误（必须人工解读，但没有声调和上下文，难以正确解读。石子、狮子、柿子？）</span><br>Persimmon <span class="hljs-comment">//正确（放入翻译软件中即可得为：柿子）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>私有成员全部采用“驼峰命名法”</li>
+<li>非私有成员全部采用“帕斯卡命名法”（首字母大写的驼峰命名法）</li>
+<li>确保利用驼峰分割名称后，可从翻译软件中得到对应中文。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> State CurrentStateOfDoor &#123; <span class="hljs-keyword">get</span>;<span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>&#125;; <span class="hljs-comment">//正确（公开成员）</span><br>State currentStateOfDoor; <span class="hljs-comment">//正确（私有成员）</span><br><span class="hljs-comment">//按驼峰分割后“Current State Of Door”可在翻译软件中解读为“门的现状”，正确。</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>名称怕短不怕长，除非是 <code>html</code> 这类事实标准，否则不要缩写！</li>
+<li>进行缩写时，对缩写单次采用首字母大写，其余小写的形式。</li>
+<li>不要使用纯简单的字母、数字等无意义名称，名称必须能自注释。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">string</span> AssetBundleName; <span class="hljs-comment">//正确</span><br><span class="hljs-built_in">string</span> AbName; <span class="hljs-comment">//错误（Ab不是标准缩写，也无法被翻译软件解读）</span><br><span class="hljs-built_in">string</span> DbName; <span class="hljs-comment">//正确（Db是标准缩写，可以被翻译软件解读为“数据库名称”）</span><br><span class="hljs-built_in">int</span> A,B,C; <span class="hljs-comment">//错误（完全无法从名称中解读出该成员的含义作用）</span><br><span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i)<span class="hljs-comment">//正确（在当前上下文属于事实标准写法，i为index的缩写）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>不要故意使用匈牙利命名法（添加多余的前后缀），现代IDE能区分类型信息。（单纯是为了避免重名等需求，不受影响）</li>
+<li>不要使用下划线，有了驼峰命名法，没有下划线也能分割内容。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">string</span> userName;<br>Text userNameText; <span class="hljs-comment">//错误（不用写明类型，如果这成了规范，会成为一种无意义的负担）</span><br>Text userNameUI;<span class="hljs-comment">//正确（不仅也避免了和userName重名，而且解释了其作用）</span><br>Text _user_Name;<span class="hljs-comment">//错误（同样是无意义的负担，而且看起来很不规整）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>针对具体类型有一些专门的命名要求</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>接口</td>
+<td>对应类名添加<code>I</code>前缀。</td>
+<td><code>IInterface</code></td>
+</tr>
+<tr>
+<td>泛型</td>
+<td>对应类型添加<code>T</code>前缀。</td>
+<td><code>TGeneric</code></td>
+</tr>
+<tr>
+<td>函数</td>
+<td>表示动作，采用主动语态。</td>
+<td><code>OpenDoor</code></td>
+</tr>
+<tr>
+<td>事件</td>
+<td>表示动作，采用被动语态。 <br/> 触发在对应函数开头或期间使用进行时，触发在函数结束使用过去时。</td>
+<td><code>DoorOpening</code>、<code>DoorOpened</code></td>
+</tr>
+<tr>
+<td>事件函数（用于实现事件的函数）</td>
+<td>表示动作，采用被动语态，在对应事件命名的基础上添加<code>on</code>前缀。</td>
+<td><code>OnDoorOpening</code>、<code>OnDoorOpened</code></td>
+</tr>
+<tr>
+<td>字段</td>
+<td>名词和可选的形容词，采用被动语态。由于字段不允许公开，所以永远为小驼峰命名法。</td>
+<td><code>isDoorOpening</code></td>
+</tr>
+<tr>
+<td>属性</td>
+<td>通常与字段对应，故与对应字段同名。且通常属性是公开类型，故一般会采用大写开头。</td>
+<td><code>IsDoorOpening</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>针对具体功能也有些专门的命名要求（这些要求不分类型，字段名、类名等都要遵守）：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>负责UI相关的元素（对应MVC中的V）</td>
+<td>+UI</td>
+</tr>
+<tr>
+<td>负责驱动模块，推进游戏逻辑的元素（对应MVC中的C）</td>
+<td>+Controller</td>
+</tr>
+<tr>
+<td>用于实例化的预制体</td>
+<td>+Prefab</td>
+</tr>
+</tbody>
+</table>
+<h2 id="实现规范">实现规范</h2>
+<blockquote>
+<p>使用优秀的代码设计策略，增加程序的可维护性。</p>
+</blockquote>
+<h3 id="功能性要求">功能性要求</h3>
+<blockquote>
+<p>这些要求会影响你的功能实现，但有助于不同功能间的开发协作。</p>
+</blockquote>
+<ul>
+<li>非常量字段永远不允许公开，应使用属性代替。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> Value;<span class="hljs-comment">//错误（字段操作无法监控，外部程序可以随意操控）</span><br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> Value &#123;<span class="hljs-keyword">get</span>; <span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>;&#125;;<span class="hljs-comment">//正确（属性可以验证操作过程，避免错误行为）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>基于<code>[SerializeField]</code>（或<code>[RequireComponent]</code>）实现依赖注入，而非不受控的依赖获取。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">class</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Play</span>()</span>&#123;<br>        AudioSource audioSource = GetComponent&lt;AudioSource&gt;()<br>        audioSource.Play();<br>    &#125;<br>&#125; <span class="hljs-comment">//错误（无法确保外部环境正确，也无法提醒用户配置）</span><br><br><span class="hljs-keyword">class</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Play</span>()</span>&#123;<br>        audioSource.Play();<br>    &#125;<br>    [<span class="hljs-meta">SerializeField</span>] AudioSource audioSource;<br>&#125; <span class="hljs-comment">//正确（外部用户将会在面板上看到依赖的对象的槽位）</span><br><br>[<span class="hljs-meta">RequireComponent(typeof(AudioSource))</span>]<br><span class="hljs-keyword">class</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Play</span>()</span>&#123;<br>        AudioSource audioSource = GetComponent&lt;AudioSource&gt;()<br>        audioSource.Play();<br>    &#125;<br>&#125; <span class="hljs-comment">//正确（附着的物体将会被强制添加上依赖组件）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>在<code>Awake</code>（或<code>OnEnable</code>）阶段完成功能模块初始化，存在依赖时配合<code>[DefaultExecutionOrder]</code>控制。</li>
+<li>不要基于构造函数、析构函数等C#事件处理数据，应全部在Unity事件中处理，否则部分Unity功能会无法使用。</li>
+<li>尽可能禁用编辑器选项 <code>Reload Domain</code> 和 <code>Reload Scene</code>，从而加快编辑器运行速度，提高开发迭代效率。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs csharp">[<span class="hljs-meta">DefaultExecutionOrder(-10)</span>]<span class="hljs-comment">//正确（SeedGenerator的初始化时机被显式指定，便于其他模块使用）</span><br><span class="hljs-keyword">class</span> <span class="hljs-title">SeedGenerator</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">GetSeed</span>()</span> =&gt; currentSeed;<br>    <span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> defaultSeed = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> lastSeed = <span class="hljs-number">9</span>;<br>    <span class="hljs-built_in">int</span> currentSeed = defaultSeed;<span class="hljs-comment">//错误（不允许依赖构造函数等初始化，部分情况下不能正常触发）</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span>&#123;<br>        <span class="hljs-comment">//兜底初始化</span><br>        currentSeed = defaultSeed;<span class="hljs-comment">//正确（在Awake阶段时确保模块被初始化（可用））</span><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnEnable</span>()</span>&#123;<br>        <span class="hljs-comment">//完全初始化</span><br>        currentSeed = lastSeed;<span class="hljs-comment">//正确（基于Unity事件处理数据）</span><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnDisable</span>()</span>&#123;<br>        <span class="hljs-comment">//资源回收</span><br>        currentSeed = <span class="hljs-number">-1</span>;<span class="hljs-comment">//正确（基于Unity事件处理数据）</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title">Random</span> &#123;<br>    [<span class="hljs-meta">SerializeField</span>] A a;<br>    <span class="hljs-built_in">int</span> seed;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span>&#123;<br>        <span class="hljs-comment">//依赖A的初始化</span><br>        seed = a.GetSeed();<span class="hljs-comment">//正确（由顺序被确定，此时a已经执行OnEnable（或Awake），可以使用）</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="可读性要求">可读性要求</h3>
+<blockquote>
+<p>这些要求不会影响功能和程序设计，但可以使代码美观，便于读写。</p>
+</blockquote>
+<ul>
+<li>省略默认代码（如私有访问修饰符），让系统自动提供，从而简化代码减少阅读量。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//错误（显式写明修饰符较冗长且需要专门阅读修饰符的单词内容）</span><br><span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">value</span>; <br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> Value &#123;<span class="hljs-keyword">public</span> <span class="hljs-keyword">get</span>;<span class="hljs-keyword">public</span> <span class="hljs-keyword">set</span>;&#125;<br><span class="hljs-comment">//正确（非常简约，大幅减少代码量，且不需要专门阅读修饰符）</span><br><span class="hljs-built_in">int</span> <span class="hljs-keyword">value</span>;<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> Value &#123;<span class="hljs-keyword">get</span>;<span class="hljs-keyword">set</span>;&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>区分“取反”和“判否”，在判否时显式写明为与否定的比较。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">if</span>(isDoorOpened == <span class="hljs-literal">false</span>)<span class="hljs-comment">//正确</span><br><span class="hljs-keyword">if</span>(isDoorOpened)<span class="hljs-comment">//正确（省略默认代码，减少阅读量）</span><br><span class="hljs-keyword">if</span>(!isDoorOpened)<span class="hljs-comment">//错误（用取反符号判断容易看漏，而且无法显式表达出判否的意图）</span><br><span class="hljs-built_in">bool</span> isDoorClosing = !isDoorOpened;<span class="hljs-comment">//正确（按取反的意图使用取反符号）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>避免使用 var，应显式写明类型信息。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">var</span> a = GetValue(); <span class="hljs-comment">//错误（必须通过二次查询才能获取类型信息，非常影响阅读效率）</span><br><span class="hljs-built_in">int</span> a = GetValue(); <span class="hljs-comment">//正确（一眼就可以看出类型信息，非常直观，清晰的类型名易于理解代码）</span><br>List&lt;<span class="hljs-built_in">int</span>&gt; b = <span class="hljs-keyword">new</span>();<span class="hljs-comment">//正确（最新的语法糖，保留类型信息同时简化代码，比var好）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>当有多个if判断时，使用基于级联的布局方式，而非嵌套。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Func</span>()</span>&#123;<br>    <span class="hljs-keyword">if</span>()&#123;<br>        <span class="hljs-keyword">if</span>()&#123;<br>            <span class="hljs-keyword">if</span>()&#123;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<span class="hljs-comment">//错误（嵌套布局，代码块重合，不满足开闭原则，可维护性差）</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Func</span>()</span>&#123;<br>    <span class="hljs-keyword">if</span>()&#123;&#125;<br>    <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">if</span>()&#123;&#125;<br>    <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">if</span>()&#123;&#125;<br>    <span class="hljs-keyword">return</span>;<br>&#125;<span class="hljs-comment">//正确（各代码块相互独立，不容易误操作，且功能独立易于理解）</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>代码中的任何元素（变量函数等）应保持最小作用域，仅放在确实要用的环境中。</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//错误（PreProcess仅在Process使用，但放在外部作用域反而会成为读者的干扰项（误以为是有用的独立函数））</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PreProcess</span>()</span>&#123;&#125;;<br><span class="hljs-comment">//错误（同 PreProcess，而且其命名“i”在定义环境下无法向读者解释含义，存在命名错误）</span><br><span class="hljs-built_in">int</span> i;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Process</span>()</span>&#123;<br>    PreProcess();<br>    <span class="hljs-keyword">for</span>(i)&#123;&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Process</span>()</span>&#123;<br>    <span class="hljs-comment">//正确（只有阅读Process的读者，才需要知道PreProcess和processStep的实际功能）</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PreProcess</span>()</span>&#123;&#125;;<br>    <span class="hljs-built_in">int</span> processStep;<br><br>    PreProcess();<br>    <span class="hljs-keyword">for</span>(processStep)&#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>优先使用新式的C#语法糖和功能，减少代码量，统一实现方式。</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs text">//示意例子：<br>Action -&gt; await / async<br>if(a is null) -&gt; ?.<br>a == null ? a:b =&gt; ??<br>for/foreach -&gt; Linq<br>class&#123;&#125; -&gt; var=new &#123;&#125;<br>int i,j,k;k=j;j=i;i=k -&gt; (i,j) = (j,i)<br>.....等等<br></code></pre></td></tr></table></figure>
+<p>注意：部分新式写法存在性能和兼容性问题，例如：Linq 可能产生 GC；空条件运算符对Unity对象无效。故要根据实际情况选择性使用，甚至在性能密集场合，手写的排序比 List.Sort 更高效（因为Sort也有GC）。</p>
+<p>如果偷懒不想阅读 C# 文档，建议使用一下 Rider IDE，远比 VS 等在代码提示和检查上智能的多（毕竟以前都没有免费版），用一遍可以学到很多知识。</p>
+<h3 id="设计性要求">设计性要求</h3>
+<blockquote>
+<p>这些要求影响你如何设计你的代码实现，能大幅增加代码的健壮性，减少问题概率且易于调整扩展。</p>
+</blockquote>
+<h4 id="检错方法">检错方法</h4>
+<ul>
+<li><strong>避免无法预估的if判断</strong></li>
+</ul>
+<p>如果你的代码实现里用到很多if判断，且你无法确定他们的最大数量，可以预见性的，他们未来还会继续增加。那你不应该使用if实现，而是改用委托，由外部调用者实现原本的if代码。</p>
+<ul>
+<li><strong>杜绝复制粘贴的编码方式</strong></li>
+</ul>
+<p>如果你写代码时出现了成段的复制粘贴行为，那说明你的代码需要优化。你应该将你复制的代码进行封装，考虑改用可以共用的函数实现，这样后期修改才不会出现“一个调整，到处要改”的情况。</p>
+<ul>
+<li><strong>保持树型代码引用关系</strong></li>
+</ul>
+<p>如果你有两个不相关的功能 A、B，将A的代码删除后，B却报错了，那你的代码就存在依赖问题。不同功能间的依赖应该是树状的，有明显的层级隔离，一个枝杈不可能影响到另一个枝杈。如果难以理解，那就想这么一个需求，你的每一个功能模块都应该可以做到随时移植到其他项目，且仅依赖必要的其他功能代码。</p>
+<h4 id="开发方法">开发方法</h4>
+<ul>
+<li><strong>基本原则：通过“高内聚低耦合”实现“模块化”</strong></li>
+</ul>
+<p>很多人把自己的功能称为模块，但事实上他们并没有实现模块化。“模块化”在《软件工程》中有专门的定义，逻辑上的功能独立并不能说明你的代码是模块化的。无论多复杂的编码规范技巧，本质都是为了实现“模块化”，实现“高内聚低耦合”，包括我们上面已经提到的几点方案。</p>
+<ul>
+<li><strong>开发技巧：设计模式</strong></li>
+</ul>
+<p>市面上有很多类似的技巧和规范教我们如何高效管理项目，例如《设计模式》就是其中一种，建议看看：<a target="_blank" rel="noopener" href="https://bdffzi.github.io/blog/posts/2553791405">【软件开发】设计模式个人解读</a></p>
+<ul>
+<li><strong>开发框架：MVC框架</strong></li>
+</ul>
+<p>如果你的代码实现了模块化，那必然就会自动使用上MVC框架，因为MVC就代表了三个不同的模块：</p>
+<ul>
+<li>M（模型）：核心功能，类似于API的存在。</li>
+<li>V（视图）：用户界面，与M分离，用于想用户呈现特定的数据交互形式。</li>
+<li>C（控制器）：驱动游戏逻辑，将各个模块桥接，激活。</li>
+</ul>
+<p>如果偷懒，MV可以合成一个模块（但那样不利于自动化测试，因为V只能人工测试），但C一定是分离出来的。一个应用说到底就是由一堆功能模块和驱动模块构成的。</p>
+<ul>
+<li><strong>避免形式主义，不要写没有提到的功能。</strong></li>
+</ul>
+<p>很多首次接触代码设计规范的人，会陷入一种形式主义，一开始就想把代码设计的尽善尽美，很小的一个功能，却花大量的事件用于构建框架。但通常的结果是，这些复杂的框架不仅没起到效果，还严重影响维护和新功能的开发。代码设计应该是动态调整的，不会为未提出的需求做过多准备，但一旦有需求也能迅速改进适应。</p>
+<blockquote>
+<p>没人是先知，人总是活在当下，程序也是一样。项目刚开始时，你可以用一些if，可以少量复制粘贴，可以不用父类抽象，这没问题，因为这样写最简单省时间，只要功能没有改动，这就是当前状态最易于理解的代码。直到功能开始复杂，你就该意识到需要换个策略应对变化了。用上那些你学到的设计技巧，在一次一次迭代中将程序不断调整完善，因地制宜，一砖一瓦，稳稳的做出每个当下的最合适的项目形状。</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" class="category-chain-item">框架使用</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="category-chain-item">Unity开发规范</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Unity编码规范</div>
+      <div>https://bdffzi-blog.pages.dev/posts/4118079887.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/3831478132.html" title="Unity资源规范">
+                        <span class="hidden-mobile">Unity资源规范</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -12,7 +12,7 @@ navbar:
 footer:
   # 网站pv与uv统计
   statistics:
-    enable: false # 由于动不动就要换网址，浏览统计已经失去意义。
+    enable: true
 
 # 主页
 index:
@@ -57,6 +57,11 @@ about:
     - { class: "iconfont icon-github-fill", link: "https://github.com/BDFFZI", tip: "GitHub" }
     - { class: "iconfont icon-bilibili-fill", link: "https://space.bilibili.com/35949109", tip: "Bilibili" }
     - { class: "iconfont icon-wechat-fill", qrcode: "/assets/img/wechat.jpg" }
+
+# 分类页
+category:
+  order_by: "name"
+  post_order_by: "title"
 
 # 评论插件
 giscus:

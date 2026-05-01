@@ -1,0 +1,1547 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【技术美术】各向异性光照 各向同性与各向异性 一颗光滑的球被灯光照到，默认高光函数会形成一个圆斑，因为他用于计算高光的属性从任意表面向四周都是均匀相同的变化率（光滑的球面法线）。而在各向异性的表面上，则有可能形成条纹，因为其用于计算光照的属性，在条纹的垂直方向和水平方向上变化率是不同的（例如切线）。简要来说：  各向同性：从物体表面一点往四周出发，其属性变化率都是一致的。 各向异性：从物体表面一点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【技术美术】各向异性光照">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/2440912354.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="【技术美术】各向异性光照 各向同性与各向异性 一颗光滑的球被灯光照到，默认高光函数会形成一个圆斑，因为他用于计算高光的属性从任意表面向四周都是均匀相同的变化率（光滑的球面法线）。而在各向异性的表面上，则有可能形成条纹，因为其用于计算光照的属性，在条纹的垂直方向和水平方向上变化率是不同的（例如切线）。简要来说：  各向同性：从物体表面一点往四周出发，其属性变化率都是一致的。 各向异性：从物体表面一点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-38.png">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/509915-20230106093956857-466444544.png">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/509915-20230106100247936-1073036988.png">
+<meta property="article:published_time" content="2025-12-23T12:57:56.495Z">
+<meta property="article:modified_time" content="2026-01-31T08:39:06.256Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/image-38.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>【技术美术】各向异性光照 - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【技术美术】各向异性光照"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-23 20:57" pubdate>
+          2025年12月23日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="技术堆栈"
+        id="heading-9a3f2bcde67be4fd2dfc604eb5358584" role="tab" data-toggle="collapse" href="#collapse-9a3f2bcde67be4fd2dfc604eb5358584"
+        aria-expanded="true"
+      >
+        技术堆栈
+        <span class="list-group-count">(42)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-9a3f2bcde67be4fd2dfc604eb5358584"
+           role="tabpanel" aria-labelledby="heading-9a3f2bcde67be4fd2dfc604eb5358584">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="博客搭建"
+        id="heading-5015cfdc68085d8b3157455484121939" role="tab" data-toggle="collapse" href="#collapse-5015cfdc68085d8b3157455484121939"
+        aria-expanded="false"
+      >
+        博客搭建
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-5015cfdc68085d8b3157455484121939"
+           role="tabpanel" aria-labelledby="heading-5015cfdc68085d8b3157455484121939">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3410375722.html" title="【博客搭建】Hexo 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【博客搭建】Hexo 使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1708025467.html" title="【博客搭建】Latex 数学书写笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【博客搭建】Latex 数学书写笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="技术美术"
+        id="heading-5522ec16884806604bdf90feaec75ee5" role="tab" data-toggle="collapse" href="#collapse-5522ec16884806604bdf90feaec75ee5"
+        aria-expanded="true"
+      >
+        技术美术
+        <span class="list-group-count">(29)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-5522ec16884806604bdf90feaec75ee5"
+           role="tabpanel" aria-labelledby="heading-5522ec16884806604bdf90feaec75ee5">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3740891544.html" title="【技术美术】不同物体的渲染处理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】不同物体的渲染处理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/596080998.html" title="【技术美术】程序化噪波实现"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】程序化噪波实现</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/514348372.html" title="【技术美术】视差贴图"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】视差贴图</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="仿真模拟"
+        id="heading-2f7099758ee240c3969139a6fd0c624a" role="tab" data-toggle="collapse" href="#collapse-2f7099758ee240c3969139a6fd0c624a"
+        aria-expanded="false"
+      >
+        仿真模拟
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-2f7099758ee240c3969139a6fd0c624a"
+           role="tabpanel" aria-labelledby="heading-2f7099758ee240c3969139a6fd0c624a">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="质点弹簧"
+        id="heading-76e96b096533f8785d2c6beda92f167e" role="tab" data-toggle="collapse" href="#collapse-76e96b096533f8785d2c6beda92f167e"
+        aria-expanded="false"
+      >
+        质点弹簧
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-76e96b096533f8785d2c6beda92f167e"
+           role="tabpanel" aria-labelledby="heading-76e96b096533f8785d2c6beda92f167e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1515214792.html" title="【质点弹簧】Unity 版示例"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【质点弹簧】Unity 版示例</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2109274119.html" title="【质点弹簧】如何做一个不会崩溃的质点弹簧"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【质点弹簧】如何做一个不会崩溃的质点弹簧</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/95218190.html" title="【质点弹簧】质点位置积分"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【质点弹簧】质点位置积分</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="光照模型"
+        id="heading-110a6b9d566460ec80e670bcfff39085" role="tab" data-toggle="collapse" href="#collapse-110a6b9d566460ec80e670bcfff39085"
+        aria-expanded="true"
+      >
+        光照模型
+        <span class="list-group-count">(10)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-110a6b9d566460ec80e670bcfff39085"
+           role="tabpanel" aria-labelledby="heading-110a6b9d566460ec80e670bcfff39085">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2656087290.html" title="【技术美术】光照技术概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】光照技术概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/6523980.html" title="【技术美术】光照模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】光照模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3.html" title="【技术美术】卡通风格渲染"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】卡通风格渲染</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2812972532.html" title="【技术美术】双向反射分布函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】双向反射分布函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3105478131.html" title="【技术美术】双向透射分布函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】双向透射分布函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2440912354.html" title="【技术美术】各向异性光照"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">【技术美术】各向异性光照</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4246974515.html" title="【技术美术】次表面散射"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】次表面散射</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基于物理的渲染"
+        id="heading-70338facc89fd700a98e78d1a5f7f53b" role="tab" data-toggle="collapse" href="#collapse-70338facc89fd700a98e78d1a5f7f53b"
+        aria-expanded="false"
+      >
+        基于物理的渲染
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-70338facc89fd700a98e78d1a5f7f53b"
+           role="tabpanel" aria-labelledby="heading-70338facc89fd700a98e78d1a5f7f53b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/238111848.html" title="【基于物理的渲染（1）】反射率方程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【基于物理的渲染（1）】反射率方程</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1881413206.html" title="【基于物理的渲染（2）】Cook-Torrance"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【基于物理的渲染（2）】Cook-Torrance</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1910260985.html" title="【基于物理的渲染（3）】基于图片的渲染"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【基于物理的渲染（3）】基于图片的渲染</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染管线"
+        id="heading-a0975e312ca4746045ba2e028a24b7ab" role="tab" data-toggle="collapse" href="#collapse-a0975e312ca4746045ba2e028a24b7ab"
+        aria-expanded="false"
+      >
+        渲染管线
+        <span class="list-group-count">(4)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a0975e312ca4746045ba2e028a24b7ab"
+           role="tabpanel" aria-labelledby="heading-a0975e312ca4746045ba2e028a24b7ab">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/330516235.html" title="【技术美术】D3D中GPU渲染管线流程详解"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】D3D中GPU渲染管线流程详解</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1671240167.html" title="【技术美术】GPU渲染管线概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】GPU渲染管线概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3174050793.html" title="【技术美术】GPU绘制画面的基本原理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】GPU绘制画面的基本原理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3966975174.html" title="【技术美术】引擎渲染管线概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】引擎渲染管线概述</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="渲染资源"
+        id="heading-1f5d181b3b680d7df37b568951e86182" role="tab" data-toggle="collapse" href="#collapse-1f5d181b3b680d7df37b568951e86182"
+        aria-expanded="false"
+      >
+        渲染资源
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-1f5d181b3b680d7df37b568951e86182"
+           role="tabpanel" aria-labelledby="heading-1f5d181b3b680d7df37b568951e86182">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3146662037.html" title="【技术美术】原始模型文件的内容"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】原始模型文件的内容</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3631212322.html" title="【技术美术】纹理技术概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】纹理技术概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3617523748.html" title="【技术美术】顶点技术概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】顶点技术概述</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="空间矩阵"
+        id="heading-cbe14df0b649f6e7c5f15b08dd54dfa3" role="tab" data-toggle="collapse" href="#collapse-cbe14df0b649f6e7c5f15b08dd54dfa3"
+        aria-expanded="false"
+      >
+        空间矩阵
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-cbe14df0b649f6e7c5f15b08dd54dfa3"
+           role="tabpanel" aria-labelledby="heading-cbe14df0b649f6e7c5f15b08dd54dfa3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/1097932020.html" title="【技术美术】TRS矩阵"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】TRS矩阵</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4243868598.html" title="【技术美术】个人引擎内的投影矩阵"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】个人引擎内的投影矩阵</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3126809525.html" title="【技术美术】切线空间"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】切线空间</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3964607565.html" title="【技术美术】平面反射"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】平面反射</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2261641482.html" title="【技术美术】投影矩阵和线性深度推导"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】投影矩阵和线性深度推导</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3495942937.html" title="【技术美术】渲染空间变换概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【技术美术】渲染空间变换概述</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="软件开发"
+        id="heading-a41622d744ac9c55f5266dcc90ac7599" role="tab" data-toggle="collapse" href="#collapse-a41622d744ac9c55f5266dcc90ac7599"
+        aria-expanded="false"
+      >
+        软件开发
+        <span class="list-group-count">(11)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-a41622d744ac9c55f5266dcc90ac7599"
+           role="tabpanel" aria-labelledby="heading-a41622d744ac9c55f5266dcc90ac7599">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2308421870.html" title="【软件开发】C++使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】C++使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3536003429.html" title="【软件开发】C++性能测试"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】C++性能测试</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2795034225.html" title="【软件开发】CMake 学习笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】CMake 学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1794241118.html" title="【软件开发】Doxygen 使用笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Doxygen 使用笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3993342442.html" title="【软件开发】Git 概念与常用命令"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Git 概念与常用命令</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1922506091.html" title="【软件开发】Glob 通配符"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Glob 通配符</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/987487183.html" title="【软件开发】Windows开发笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】Windows开发笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4146197106.html" title="【软件开发】vcpkg 学习笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】vcpkg 学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2533997342.html" title="【软件开发】如何做出好的项目"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】如何做出好的项目</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2373330896.html" title="【软件开发】正则表达式"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】正则表达式</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2553791405.html" title="【软件开发】设计模式个人解读"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">【软件开发】设计模式个人解读</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【技术美术】各向异性光照</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年1月31日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>【技术美术】各向异性光照</h1>
+<h2 id="各向同性与各向异性">各向同性与各向异性</h2>
+<p>一颗光滑的球被灯光照到，默认高光函数会形成一个圆斑，因为他用于计算高光的属性从任意表面向四周都是均匀相同的变化率（光滑的球面法线）。而在各向异性的表面上，则有可能形成条纹，因为其用于计算光照的属性，在条纹的垂直方向和水平方向上变化率是不同的（例如切线）。简要来说：</p>
+<ul>
+<li>各向同性：从物体表面一点往四周出发，其属性变化率都是一致的。</li>
+<li>各向异性：从物体表面一点往四周出发，其属性变化率根据具体方向会有明显差异。</li>
+</ul>
+<p><img src="/assets/images/image-38.png" srcset="/img/loading.gif" lazyload alt="各向异性"></p>
+<p>所以实现各向异性光照的关键点在于，使用各方向变化率不同的属性计算。要获取各向异性的属性，方法有两种：</p>
+<ol>
+<li>从贴图上下手，绘制表面属性时就故意使其各方向变化率不一。</li>
+<li>从算法上下手，改用其他天生就各向异性的属性并设计专门的算法实现效果。</li>
+</ol>
+<p>第一点对美术要求高，而且因为贴图分辨率的限制，效果不一定好，例如一根一根的头发丝非常多，不可能每根都在大小有限的贴图上表现的非常清楚。所以一般会采用第二种方法实现各向异性，也因此我们需要学习新的光照算法。</p>
+<h2 id="Kajiya-Kay-光照模型">Kajiya-Kay 光照模型</h2>
+<p>Kajiya 是一种模拟头发高光的光照模型（是模型意味着它很全面，不仅是函数计算那么简单），其由 Blinn-Phong 改造而来，特点是不使用法线，而是使用天然就各向异性的切线代为计算光照数据。</p>
+<h3 id="高光计算">高光计算</h3>
+<p><img src="/assets/images/509915-20230106093956857-466444544.png" srcset="/img/loading.gif" lazyload alt="Kajiya-Kay"></p>
+<p>例如上图这个圆柱的高光（其实模拟的就是发丝），如果使用正常的 Blinn-Phong，其一定会形成一道顺着柱子的条纹高光，因为其上下的法线变化更缓，左右则更急，所以上下将会显示很多的高光。但我们希望实现的高光效果，则与其相反，希望其能沿着柱子显示，而不是上下。</p>
+<p>如何实现？寻找一下圆柱周围一圈的相同点就会发现，其副切线都是一致的。不过副切线恰巧与法线垂直，所以基于法线的光照计算方法 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>cos</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\cos(\theta)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">cos</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span></span></span></span> （<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span> 是 <code>normal</code> 和 <code>h</code> 的夹角）就不能用了，应改为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>sin</mi><mo>⁡</mo><mo stretchy="false">(</mo><msup><mi>θ</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sin(\theta&#x27;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>θ</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></mrow><annotation encoding="application/x-tex">\theta&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span> 是 <code>bitangent</code> 和 <code>h</code> 的夹角)，不过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>sin</mi><mo>⁡</mo></mrow><annotation encoding="application/x-tex">\sin</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6679em;"></span><span class="mop">sin</span></span></span></span> 不利于计算，但可利用三角函数关系式转换为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mrow><mn>1</mn><mo>−</mo><msup><mrow><mi>cos</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mo stretchy="false">(</mo><msup><mi>θ</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo stretchy="false">)</mo></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{1 - \cos^2(\theta&#x27;)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.305em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mop"><span class="mop">cos</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6779em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-2.895em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.305em;"><span></span></span></span></span></span></span></span></span>，这样就可以用点乘实现，即上图中的公式结果。</p>
+<p>将其替换到 Blinn-Phong（PBR 版） 的基数部分后，我们便可以写出kk镜射光的具体代码了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float blinnCardinal = saturate(sqrt(1 - pow(dot(h, b), 2)));<br>float kkSpecularTerm = pow(blinnCardinal, max(2 / roughness2 - 2, 0.0001)) * (1 / roughness2);<br></code></pre></td></tr></table></figure>
+<ul>
+<li>b：副切线。</li>
+</ul>
+<h3 id="高光扰动">高光扰动</h3>
+<p>上述的 kk 实现后可以在球面上形成天使环的效果，但如果我们希望球面能表现头发效果的话，就必须实现一丝一丝的效果。方法很简单，同样是基于各向异性，让代表每根头发处的表面表现出不同的效果，从而营造出由密集的不同物体构成的感觉，即我们要打破天使环光滑的光斑效果。</p>
+<p>此处我们就必须利用贴图来实现各向异性了，因为顶点无法承载如此高频的信息。我们可以搞一张带有密集条纹的噪波图来扰动用于计算的切线，扰动方式也很简单，直接用与其一起计算的法线即可，本质上就是调整了他们的光照角度。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float anisotropy = tex2D(_AnisotropyMap, uv).r;<br>float disturbance = (anisotropy - 0.5) * _DisturbanceIntensity + _DisturbanceOffset;<br>float3 b = normalize(bitangent + normal * disturbance);<br></code></pre></td></tr></table></figure>
+<ul>
+<li>_AnisotropyMap：各向异性噪波图，可用做高光扰动基数。</li>
+<li>_DisturbanceIntensity：扰动的强度。</li>
+<li>_DisturbanceOffset：统一向一个方向扰动，可实现高光偏移效果。</li>
+</ul>
+<h3 id="双重高光">双重高光</h3>
+<p><img src="/assets/images/509915-20230106100247936-1073036988.png" srcset="/img/loading.gif" lazyload alt="双重高光"></p>
+<p>这里还有一个注意点，就是双重高光，就是计算两次参数不同的高光，一个做前景一个做背景，叠起来，这样会更符合现实的头发效果。当然这种双重光照的渲染技巧，不仅是在这适用，很多其他场合也是可用的。</p>
+<h2 id="金属拉丝">金属拉丝</h2>
+<p>金属拉丝的效果类似碟片、平底锅的反光，一个盘状物体上可以明显看到对称的三角高光。这些东西的共同点是，上面都有一圈一圈的小纹路，这也正是这些物体形成各向异性高光的原因。本质上这和一根一根头发丝组成的各向异性高光是一样的。</p>
+<p>所以需要考虑有什么属性，在这些一圈一圈的纹路上水平和垂直方向的变化率不同。法线肯定是不行的，其在全方向都一致，故只能实现各向同性高光。但切线可以（不过也依赖圆盘的做法），如果是一些uv成扇形展开的圆盘，其切线会顺着圆圈纹路的方向，所以从纹路方向看，他们是缓慢变化角度的，而从垂直角度来看，则是始终不变的。因此对于这类圆盘，我们只需要利用切线计算光照就行。</p>
+<p>那具体如何计算？还是用 kk 模型，虽然 kk 模型默认是针对头发丝的，但得力于 Blinn 的超强兼容性，我们依然可以通过变换基数的方式，将其改造为金属拉丝高光。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float blinnCardinal = saturate(sqrt(1 - pow(dot(h, t), 2)));<br></code></pre></td></tr></table></figure>
+<p>这和 kk 基本一样，仅仅是把副切线（<code>b</code>）替换成了切线（<code>t</code>）而已。</p>
+<h2 id="各向异性反照率">各向异性反照率</h2>
+<p>上面仅讲到了各向异性表面高光的实现，但实际上其漫射等其他光照也会受影响。不过处理方法非常简单，我们可以直接简单的扰动物体的反照率即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">albedo = albedo * lerp(1, anisotropy, _AlbedoDisturbance);<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>anisotropy</code>：上文扰动高光时用过的各向异性系数。</li>
+<li><code>_AlbedoDisturbance</code>：反照率扰动强度。</li>
+</ul>
+<p>我觉得这实际上也非常科学，模拟的就是头发丝时有时无的状态嘛。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">光照模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【技术美术】各向异性光照</div>
+      <div>https://bdffzi-blog.pages.dev/posts/2440912354.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月23日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/1910260985.html" title="【基于物理的渲染（3）】基于图片的渲染">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【基于物理的渲染（3）】基于图片的渲染</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/4246974515.html" title="【技术美术】次表面散射">
+                        <span class="hidden-mobile">【技术美术】次表面散射</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
