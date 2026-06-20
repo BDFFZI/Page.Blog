@@ -233,6 +233,414 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/posts/2261641482.html" target="_self">
+          【技术美术】投影矩阵和线性深度推导
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2261641482.html" target="_self">
+        <div>
+          【技术美术】投影矩阵和线性深度推导 网络上有很多投影矩阵的推导，也有很多声称是基于 Unity 的，但和我的实测都不一致（现在看来是因为这些文章并不全面），此外有一些 Unity 本身的函数我也搞不懂它的原理，遂最终选择自行研究，总算把这些问题解决了。 现在通过这篇文章，你就可以完全搞懂 Unity 的投影矩阵是啥样，又是怎么来的。以及 Unity 逆推线性深度的函数是如何实现的。不过该文章也不是
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E7%A9%BA%E9%97%B4%E7%9F%A9%E9%98%B5/" class="category-chain-item">空间矩阵</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/4246974515.html" target="_self">
+          【技术美术】次表面散射
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/4246974515.html" target="_self">
+        <div>
+          【技术美术】次表面散射 次表面散射的光照组成 次表面散射的光照结构：  从表面直接反弹的光（镜反射光） 进入物体内部的光  在内部经过多次反弹出射的光（漫反射光 + 漫透射光） 被遮挡较少或直接折射的光（镜透射光）    其中漫反射和漫透射本质是同一种光学现象，他们都是模拟光线从物体内部多次弹射的结果，两者的区分只是看出射方向是否超过入射方向的90度。故我认为应将他们统一视为“次表面漫散射”，只是
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">光照模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/2440912354.html" target="_self">
+          【技术美术】各向异性光照
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2440912354.html" target="_self">
+        <div>
+          【技术美术】各向异性光照 各向同性与各向异性 一颗光滑的球被灯光照到，默认高光函数会形成一个圆斑，因为他用于计算高光的属性从任意表面向四周都是均匀相同的变化率（光滑的球面法线）。而在各向异性的表面上，则有可能形成条纹，因为其用于计算光照的属性，在条纹的垂直方向和水平方向上变化率是不同的（例如切线）。简要来说：  各向同性：从物体表面一点往四周出发，其属性变化率都是一致的。 各向异性：从物体表面一点
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">光照模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/1518420493.html" target="_self">
+          Unity开发规范
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/1518420493.html" target="_self">
+        <div>
+          Unity开发规范 从秦时起就有“书同文，车同轨”的概念，没有一个统一的标准，将会给多人协作，甚至个人维护都带来严重的问题，因此人们定义了一个又一个的标准，对于Unity开发同样如此。 标准定义的原则  本身简单易于传播，不要把学习标准变成一种负担。 能显著提高项目的可读可维护性，基于效率而产生。 只定有用的规则，不要搞一堆花里胡哨的面子工程。  标准定义的参考  基于.Net官方的类库开发准则。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-29 12:41" pubdate>
+              2026-01-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" class="category-chain-item">框架使用</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="category-chain-item">Unity开发规范</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/2812972532.html" target="_self">
+          【技术美术】双向反射分布函数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2812972532.html" target="_self">
+        <div>
+          【技术美术】双向反射分布函数 在光的物理中，除了如辐射率、菲涅尔、几何遮蔽等现象，双向反射也是其中一种，因此接下来要学习反射现象对光照强度的影响。反射对光的衰减是一种线性变化，所以直接考虑计算最终的系数即可。 漫反射系数 漫反射因为多次反弹的缘故，其入射信息颜色等都大幅丢失，所以其表现效果均匀柔和，而且计算方法也变的非常简单。 不过根据能量守恒，除非是发生了遮蔽，不然入射光和出射光强度应该是相同的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">光照模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/2656087290.html" target="_self">
+          【技术美术】光照技术概述
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2656087290.html" target="_self">
+        <div>
+          【技术美术】光照技术概述 和现实一样，即使是游戏中的虚拟物体，我们也可以认为都是因为发光才可见，包括不含光照计算的特效，因为本质上他们是发出的自发光。所以说，任何物体的渲染，本质都是在做光的渲染。 光的属性  可溯源的：光不是凭空产生的，一定是有源头的。 可传递的：光是可以通过介质传递的，也正是因为传递会使光的能量发生变化，我们才能观测到传递的介质。 可叠加的：光的能量可以直接简单的相加来合成的，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-23 20:57" pubdate>
+              2025-12-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">光照模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/posts/1306067451.html" target="_self">
           【数学】泰勒级数
         </a>
@@ -492,440 +900,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/3495942937.html" target="_self">
-          【技术美术】渲染空间变换概述
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3495942937.html" target="_self">
-        <div>
-          【技术美术】渲染空间变换概述 GPU渲染管线中，我们只要知道如何在屏幕上画画就行，在一个2D坐标系上表示2D物体是很简单的。但在引擎渲染管线中，为了在屏幕上显示一个仿真的游戏世界，该任务就变成了如何将3D画面，映射到2D屏幕中。 为此人们发明了一套空间变换流程，利用多个矩阵来实现3D到2D的变换。（提示：矩阵=空间=变换，不同的术语只是从不同的角度理解而已） 渲染空间  渲染管线中的空间变换共经历
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-23 20:57" pubdate>
-              2025-12-23
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/" class="category-chain-item">技术堆栈</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/" class="category-chain-item">技术美术</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%A0%86%E6%A0%88/%E6%8A%80%E6%9C%AF%E7%BE%8E%E6%9C%AF/%E7%A9%BA%E9%97%B4%E7%9F%A9%E9%98%B5/" class="category-chain-item">空间矩阵</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/3580258023.html" target="_self">
-          【从零开始的技美之旅（1-3）】实现渲染空间变换
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3580258023.html" target="_self">
-        <div>
-          【从零开始的技美之旅（1-3）】实现渲染空间变换 学习线性代数 强烈建议先学习3B1B的线性代数课程：                                                                                                                02:52:43
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-04 20:56" pubdate>
-              2025-12-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%95%99%E7%A8%8B%E5%88%86%E4%BA%AB/" class="category-chain-item">教程分享</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%95%99%E7%A8%8B%E5%88%86%E4%BA%AB/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E6%8A%80%E7%BE%8E%E4%B9%8B%E6%97%85/" class="category-chain-item">从零开始的技美之旅</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%95%99%E7%A8%8B%E5%88%86%E4%BA%AB/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E6%8A%80%E7%BE%8E%E4%B9%8B%E6%97%85/%E7%AC%AC%E4%B8%80%E6%9C%9F%EF%BC%9A%E4%BB%8E%E9%BB%91%E6%9A%97%E5%88%B0%E5%85%89%E6%98%8E/" class="category-chain-item">第一期：从黑暗到光明</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/2389839091.html" target="_self">
-          【从零开始的技美之旅（1-1）】课程介绍
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/2389839091.html" target="_self">
-        <div>
-          【从零开始的技美之旅（1-1）】课程介绍 课程内容展示 前言 【从零开始的技美之旅】前言 引入技美 技美是什么？ 技美字如其名，是即懂技术又懂美术的人。由于很多功能，光懂程序或者美术是无法完成的，所以需要技美的参与，于是便引出了技美需要负责的各种事情，属于是能力越大责任越大的典范职业。 技美要做啥？ 只要是视觉方面的，光靠单个程序或美术无法完成的，都是你得做的。基本上图形学学啥你做啥。  物体渲染
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-29 21:23" pubdate>
-              2025-11-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%95%99%E7%A8%8B%E5%88%86%E4%BA%AB/" class="category-chain-item">教程分享</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%95%99%E7%A8%8B%E5%88%86%E4%BA%AB/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E6%8A%80%E7%BE%8E%E4%B9%8B%E6%97%85/" class="category-chain-item">从零开始的技美之旅</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%95%99%E7%A8%8B%E5%88%86%E4%BA%AB/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E6%8A%80%E7%BE%8E%E4%B9%8B%E6%97%85/%E7%AC%AC%E4%B8%80%E6%9C%9F%EF%BC%9A%E4%BB%8E%E9%BB%91%E6%9A%97%E5%88%B0%E5%85%89%E6%98%8E/" class="category-chain-item">第一期：从黑暗到光明</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/4183025058.html" target="_self">
-          【Unity】优化着色器性能笔记
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/4183025058.html" target="_self">
-        <div>
-          【Unity】优化着色器性能笔记 https://docs.unity.cn/2022.3/Documentation/Manual/SL-ShaderPerformance.html 仅执行所需的运算   去除无效计算： 例如为材质增加了基础色功能，但所有材质都只用默认的白色，那这种功能就是无效功能，可去除或借助变体功能拆分成多个着色器。   减少计算频率： 尽可能将计算放在低频率的过程中，例如
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-28 16:58" pubdate>
-              2024-04-28
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" class="category-chain-item">框架使用</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E7%9D%80%E8%89%B2%E5%99%A8/" class="category-chain-item">着色器</a>
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/810271066.html" target="_self">
-          【Unity】网格笔记
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/810271066.html" target="_self">
-        <div>
-          【Unity】网格笔记 https://docs.unity.cn/cn/2022.3/Manual/mesh.html 网格的作用 网格用于描述物体的形状结构。  在图形上：配合材质球进行渲染。网格负责描述形状，材质球负责描述外观。 在物理上：用于确定碰撞体的形状范围。  获取网格 可以通过以下方式将网格添加到 Unity 中。  在 3D 建模软件中建模，网格将作为模型的一部分导入。 通过 U
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-15 17:26" pubdate>
-              2024-05-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" class="category-chain-item">框架使用</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/" class="category-chain-item">Unity</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/" class="category-chain-item">Unity文档笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/" class="category-chain-item">图形</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/Unity/Unity%E6%96%87%E6%A1%A3%E7%AC%94%E8%AE%B0/%E5%9B%BE%E5%BD%A2/%E7%BD%91%E6%A0%BC/" class="category-chain-item">网格</a>
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/3849948103.html" target="_self">
-          【人工智能】特征处理
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3849948103.html" target="_self">
-        <div>
-          【人工智能】特征处理 特征工程 有时因输入特征不够全面，仅靠现有的特征并不能完美的表达问题规则。因此，可以利用直觉，通过对原有特征的转化组合，创造出新的特征和模型参数，以增强模型的准确性。 使用特征工程的最好案例就是多项式回归模型的实现。 特征选择 用于训练模型的特征并不是越多越好，过多的特征可能导致过拟合。因此发生过拟合时的一种解决方法就是考虑减少输入特征，只保留一些关键特征。 特征缩放 (似乎
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-23 20:57" pubdate>
-              2025-12-23
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E4%B9%A6%E6%9C%AC%E7%9F%A5%E8%AF%86/" class="category-chain-item">书本知识</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E4%B9%A6%E6%9C%AC%E7%9F%A5%E8%AF%86/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" class="category-chain-item">人工智能</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/#board">16</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#board">17</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

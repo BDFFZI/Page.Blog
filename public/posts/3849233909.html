@@ -1,0 +1,846 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【软件开发】代码设计指南 写代码最费时间的是查 API，最难的则是设计代码结构。如今，查 API 已经可以被 AI 替代，但代码设计始终需要手工操作。这非常难，难到大部分人类都无法实现这一点。 检查代码设计是否有误 是否存在数量不定的条件判断  检查代码是否需要对实现进行抽象  如果你的代码实现里用到很多if、switch之类的判断，且你无法确定他们的最大数量，可以预见性的，他们未来还会继续增加。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【软件开发】代码设计指南">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/3849233909.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="【软件开发】代码设计指南 写代码最费时间的是查 API，最难的则是设计代码结构。如今，查 API 已经可以被 AI 替代，但代码设计始终需要手工操作。这非常难，难到大部分人类都无法实现这一点。 检查代码设计是否有误 是否存在数量不定的条件判断  检查代码是否需要对实现进行抽象  如果你的代码实现里用到很多if、switch之类的判断，且你无法确定他们的最大数量，可以预见性的，他们未来还会继续增加。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2026/jpeg/57754685/1771899463096-9e1f5c89-c0a7-4992-90f7-87e53b6615df.jpeg">
+<meta property="article:published_time" content="2026-04-13T10:49:13.098Z">
+<meta property="article:modified_time" content="2026-04-13T10:51:04.248Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2026/jpeg/57754685/1771899463096-9e1f5c89-c0a7-4992-90f7-87e53b6615df.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>【软件开发】代码设计指南 - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【软件开发】代码设计指南"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-04-13 18:49" pubdate>
+          2026年4月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【软件开发】代码设计指南</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年4月13日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>【软件开发】代码设计指南</h1>
+<p>写代码最费时间的是查 API，最难的则是设计代码结构。如今，查 API 已经可以被 AI 替代，但代码设计始终需要手工操作。这非常难，难到大部分人类都无法实现这一点。</p>
+<h2 id="检查代码设计是否有误">检查代码设计是否有误</h2>
+<h3 id="是否存在数量不定的条件判断">是否存在数量不定的条件判断</h3>
+<blockquote>
+<p>检查代码是否需要对实现进行抽象</p>
+</blockquote>
+<p>如果你的代码实现里用到很多if、switch之类的判断，且你无法确定他们的最大数量，可以预见性的，他们未来还会继续增加。那你不应该使用条件分支实现（违反开闭原则），而是改用委托、抽象类等（依赖倒转原则），由外部调用者实现原本的条件分支代码。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">if</span>(是路线导览)<br>    ...<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(是区域导览)<br>    ...<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(是自由导览)<br>    ...<br>...<br></code></pre></td></tr></table></figure>
+<h3 id="是否存在结果恒定的条件判断">是否存在结果恒定的条件判断</h3>
+<blockquote>
+<p>检查代码是否存在多余的实现耦合</p>
+</blockquote>
+<p>一段代码被分支，但部分场景下又完全不执行，说明该实现在某些功能中需要，但在其他的一些功能中则完全多余。这意味着代码没有实现单一职责、接口隔离等原则，存在功能耦合。你应该将其进一步拆分，确保功能中的每段代码都是必要代码。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">bool</span> 需要导游;<br><span class="hljs-keyword">if</span>(是路线导览)<br>    需要导游 = <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">if</span>(是区域导览)<br>    需要导游 = <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">if</span>(是自由导览)<br>    需要导游 = <span class="hljs-literal">false</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="是否存在复制粘贴的编码方式">是否存在复制粘贴的编码方式</h3>
+<blockquote>
+<p>检查代码是否需要对功能封装复用</p>
+</blockquote>
+<p>如果你写代码时出现了成段的复制粘贴行为，那说明你的代码需要优化。你应该将你复制的代码进行封装，考虑改用可以共用的函数实现，这样后期修改才不会出现“一次调整，到处要改”的情况。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs csharp">游戏开始：<br>    ...<br>    控制数字人介绍<br>    ...<br>路线导览:<br>    ...<br>    控制数字人导航到固定地点<br>    ...<br>区域导览：<br>    ...<br>    控制数字人导航到固定地点<br>    控制数字人介绍<br>    ...<br></code></pre></td></tr></table></figure>
+<h3 id="是否无法轻易迁移单个功能">是否无法轻易迁移单个功能</h3>
+<blockquote>
+<p>检查多个功能间的依赖关系是否正常</p>
+</blockquote>
+<p>当有需求让你把项目中某一小功能快速迁移到其他项目，你却无法做到或得扯上一堆毫不相干的其他功能，那你的代码就存在依赖问题。最佳的功能依赖应该是单向树状的，且有明显的层级隔离（最少知道原则的体现），一个枝杈不可能影响到另一个枝杈。所以你应该确保你的项目内任意单一功能都能随时迁移。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs csharp">上面的代码例子就无法实现模块化迁移。<br>例如如果要迁移：区域导览功能。<br><span class="hljs-number">1.</span> 首先不同模式用分支实现，所有代码都放在一起，本身就不能单脚本迁出。<br><span class="hljs-number">2.</span> 由于对 `<span class="hljs-built_in">bool</span> 需要导游` 的依赖，所以必须依赖主流程脚本环境。<br><span class="hljs-number">3.</span> 主流程中还存在对`路线导览`、`自由导览`的代码引用，所以也必须带上这些无关功能。<br>结果就是一个功能都迁不出来，所有代码全耦合成了一团。<br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.nlark.com/yuque/0/2026/jpeg/57754685/1771899463096-9e1f5c89-c0a7-4992-90f7-87e53b6615df.jpeg" srcset="/img/loading.gif" lazyload alt="画板"></p>
+<h2 id="学习良好的代码设计理念">学习良好的代码设计理念</h2>
+<h3 id="基本原则：通过“高内聚低耦合”实现“模块化”">基本原则：通过“高内聚低耦合”实现“模块化”</h3>
+<p>很多人把自己的功能称为模块，但事实上他们并没有实现模块化。“模块化”在《软件工程》中有专门的定义，仅逻辑上的功能独立并不能说明你的代码是模块化的，只有做到真正的随拆随删，才能叫模块化。</p>
+<p>无论多复杂的编码技巧，本质都是为了实现“模块化”，实现“高内聚低耦合”。</p>
+<h3 id="指导思想：设计模式">指导思想：设计模式</h3>
+<p>市面上有很多类似的技巧和规范教我们如何高效管理项目，例如《设计模式》就是其中一种：</p>
+<p><a target="_blank" rel="noopener" href="https://bdffzi.github.io/blog/posts/2553791405">【软件开发】设计模式个人解读</a></p>
+<h3 id="开发框架：MVP与DDD">开发框架：MVP与DDD</h3>
+<blockquote>
+<p>从整体关系上设计软件</p>
+</blockquote>
+<h4 id="MVP框架（局部视角）">MVP框架（局部视角）</h4>
+<p>如果你的代码实现了模块化，那必然就会自动使用上 MVP 框架，因为 MVP 就代表了三个不同的模块：</p>
+<ul>
+<li>M（模型）：核心功能，类似于 API 的存在。</li>
+<li>V（视图）：用户界面，与 M 分离，用于向用户呈现特定的数据交互形式。</li>
+<li>P（主持人）：驱动游戏逻辑，将各个模块（M、C）桥接，激活。</li>
+</ul>
+<p>而且 Unity 天生对 MVP 有非常好的适配性，因为其自带编辑器界面（V）和游戏生命周期（P），使得可以轻松分离出功能核心部分（M）实现快速分开发。</p>
+<p>当然，为了偷懒，有时会对 MVP 简化，例如改为 MV-P、M-PV。本质都是对 V 的退化实现（不过这种不利于自动化测试，因为V只能人工测试），但 M 和 P 一定是分离的，因为一个应用说到底就是由一堆功能模块和驱动模块构成的。</p>
+<p>补充：</p>
+<p>MVP 目前进一步发展到 MVVM，其中 VM （视图模型）是借助数据绑定技术，对原本 V 和 P 的进一步解耦，也是现在主流的前端框架。目前 Unity 的新 UI 系统 UIElements 已实现对绑定技术的支持，但该 UI 系统本身还无法替代 UGUI，UGUI 只能实现 V 到 P 的单向数据流，所以任需要 P 去控制 V。</p>
+<h4 id="DDD框架（宏观视角）">DDD框架（宏观视角）</h4>
+<p>MVP 解决的是单个模块或少数模块间的设计方法，但从整个项目几十上百的模块视角来看，则需要利用 DDD 框架（领域驱动设计）。DDD 框架的思想简单来讲就是分层与隔离，相比传统分层它还进一步将业务实现分为“应用层”和“领域层”：</p>
+<ul>
+<li>Interface（交互层）：实现 UI 功能，负责实际功能的输入输出部分。</li>
+<li>Application（应用层）：根据软件最终的实际需要，对业务功能的组合使用。</li>
+<li>Domain（领域层）：基于业务需求，针对特定领域的一套通用功能实现。</li>
+<li>Infrastructure（基础层）：实现基础功能，例如后台 API、存储，等跨项目的通用功能服务。</li>
+</ul>
+<p>所有功能模块被细分为多层，依赖上仅允许上层调用下层，且不允许跨层调用。这种分层思想在很多大型软件设施中都有体现，例如 OSI参考模型、来自GAMES104的<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/598348720">现代游戏引擎架构分层</a>。</p>
+<p>当一个软件庞大到一定程度，没有人能记住它的所有功能实现，再加上人员变动等，很快项目就会变成黑盒代码，而分层使得功能细节可以被隔离。从协作角度看，人员分配调度会变的更加方便；从个人角度看，上手门槛降低，实现时不用在意旧功能的细节，开发新功能压力小，旧代码也更安全。</p>
+<h3 id="实现细节：函数化">实现细节：函数化</h3>
+<blockquote>
+<p>从具体实现上设计软件</p>
+</blockquote>
+<p>我认为世界上的任何现象，都可以用函数进行归纳，这和人们试图用数学抽象现实的想法是一致的。同理，模块的实现也可以参考函数的实现。函数的组成非常简单，只有“输入”、“输出”、“实现”三个部分组成。</p>
+<h4 id="单模块实现（实现函数）">单模块实现（实现函数）</h4>
+<p>先不要关心其他模块，只关心当前模块本身的功能，其函数三核心在代码规范中的区域分布中就能体现出来。而且由于 Unity 本身的特性，一个 MonoBehaviour 自身就可以完成一套完整的 MVP 架构，因此它确实是一个独立且功能完整的存在，确实能被称为是一个模块。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title">AccountAPI</span><br>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> AccountInfo <span class="hljs-title">GetAccountInfo</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> account,<span class="hljs-built_in">string</span> passward</span>)</span>;<br>&#125;<br><br><span class="hljs-comment">// 提供账号信息服务</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">AccountSystem</span> : <span class="hljs-title">MonoBehaviour</span><br>&#123;<br>    <span class="hljs-comment">//输出服务（M 对外服务）</span><br>    <span class="hljs-keyword">public</span> AccountInfo AccountInfo &#123;<span class="hljs-keyword">get</span>; <span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetAccountAndPassward</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> account,<span class="hljs-built_in">string</span> passward</span>)</span><br>    &#123;<br>        <span class="hljs-keyword">this</span>.account = account;<br>        <span class="hljs-keyword">this</span>.passward = passward;<br>    &#125;<br><br>    <span class="hljs-comment">//输入依赖（V 用户界面）</span><br>    [<span class="hljs-meta">SerializeField</span>] <span class="hljs-built_in">string</span> account;<br>    [<span class="hljs-meta">serializeField</span>] <span class="hljs-built_in">string</span> passward;<br><br>    <span class="hljs-comment">//实现功能（P 驱动实现）</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span><br>    &#123;<br>        AccountInfo = AccountAPI.GetAccountInfo(account,passward);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="多模块依赖（调用函数）">多模块依赖（调用函数）</h4>
+<p>函数化的思想适用于每个模块，包括模块间的依赖调用和控制调用。整个模块使用就如同函数一样，填入参数，执行，取出参数，再将参数填入另一个函数，执行，直到输出到用户界面。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//实现对游戏流程的推动</span><br>[<span class="hljs-meta">ExecutionDefaultOrder(-100)</span>]<span class="hljs-comment">// 确保在模块前运行，以实现完全控制</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">GameController</span> : <span class="hljs-title">MonoBehaviour</span><br>&#123;<br>    <span class="hljs-comment">//输出服务（控制器是顶层设施，不需要提供任何服务）</span><br>    <br>    <span class="hljs-comment">//输入依赖</span><br>    [<span class="hljs-meta">serializeField</span>] AccountSystem accountSystem;<br>    [<span class="hljs-meta">serializeField</span>] ConfigSystem configSystem;<br>    [<span class="hljs-meta">serializeField</span>] AccountUI accountUI;<br><br>    <span class="hljs-comment">//具体实现</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span><br>    &#123;<br>        <span class="hljs-comment">//取消自运行，完全由控制器管理模块生命周期</span><br>        accountSystem.gameObject.SetActive(<span class="hljs-literal">false</span>);<br>        configSystem.gameObject.SetActive(<span class="hljs-literal">false</span>);<br><br>        <span class="hljs-comment">//执行依赖模块，使用其提供的输出</span><br>        configSystem.gameObject.SetActive(<span class="hljs-literal">true</span>);<br>        <span class="hljs-built_in">string</span> account = configSystem.GetAccount();<br>        <span class="hljs-built_in">string</span> password = configSystem.GetPassword();<br><br>        <span class="hljs-comment">//将输出作为另一个模块的输入并执行</span><br>        accountSystem.SetAccountAndPassward(account, password);<br>        accountSystem.gameObject.SetActive(<span class="hljs-literal">true</span>);<br><br>        <span class="hljs-comment">//继续传递参数，直到输出到用户界面</span><br>        accountUI.AccountInfo = accountSystem.AccountInfo;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="优势分析">优势分析</h4>
+<ol>
+<li>函数化的思考方式非常简单，对外只用考虑本身功能的输入输出，对外细节完全封装，自动形成层级隔离。</li>
+<li>实现完全基于 MonoBehaviour 的原生设计，没有任何学习成本，理解运用非常轻松。</li>
+<li>主动暴露输入条件于面板，使得用户可以借助编辑器自由调节参数，并且前置依赖一眼便知。</li>
+<li>支持基于 Unity 事件的自动激活，在前期快速开发和单元测试场景中非常方便。</li>
+<li>模块内代码分区明了，输出放顶，细节放尾，实现了代码文档化，查阅起来非常方便。</li>
+</ol>
+<h3 id="依赖注入">依赖注入</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/modesttree/Zenject">https://github.com/modesttree/Zenject</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.unity3d.com/Packages/com.unity.dt.app-ui@2.0/manual/mvvm-di.html">https://docs.unity3d.com/Packages/com.unity.dt.app-ui@2.0/manual/mvvm-di.html</a></p>
+<h2 id="没有框架是最好的框架">没有框架是最好的框架</h2>
+<p>就在刚刚的实现细节中，其实我们已经实现了一系列 MVC、模块化、封装分层的思想。这是很难的操作吗？在我看来，用 Unity 面板编辑参数，用 Unity 事件执行功能，这明明就是 Unity 最基本的用法。</p>
+<p>实际上，在写该文章前，我不知道什么是 MVP（我一直以为我用的是MVC），也不知道什么是 DDD，设计方法我也是懒得看的那种。直到现在，我才了解到，原来这些对我来说很自然的代码实现，原来是有名称的。</p>
+<p>这种后知后觉的现象很正常，因为不是框架让你的代码变好，而是你为了让代码变好，自然的写出了框架。实际上写代码只要遵循以下原则，那写出来的代码一定是最优代码：</p>
+<ul>
+<li>不要没事找事：写代码永远只把注意力放在当下的事，不要妄加揣测尚未提及的需求，也不要试图定制一个完美的框架。（如果你经验不足，你的小巧思，通常都会成为废物甚至拖慢项目的枷锁，不如只把当前的事做好）</li>
+<li>不要瞻前顾后：写一个模块就只关注这个模块要做的事，不要同时考虑多个模块，那样写出来的全是耦合代码。模块在之后可以扩展，可以按需提供更多服务，但它本身一定是独立的，绝不是为了特定于为某物而写的。</li>
+<li>遵循设计原则：检查你的代码是否符合设计模式中的原则要求，以及上文的代码问题检查，如果违反，那一定是代码存在问题，必须要重新设计你的实现。如果你不知道如何修改，那么你就可以进一步参考设计模式中的设计方法。</li>
+<li>及时修改代码：没有人是先知，无论是开发者还是项目经理，需求总是会变的，代码结构总是会改的，所以要以不变应万变。代码调整很正常，但只要做好了隔离，再大的火都只会烧在一个模块内，然后根据需求随时调整你的代码，确保每次迭代都始终遵守原则，不要偷懒，否则它将成为屎山的开始。</li>
+</ul>
+<p>很多时候开发和项目经理会存在需求上的矛盾，但对我来说项目经理的需求我一向都会接受，我甚至会感觉他们思考太多。对他们来说可能是为了开发好，但当他们主动试图去理解开发的工作内容，来决定成品的效果时，我只感觉到了本末倒置，感觉到了单一职责原则的违背。</p>
+<p>我从不怕提需求，也从来没有过大改过代码结构，在我看来适用需求本身就是软件开发的一项职责。而这一强大适应性的背后，我却从来不写什么 Demo 版，也从来不设计什么全局框架，我唯一做的事，就是“接到需求，实现功能、调整复用”，以此往复。</p>
+<p>“没有框架是最好的框架”：我的项目没有框架，又或者说到处都是框架，每天都在变化。以不变应万变，这才是一个真正优秀的软件框架。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【软件开发】代码设计指南</div>
+      <div>https://bdffzi-blog.pages.dev/posts/3849233909.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年4月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/3997045834.html" title="【生活杂谈】不要让全自动 AI 毁掉你的代码">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【生活杂谈】不要让全自动 AI 毁掉你的代码</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/4118079887.html" title="Unity编码规范">
+                        <span class="hidden-mobile">Unity编码规范</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

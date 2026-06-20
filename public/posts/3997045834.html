@@ -1,0 +1,866 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/css/bilicard.css">
+<!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/avatar.jpg">
+  <link rel="icon" href="/assets/img/avatar.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="BDFFZI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【生活杂谈】不要让全自动 AI 毁掉你的代码 如今是 AI 的时代，我相信没有人没用过 AI，实际上现在大部分程序员都在使用 AI 编程。甚至很多美工、策划等本不是程序员的人，也能借助 AI 进行程序编写了。我本人也是经常使用 AI 查资料写示例代码，这效率远比搜索引擎或自己查文档高效的多。而且事实上，因为商业化的原因，搜索引擎已经逐渐失去了查找资料的能力，网络上充斥“机翻、驴头不对马嘴、灌水、A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【生活杂谈】不要让全自动 AI 毁掉你的代码">
+<meta property="og:url" content="https://bdffzi-blog.pages.dev/posts/3997045834.html">
+<meta property="og:site_name" content="BDFFZI的小屋">
+<meta property="og:description" content="【生活杂谈】不要让全自动 AI 毁掉你的代码 如今是 AI 的时代，我相信没有人没用过 AI，实际上现在大部分程序员都在使用 AI 编程。甚至很多美工、策划等本不是程序员的人，也能借助 AI 进行程序编写了。我本人也是经常使用 AI 查资料写示例代码，这效率远比搜索引擎或自己查文档高效的多。而且事实上，因为商业化的原因，搜索引擎已经逐渐失去了查找资料的能力，网络上充斥“机翻、驴头不对马嘴、灌水、A">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/%E5%9B%BE%E7%89%87.png">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/%E5%9B%BE%E7%89%87(1).png">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/%E5%9B%BE%E7%89%87(2).png">
+<meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/%E5%9B%BE%E7%89%87(3).png">
+<meta property="article:published_time" content="2026-04-13T11:14:02.838Z">
+<meta property="article:modified_time" content="2026-06-20T18:46:48.244Z">
+<meta property="article:author" content="BDFFZI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/%E5%9B%BE%E7%89%87.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>【生活杂谈】不要让全自动 AI 毁掉你的代码 - BDFFZI的小屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/bilicard.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bdffzi-blog.pages.dev","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><meta name="referrer" content="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>BDFFZI的小屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【生活杂谈】不要让全自动 AI 毁掉你的代码"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-04-13 19:14" pubdate>
+          2026年4月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          33 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">【生活杂谈】不要让全自动 AI 毁掉你的代码</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年6月21日 凌晨
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>【生活杂谈】不要让全自动 AI 毁掉你的代码</h1>
+<p>如今是 AI 的时代，我相信没有人没用过 AI，实际上现在大部分程序员都在使用 AI 编程。甚至很多美工、策划等本不是程序员的人，也能借助 AI 进行程序编写了。我本人也是经常使用 AI 查资料写示例代码，这效率远比搜索引擎或自己查文档高效的多。而且事实上，因为商业化的原因，搜索引擎已经逐渐失去了查找资料的能力，网络上充斥“机翻、驴头不对马嘴、灌水、AI生成、广告、墙“等各种影响获取正确资料的阻碍。 相比之下，资料库经过筛选的 AI，反而能更好的提供原始正确资料。</p>
+<p>目前使用 AI 编程，主要有两种方式：</p>
+<ol>
+<li>仅借助 AI 查资料，整体思路和最终实现还是由人工完成。（保守派）</li>
+<li>使用全自动 AI 编程，思路和实现全部交给 AI，自己仅提需求。（激进派）</li>
+</ol>
+<p>我本人是保守派，因为我信不过 AI 的编程能力（事实也确实如此），但根据工作经验，现在大部分都属于激进派，而且远比我想象的还要激进。</p>
+<h2 id="辅助驾驶≠无人驾驶">辅助驾驶≠无人驾驶</h2>
+<p>任何一个 AI 服务，一定都有在声明中说过：</p>
+<blockquote>
+<p>AI 也可能会犯错。请核查重要信息。</p>
+</blockquote>
+<p>但很多人都在无视这条说明，不会去修补完善 AI 的代码漏洞，甚至不会回头看 AI 编写的代码是否正确，如果程序无法执行，也只是直接向 AI 反馈问题，完全放弃了对程序实现思路的控制。整个过程就好像为了应付毕业论文的大学生，或一名不懂编程而使用 AI 编程的新手一样。</p>
+<p>这种行为在我看来，就和用夹子夹住方向盘，从而让辅助驾驶的汽车一直运行，而自己直接呼呼大睡的司机一样。这种事只能中午干，因为早晚要车毁人亡。当然，写代码不会致人死亡，但却会导致项目变成一坨完全无法维护的屎山，这在大型项目上更为明显。</p>
+<p>现在利用 AI 全自动编程，做一些临时小项目是可以的，但对于大型长线发展的工业级项目，是完全不够格的。以下我就举一些常见问题。</p>
+<h2 id="毁掉项目的异常和日志机制">毁掉项目的异常和日志机制</h2>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//AI写法</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">StartGame</span>(<span class="hljs-params">[NotNull]Player player</span>)</span><br>&#123;<br>    <span class="hljs-keyword">try</span>&#123;<br>        Debug.Log(<span class="hljs-string">&quot;准备开始游戏&quot;</span>);<br><br>        Debug.Log(<span class="hljs-string">&quot;获取游戏参数&quot;</span>);<br>        <span class="hljs-keyword">if</span>(player == <span class="hljs-literal">null</span>)<br>            <span class="hljs-keyword">return</span>;<br>        <span class="hljs-built_in">int</span> id = player.ID;<br><br>        Debug.Log(<span class="hljs-string">&quot;开始游戏&quot;</span>);<br>        JoinGame(id);<br>    &#125;<br>    <span class="hljs-keyword">catch</span> (Exception e)&#123;<br>        Debug.LogError(<span class="hljs-string">$&quot;开始游戏时发生异常：<span class="hljs-subst">&#123;e.Message&#125;</span>&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上述代码放到正式环境中存在如下问题：</p>
+<ol>
+<li>player不存在为什么直接返回？无法正常执行逻辑，不应该直接报错？</li>
+<li>这是内部函数，player永远都有，不可能为空，为什么要进行为空判断？</li>
+<li>为什么要捕获异常但不处理？为什么Log异常时要抹除异常的堆栈信息？</li>
+<li>Log很消耗性能，而且明明没有调试的需求，为什么要写那么多Log？</li>
+</ol>
+<p>这只是一个代码片段，实际上AI会轻松写上几百行代码，以及各种嵌套的进一步调用，这些代码中会有大量的上述行为，如果放到生产环境就会导致如下问题：</p>
+<ol>
+<li>程序员误操作，传了个空参数，结果软件无法正常运行，但又拿不到任何报错信息。</li>
+<li>整个项目疯狂弹Log，平白消耗珍贵性能，从中截取需要的Log也变的非常麻烦。</li>
+<li>软件报错了，但错误信息被捕获，接着输出了一个没有堆栈的错误信息，完全不知道错误位置。</li>
+</ol>
+<p>此时你让 AI 去解决该问题，他八成是解决不了的（异常和日志系统完全失效，真人也无从下手），于是它只能屎山上加屎，比如增加额外的为空判断处理，花了半天劲，歪打正着终于解决了，代码又加了几百行。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//正确写法</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">StartGame</span>(<span class="hljs-params">[NotNull]Player player</span>)</span><br>&#123;<br>    JoinGame(player.ID);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="完全多余莫名其妙的功能实现">完全多余莫名其妙的功能实现</h2>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//这是一个会被挂载在场景中单例系统脚本</span><br><span class="hljs-comment">//AI写法</span><br><span class="hljs-keyword">class</span> <span class="hljs-title">GameSystem</span> : <span class="hljs-title">MonoBehaviour</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> GameSystem Instance&#123;<br>        <span class="hljs-keyword">get</span>&#123;<br>            <span class="hljs-keyword">if</span>(instance == <span class="hljs-literal">null</span>)<br>            &#123;<br>                instance = Object.FindObjectOfType&lt;GameSystem&gt;();<br>                <span class="hljs-keyword">if</span>(instance == <span class="hljs-literal">null</span>)<br>                &#123;<br>                    GameObject go = <span class="hljs-keyword">new</span> GameObject(<span class="hljs-string">&quot;GameSystem&quot;</span>);<br>                    instance = go.AddComponent&lt;GameSystem&gt;();<br>                    DontDestroyOnLoad(go);<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">return</span> instance;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> GameSystem instance;<br><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span><br>    &#123;<br>        <span class="hljs-keyword">if</span> (instance == <span class="hljs-literal">null</span>)<br>        &#123;<br>            instance = <span class="hljs-keyword">this</span>;<br>            DontDestroyOnLoad(gameObject);<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (instance != <span class="hljs-keyword">this</span>)<br>        &#123;<br>            Destroy(gameObject);<br>        &#125;<br>    &#125;<br><br>    [<span class="hljs-meta">SerializeField</span>] <span class="hljs-keyword">private</span> <span class="hljs-built_in">string</span> gameName = <span class="hljs-string">&quot;DefaultGameName&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上述代码存在如下问题：</p>
+<ol>
+<li>都是挂载在场景中了，为什么获取单例时还要实现实时创建？</li>
+<li><code>Awake</code>里已经<code>DontDestroyOnLoad</code>，为何创建时要再执行一遍？</li>
+<li>如果是实时创建的，那<code>[SerializeField]</code>的意义在哪？根本没地方改。</li>
+<li>单例但场景里有多个，不应该是异常提醒程序员删除吗，为何掩盖这行为？</li>
+</ol>
+<p>这只是一种功能的实现示例，实际代码中会有大量功能，都采用完全没必要甚至故意掩盖程序缺陷的写法，结果就会导致很多问题：</p>
+<ol>
+<li>程序运行效率很低，实际执行功能的代码很少。</li>
+<li>人为误操作被掩盖，游戏漏洞屎山代码不断积累。</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//正确写法</span><br>[<span class="hljs-meta">DefaultExecutionOrder(-100)</span>]<br><span class="hljs-keyword">class</span> <span class="hljs-title">GameSystem</span> : <span class="hljs-title">MonoBehaviour</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> GameSystem Instance&#123; <span class="hljs-keyword">get</span>; <span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>;&#125;<br><br>    [<span class="hljs-meta">SerializeField</span>] <span class="hljs-built_in">string</span> gameName = <span class="hljs-string">&quot;DefaultGameName&quot;</span>;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span><br>    &#123;<br>        Instance = <span class="hljs-keyword">this</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>其他的例子：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">这是一款弹窗UI的对象层级布局：<br>- Window（窗口根画布）<br>  - Content（窗口内容）<br>  - OK（窗口确认按钮）<br></code></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//这是触发OK时关闭窗口的代码</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OK</span>()</span><br>&#123;   <br>    <span class="hljs-keyword">if</span>(Window != <span class="hljs-literal">null</span>)<br>        Window.Close();<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>能看出什么问题吗？</p>
+<h2 id="将高级语言劣化成汇编语言">将高级语言劣化成汇编语言</h2>
+<p>AI到底无法思考，只是模仿人的行为，而无法理解其原因。其写出的代码片段非常适合新手阅读，因为其代码集中且考虑很多，所以能方便的阅读并从中学到很多东西。但这种写示例代码的思想放到实际生产环境中就会变成一场灾难。</p>
+<h3 id="不会封装复用和模块化">不会封装复用和模块化</h3>
+<p>如果没有人为干涉，AI 偏好把所有功能代码都放一个脚本中实现。</p>
+<ul>
+<li>对于新手学习：这很友好，因为需要调用的功能都可以在一个脚本中看到，也不需要配置额外的依赖环境。</li>
+<li>对于实际生产：这很糟糕，不能实现代码复用，每个脚本都非常臃肿。
+<ol>
+<li>不会使用第三方库，喜欢重复造自己的轮子，学习维护成本很高。</li>
+<li>造出的轮子也不知道封装成工具类，无法被其他功能复用，每个功能反复增加非实际业务的代码，对后期项目开发也没有任何价值。</li>
+<li>功能都一个脚本实现，也不考虑软件工程设计，最终实现依赖地狱，模块难以修改拆分。</li>
+</ol>
+</li>
+</ul>
+<h3 id="不切实际的花里胡哨">不切实际的花里胡哨</h3>
+<p>如果没有人为干涉，AI 喜欢写一堆无效甚至负作用的代码，说到底他们不会考虑实际的工作环境（实际上他也无法思考这些）。</p>
+<ul>
+<li>对于新手学习：这很友好，可以拓展性的学习到很多新知识，能看到对各种可能问题的思考和处理。</li>
+<li>对于实际生产：这很糟糕，脚本中充斥着无效代码，严重影响阅读和性能，且各种擅自的操作，使得功能变的不可控，形成黑盒，让人无法预估功能的运作行为。</li>
+</ul>
+<h3 id="无法理解软件工程设计">无法理解软件工程设计</h3>
+<p>AI 默认情况下不会使用什么软件设计方法，但实际上它也无法真的理解设计模式之类的开发方法。任何一个功能，你随意指派给他一种设计方法，他都能给你生成对应的代码，但具体代码是否如实、是否高效，它完全无法保证。AI 对设计方法的理解，完全就像是小白第一次用设计模式一样，邯郸学步生搬硬套，功能没实现先给自己的项目扣上一层枷锁，强行增加自己的编码难度，最后适得其反，名为框架的锁，把所有功能牢牢耦合在一起。</p>
+<p>而且 AI 一个很严重的问题是，他无法真的思考这些问题，基本上你说啥，他都“对对对”，于是 AI 的工作能力，就很看重操作员的指挥。但很遗憾的是，大部分操作员就是因为不会编程、不想编程，才会让 AI 全自动跑代码，于是操作员只能让 AI 分析，然后 AI 接到分析指令，就一定要分析个所以然出来，接着一套屎山框架就出来了。</p>
+<h3 id="随手写出巨额代码量">随手写出巨额代码量</h3>
+<p>上述的各种问题带来的最显著结果，就是巨额的代码量，超复杂的脚本关系。一个小功能，它能给你搞出几个甚至十几个相互耦合的脚本（为了强行设计、或者单脚本代码太多被要求拆分），而且每个脚本都有上百甚至上千行代码。当代码复杂到这个程度的时候，基本就已经无法阅读了。</p>
+<p>这远比人类造成的屎山要严重的多，因为人类都尽可能会少写代码，屎山的代码复杂，是因为不会写而不是故意写，而且多少还保有些人的思考逻辑在。但 AI 这就纯故意了，完全不考虑他人感受。AI 写出的代码，基本无法再被人为维护。</p>
+<p>有人认为 AI 写代码多的一部分原因是因为注释多（这也没事找事和写教学代码的典型表现），而注释提高了可读性，所以 AI 代码的可读性很好。但看看下面这个属性注释：</p>
+<p><img src="/assets/images/%E5%9B%BE%E7%89%87.png" srcset="/img/loading.gif" lazyload alt="无效注释"></p>
+<p><img src="/assets/images/%E5%9B%BE%E7%89%87(1).png" srcset="/img/loading.gif" lazyload alt="无效注释"></p>
+<p>这些注释单纯就是把英文又翻译了一遍，完全没有实际作用，而这种水货注释充满了项目，不知道的还以为产品是按代码量收钱。</p>
+<p><img src="/assets/images/%E5%9B%BE%E7%89%87(2).png" srcset="/img/loading.gif" lazyload alt="无效且反作用的操作"></p>
+<p>找这些注释的时候我还发现了上面这个代码。请问有什么用？单纯为了发一个Log，占用一个Awake函数。要知道Log和Awake都是有性能消耗的，而且这个Log完全可以放到单例创建时播报。此外注释放这里又是干啥？别人不去看公开的单例，而且去翻私有的空Awake函数，来了解这个系统是单例创建的？</p>
+<p>回顾时我还发现了其他问题，在我的IDE中，永远不会被使用的代码将会被标记为灰色，可以发现，上面不少变量都是灰色的，所以说这不仅是注释，而且其中很多实际代码都是无效内容，而这些垃圾还会在一次一次的迭代中不断累积。</p>
+<p><img src="/assets/images/%E5%9B%BE%E7%89%87(3).png" srcset="/img/loading.gif" lazyload alt="正确示范"></p>
+<p>看一下人类的注释，不去解释属性名（没有必要），而是去解释用法作用和特殊情况。</p>
+<h2 id="不听话且不负责的做事态度">不听话且不负责的做事态度</h2>
+<p>AI 的知识储备远比人类丰富，所以非常适合检索资料，但其编码水平说实话还是屎山水平。人类也写屎山，但 AI 的破坏力远比人类强得多，我甚至不敢让 AI 改我的代码，因为它随随便便就能把我的代码大换血，但换个人类小白，他还知道要少改代码。而且相比人类小白，AI 的行事方式是最为危险的。</p>
+<ul>
+<li>AI 不会真的思考</li>
+<li>AI 没有长期记忆</li>
+</ul>
+<h3 id="无法完全理解和遵照指令">无法完全理解和遵照指令</h3>
+<p>在很多大型公司，包括Unity、.Net自身，都是有一套编码规范的，因为这是提高开发效率，方便多人合作的必要建设。那么换 AI 上岗，能否继续遵守编码规范？</p>
+<p>实测是不可以的，它可能能对部分规范遵守，但很多规范，他不能正常执行，而且随着上下文的增长，越用就越会发现他违规的地方。尝试让他牢记，并每次提醒，但并没有用，首先它根本无法做到牢记，也无法准确理解意图运用规范，即使多次纠正，但每次提醒后，它理解的方式也会发生改变。</p>
+<h3 id="不同时段的思考无法维持">不同时段的思考无法维持</h3>
+<p>AI 不会思考，导致他总是犯错，写出固执己见的代码。那么就按 AI 自身意图来，它表现的又如何？</p>
+<p>同样也是不行。AI 有限的上下文，使得隔一段时间就要重新开始新的对话，此时换来的就像是一个全新的员工。有限的上下文也使得其思考范围非常窄，如果一个系统相关的代码非常复杂繁多，他也是无法完全理解的。结果又由于它非常喜欢写超级多的代码，这些代码同样最后变成了 AI 也要面临的屎山。</p>
+<p>当屎山出错时，AI 肯定是永远都有办法的（你说啥他都“对对对”的典型表现）</p>
+<ul>
+<li>一种情况是它永远不奏效，你要是一直听他的，甚至能偏到让你改源码（源码错了，那其他项目咋没事的）。</li>
+<li>另一种是让它知道的部分错误原因后，他能歪打正着的解决，但解决不了根本原因，他只能避免问题，屎上堆屎。</li>
+</ul>
+<p>连 AI 自己写的代码，它都弄不懂，那么最后这座屎山改由谁负责？</p>
+<h2 id="AI真的带来了效率提升？">AI真的带来了效率提升？</h2>
+<p>谈了上述的各种问题后，你可以想说，牺牲性能、代码变黑盒，但换来了效率提升，这是值得的。就好像C++应用的效率很高，但通常人们还是会选择java、python这些低效的解释性语言。因为他们更现代化，更易于使用。</p>
+<p>但是AI真的让你变快了吗？AI真的能够像编译器那样准确翻译代码吗？</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mjc1NjM3MjY2MA==&amp;mid=2691566538&amp;idx=1&amp;sn=dac9297157536671c0a11b8c6c9eb4a4&amp;chksm=a8cac4d279e87836f4646daa0101f5f870430482b22332866a8afba1f8da0ea59855a8352aa0&amp;mpshare=1&amp;scene=24&amp;srcid=04057n87TWlqJ9axpHyfwO1O&amp;sharer_shareinfo=1d80fba302ce1795fb96d1175c5d50a9&amp;sharer_shareinfo_first=1d80fba302ce1795fb96d1175c5d50a9#rd">https://mp.weixin.qq.com/s?__biz=Mjc1NjM3MjY2MA==&amp;mid=2691566538&amp;idx=1&amp;sn=dac9297157536671c0a11b8c6c9eb4a4&amp;chksm=a8cac4d279e87836f4646daa0101f5f870430482b22332866a8afba1f8da0ea59855a8352aa0&amp;mpshare=1&amp;scene=24&amp;srcid=04057n87TWlqJ9axpHyfwO1O&amp;sharer_shareinfo=1d80fba302ce1795fb96d1175c5d50a9&amp;sharer_shareinfo_first=1d80fba302ce1795fb96d1175c5d50a9#rd</a></p>
+<h2 id="后记感悟">后记感悟</h2>
+<p>AI 浪潮势不可挡，我很讨厌 AI，但我也用 AI。我期望 AI 能达到和科幻电影一样，真正变成和人一样的存在，但可惜至少现在还不是。它模仿的很像，终究不是人，需要人去监管和督促，然而很可惜的是，我看到很多人似乎已经过早的沉沦在了这场美梦中，他们放弃了思考。</p>
+<p>有脑子的人最终选择去相信没脑子的机器，我感觉很讽刺真的。但这也是个人的自由，就如同在辅助驾驶上呼呼大睡的司机一样，但是这么干之前，请想想车上的其他人，想想路上的行人，想想等着你平安抵达的人们。这个世界，每个人都息息相关，AI 会改变你的生活，也会改变你周围人的生活。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【生活杂谈】不要让全自动 AI 毁掉你的代码</div>
+      <div>https://bdffzi-blog.pages.dev/posts/3997045834.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>BDFFZI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年4月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/1798697443.html" title="【Unity】XR开发常见问题">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【Unity】XR开发常见问题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/3849233909.html" title="【软件开发】代码设计指南">
+                        <span class="hidden-mobile">【软件开发】代码设计指南</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"BDFFZI/Page.Blog","repo-id":"R_kgDOLNpbRw","category":"Announcements","category-id":"DIC_kwDOLNpbR84CjAdm","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/assets/js/noCache.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

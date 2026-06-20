@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bdffzi-blog.pages.dev/assets/images/image-15.png">
 <meta property="article:published_time" content="2025-12-23T12:57:56.493Z">
-<meta property="article:modified_time" content="2025-12-23T14:54:11.281Z">
+<meta property="article:modified_time" content="2026-04-03T13:55:16.988Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bdffzi-blog.pages.dev/assets/images/image-15.png">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          2.6k 字
         
       </span>
     
@@ -1002,7 +1002,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年12月23日 晚上
+                    本文最后更新于 2026年4月3日 晚上
                   
                 
               </p>
@@ -1022,7 +1022,7 @@
 <h3 id="从反射到透射">从反射到透射</h3>
 <p>首先从双向反射分布函数考虑，“漫反射”和“镜反射”中，“镜反射”是一次接触直接反射，故肯定不会进入物体内部，但“漫反射”是在物体内部多次弹射的结果，因此显然它是有机会发生“透射”的。所以可以确定，如果发生透射，那它一定是从“漫反射”中分来的。</p>
 <h3 id="从漫反射到散射">从漫反射到散射</h3>
-<p>根据次表面散射一章的知识，我们可知，漫反射中没有理由，入射位置和出射位置就一定是相同的，对于半透明物体，漫反射将升级为散射。</p>
+<p>根据次表面散射一章的知识，我们可知，漫反射中没有规定入射位置和出射位置就一定是相同的，对于半透明物体，漫反射将升级为散射。</p>
 <p>实现散射的方法很简单，其实就是重映射，例如半兰伯特、预计算的LUT，都是试图将反光区域扩展到背面。因此透射作为散射现象的一种，也同样是对漫射的重映射或重分配实现。</p>
 <p>只是相比之下，透射对漫射的重分配更加极端，会使正背面的光比侧面光更强，这是如半兰伯特之类所不具备的。</p>
 <h2 id="漫透射系数">漫透射系数</h2>
@@ -1050,7 +1050,7 @@
 <li><code>_TransmitScale</code>：镜透射系数的校准系数。</li>
 </ul>
 <p>该计算方案，用简单的出射光和观察方向的夹角来计算基础光照，同时对其进行半兰伯特映射，将值域从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-1,1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 转为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0,1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，以方便后续校准，而且这种强度分布更符合散射的特点。</p>
-<p>此外，有意在获取反方向光之前用法线扭曲，因为从背面观察时法线和光源方向是相逆的，所以此时用法线扭曲光源的效果会比较强，而且因为基于法线扭曲，其扭曲效果就会和物体表面形状产生关联，因此表现效果也更好。</p>
+<p>有意在获取反方向光之前用法线扭曲，是因为从背面观察时法线和光源方向是相逆的，如果厚度范围为0-1，恰巧就能实现无偏转到完全偏转的效果，调节起来会更加方便。而且因为基于法线扭曲，其扭曲效果就会和物体表面形状产生关联，因此表现效果也更好。</p>
 <h2 id="散射辐照度">散射辐照度</h2>
 <p>在散射中由于光线来自内部，所以与反射的辐照率计算有所不同。首先两者的最初光源是一样的，但反射光中辐照度的衰减主要来自遮挡（阴影），而散射光中的辐照度衰减则来自内部吸收（厚度）。有多少光会发生反射或散射？我们需要一个属性进行权重分配，好在漫透射章节已经提供了一个散射率属性。于是最终，我们便可以计算出散射辐照度：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hlsl">float3 scatteringIrradiance = light.color * light.distanceAttenuation * lerp(light.shadowAttenuation, 1 - thickness, scattering);<br></code></pre></td></tr></table></figure>

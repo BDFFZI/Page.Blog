@@ -29,7 +29,7 @@
 <meta property="og:description" content="Unity编码规范 结构规范  让最常用的成员排在前列，让最相关的成员排在一起，便于快速索引有效信息和提示成员功能。  确定类成员的布局方式  按访问修饰符排序：公开-&gt;保护-&gt;私有[SerializeField]-&gt;私有 按是否为静态排序：静态-&gt;非静态 按具体类型排序：数据定义-&gt;事件-&gt;字段-&gt;属性-&gt;函数 按逻辑关系排序：Unity事件、成对">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-29T04:41:46.002Z">
-<meta property="article:modified_time" content="2026-02-23T14:38:07.440Z">
+<meta property="article:modified_time" content="2026-04-13T10:50:23.994Z">
 <meta property="article:author" content="BDFFZI">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k 字
+          2.3k 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          28 分钟
+          19 分钟
         
       </span>
     
@@ -994,7 +994,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年2月23日 晚上
+                    本文最后更新于 2026年4月13日 晚上
                   
                 
               </p>
@@ -1102,11 +1102,19 @@
 </thead>
 <tbody>
 <tr>
-<td>负责UI相关的元素（对应MVC中的V）</td>
+<td>静态单例对象</td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>提供功能服务的类（MVP架构中的M）</td>
+<td>+System</td>
+</tr>
+<tr>
+<td>负责界面相关的类（对应MVP中的V）</td>
 <td>+UI</td>
 </tr>
 <tr>
-<td>负责驱动模块，推进游戏逻辑的元素（对应MVC中的C）</td>
+<td>负责驱动链接模块，推动游戏流程的类（对应MVP中的P）</td>
 <td>+Controller</td>
 </tr>
 <tr>
@@ -1136,7 +1144,7 @@
 <li>不要基于构造函数、析构函数等C#事件处理数据，应全部在Unity事件中处理，否则部分Unity功能会无法使用。</li>
 <li>尽可能禁用编辑器选项 <code>Reload Domain</code> 和 <code>Reload Scene</code>，从而加快编辑器运行速度，提高开发迭代效率。</li>
 </ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs csharp">[<span class="hljs-meta">DefaultExecutionOrder(-10)</span>]<span class="hljs-comment">//正确（SeedGenerator的初始化时机被显式指定，便于其他模块使用）</span><br><span class="hljs-keyword">class</span> <span class="hljs-title">SeedGenerator</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">GetSeed</span>()</span> =&gt; currentSeed;<br>    <span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> defaultSeed = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> lastSeed = <span class="hljs-number">9</span>;<br>    <span class="hljs-built_in">int</span> currentSeed = defaultSeed;<span class="hljs-comment">//错误（不允许依赖构造函数等初始化，部分情况下不能正常触发）</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span>&#123;<br>        <span class="hljs-comment">//兜底初始化</span><br>        currentSeed = defaultSeed;<span class="hljs-comment">//正确（在Awake阶段时确保模块被初始化（可用））</span><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnEnable</span>()</span>&#123;<br>        <span class="hljs-comment">//完全初始化</span><br>        currentSeed = lastSeed;<span class="hljs-comment">//正确（基于Unity事件处理数据）</span><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnDisable</span>()</span>&#123;<br>        <span class="hljs-comment">//资源回收</span><br>        currentSeed = <span class="hljs-number">-1</span>;<span class="hljs-comment">//正确（基于Unity事件处理数据）</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title">Random</span> &#123;<br>    [<span class="hljs-meta">SerializeField</span>] A a;<br>    <span class="hljs-built_in">int</span> seed;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span>&#123;<br>        <span class="hljs-comment">//依赖A的初始化</span><br>        seed = a.GetSeed();<span class="hljs-comment">//正确（由顺序被确定，此时a已经执行OnEnable（或Awake），可以使用）</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs csharp">[<span class="hljs-meta">DefaultExecutionOrder(-10)</span>]<span class="hljs-comment">//正确（SeedGenerator的初始化时机被显式指定，便于其他模块使用）</span><br><span class="hljs-keyword">class</span> <span class="hljs-title">SeedGenerator</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">GetSeed</span>()</span> =&gt; currentSeed;<br>    <span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> defaultSeed = <span class="hljs-number">1</span>;<br>    <span class="hljs-comment">//错误（不允许依赖构造函数等初始化，部分情况下不能正常触发）</span><br>    <span class="hljs-built_in">int</span> lastSeed = <span class="hljs-number">9</span>;<br>    <span class="hljs-built_in">int</span> currentSeed = defaultSeed;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span>&#123;<br>        <span class="hljs-comment">//兜底初始化</span><br>        currentSeed = defaultSeed;<span class="hljs-comment">//正确（在Awake阶段时确保模块被初始化（可用））</span><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnEnable</span>()</span>&#123;<br>        <span class="hljs-comment">//完全初始化</span><br>        currentSeed = lastSeed;<span class="hljs-comment">//正确（基于Unity事件处理数据）</span><br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnDisable</span>()</span>&#123;<br>        <span class="hljs-comment">//资源回收</span><br>        currentSeed = <span class="hljs-number">-1</span>;<span class="hljs-comment">//正确（基于Unity事件处理数据）</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title">Random</span> &#123;<br>    [<span class="hljs-meta">SerializeField</span>] A a;<br>    <span class="hljs-built_in">int</span> seed;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Awake</span>()</span>&#123;<br>        <span class="hljs-comment">//依赖A的初始化</span><br>        seed = a.GetSeed();<span class="hljs-comment">//正确（由顺序被确定，此时a已经执行OnEnable（或Awake），可以使用）</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h3 id="可读性要求">可读性要求</h3>
 <blockquote>
 <p>这些要求不会影响功能和程序设计，但可以使代码美观，便于读写。</p>
@@ -1167,49 +1175,6 @@
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs text">//示意例子：<br>Action -&gt; await / async<br>if(a is null) -&gt; ?.<br>a == null ? a:b =&gt; ??<br>for/foreach -&gt; Linq<br>class&#123;&#125; -&gt; var=new &#123;&#125;<br>int i,j,k;k=j;j=i;i=k -&gt; (i,j) = (j,i)<br>.....等等<br></code></pre></td></tr></table></figure>
 <p>注意：部分新式写法存在性能和兼容性问题，例如：Linq 可能产生 GC；空条件运算符对Unity对象无效。故要根据实际情况选择性使用，甚至在性能密集场合，手写的排序比 List.Sort 更高效（因为Sort也有GC）。</p>
 <p>如果偷懒不想阅读 C# 文档，建议使用一下 Rider IDE，远比 VS 等在代码提示和检查上智能的多（毕竟以前都没有免费版），用一遍可以学到很多知识。</p>
-<h3 id="设计性要求">设计性要求</h3>
-<blockquote>
-<p>这些要求影响你如何设计你的代码实现，能大幅增加代码的健壮性，减少问题概率且易于调整扩展。</p>
-</blockquote>
-<h4 id="检错方法">检错方法</h4>
-<ul>
-<li><strong>避免无法预估的if判断</strong></li>
-</ul>
-<p>如果你的代码实现里用到很多if判断，且你无法确定他们的最大数量，可以预见性的，他们未来还会继续增加。那你不应该使用if实现，而是改用委托，由外部调用者实现原本的if代码。</p>
-<ul>
-<li><strong>杜绝复制粘贴的编码方式</strong></li>
-</ul>
-<p>如果你写代码时出现了成段的复制粘贴行为，那说明你的代码需要优化。你应该将你复制的代码进行封装，考虑改用可以共用的函数实现，这样后期修改才不会出现“一个调整，到处要改”的情况。</p>
-<ul>
-<li><strong>保持树型代码引用关系</strong></li>
-</ul>
-<p>如果你有两个不相关的功能 A、B，将A的代码删除后，B却报错了，那你的代码就存在依赖问题。不同功能间的依赖应该是树状的，有明显的层级隔离，一个枝杈不可能影响到另一个枝杈。如果难以理解，那就想这么一个需求，你的每一个功能模块都应该可以做到随时移植到其他项目，且仅依赖必要的其他功能代码。</p>
-<h4 id="开发方法">开发方法</h4>
-<ul>
-<li><strong>基本原则：通过“高内聚低耦合”实现“模块化”</strong></li>
-</ul>
-<p>很多人把自己的功能称为模块，但事实上他们并没有实现模块化。“模块化”在《软件工程》中有专门的定义，逻辑上的功能独立并不能说明你的代码是模块化的。无论多复杂的编码规范技巧，本质都是为了实现“模块化”，实现“高内聚低耦合”，包括我们上面已经提到的几点方案。</p>
-<ul>
-<li><strong>开发技巧：设计模式</strong></li>
-</ul>
-<p>市面上有很多类似的技巧和规范教我们如何高效管理项目，例如《设计模式》就是其中一种，建议看看：<a target="_blank" rel="noopener" href="https://bdffzi.github.io/blog/posts/2553791405">【软件开发】设计模式个人解读</a></p>
-<ul>
-<li><strong>开发框架：MVC框架</strong></li>
-</ul>
-<p>如果你的代码实现了模块化，那必然就会自动使用上MVC框架，因为MVC就代表了三个不同的模块：</p>
-<ul>
-<li>M（模型）：核心功能，类似于API的存在。</li>
-<li>V（视图）：用户界面，与M分离，用于想用户呈现特定的数据交互形式。</li>
-<li>C（控制器）：驱动游戏逻辑，将各个模块桥接，激活。</li>
-</ul>
-<p>如果偷懒，MV可以合成一个模块（但那样不利于自动化测试，因为V只能人工测试），但C一定是分离出来的。一个应用说到底就是由一堆功能模块和驱动模块构成的。</p>
-<ul>
-<li><strong>避免形式主义，不要写没有提到的功能。</strong></li>
-</ul>
-<p>很多首次接触代码设计规范的人，会陷入一种形式主义，一开始就想把代码设计的尽善尽美，很小的一个功能，却花大量的事件用于构建框架。但通常的结果是，这些复杂的框架不仅没起到效果，还严重影响维护和新功能的开发。代码设计应该是动态调整的，不会为未提出的需求做过多准备，但一旦有需求也能迅速改进适应。</p>
-<blockquote>
-<p>没人是先知，人总是活在当下，程序也是一样。项目刚开始时，你可以用一些if，可以少量复制粘贴，可以不用父类抽象，这没问题，因为这样写最简单省时间，只要功能没有改动，这就是当前状态最易于理解的代码。直到功能开始复杂，你就该意识到需要换个策略应对变化了。用上那些你学到的设计技巧，在一次一次迭代中将程序不断调整完善，因地制宜，一砖一瓦，稳稳的做出每个当下的最合适的项目形状。</p>
-</blockquote>
 
                 
               </div>
@@ -1306,6 +1271,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/posts/3849233909.html" title="【软件开发】代码设计指南">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【软件开发】代码设计指南</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
