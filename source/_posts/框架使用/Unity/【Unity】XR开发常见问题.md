@@ -1,3 +1,9 @@
+---
+categories:
+  - 框架使用
+  - Unity
+abbrlink: 1798697443
+---
 # 【Unity】XR开发常见问题
 
 解决那些常见但官方未解决的需求。
