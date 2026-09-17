@@ -4,7 +4,7 @@ categories:
   - Alife桌宠开发经验分享
 abbrlink: 888823306
 ---
-# Alife 技术概述（黑红剧本）
+# Alife 技术概述剧本
 
 - 标题：Deepseek harness 吹的这套，我的小桌宠早就有了
 - 封面：全插件框架 + 完整上下文 + 创造模式，但不是 Deepseek harness（图标），而是 Alife（图标）
